@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Liên hệ — AllOne CRM</title>
+<meta name="description" content="Hãy cho chúng tôi biết nhu cầu của bạn — đội ngũ AllOne CRM sẽ tư vấn giải pháp và gói dịch vụ phù hợp nhất.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Inter+Tight:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Bỏ qua điều hướng</a>
+
+<header class="site-header" id="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-mark" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect width="20" height="20" rx="6" fill="currentColor"/></svg></span>
+      AllOne CRM
+    </a>
+    <nav class="main-nav" aria-label="Điều hướng chính">
+      <a href="san-pham.html" data-nav="san-pham">Sản Phẩm</a>
+      <a href="giai-phap.html" data-nav="giai-phap">Giải Pháp</a>
+      <a href="bang-gia.html" data-nav="bang-gia">Bảng Giá</a>
+      <a href="tai-nguyen.html" data-nav="tai-nguyen">Tài Nguyên</a>
+      <a href="lien-he.html" data-nav="lien-he">Liên Hệ</a>
+    </nav>
+    <div class="header-actions">
+      <a href="free-trial.html" class="btn btn-ghost btn-sm">Free Trial</a>
+      <a href="dang-ky.html" class="btn btn-primary btn-sm">Đăng Ký</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Mở menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="san-pham.html">Sản Phẩm</a>
+    <a href="giai-phap.html">Giải Pháp</a>
+    <a href="bang-gia.html">Bảng Giá</a>
+    <a href="tai-nguyen.html">Tài Nguyên</a>
+    <a href="lien-he.html">Liên Hệ</a>
+    <a href="free-trial.html" class="btn btn-ghost">Free Trial</a>
+    <a href="dang-ky.html" class="btn btn-primary">Đăng Ký</a>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="section" style="padding-top: 56px;">
+    <div class="container contact-grid">
+      <div class="contact-copy">
+        <p class="eyebrow">Liên hệ</p>
+        <h1 style="font-size: clamp(1.9rem, 3.4vw, 2.6rem); line-height:1.16; margin-bottom: 1rem;">Hãy cho chúng tôi biết nhu cầu của bạn</h1>
+        <p class="section-lead">Mỗi doanh nghiệp có một quy trình chăm sóc khách hàng riêng. Chia sẻ với đội ngũ AllOne CRM về cách đội nhóm của bạn đang vận hành — chúng tôi sẽ tư vấn giải pháp và gói dịch vụ phù hợp nhất.</p>
+        <p class="microcopy">Thông tin của bạn chỉ được sử dụng để liên hệ tư vấn và không được chia sẻ cho bên thứ ba. Đội ngũ AllOne CRM sẽ phản hồi trong thời gian sớm nhất.</p>
+      </div>
+
+      <form class="contact-form" id="contactForm" novalidate>
+        <div class="form-row">
+          <label for="fullName">Họ tên</label>
+          <input type="text" id="fullName" name="fullName" required autocomplete="name">
+        </div>
+        <div class="form-row form-row-2col">
+          <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required autocomplete="email">
+          </div>
+          <div>
+            <label for="phone">Số điện thoại</label>
+            <input type="tel" id="phone" name="phone" required autocomplete="tel">
+          </div>
+        </div>
+        <div class="form-row">
+          <label for="company">Công ty</label>
+          <input type="text" id="company" name="company" required autocomplete="organization">
+        </div>
+        <div class="form-row">
+          <label for="teamSize">Quy mô đội ngũ</label>
+          <select id="teamSize" name="teamSize" required>
+            <option value="" disabled selected>Chọn quy mô đội ngũ</option>
+            <option value="1-10">1–10 người</option>
+            <option value="11-50">11–50 người</option>
+            <option value="51-200">51–200 người</option>
+            <option value="200+">Trên 200 người</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label for="message">Nội dung cần tư vấn</label>
+          <textarea id="message" name="message" rows="4" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block btn-lg">Gửi yêu cầu tư vấn</button>
+
+        <p class="form-status form-status-success" id="formSuccess" role="status" hidden>Cảm ơn bạn đã gửi yêu cầu! Đội ngũ AllOne CRM đã nhận được thông tin và sẽ liên hệ với bạn sớm nhất.</p>
+        <p class="form-status form-status-error" id="formError" role="alert" hidden>Rất tiếc, đã có lỗi xảy ra khi gửi yêu cầu. Vui lòng thử lại hoặc liên hệ trực tiếp với chúng tôi qua email.</p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="logo">
+        <span class="logo-mark" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect width="20" height="20" rx="6" fill="currentColor"/></svg></span>
+        AllOne CRM
+      </a>
+      <p>Nền tảng quản lý khách hàng và vận hành tập trung cho đội ngũ kinh doanh hiện đại.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Sản phẩm</h4>
+      <a href="san-pham.html">Sản phẩm</a>
+      <a href="giai-phap.html">Giải pháp</a>
+      <a href="bang-gia.html">Bảng giá</a>
+      <a href="free-trial.html">Đăng ký dùng thử</a>
+      <a href="lien-he.html">Đặt lịch demo</a>
+    </div>
+    <div class="footer-col">
+      <h4>Công ty</h4>
+      <a href="index.html">Về chúng tôi</a>
+      <a href="lien-he.html">Liên hệ</a>
+      <a href="tai-nguyen.html">Tài nguyên</a>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <p>© <span id="currentYear"></span> AllOne CRM. Bảo lưu mọi quyền.</p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

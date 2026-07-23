@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AllOne CRM — Phần mềm quản lý khách hàng và bán hàng tập trung</title>
+<meta name="description" content="AllOne CRM giúp doanh nghiệp quản lý Lead, Contact, lịch hẹn, Email Campaign và đội ngũ bán hàng trên một nền tảng duy nhất. Đăng ký dùng thử ngay hôm nay.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Inter+Tight:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/intro.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Bỏ qua điều hướng</a>
+
+<!-- ============ INTRO: circle -> module cards -> navbar ============ -->
+<section class="intro-track" id="introTrack" aria-label="Giới thiệu hệ sinh thái AllOne">
+  <div class="intro-stage">
+    <div class="intro-grid-bg" aria-hidden="true"></div>
+    <div class="intro-particles" aria-hidden="true"></div>
+
+    <div class="intro-circle-wrap" id="introCircleWrap" aria-hidden="true">
+      <div class="intro-circle">
+        <span class="circle-core"></span>
+        <span class="circle-word">AllOne</span>
+      </div>
+    </div>
+
+    <div class="intro-cards" id="introCards" aria-label="Các module trong hệ sinh thái AllOne"></div>
+
+    <canvas class="intro-shatter-canvas" id="introShatterCanvas" aria-hidden="true"></canvas>
+
+    <p class="intro-hint" id="introHint">
+      Cuộn để khám phá
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </p>
+    <button class="intro-skip" id="introSkip" type="button">Bỏ qua giới thiệu</button>
+  </div>
+</section>
+
+<header class="site-header" id="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-mark" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect width="20" height="20" rx="6" fill="currentColor"/></svg>
+      </span>
+      AllOne CRM
+    </a>
+
+    <nav class="main-nav" aria-label="Điều hướng chính">
+      <a href="san-pham.html" data-nav="san-pham">Sản Phẩm</a>
+      <a href="giai-phap.html" data-nav="giai-phap">Giải Pháp</a>
+      <a href="bang-gia.html" data-nav="bang-gia">Bảng Giá</a>
+      <a href="tai-nguyen.html" data-nav="tai-nguyen">Tài Nguyên</a>
+      <a href="lien-he.html" data-nav="lien-he">Liên Hệ</a>
+    </nav>
+
+    <div class="header-actions">
+      <a href="free-trial.html" class="btn btn-ghost btn-sm">Free Trial</a>
+      <a href="dang-ky.html" class="btn btn-primary btn-sm">Đăng Ký</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Mở menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-nav" id="mobileNav">
+    <a href="san-pham.html">Sản Phẩm</a>
+    <a href="giai-phap.html">Giải Pháp</a>
+    <a href="bang-gia.html">Bảng Giá</a>
+    <a href="tai-nguyen.html">Tài Nguyên</a>
+    <a href="lien-he.html">Liên Hệ</a>
+    <a href="free-trial.html" class="btn btn-ghost">Free Trial</a>
+    <a href="dang-ky.html" class="btn btn-primary">Đăng Ký</a>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow reveal">AllOne CRM</p>
+        <h1 class="reveal">Quản lý khách hàng, bán hàng và vận hành — trên một nền tảng duy nhất</h1>
+        <p class="hero-sub reveal">AllOne CRM kết nối Lead, đội ngũ bán hàng, tiếp thị, lịch hẹn, cuộc gọi và email trong một hệ thống duy nhất — giúp doanh nghiệp chăm sóc khách hàng nhất quán và ra quyết định dựa trên dữ liệu thật.</p>
+
+        <div class="hero-cta reveal">
+          <a href="free-trial.html" class="btn btn-primary btn-lg">Đăng ký dùng thử</a>
+          <a href="giai-phap.html" class="btn btn-ghost btn-lg">Khám phá giải pháp AI cho doanh nghiệp</a>
+        </div>
+
+        <p class="hero-trust reveal">Được xây dựng để đội ngũ bán hàng, tiếp thị và vận hành cùng làm việc trên một nguồn dữ liệu duy nhất — không còn thông tin khách hàng rải rác trên nhiều công cụ.</p>
+
+        <div class="hero-values reveal">
+          <div class="value-chip">
+            <span class="chip-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M3 12h3M18 12h3M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="3"/></svg></span>
+            <p>Ứng dụng AI hỗ trợ ra quyết định trong suốt hành trình khách hàng</p>
+          </div>
+          <div class="value-chip">
+            <span class="chip-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></span>
+            <p>Cá nhân hóa nền tảng theo đúng quy trình, triển khai theo từng giai đoạn để tối ưu chi phí</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal" aria-hidden="true">
+        <div class="mock-window">
+          <div class="mock-titlebar">
+            <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+            <span class="mock-title">AllOne CRM · Tổng quan khách hàng</span>
+          </div>
+          <div class="mock-body">
+            <div class="mock-sidebar">
+              <div class="mock-side-item active">Lead &amp; Contact</div>
+              <div class="mock-side-item">Lịch hẹn</div>
+              <div class="mock-side-item">Email Campaign</div>
+              <div class="mock-side-item">Báo cáo</div>
+              <div class="mock-side-item">Cấu hình</div>
+            </div>
+            <div class="mock-main">
+              <div class="mock-ai-card">
+                <span class="ai-badge">AI Insight</span>
+                <p>Khách hàng <strong>Công ty ABC</strong> vừa mở email chăm sóc 3 lần trong tuần — đề xuất gọi điện trong 24h tới.</p>
+              </div>
+              <div class="mock-stats">
+                <div class="mock-stat"><span class="stat-num">312</span><span class="stat-label">Lead mới</span></div>
+                <div class="mock-stat"><span class="stat-num">48%</span><span class="stat-label">Tỷ lệ chuyển đổi</span></div>
+                <div class="mock-stat"><span class="stat-num">1.2k</span><span class="stat-label">Cuộc gọi/tháng</span></div>
+              </div>
+              <div class="mock-rows">
+                <div class="mock-row"><span class="row-dot dot-warm"></span>Nguyễn Văn A — Đang đàm phán</div>
+                <div class="mock-row"><span class="row-dot dot-cool"></span>Trần Thị B — Đã chốt hợp đồng</div>
+                <div class="mock-row"><span class="row-dot dot-warm"></span>Lê Văn C — Chờ phản hồi</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Product teaser ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Giới thiệu sản phẩm</p>
+        <h2>AllOne CRM — nền tảng quản lý khách hàng tập trung cho đội ngũ kinh doanh hiện đại</h2>
+        <p class="section-lead">AllOne CRM được xây dựng để thay thế việc quản lý khách hàng rời rạc qua Excel, Zalo, email riêng lẻ bằng một hệ thống duy nhất, nơi mọi bộ phận cùng nhìn thấy một bức tranh khách hàng đầy đủ.</p>
+      </div>
+      <div class="bento-grid">
+        <div class="bento-card bento-lg">
+          <span class="bento-icon icon-users"></span>
+          <h3>Quản lý Lead và Contact tập trung</h3>
+          <p>Mọi khách hàng tiềm năng được ghi nhận, lưu trữ và cập nhật trên một hồ sơ duy nhất, không bị thất lạc giữa các kênh.</p>
+        </div>
+        <div class="bento-card">
+          <span class="bento-icon icon-mail"></span>
+          <h3>Email Campaign theo template</h3>
+          <p>Xây dựng kịch bản chăm sóc tự động, đúng người, đúng thời điểm.</p>
+        </div>
+        <div class="bento-card">
+          <span class="bento-icon icon-workflow"></span>
+          <h3>Tích hợp đa kênh &amp; automation</h3>
+          <p>Gọi điện, email và workflow automation ngay trong một luồng làm việc.</p>
+        </div>
+      </div>
+      <div class="section-cta">
+        <a href="san-pham.html" class="btn btn-secondary">Xem toàn bộ sản phẩm</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AI teaser (dark) ============ -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow eyebrow-ai">AI-assisted</p>
+        <h2>Biến dữ liệu thành hành động</h2>
+        <p class="section-lead">AllOne CRM tích hợp AI như một trợ lý phân tích ngay trong luồng làm việc hàng ngày — giúp nhân sự xử lý nhanh hơn và chính xác hơn, thay vì thay thế vai trò ra quyết định của con người.</p>
+      </div>
+      <div class="principle-box">
+        <span class="chip-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z"/><path d="m9 12 2 2 4-4"/></svg></span>
+        <div>
+          <p class="principle-label">Nguyên tắc cốt lõi</p>
+          <p>AI hỗ trợ nhân sự ra quyết định — con người luôn là người xem xét và quyết định cuối cùng.</p>
+        </div>
+      </div>
+      <div class="section-cta">
+        <a href="giai-phap.html" class="btn btn-primary">Khám phá giải pháp AI cho doanh nghiệp</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Pricing teaser ============ -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Bảng giá</p>
+        <h2>Chọn gói phù hợp với quy mô đội ngũ của bạn</h2>
+        <p class="section-lead">Mọi gói đều xây dựng trên cùng nền tảng AllOne CRM — khác biệt ở quy mô sử dụng và mức độ tuỳ chỉnh.</p>
+      </div>
+      <div class="pricing-grid">
+        <div class="price-card">
+          <h3>Standard</h3>
+          <p class="price-tagline">Dành cho đội nhóm nhỏ</p>
+          <p class="price-desc">Phù hợp với đội bán hàng mới bắt đầu số hoá quy trình chăm sóc khách hàng.</p>
+          <p class="price-value">Liên hệ tư vấn</p>
+          <a href="bang-gia.html" class="btn btn-secondary btn-block">Xem chi tiết</a>
+        </div>
+        <div class="price-card price-card-featured">
+          <span class="price-badge">Phổ biến</span>
+          <h3>Business</h3>
+          <p class="price-tagline">Dành cho doanh nghiệp đang tăng trưởng</p>
+          <p class="price-desc">Đầy đủ công cụ cho đội ngũ bán hàng và tiếp thị phối hợp trên cùng một hệ thống.</p>
+          <p class="price-value">Liên hệ tư vấn</p>
+          <a href="bang-gia.html" class="btn btn-primary btn-block">Xem chi tiết</a>
+        </div>
+        <div class="price-card">
+          <h3>Enterprise</h3>
+          <p class="price-tagline">Dành cho tổ chức cần tuỳ chỉnh</p>
+          <p class="price-desc">Giải pháp mở rộng cho tổ chức quy mô lớn hoặc có yêu cầu tích hợp riêng.</p>
+          <p class="price-value">Liên hệ tư vấn</p>
+          <a href="bang-gia.html" class="btn btn-secondary btn-block">Xem chi tiết</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Trial CTA banner ============ -->
+  <section class="section section-cta-banner">
+    <div class="container cta-banner-inner">
+      <h2>Sẵn sàng đưa dữ liệu khách hàng về một nơi duy nhất?</h2>
+      <ul class="benefit-list">
+        <li>Trải nghiệm trực tiếp cách AllOne CRM tổ chức dữ liệu Lead, Contact và lịch sử chăm sóc.</li>
+        <li>Xem cách đội ngũ bán hàng và tiếp thị phối hợp trên cùng một luồng công việc.</li>
+        <li>Được đội ngũ tư vấn đồng hành thiết lập theo đúng quy trình hiện tại của bạn.</li>
+      </ul>
+      <div class="hero-cta">
+        <a href="dang-ky.html" class="btn btn-primary btn-lg">Bắt đầu dùng thử</a>
+        <a href="lien-he.html" class="btn btn-ghost btn-lg">Đặt lịch demo</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="logo">
+        <span class="logo-mark" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect width="20" height="20" rx="6" fill="currentColor"/></svg>
+        </span>
+        AllOne CRM
+      </a>
+      <p>Nền tảng quản lý khách hàng và vận hành tập trung cho đội ngũ kinh doanh hiện đại.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Sản phẩm</h4>
+      <a href="san-pham.html">Sản phẩm</a>
+      <a href="giai-phap.html">Giải pháp</a>
+      <a href="bang-gia.html">Bảng giá</a>
+      <a href="free-trial.html">Đăng ký dùng thử</a>
+      <a href="lien-he.html">Đặt lịch demo</a>
+    </div>
+    <div class="footer-col">
+      <h4>Công ty</h4>
+      <a href="index.html">Về chúng tôi</a>
+      <a href="lien-he.html">Liên hệ</a>
+      <a href="tai-nguyen.html">Tài nguyên</a>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <p>© <span id="currentYear"></span> AllOne CRM. Bảo lưu mọi quyền.</p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/intro.js"></script>
+</body>
+</html>

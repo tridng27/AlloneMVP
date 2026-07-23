@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: allone-crm-mvp
+    runtime: static
+    staticPublishPath: .
+    buildCommand: ""
+    pullRequestPreviewsEnabled: false
+    headers:
+      - path: /*
+        name: Cache-Control
+        value: public, max-age=300
