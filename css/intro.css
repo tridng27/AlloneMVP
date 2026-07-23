@@ -49,13 +49,12 @@
   width: 220px;
   height: 220px;
   margin: -110px 0 0 -110px;
-  animation: intro-pulse 4s ease-in-out infinite;
 }
 .circle-core {
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  background: #000000;
+  background: #0a0a16;
   border: 1.5px dashed rgba(255, 255, 255, 0.85);
   animation: intro-spin 7s linear infinite;
 }
@@ -157,7 +156,6 @@
 .intro-skip:hover { background: rgba(255, 255, 255, 0.14); }
 
 @keyframes intro-spin { to { transform: rotate(360deg); } }
-@keyframes intro-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.07); } }
 @keyframes intro-float { 0%, 100% { transform: translateY(0); opacity: 0.25; } 50% { transform: translateY(-22px); opacity: 0.9; } }
 @keyframes intro-bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
 
@@ -167,7 +165,7 @@
   .intro-stage { position: relative; height: auto; min-height: 100vh; padding: 96px 24px; flex-direction: column; gap: 2.5rem; }
   .intro-hint, .intro-skip { display: none; }
   .intro-circle-wrap { position: relative; left: auto; top: auto; width: 220px; height: 220px; margin-bottom: 1rem; }
-  .intro-circle { margin: 0; animation: none; }
+  .intro-circle { margin: 0; }
   .circle-core { animation: none; }
   .intro-cards {
     position: relative;

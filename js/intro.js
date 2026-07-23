@@ -158,7 +158,7 @@
       ctx.arc(x, y, Math.max(size, 0.4), 0, Math.PI * 2);
       ctx.shadowColor = 'rgba(255,255,255,' + (opacity * 0.5) + ')';
       ctx.shadowBlur = 4;
-      ctx.fillStyle = 'rgba(8,8,10,' + opacity + ')';
+      ctx.fillStyle = 'rgba(10,10,22,' + opacity + ')';
       ctx.fill();
     });
 
