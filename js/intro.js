@@ -15,11 +15,11 @@
   const MODULES = [
     { title: 'AI Integration', tag: 'Đã tích hợp trong CRM', blurb: 'Biến dữ liệu thành hành động — AI hỗ trợ ra quyết định trong toàn bộ hành trình khách hàng.', live: true, icon: ICONS.sparkle },
     { title: 'CRM', tag: 'Đang triển khai', blurb: 'Quản lý khách hàng, bán hàng và vận hành trên một nền tảng duy nhất.', live: true, icon: ICONS.users },
-    { title: 'HRM', tag: 'Sắp ra mắt', blurb: 'Thông tin chi tiết sẽ được cập nhật sớm.', live: false, icon: ICONS.idcard },
-    { title: 'Call', tag: 'Sắp ra mắt', blurb: 'Thông tin chi tiết sẽ được cập nhật sớm.', live: false, icon: ICONS.phone },
-    { title: 'Email', tag: 'Sắp ra mắt', blurb: 'Thông tin chi tiết sẽ được cập nhật sớm.', live: false, icon: ICONS.mail },
-    { title: 'ERP', tag: 'Sắp ra mắt', blurb: 'Thông tin chi tiết sẽ được cập nhật sớm.', live: false, icon: ICONS.layers },
-    { title: 'LMS', tag: 'Sắp ra mắt', blurb: 'Thông tin chi tiết sẽ được cập nhật sớm.', live: false, icon: ICONS.book }
+    { title: 'HRM', tag: 'Sắp ra mắt', blurb: 'Quản lý hồ sơ nhân sự, chấm công, tính lương và hiệu suất đội ngũ trên cùng một hệ thống.', live: false, icon: ICONS.idcard },
+    { title: 'Call', tag: 'Sắp ra mắt', blurb: 'Tổng đài gọi ra/gọi vào tích hợp trực tiếp trong CRM, tự động ghi âm và lưu lịch sử chăm sóc.', live: false, icon: ICONS.phone },
+    { title: 'Email', tag: 'Sắp ra mắt', blurb: 'Thiết kế, gửi và đo lường hiệu quả chiến dịch email tự động theo hành vi khách hàng.', live: false, icon: ICONS.mail },
+    { title: 'ERP', tag: 'Sắp ra mắt', blurb: 'Quản lý tài chính, kho hàng và chuỗi cung ứng, kết nối liền mạch với dữ liệu bán hàng.', live: false, icon: ICONS.layers },
+    { title: 'LMS', tag: 'Sắp ra mắt', blurb: 'Đào tạo và phát triển đội ngũ với khoá học nội bộ, theo dõi tiến độ và cấp chứng chỉ.', live: false, icon: ICONS.book }
   ];
 
   const cardsContainer = document.getElementById('introCards');
