@@ -1,0 +1,7 @@
+services:
+  landing:
+    build: .
+    container_name: allonemvp-landing
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3001:80"
