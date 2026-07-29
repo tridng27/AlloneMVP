@@ -5,7 +5,97 @@ services:
     staticPublishPath: .
     buildCommand: ""
     pullRequestPreviewsEnabled: false
+
+    routes:
+      # --- Canonicalize: old *.html URLs 301 to the clean path ---
+      - type: redirect
+        source: /index.html
+        destination: /
+        status: 301
+      - type: redirect
+        source: /san-pham.html
+        destination: /san-pham
+        status: 301
+      - type: redirect
+        source: /giai-phap.html
+        destination: /giai-phap
+        status: 301
+      - type: redirect
+        source: /bang-gia.html
+        destination: /bang-gia
+        status: 301
+      - type: redirect
+        source: /tai-nguyen.html
+        destination: /tai-nguyen
+        status: 301
+      - type: redirect
+        source: /lien-he.html
+        destination: /lien-he
+        status: 301
+      - type: redirect
+        source: /free-trial.html
+        destination: /free-trial
+        status: 301
+      - type: redirect
+        source: /dang-ky.html
+        destination: /dang-ky
+        status: 301
+
+      # --- Serve the clean path from its backing .html file ---
+      - type: rewrite
+        source: /san-pham
+        destination: /san-pham.html
+      - type: rewrite
+        source: /giai-phap
+        destination: /giai-phap.html
+      - type: rewrite
+        source: /bang-gia
+        destination: /bang-gia.html
+      - type: rewrite
+        source: /tai-nguyen
+        destination: /tai-nguyen.html
+      - type: rewrite
+        source: /lien-he
+        destination: /lien-he.html
+      - type: rewrite
+        source: /free-trial
+        destination: /free-trial.html
+      - type: rewrite
+        source: /dang-ky
+        destination: /dang-ky.html
+
     headers:
+      # --- Security headers, applied to every response ---
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: X-Frame-Options
+        value: DENY
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
+      - path: /*
+        name: Permissions-Policy
+        value: "geolocation=(), microphone=(), camera=()"
+      - path: /*
+        name: Strict-Transport-Security
+        value: "max-age=63072000; includeSubDomains; preload"
+      # connect-src is 'self' only until the CRM webhook domain is finalized —
+      # add it here (e.g. https://crm.yourdomain.com) before wiring js/config.js.
+      - path: /*
+        name: Content-Security-Policy
+        value: "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
+
+      # --- HTML documents: revalidate on every request so content edits go live immediately ---
       - path: /*
         name: Cache-Control
-        value: public, max-age=300
+        value: "public, max-age=0, must-revalidate"
+
+      # --- CSS/JS are query-string versioned (see ?v=N in the HTML) so it's safe to cache them for a year ---
+      - path: /css/*
+        name: Cache-Control
+        value: "public, max-age=31536000, immutable"
+      - path: /js/*
+        name: Cache-Control
+        value: "public, max-age=31536000, immutable"

@@ -1,5 +1,5 @@
-// Active nav link for the current page
-const currentPage = location.pathname.split('/').pop().replace('.html', '') || 'index';
+// Active nav link for the current page (clean URLs: /san-pham, no .html extension)
+const currentPage = location.pathname.replace(/\/+$/, '').split('/').pop().replace(/\.html$/, '') || 'index';
 document.querySelectorAll('[data-nav]').forEach((link) => {
   if (link.getAttribute('data-nav') === currentPage) {
     link.classList.add('active');
@@ -46,10 +46,45 @@ if (tabsRoot) {
   });
 }
 
-// Contact form — MVP client-side handling (no backend wired up yet)
+// Lead-capture forms (Đăng Ký, Liên Hệ) — posts to LEAD_WEBHOOK_URL (js/config.js) once
+// the CRM backend is deployed; simulates success locally while that's unset.
 const contactForm = document.getElementById('contactForm');
 const formSuccess = document.getElementById('formSuccess');
 const formError = document.getElementById('formError');
+
+async function submitLead(form) {
+  const formData = new FormData(form);
+
+  // Honeypot: a real visitor never fills this hidden field, a bot script often does.
+  if (formData.get('hp_website')) {
+    return true;
+  }
+
+  const fields = {};
+  formData.forEach((value, key) => {
+    if (key !== 'hp_website') fields[key] = value;
+  });
+
+  const payload = {
+    formType: form.dataset.formType || 'unknown',
+    submittedAt: new Date().toISOString(),
+    page: location.pathname,
+    fields,
+  };
+
+  if (!LEAD_WEBHOOK_URL) {
+    console.info('LEAD_WEBHOOK_URL not configured (js/config.js) — simulating success.', payload);
+    return true;
+  }
+
+  const response = await fetch(LEAD_WEBHOOK_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  });
+
+  return response.ok;
+}
 
 if (contactForm) {
   contactForm.addEventListener('submit', (event) => {
@@ -63,10 +98,24 @@ if (contactForm) {
       return;
     }
 
-    // TODO: replace with a real submission endpoint when the backend is ready.
-    formSuccess.hidden = false;
-    contactForm.reset();
-    formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    const submitButton = contactForm.querySelector('button[type="submit"]');
+    if (submitButton) submitButton.disabled = true;
+
+    submitLead(contactForm)
+      .then((ok) => {
+        if (!ok) throw new Error('Webhook rejected submission');
+        formSuccess.hidden = false;
+        contactForm.reset();
+        formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      })
+      .catch((err) => {
+        console.error('Lead submission failed:', err);
+        formError.hidden = false;
+        formError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      })
+      .finally(() => {
+        if (submitButton) submitButton.disabled = false;
+      });
   });
 }
 

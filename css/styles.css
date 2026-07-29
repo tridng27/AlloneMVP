@@ -743,6 +743,7 @@ section[id] { scroll-margin-top: 88px; }
   gap: 1.1rem;
 }
 .form-row { display: flex; flex-direction: column; gap: 0.4rem; }
+.hp-field { display: none; }
 .form-row-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
 .form-row-2col > div { display: flex; flex-direction: column; gap: 0.4rem; }
 .form-row label { font-size: 0.85rem; font-weight: 600; }
