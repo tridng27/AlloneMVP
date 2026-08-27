@@ -40,6 +40,10 @@ services:
         source: /dang-ky.html
         destination: /dang-ky
         status: 301
+      - type: redirect
+        source: /lms.html
+        destination: /lms
+        status: 301
 
       # --- Serve the clean path from its backing .html file ---
       - type: rewrite
@@ -63,6 +67,9 @@ services:
       - type: rewrite
         source: /dang-ky
         destination: /dang-ky.html
+      - type: rewrite
+        source: /lms
+        destination: /lms.html
 
     headers:
       # --- Security headers, applied to every response ---
