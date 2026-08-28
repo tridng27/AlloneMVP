@@ -17,58 +17,900 @@
 <link rel="icon" type="image/png" href="/img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Inter+Tight:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/css/styles.css?v=7">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     AllOne CRM — homepage redesign
+     Display: Newsreader (Vietnamese-supporting text serif)
+     Body/UI: Be Vietnam Pro (typeface drawn for Vietnamese)
+     Motif:   the interlocking three-ring mark = sales + marketing
+              + operations woven into one platform
+     ============================================================ */
+
+  :root {
+    --font-display: "Newsreader", Georgia, "Times New Roman", serif;
+    --font-sans: "Be Vietnam Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+    /* light palette — neutrals carry a cool (blue) bias, pulled toward the mark */
+    --ground: #f5f8fb;
+    --surface: #ffffff;
+    --surface-2: #eaf0f6;
+    --ink: #0c1a2b;
+    --ink-soft: #52647b;
+    --ink-faint: #8697a9;
+    --line: #e0e7ef;
+    --line-strong: #ccd8e3;
+    --brand: #0f6fc4;         /* cerulean, from the bright faces of the mark */
+    --brand-strong: #0a57a3;
+    --brand-deep: #0a2e6b;    /* navy, from the shaded faces of the mark */
+    --brand-tint: #e7f1fa;
+    --warm: #b96a26;          /* used only for the "AI assist" thread */
+    --warm-tint: #f6ece0;
+    --glow: rgba(15, 111, 196, 0.16);
+    --shadow-1: 0 1px 2px rgba(12, 26, 43, 0.05);
+    --shadow-2: 0 10px 30px -12px rgba(12, 26, 43, 0.18);
+    --shadow-3: 0 30px 70px -28px rgba(10, 46, 107, 0.30);
+
+    --radius-s: 10px;
+    --radius-m: 14px;
+    --radius-l: 22px;
+    --container: 1180px;
+    --header-h: 74px;
+  }
+
+  /* system dark (no explicit choice) — only an OS dark preference flips it,
+     and an explicit light choice still wins via the :not() guard */
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #0a1017;
+      --surface: #111b26;
+      --surface-2: #17242f;
+      --ink: #eef4fa;
+      --ink-soft: #9fb2c4;
+      --ink-faint: #6c8093;
+      --line: #213141;
+      --line-strong: #2e4254;
+      --brand: #3fa0e6;
+      --brand-strong: #63b3ec;
+      --brand-deep: #0a2e6b;
+      --brand-tint: #122636;
+      --warm: #e0975c;
+      --warm-tint: #281d13;
+      --glow: rgba(63, 160, 230, 0.20);
+      --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.4);
+      --shadow-2: 0 12px 34px -14px rgba(0, 0, 0, 0.6);
+      --shadow-3: 0 34px 80px -30px rgba(0, 0, 0, 0.7);
+    }
+  }
+
+  /* explicit dark choice — wins over a light OS */
+  :root[data-theme="dark"] {
+    --ground: #0a1017;
+    --surface: #111b26;
+    --surface-2: #17242f;
+    --ink: #eef4fa;
+    --ink-soft: #9fb2c4;
+    --ink-faint: #6c8093;
+    --line: #213141;
+    --line-strong: #2e4254;
+    --brand: #3fa0e6;
+    --brand-strong: #63b3ec;
+    --brand-deep: #0a2e6b;
+    --brand-tint: #122636;
+    --warm: #e0975c;
+    --warm-tint: #281d13;
+    --glow: rgba(63, 160, 230, 0.20);
+    --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --shadow-2: 0 12px 34px -14px rgba(0, 0, 0, 0.6);
+    --shadow-3: 0 34px 80px -30px rgba(0, 0, 0, 0.7);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: var(--font-sans);
+    background: var(--ground);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  img, svg { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+  ul { margin: 0; padding: 0; list-style: none; }
+  h1, h2, h3, h4, p { margin: 0; }
+  button { font-family: inherit; cursor: pointer; }
+
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.012em;
+    text-wrap: balance;
+    line-height: 1.14;
+  }
+
+  ::selection { background: var(--brand); color: #fff; }
+  :focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; border-radius: 4px; }
+
+  .container {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  .eyebrow {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--brand);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 22px;
+    height: 1px;
+    background: currentColor;
+  }
+  .eyebrow.is-warm { color: var(--warm); }
+
+  /* ---------- buttons ---------- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.72rem 1.3rem;
+    border-radius: var(--radius-s);
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: 1px solid transparent;
+    transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, color 0.15s ease;
+    white-space: nowrap;
+  }
+  .btn-primary { background: var(--brand); color: #fff; box-shadow: var(--shadow-1); }
+  .btn-primary:hover { background: var(--brand-strong); transform: translateY(-1px); box-shadow: var(--shadow-2); }
+  .btn-ghost { background: transparent; color: var(--ink); border-color: var(--line-strong); }
+  .btn-ghost:hover { border-color: var(--brand); color: var(--brand); }
+  .btn-lg { padding: 0.92rem 1.6rem; font-size: 1rem; }
+  .btn-sm { padding: 0.5rem 1rem; font-size: 0.84rem; }
+  .btn-block { width: 100%; }
+
+  /* ---------- header ---------- */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    background: color-mix(in srgb, var(--ground) 84%, transparent);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    height: var(--header-h);
+  }
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    flex-shrink: 0;
+  }
+  .logo img { height: 40px; width: 40px; }
+  .logo .wordmark {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.5rem;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .main-nav { display: flex; align-items: center; gap: 0.35rem; }
+  .main-nav > a, .nav-trigger {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--ink-soft);
+    padding: 0.5rem 0.8rem;
+    border-radius: var(--radius-s);
+    background: transparent;
+    border: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    transition: color 0.15s ease, background 0.15s ease;
+  }
+  .main-nav > a:hover, .nav-trigger:hover,
+  .nav-item:hover .nav-trigger { color: var(--ink); background: var(--surface-2); }
+  .nav-item { position: relative; }
+  .nav-caret { transition: transform 0.18s ease; }
+  .nav-item:hover .nav-caret { transform: rotate(180deg); }
+
+  .nav-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-8px);
+    min-width: 300px;
+    padding: 0.55rem;
+    margin-top: 10px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-m);
+    box-shadow: var(--shadow-3);
+    display: grid;
+    gap: 0.15rem;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.16s ease, transform 0.16s ease, visibility 0.16s;
+  }
+  .nav-menu::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 0;
+    right: 0;
+    height: 10px;
+  }
+  .nav-item:hover .nav-menu,
+  .nav-item:focus-within .nav-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+  }
+  .nav-menu a {
+    display: grid;
+    grid-template-columns: 34px 1fr;
+    gap: 0.7rem;
+    align-items: center;
+    padding: 0.6rem 0.65rem;
+    border-radius: var(--radius-s);
+  }
+  .nav-menu a:hover { background: var(--surface-2); }
+  .nm-icon {
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    border-radius: var(--radius-s);
+    background: var(--brand-tint);
+    color: var(--brand);
+  }
+  .nm-title { display: block; font-size: 0.88rem; font-weight: 600; color: var(--ink); }
+  .nm-desc { display: block; font-size: 0.78rem; color: var(--ink-soft); }
+
+  .header-actions { display: flex; align-items: center; gap: 0.6rem; flex-shrink: 0; }
+  .theme-toggle {
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    border-radius: var(--radius-s);
+    border: 1px solid var(--line-strong);
+    background: var(--surface);
+    color: var(--ink-soft);
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  .theme-toggle:hover { color: var(--brand); border-color: var(--brand); }
+  .theme-toggle .icon-sun { display: none; }
+  :root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+  :root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .theme-toggle .icon-sun { display: block; }
+    :root:not([data-theme="light"]) .theme-toggle .icon-moon { display: none; }
+  }
+
+  .nav-toggle {
+    display: none;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-s);
+    border: 1px solid var(--line-strong);
+    background: var(--surface);
+    color: var(--ink);
+  }
+
+  /* ---------- mobile nav ---------- */
+  .mobile-nav {
+    display: none;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding: 0.5rem 28px 1.4rem;
+    border-top: 1px solid var(--line);
+    background: var(--surface);
+  }
+  .mobile-nav a {
+    padding: 0.7rem 0.4rem;
+    font-weight: 500;
+    color: var(--ink-soft);
+    border-bottom: 1px solid var(--line);
+  }
+  .mobile-nav a.sub { padding-left: 1.4rem; font-size: 0.86rem; }
+  .mobile-nav .btn { margin-top: 0.8rem; border-bottom: 0; }
+  .site-header.is-open .mobile-nav { display: flex; }
+
+  /* ---------- section rhythm ---------- */
+  .section { padding: 104px 0; }
+  .section-head { max-width: 46rem; }
+  .section-head h2 {
+    font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+    margin: 1rem 0 0.9rem;
+  }
+  .section-head .lead {
+    font-size: 1.08rem;
+    color: var(--ink-soft);
+    max-width: 42rem;
+  }
+  .section-cta { margin-top: 2.6rem; }
+
+  /* weave connector — the three-ring motif on a hairline */
+  .weave {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--line-strong);
+    padding: 0 28px;
+    max-width: var(--container);
+    margin: 0 auto;
+  }
+  .weave::before, .weave::after {
+    content: "";
+    height: 1px;
+    flex: 1;
+    background: currentColor;
+  }
+  .weave svg { color: var(--brand); opacity: 0.9; }
+
+  /* ---------- hero ---------- */
+  .hero { padding: 92px 0 84px; overflow: hidden; }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.06fr 0.94fr;
+    gap: 4.5rem;
+    align-items: center;
+  }
+  .hero h1 {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.12;
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    margin: 0 0 1.3rem;
+  }
+  .hero h1 .hl { color: var(--brand); }
+  .hero h1 .hl-ai { color: var(--warm); }
+  .hero h1 .caret {
+    display: inline-block;
+    width: 0.06em;
+    min-width: 3px;
+    height: 0.92em;
+    margin-left: 0.08em;
+    vertical-align: -0.12em;
+    background: var(--brand);
+    border-radius: 1px;
+    animation: caret-blink 1.05s step-end infinite;
+  }
+  @keyframes caret-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+  .hero-sub {
+    font-size: 1.14rem;
+    color: var(--ink-soft);
+    max-width: 40ch;
+  }
+  .hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+    margin: 1.9rem 0 1.6rem;
+  }
+  .hero-trust {
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    max-width: 46ch;
+    padding-top: 1.4rem;
+    border-top: 1px solid var(--line);
+  }
+  .hero-values {
+    display: grid;
+    gap: 0.7rem;
+    margin-top: 1.5rem;
+  }
+  .value-chip {
+    display: grid;
+    grid-template-columns: 34px 1fr;
+    gap: 0.85rem;
+    align-items: start;
+    padding: 0.9rem 1rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-m);
+  }
+  .value-chip .vc-icon {
+    width: 34px; height: 34px;
+    display: grid; place-items: center;
+    border-radius: var(--radius-s);
+    background: var(--brand-tint);
+    color: var(--brand);
+  }
+  .value-chip p { font-size: 0.86rem; color: var(--ink); font-weight: 500; }
+
+  /* hero visual — AllOne at the centre, modules in orbit (no container) */
+  .hero-visual {
+    position: relative;
+    display: grid;
+    place-items: center;
+  }
+  .orbit-system {
+    position: relative;
+    width: min(600px, 92vw);
+    aspect-ratio: 1;
+    margin: 0 auto;
+    --r1: 86px;
+    --r2: 140px;
+    --r3: 196px;
+    --r4: 250px;
+  }
+  .orbit-system::before {
+    content: "";
+    position: absolute;
+    inset: 12%;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--glow), transparent 68%);
+    opacity: 0.7;
+  }
+  .orbit-ring {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    border: 1px solid var(--line-strong);
+    border-radius: 50%;
+    opacity: 0.5;
+  }
+  .orbit-ring.r1 { width: calc(var(--r1) * 2); height: calc(var(--r1) * 2); }
+  .orbit-ring.r2 { width: calc(var(--r2) * 2); height: calc(var(--r2) * 2); }
+  .orbit-ring.r3 { width: calc(var(--r3) * 2); height: calc(var(--r3) * 2); border-style: dashed; opacity: 0.4; }
+  .orbit-ring.r4 { width: calc(var(--r4) * 2); height: calc(var(--r4) * 2); border-style: dashed; opacity: 0.26; }
+
+  .orbit-core {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 128px;
+    height: 128px;
+    display: grid;
+    place-items: center;
+    z-index: 2;
+  }
+  .orbit-core::before {
+    content: "";
+    position: absolute;
+    inset: -20px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--glow), transparent 70%);
+  }
+  .orbit-core img {
+    position: relative;
+    width: 116px;
+    filter: drop-shadow(0 14px 34px var(--glow));
+    animation: corepulse 6s ease-in-out infinite;
+  }
+
+  .orbiter {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 0;
+    height: 0;
+    transform: rotate(var(--a));
+    animation: orbit var(--dur) linear infinite;
+    will-change: transform;
+  }
+  .orbiter .planet {
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translate(-50%, -50%) translateY(calc(-1 * var(--r)));
+  }
+  .orbiter .planet-inner {
+    transform: rotate(calc(-1 * var(--a)));
+    animation: orbit-rev var(--dur) linear infinite;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+  }
+  .planet-disc {
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    box-shadow: var(--shadow-1);
+    color: var(--brand);
+  }
+  .planet-label {
+    font-size: 0.69rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    padding: 2px 9px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .planet-inner.is-ai .planet-disc {
+    color: var(--warm);
+    border-color: color-mix(in srgb, var(--warm) 45%, var(--line));
+    background: color-mix(in srgb, var(--warm-tint) 65%, var(--surface));
+  }
+  .planet-inner.is-ai .planet-label { color: var(--warm); }
+
+  @keyframes corepulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.035); }
+  }
+  @keyframes orbit {
+    from { transform: rotate(var(--a)); }
+    to   { transform: rotate(calc(var(--a) + 360deg)); }
+  }
+  @keyframes orbit-rev {
+    from { transform: rotate(calc(-1 * var(--a))); }
+    to   { transform: rotate(calc(-1 * var(--a) - 360deg)); }
+  }
+
+  /* ---------- module strip ---------- */
+  .module-strip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.7rem 1.4rem;
+    padding: 34px 0;
+  }
+  .module-strip .ms-label { font-size: 0.8rem; color: var(--ink-faint); letter-spacing: 0.04em; }
+  .module-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.9rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--ink-soft);
+    background: var(--surface);
+  }
+  .module-pill b { color: var(--ink); font-weight: 600; }
+
+  /* ---------- partner marquee (full-bleed boxed band) ---------- */
+  .partners { padding: 64px 0 84px; }
+  .partners-label {
+    text-align: center;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 40px;
+  }
+  .marquee-box {
+    background: var(--surface);
+    border-block: 1px solid var(--line);
+    overflow: hidden;
+  }
+  .marquee { position: relative; }
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee-ltr 60s linear infinite;
+  }
+  .marquee-box:hover .marquee-track { animation-play-state: paused; }
+  .marquee-group { display: flex; align-items: stretch; flex-shrink: 0; }
+  .partner-logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 52px 5rem;
+    border-right: 1px solid var(--line);
+    transition: background 0.15s ease;
+  }
+  .partner-logo:hover { background: var(--surface-2); }
+  .partner-logo .plogo {
+    height: 76px;
+    width: auto;
+    object-fit: contain;
+    opacity: 0.82;
+    transition: opacity 0.18s ease, transform 0.18s ease;
+  }
+  .partner-logo:hover .plogo { opacity: 1; transform: translateY(-2px); }
+  .partner-logo .plogo-wide { height: 62px; }
+  .partner-logo .plogo-sq { height: 108px; border-radius: 18px; }
+  /* light/dark logo variants — mirrors the .theme-toggle icon swap */
+  .partner-logo .logo-dark { display: none; }
+  :root[data-theme="dark"] .partner-logo .logo-light { display: none; }
+  :root[data-theme="dark"] .partner-logo .logo-dark { display: block; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .partner-logo .logo-light { display: none; }
+    :root:not([data-theme="light"]) .partner-logo .logo-dark { display: block; }
+  }
+  @keyframes marquee-ltr {
+    from { transform: translateX(-25%); }
+    to   { transform: translateX(0); }
+  }
+
+  /* ---------- bento ---------- */
+  .bento {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.15rem;
+    margin-top: 3rem;
+  }
+  .bento-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-m);
+    padding: 1.7rem;
+    transition: border-color 0.16s ease, transform 0.16s ease, box-shadow 0.16s ease;
+  }
+  .bento-card:hover { border-color: var(--brand); transform: translateY(-3px); box-shadow: var(--shadow-2); }
+  .bento-card.lg { grid-column: span 2; display: flex; flex-direction: column; }
+  .bento-card.lg p { max-width: 44ch; }
+  .card-icon {
+    width: 42px; height: 42px;
+    display: grid; place-items: center;
+    border-radius: var(--radius-s);
+    background: var(--brand-tint);
+    color: var(--brand);
+    margin-bottom: 1.1rem;
+  }
+  .bento-card h3 { font-size: 1.16rem; font-weight: 600; margin-bottom: 0.5rem; }
+  .bento-card p { font-size: 0.92rem; color: var(--ink-soft); }
+
+  /* ---------- AI section ---------- */
+  .section.is-ai-tint { background: var(--surface-2); }
+  .principle {
+    display: grid;
+    grid-template-columns: 46px 1fr;
+    gap: 1.1rem;
+    align-items: start;
+    margin-top: 2.4rem;
+    padding: 1.6rem;
+    background: color-mix(in srgb, var(--warm-tint) 60%, var(--surface));
+    border: 1px solid color-mix(in srgb, var(--warm) 32%, var(--line));
+    border-radius: var(--radius-m);
+    max-width: 46rem;
+  }
+  .principle .p-icon {
+    width: 46px; height: 46px;
+    display: grid; place-items: center;
+    border-radius: var(--radius-s);
+    background: color-mix(in srgb, var(--warm) 16%, transparent);
+    color: var(--warm);
+  }
+  .principle .p-label {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.02rem;
+    margin-bottom: 0.3rem;
+  }
+  .principle p:last-child { color: var(--ink-soft); font-size: 0.98rem; }
+
+  /* ---------- pricing ---------- */
+  .pricing {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.4rem;
+    margin-top: 3rem;
+    align-items: stretch;
+  }
+  .price-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-l);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .price-card.featured {
+    border-color: var(--brand);
+    box-shadow: var(--shadow-3);
+    background:
+      radial-gradient(120% 60% at 50% 0%, var(--brand-tint), transparent 70%),
+      var(--surface);
+  }
+  .price-badge {
+    position: absolute;
+    top: -13px;
+    left: 2rem;
+    background: var(--brand);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    padding: 0.28rem 0.8rem;
+    border-radius: 999px;
+  }
+  .price-card h3 { font-size: 1.35rem; font-weight: 600; margin-bottom: 0.35rem; }
+  .price-tag { font-size: 0.84rem; color: var(--brand); font-weight: 600; margin-bottom: 0.9rem; }
+  .price-desc { font-size: 0.9rem; color: var(--ink-soft); margin-bottom: 1.6rem; flex: 1; }
+  .price-value { font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; margin-bottom: 1.5rem; }
+
+  /* ---------- CTA banner ---------- */
+  .cta-banner {
+    background: linear-gradient(140deg, var(--brand-deep) 0%, var(--brand-strong) 100%);
+    color: #fff;
+  }
+  .cta-inner { max-width: 640px; margin: 0 auto; text-align: center; }
+  .cta-inner h2 { color: #fff; font-size: clamp(1.9rem, 3.6vw, 2.6rem); margin-bottom: 1.8rem; }
+  .benefit-list {
+    display: grid;
+    gap: 0.75rem;
+    margin-bottom: 2.2rem;
+    text-align: left;
+  }
+  .benefit-list li {
+    position: relative;
+    padding-left: 2rem;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.92);
+  }
+  .benefit-list li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 2px;
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.18);
+  }
+  .benefit-list li::after {
+    content: "";
+    position: absolute;
+    left: 6px; top: 7px;
+    width: 8px; height: 5px;
+    border-left: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    transform: rotate(-45deg);
+  }
+  .cta-inner .hero-cta { justify-content: center; }
+  .cta-banner .btn-primary { background: #fff; color: var(--brand-strong); }
+  .cta-banner .btn-primary:hover { background: #eef4fb; }
+  .cta-banner .btn-ghost { border-color: rgba(255, 255, 255, 0.5); color: #fff; }
+  .cta-banner .btn-ghost:hover { border-color: #fff; color: #fff; background: rgba(255,255,255,0.08); }
+
+  /* ---------- footer ---------- */
+  .site-footer {
+    background: var(--surface-2);
+    border-top: 1px solid var(--line);
+    padding: 4.5rem 0 0;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr;
+    gap: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .footer-brand .logo { margin-bottom: 1rem; }
+  .footer-brand .logo img { height: 46px; width: 46px; }
+  .footer-brand .logo .wordmark { font-size: 1.7rem; }
+  .footer-brand p { font-size: 0.92rem; color: var(--ink-soft); max-width: 34ch; }
+  .footer-col h4 {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-faint);
+    margin-bottom: 1rem;
+  }
+  .footer-col { display: flex; flex-direction: column; gap: 0.7rem; }
+  .footer-col a { font-size: 0.9rem; color: var(--ink-soft); transition: color 0.15s ease; }
+  .footer-col a:hover { color: var(--brand); }
+  .footer-bottom {
+    padding: 1.5rem 0;
+    font-size: 0.82rem;
+    color: var(--ink-faint);
+  }
+
+  /* ---------- reveal ---------- */
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.in-view { opacity: 1; transform: translateY(0); }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+    .reveal { opacity: 1; transform: none; }
+    html { scroll-behavior: auto; }
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 1040px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .hero-visual { order: -1; max-width: 560px; }
+    .orbit-system { --r1: 82px; --r2: 134px; --r3: 188px; --r4: 240px; }
+    .partner-logo { padding: 40px 3.5rem; }
+    .partner-logo .plogo { height: 60px; }
+    .partner-logo .plogo-wide { height: 50px; }
+    .partner-logo .plogo-sq { height: 88px; }
+    .bento { grid-template-columns: 1fr 1fr; }
+    .bento-card.lg { grid-column: span 2; }
+    .pricing { grid-template-columns: 1fr; }
+    .price-card.featured { order: -1; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 720px) {
+    .main-nav, .header-actions .btn { display: none; }
+    .nav-toggle { display: grid; place-items: center; }
+    .section { padding: 72px 0; }
+    .hero { padding: 56px 0; }
+    .bento, .bento-card.lg { grid-template-columns: 1fr; grid-column: auto; }
+    .footer-grid { grid-template-columns: 1fr; gap: 2.2rem; }
+    .orbit-system { --r1: 54px; --r2: 94px; --r3: 134px; --r4: 174px; width: min(360px, 92vw); }
+    .partner-logo { padding: 30px 2rem; }
+    .partner-logo .plogo { height: 46px; }
+    .partner-logo .plogo-wide { height: 38px; }
+    .partner-logo .plogo-sq { height: 68px; }
+    .orbit-core { width: 104px; height: 104px; }
+    .orbit-core img { width: 88px; }
+    .planet-disc { width: 40px; height: 40px; }
+    .planet-label { font-size: 0.66rem; padding: 2px 7px; }
+    .container { padding: 0 20px; }
+  }
+</style>
 </head>
 <body>
 
-<a class="skip-link" href="#main">Bỏ qua điều hướng</a>
-
-<header class="site-header" id="site-header">
+<header class="site-header" id="siteHeader">
   <div class="container header-inner">
-    <a href="/" class="logo"><img src="/img/logo-icon.png" width="28" height="28" alt="" class="logo-mark">Allone</a>
+    <a href="/" class="logo" aria-label="AllOne CRM — trang chủ">
+      <img src="/img/logo-icon.png" width="40" height="40" alt="">
+      <span class="wordmark">AllOne</span>
+    </a>
 
     <nav class="main-nav" aria-label="Điều hướng chính">
-      <a href="/san-pham" data-nav="san-pham">Sản Phẩm</a>
-      <div class="nav-item has-dropdown">
-        <a href="/giai-phap" data-nav="giai-phap" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+      <a href="/san-pham">Sản Phẩm</a>
+      <div class="nav-item">
+        <button class="nav-trigger" aria-haspopup="true" aria-expanded="false">
           Giải Pháp
           <svg class="nav-caret" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-        <div class="nav-dropdown">
-          <a href="/giai-phap" class="nav-dropdown-item">
-            <span class="nav-dropdown-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m16.24 7.76-2.12 6.36-6.36 2.12 2.12-6.36 6.36-2.12Z"/></svg></span>
-            <span>
-              <span class="nav-dropdown-title">CRM – Quản lý khách hàng</span>
-              <span class="nav-dropdown-desc">Lead, bán hàng, tiếp thị và vận hành trên một nền tảng</span>
-            </span>
+        </button>
+        <div class="nav-menu" role="menu">
+          <a href="/giai-phap" role="menuitem">
+            <span class="nm-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m16.24 7.76-2.12 6.36-6.36 2.12 2.12-6.36 6.36-2.12Z"/></svg></span>
+            <span><span class="nm-title">CRM — Quản lý khách hàng</span><span class="nm-desc">Lead, bán hàng, tiếp thị và vận hành trên một nền tảng</span></span>
           </a>
-          <a href="/omni" class="nav-dropdown-item">
-            <span class="nav-dropdown-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
-            <span>
-              <span class="nav-dropdown-title">Omni – Nhắn tin đa kênh</span>
-              <span class="nav-dropdown-desc">Hộp thư hợp nhất, AI trả lời tự động</span>
-            </span>
+          <a href="/omni" role="menuitem">
+            <span class="nm-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+            <span><span class="nm-title">Omni — Nhắn tin đa kênh</span><span class="nm-desc">Hộp thư hợp nhất, AI trả lời tự động</span></span>
           </a>
-          <a href="/lms" class="nav-dropdown-item">
-            <span class="nav-dropdown-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4.5A2.5 2.5 0 0 1 4.5 2H12v18H4.5A2.5 2.5 0 0 0 2 22.5v-18Z"/><path d="M22 4.5A2.5 2.5 0 0 0 19.5 2H12v18h7.5a2.5 2.5 0 0 1 2.5 2.5v-18Z"/></svg></span>
-            <span>
-              <span class="nav-dropdown-title">LMS – Đào tạo &amp; Học tập</span>
-              <span class="nav-dropdown-desc">Khoá học, lớp học và đào tạo nội bộ</span>
-            </span>
+          <a href="/lms" role="menuitem">
+            <span class="nm-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4.5A2.5 2.5 0 0 1 4.5 2H12v18H4.5A2.5 2.5 0 0 0 2 22.5v-18Z"/><path d="M22 4.5A2.5 2.5 0 0 0 19.5 2H12v18h7.5a2.5 2.5 0 0 1 2.5 2.5v-18Z"/></svg></span>
+            <span><span class="nm-title">LMS — Đào tạo &amp; Học tập</span><span class="nm-desc">Khoá học, lớp học và đào tạo nội bộ</span></span>
           </a>
         </div>
       </div>
-      <a href="/bang-gia" data-nav="bang-gia">Bảng Giá</a>
-      <a href="/tai-nguyen" data-nav="tai-nguyen">Tài Nguyên</a>
-      <a href="/lien-he" data-nav="lien-he">Liên Hệ</a>
+      <a href="/bang-gia">Bảng Giá</a>
+      <a href="/tai-nguyen">Tài Nguyên</a>
+      <a href="/lien-he">Liên Hệ</a>
     </nav>
 
     <div class="header-actions">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Đổi giao diện sáng/tối">
+        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
       <a href="/free-trial" class="btn btn-ghost btn-sm">Free Trial</a>
       <a href="/dang-ky" class="btn btn-primary btn-sm">Đăng Ký</a>
-      <button class="nav-toggle" id="navToggle" aria-label="Mở menu" aria-expanded="false">
-        <span></span><span></span><span></span>
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Mở menu" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
     </div>
   </div>
@@ -76,9 +918,9 @@
   <div class="mobile-nav" id="mobileNav">
     <a href="/san-pham">Sản Phẩm</a>
     <a href="/giai-phap">Giải Pháp</a>
-    <a href="/giai-phap" class="mobile-nav-sub">CRM – Quản lý khách hàng</a>
-    <a href="/omni" class="mobile-nav-sub">Omni – Nhắn tin đa kênh</a>
-    <a href="/lms" class="mobile-nav-sub">LMS – Đào tạo &amp; Học tập</a>
+    <a href="/giai-phap" class="sub">CRM — Quản lý khách hàng</a>
+    <a href="/omni" class="sub">Omni — Nhắn tin đa kênh</a>
+    <a href="/lms" class="sub">LMS — Đào tạo &amp; Học tập</a>
     <a href="/bang-gia">Bảng Giá</a>
     <a href="/tai-nguyen">Tài Nguyên</a>
     <a href="/lien-he">Liên Hệ</a>
@@ -87,161 +929,266 @@
   </div>
 </header>
 
-<main id="main">
-
-  <!-- ============ HERO ============ -->
-  <section class="hero" id="hero">
+<main>
+  <!-- HERO -->
+  <section class="hero">
     <div class="container hero-grid">
       <div class="hero-copy">
-        <p class="eyebrow reveal">AllOne CRM</p>
-        <h1 class="reveal">Quản lý khách hàng, bán hàng và vận hành — trên <span class="text-highlight">một nền tảng duy nhất</span></h1>
-        <p class="hero-sub reveal">AllOne CRM kết nối Lead, đội ngũ bán hàng, tiếp thị, lịch hẹn, cuộc gọi và email trong một hệ thống duy nhất — giúp doanh nghiệp chăm sóc khách hàng nhất quán và ra quyết định dựa trên dữ liệu thật.</p>
+        <h1 class="reveal">Hệ sinh thái quản trị <span class="hl">toàn diện</span>, lấy <span class="hl-ai">AI</span> làm <span class="hl-ai">trung tâm</span> <span class="hl">bứt phá doanh nghiệp</span><span class="caret" aria-hidden="true"></span></h1>
+        <p class="hero-sub reveal">AllOne kết nối CRM, nhắn tin đa kênh, đào tạo, lịch hẹn, cuộc gọi và email trong một hệ sinh thái duy nhất — giúp doanh nghiệp chăm sóc khách hàng nhất quán và ra quyết định dựa trên dữ liệu thật.</p>
 
         <div class="hero-cta reveal">
           <a href="/free-trial" class="btn btn-primary btn-lg">Đăng ký dùng thử</a>
-          <a href="/giai-phap" class="btn btn-ghost btn-lg">Khám phá giải pháp AI cho doanh nghiệp</a>
+          <a href="/giai-phap" class="btn btn-ghost btn-lg">Khám phá giải pháp AI</a>
         </div>
 
         <p class="hero-trust reveal">Được xây dựng để đội ngũ bán hàng, tiếp thị và vận hành cùng làm việc trên một nguồn dữ liệu duy nhất — không còn thông tin khách hàng rải rác trên nhiều công cụ.</p>
 
         <div class="hero-values reveal">
           <div class="value-chip">
-            <span class="chip-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M3 12h3M18 12h3M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="3"/></svg></span>
+            <span class="vc-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M3 12h3M18 12h3M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="3"/></svg></span>
             <p>Ứng dụng AI hỗ trợ ra quyết định trong suốt hành trình khách hàng</p>
           </div>
           <div class="value-chip">
-            <span class="chip-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></span>
-            <p>Cá nhân hóa nền tảng theo đúng quy trình, triển khai theo từng giai đoạn để tối ưu chi phí</p>
+            <span class="vc-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></span>
+            <p>Cá nhân hoá nền tảng theo đúng quy trình, triển khai theo từng giai đoạn để tối ưu chi phí</p>
           </div>
         </div>
       </div>
 
-      <div class="hero-visual reveal" aria-hidden="true">
-        <div class="mock-window">
-          <div class="mock-titlebar">
-            <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
-            <span class="mock-title">AllOne CRM · Tổng quan khách hàng</span>
-          </div>
-          <div class="mock-body">
-            <div class="mock-sidebar">
-              <div class="mock-side-item active">Lead &amp; Contact</div>
-              <div class="mock-side-item">Lịch hẹn</div>
-              <div class="mock-side-item">Email Campaign</div>
-              <div class="mock-side-item">Báo cáo</div>
-              <div class="mock-side-item">Cấu hình</div>
+      <div class="hero-visual reveal">
+          <div class="orbit-system" aria-hidden="true">
+            <div class="orbit-ring r1"></div>
+            <div class="orbit-ring r2"></div>
+            <div class="orbit-ring r3"></div>
+            <div class="orbit-ring r4"></div>
+
+            <div class="orbit-core">
+              <img src="/img/logo-icon.png" alt="">
             </div>
-            <div class="mock-main">
-              <div class="mock-ai-card">
-                <span class="ai-badge">AI Insight</span>
-                <p>Khách hàng <strong>Công ty ABC</strong> vừa mở email chăm sóc 3 lần trong tuần — đề xuất gọi điện trong 24h tới.</p>
-              </div>
-              <div class="mock-stats">
-                <div class="mock-stat"><span class="stat-num">312</span><span class="stat-label">Lead mới</span></div>
-                <div class="mock-stat"><span class="stat-num">48%</span><span class="stat-label">Tỷ lệ chuyển đổi</span></div>
-                <div class="mock-stat"><span class="stat-num">1.2k</span><span class="stat-label">Cuộc gọi/tháng</span></div>
-              </div>
-              <div class="mock-rows">
-                <div class="mock-row"><span class="row-dot dot-warm"></span>Nguyễn Văn A — Đang đàm phán</div>
-                <div class="mock-row"><span class="row-dot dot-cool"></span>Trần Thị B — Đã chốt hợp đồng</div>
-                <div class="mock-row"><span class="row-dot dot-warm"></span>Lê Văn C — Chờ phản hồi</div>
-              </div>
+
+            <div class="orbiter" style="--a: 0deg; --dur: 28s; --r: var(--r1);">
+              <div class="planet"><div class="planet-inner is-ai">
+                <span class="planet-disc"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 4 2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/><path d="M19 15v4M17 17h4"/></svg></span>
+                <span class="planet-label">AI</span>
+              </div></div>
+            </div>
+            <div class="orbiter" style="--a: 40deg; --dur: 44s; --r: var(--r2);">
+              <div class="planet"><div class="planet-inner">
+                <span class="planet-disc"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+                <span class="planet-label">CRM</span>
+              </div></div>
+            </div>
+            <div class="orbiter" style="--a: 160deg; --dur: 44s; --r: var(--r2);">
+              <div class="planet"><div class="planet-inner">
+                <span class="planet-disc"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+                <span class="planet-label">Omni</span>
+              </div></div>
+            </div>
+            <div class="orbiter" style="--a: 280deg; --dur: 44s; --r: var(--r2);">
+              <div class="planet"><div class="planet-inner">
+                <span class="planet-disc"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M6 16c.5-1.7 1.6-2.6 3-2.6s2.5.9 3 2.6"/><path d="M15 9h3M15 13h3"/></svg></span>
+                <span class="planet-label">HRM</span>
+              </div></div>
+            </div>
+            <div class="orbiter" style="--a: 20deg; --dur: 60s; --r: var(--r3);">
+              <div class="planet"><div class="planet-inner">
+                <span class="planet-disc"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4.5A2.5 2.5 0 0 1 4.5 2H12v18H4.5A2.5 2.5 0 0 0 2 22.5v-18Z"/><path d="M22 4.5A2.5 2.5 0 0 0 19.5 2H12v18h7.5a2.5 2.5 0 0 1 2.5 2.5v-18Z"/></svg></span>
+                <span class="planet-label">LMS</span>
+              </div></div>
+            </div>
+            <div class="orbiter" style="--a: 110deg; --dur: 60s; --r: var(--r3);">
+              <div class="planet"><div class="planet-inner">
+                <span class="planet-disc"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m22 9-6 3.2V11.8L22 15V9Z"/></svg></span>
+                <span class="planet-label">Online Meeting</span>
+              </div></div>
+            </div>
+            <div class="orbiter" style="--a: 200deg; --dur: 60s; --r: var(--r3);">
+              <div class="planet"><div class="planet-inner">
+                <span class="planet-disc"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></span>
+                <span class="planet-label">SAP</span>
+              </div></div>
+            </div>
+            <div class="orbiter" style="--a: 290deg; --dur: 60s; --r: var(--r3);">
+              <div class="planet"><div class="planet-inner">
+                <span class="planet-disc"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8V6a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 6v12a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 18Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg></span>
+                <span class="planet-label">Inventory</span>
+              </div></div>
+            </div>
+            <div class="orbiter" style="--a: 65deg; --dur: 78s; --r: var(--r4);">
+              <div class="planet"><div class="planet-inner">
+                <span class="planet-disc"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10"/><path d="m2 7 10 6 10-6"/><path d="M19 14.5 17 18h4l-2 3.5"/></svg></span>
+                <span class="planet-label">Email Automation</span>
+              </div></div>
+            </div>
+            <div class="orbiter" style="--a: 155deg; --dur: 78s; --r: var(--r4);">
+              <div class="planet"><div class="planet-inner">
+                <span class="planet-disc"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M8 2v4M16 2v4"/><path d="m9 15 2 2 4-4"/></svg></span>
+                <span class="planet-label">EMS</span>
+              </div></div>
+            </div>
+            <div class="orbiter" style="--a: 245deg; --dur: 78s; --r: var(--r4);">
+              <div class="planet"><div class="planet-inner">
+                <span class="planet-disc"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13v-1a8 8 0 0 1 16 0v1"/><path d="M4 13h2a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1Z"/><path d="M20 13h-2a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1Z"/><path d="M18 19a3 3 0 0 1-3 3h-3"/></svg></span>
+                <span class="planet-label">Call Center</span>
+              </div></div>
+            </div>
+            <div class="orbiter" style="--a: 335deg; --dur: 78s; --r: var(--r4);">
+              <div class="planet"><div class="planet-inner">
+                <span class="planet-disc"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="18" height="11" rx="2"/><path d="M12 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm0 0v4"/><path d="M8 15h.01M16 15h.01M2 14h1M21 14h1"/></svg></span>
+                <span class="planet-label">Reply Bot</span>
+              </div></div>
             </div>
           </div>
-        </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ Product teaser ============ -->
+  <div class="weave" aria-hidden="true">
+    <svg width="46" height="20" viewBox="0 0 46 20" fill="none" stroke="currentColor" stroke-width="1.6">
+      <circle cx="14" cy="10" r="6"/><circle cx="23" cy="10" r="6"/><circle cx="32" cy="10" r="6"/>
+    </svg>
+  </div>
+
+  <!-- MODULE STRIP -->
+  <div class="container">
+    <div class="module-strip">
+      <span class="ms-label">Một nền tảng, nhiều phân hệ:</span>
+      <span class="module-pill"><b>CRM</b> · Quản lý khách hàng</span>
+      <span class="module-pill"><b>Omni</b> · Nhắn tin đa kênh</span>
+      <span class="module-pill"><b>LMS</b> · Đào tạo &amp; học tập</span>
+    </div>
+  </div>
+
+  <!-- PARTNERS -->
+  <div class="partners">
+    <div class="container"><p class="partners-label">Đối tác tích hợp chính thức</p></div>
+    <div class="marquee-box">
+      <div class="marquee">
+        <div class="marquee-track">
+        <div class="marquee-group">
+          <span class="partner-logo"><img class="plogo" src="/img/partners/zoom.png" alt="Zoom" width="391" height="220" loading="lazy" decoding="async"></span>
+          <span class="partner-logo"><img class="plogo plogo-wide" src="/img/partners/avtech.png" alt="Advance Vision Technology" width="824" height="220" loading="lazy" decoding="async"></span>
+          <span class="partner-logo"><img class="plogo plogo-sq logo-light" src="/img/partners/busscall-light.jpg" alt="BussCall" width="300" height="300" loading="lazy" decoding="async"><img class="plogo plogo-sq logo-dark" src="/img/partners/busscall-dark.jpg" alt="BussCall" width="300" height="300" loading="lazy" decoding="async"></span>
+          <span class="partner-logo"><img class="plogo plogo-sq logo-light" src="/img/partners/voip24h-light.jpg" alt="VoIP24h" width="300" height="300" loading="lazy" decoding="async"><img class="plogo plogo-sq logo-dark" src="/img/partners/voip24h-dark.jpg" alt="VoIP24h" width="300" height="300" loading="lazy" decoding="async"></span>
+        </div>
+        <div class="marquee-group" aria-hidden="true">
+          <span class="partner-logo"><img class="plogo" src="/img/partners/zoom.png" alt="Zoom" width="391" height="220" loading="lazy" decoding="async"></span>
+          <span class="partner-logo"><img class="plogo plogo-wide" src="/img/partners/avtech.png" alt="Advance Vision Technology" width="824" height="220" loading="lazy" decoding="async"></span>
+          <span class="partner-logo"><img class="plogo plogo-sq logo-light" src="/img/partners/busscall-light.jpg" alt="BussCall" width="300" height="300" loading="lazy" decoding="async"><img class="plogo plogo-sq logo-dark" src="/img/partners/busscall-dark.jpg" alt="BussCall" width="300" height="300" loading="lazy" decoding="async"></span>
+          <span class="partner-logo"><img class="plogo plogo-sq logo-light" src="/img/partners/voip24h-light.jpg" alt="VoIP24h" width="300" height="300" loading="lazy" decoding="async"><img class="plogo plogo-sq logo-dark" src="/img/partners/voip24h-dark.jpg" alt="VoIP24h" width="300" height="300" loading="lazy" decoding="async"></span>
+        </div>
+        <div class="marquee-group" aria-hidden="true">
+          <span class="partner-logo"><img class="plogo" src="/img/partners/zoom.png" alt="Zoom" width="391" height="220" loading="lazy" decoding="async"></span>
+          <span class="partner-logo"><img class="plogo plogo-wide" src="/img/partners/avtech.png" alt="Advance Vision Technology" width="824" height="220" loading="lazy" decoding="async"></span>
+          <span class="partner-logo"><img class="plogo plogo-sq logo-light" src="/img/partners/busscall-light.jpg" alt="BussCall" width="300" height="300" loading="lazy" decoding="async"><img class="plogo plogo-sq logo-dark" src="/img/partners/busscall-dark.jpg" alt="BussCall" width="300" height="300" loading="lazy" decoding="async"></span>
+          <span class="partner-logo"><img class="plogo plogo-sq logo-light" src="/img/partners/voip24h-light.jpg" alt="VoIP24h" width="300" height="300" loading="lazy" decoding="async"><img class="plogo plogo-sq logo-dark" src="/img/partners/voip24h-dark.jpg" alt="VoIP24h" width="300" height="300" loading="lazy" decoding="async"></span>
+        </div>
+        <div class="marquee-group" aria-hidden="true">
+          <span class="partner-logo"><img class="plogo" src="/img/partners/zoom.png" alt="Zoom" width="391" height="220" loading="lazy" decoding="async"></span>
+          <span class="partner-logo"><img class="plogo plogo-wide" src="/img/partners/avtech.png" alt="Advance Vision Technology" width="824" height="220" loading="lazy" decoding="async"></span>
+          <span class="partner-logo"><img class="plogo plogo-sq logo-light" src="/img/partners/busscall-light.jpg" alt="BussCall" width="300" height="300" loading="lazy" decoding="async"><img class="plogo plogo-sq logo-dark" src="/img/partners/busscall-dark.jpg" alt="BussCall" width="300" height="300" loading="lazy" decoding="async"></span>
+          <span class="partner-logo"><img class="plogo plogo-sq logo-light" src="/img/partners/voip24h-light.jpg" alt="VoIP24h" width="300" height="300" loading="lazy" decoding="async"><img class="plogo plogo-sq logo-dark" src="/img/partners/voip24h-dark.jpg" alt="VoIP24h" width="300" height="300" loading="lazy" decoding="async"></span>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- PRODUCT TEASER -->
   <section class="section">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head reveal">
         <p class="eyebrow">Giới thiệu sản phẩm</p>
-        <h2>AllOne CRM — nền tảng quản lý khách hàng tập trung cho đội ngũ kinh doanh hiện đại</h2>
-        <p class="section-lead">AllOne CRM được xây dựng để thay thế việc quản lý khách hàng rời rạc qua Excel, Zalo, email riêng lẻ bằng một hệ thống duy nhất, nơi mọi bộ phận cùng nhìn thấy một bức tranh khách hàng đầy đủ.</p>
+        <h2>Nền tảng quản lý khách hàng tập trung cho đội ngũ kinh doanh hiện đại</h2>
+        <p class="lead">AllOne CRM thay thế việc quản lý khách hàng rời rạc qua Excel, Zalo và email riêng lẻ bằng một hệ thống duy nhất, nơi mọi bộ phận cùng nhìn thấy một bức tranh khách hàng đầy đủ.</p>
       </div>
-      <div class="bento-grid">
-        <div class="bento-card bento-lg">
-          <span class="bento-icon icon-users"></span>
+
+      <div class="bento">
+        <div class="bento-card lg reveal">
+          <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
           <h3>Quản lý Lead và Contact tập trung</h3>
-          <p>Mọi khách hàng tiềm năng được ghi nhận, lưu trữ và cập nhật trên một hồ sơ duy nhất, không bị thất lạc giữa các kênh.</p>
+          <p>Mọi khách hàng tiềm năng được ghi nhận, lưu trữ và cập nhật trên một hồ sơ duy nhất — không thất lạc giữa các kênh, không trùng lặp giữa các nhân viên.</p>
         </div>
-        <div class="bento-card">
-          <span class="bento-icon icon-mail"></span>
+        <div class="bento-card reveal">
+          <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 8.97 6.2a2 2 0 0 0 2.06 0L22 7"/></svg></span>
           <h3>Email Campaign theo template</h3>
-          <p>Xây dựng kịch bản chăm sóc tự động, đúng người, đúng thời điểm.</p>
+          <p>Xây dựng kịch bản chăm sóc tự động — đúng người, đúng thời điểm.</p>
         </div>
-        <div class="bento-card">
-          <span class="bento-icon icon-workflow"></span>
+        <div class="bento-card reveal">
+          <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><path d="M10 6.5h4a3 3 0 0 1 3 3V14M6.5 10v4a3 3 0 0 0 3 3H14"/></svg></span>
           <h3>Tích hợp đa kênh &amp; automation</h3>
           <p>Gọi điện, email và workflow automation ngay trong một luồng làm việc.</p>
         </div>
       </div>
-      <div class="section-cta">
-        <a href="/san-pham" class="btn btn-secondary">Xem toàn bộ sản phẩm</a>
+
+      <div class="section-cta reveal">
+        <a href="/san-pham" class="btn btn-ghost">Xem toàn bộ sản phẩm</a>
       </div>
     </div>
   </section>
 
-  <!-- ============ AI teaser (dark) ============ -->
-  <section class="section section-tint">
+  <!-- AI SECTION -->
+  <section class="section is-ai-tint">
     <div class="container">
-      <div class="section-head">
-        <p class="eyebrow eyebrow-ai">AI-assisted</p>
+      <div class="section-head reveal">
+        <p class="eyebrow is-warm">AI-assisted</p>
         <h2>Biến dữ liệu thành hành động</h2>
-        <p class="section-lead">AllOne CRM tích hợp AI như một trợ lý phân tích ngay trong luồng làm việc hàng ngày — giúp nhân sự xử lý nhanh hơn và chính xác hơn, thay vì thay thế vai trò ra quyết định của con người.</p>
+        <p class="lead">AllOne CRM tích hợp AI như một trợ lý phân tích ngay trong luồng làm việc hàng ngày — giúp nhân sự xử lý nhanh hơn và chính xác hơn, thay vì thay thế vai trò ra quyết định của con người.</p>
       </div>
-      <div class="principle-box is-ai">
-        <span class="chip-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z"/><path d="m9 12 2 2 4-4"/></svg></span>
+
+      <div class="principle reveal">
+        <span class="p-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z"/><path d="m9 12 2 2 4-4"/></svg></span>
         <div>
-          <p class="principle-label">Nguyên tắc cốt lõi</p>
+          <p class="p-label">Nguyên tắc cốt lõi</p>
           <p>AI hỗ trợ nhân sự ra quyết định — con người luôn là người xem xét và quyết định cuối cùng.</p>
         </div>
       </div>
-      <div class="section-cta">
+
+      <div class="section-cta reveal">
         <a href="/giai-phap" class="btn btn-primary">Khám phá giải pháp AI cho doanh nghiệp</a>
       </div>
     </div>
   </section>
 
-  <!-- ============ Pricing teaser ============ -->
-  <section class="section section-alt">
+  <!-- PRICING TEASER -->
+  <section class="section">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head reveal">
         <p class="eyebrow">Bảng giá</p>
         <h2>Chọn gói phù hợp với quy mô đội ngũ của bạn</h2>
-        <p class="section-lead">Mọi gói đều xây dựng trên cùng nền tảng AllOne CRM — khác biệt ở quy mô sử dụng và mức độ tuỳ chỉnh.</p>
+        <p class="lead">Mọi gói đều xây dựng trên cùng nền tảng AllOne CRM — khác biệt ở quy mô sử dụng và mức độ tuỳ chỉnh.</p>
       </div>
-      <div class="pricing-grid">
-        <div class="price-card">
+
+      <div class="pricing">
+        <div class="price-card reveal">
           <h3>Standard</h3>
-          <p class="price-tagline">Dành cho đội nhóm nhỏ</p>
+          <p class="price-tag">Dành cho đội nhóm nhỏ</p>
           <p class="price-desc">Phù hợp với đội bán hàng mới bắt đầu số hoá quy trình chăm sóc khách hàng.</p>
           <p class="price-value">Liên hệ tư vấn</p>
-          <a href="/bang-gia" class="btn btn-secondary btn-block">Xem chi tiết</a>
+          <a href="/bang-gia" class="btn btn-ghost btn-block">Xem chi tiết</a>
         </div>
-        <div class="price-card price-card-featured">
+        <div class="price-card featured reveal">
           <span class="price-badge">Phổ biến</span>
           <h3>Business</h3>
-          <p class="price-tagline">Dành cho doanh nghiệp đang tăng trưởng</p>
+          <p class="price-tag">Dành cho doanh nghiệp đang tăng trưởng</p>
           <p class="price-desc">Đầy đủ công cụ cho đội ngũ bán hàng và tiếp thị phối hợp trên cùng một hệ thống.</p>
           <p class="price-value">Liên hệ tư vấn</p>
           <a href="/bang-gia" class="btn btn-primary btn-block">Xem chi tiết</a>
         </div>
-        <div class="price-card">
+        <div class="price-card reveal">
           <h3>Enterprise</h3>
-          <p class="price-tagline">Dành cho tổ chức cần tuỳ chỉnh</p>
+          <p class="price-tag">Dành cho tổ chức cần tuỳ chỉnh</p>
           <p class="price-desc">Giải pháp mở rộng cho tổ chức quy mô lớn hoặc có yêu cầu tích hợp riêng.</p>
           <p class="price-value">Liên hệ tư vấn</p>
-          <a href="/bang-gia" class="btn btn-secondary btn-block">Xem chi tiết</a>
+          <a href="/bang-gia" class="btn btn-ghost btn-block">Xem chi tiết</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ Trial CTA banner ============ -->
-  <section class="section section-cta-banner">
-    <div class="container cta-banner-inner">
+  <!-- CTA BANNER -->
+  <section class="section cta-banner">
+    <div class="container cta-inner">
       <h2>Sẵn sàng đưa dữ liệu khách hàng về một nơi duy nhất?</h2>
       <ul class="benefit-list">
         <li>Trải nghiệm trực tiếp cách AllOne CRM tổ chức dữ liệu Lead, Contact và lịch sử chăm sóc.</li>
@@ -254,36 +1201,96 @@
       </div>
     </div>
   </section>
-
 </main>
 
 <footer class="site-footer">
-  <div class="container footer-grid">
-    <div class="footer-brand">
-      <a href="/" class="logo"><img src="/img/logo-icon.png" width="28" height="28" alt="" class="logo-mark">Allone</a>
-      <p>Nền tảng quản lý khách hàng và vận hành tập trung cho đội ngũ kinh doanh hiện đại.</p>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="logo">
+          <img src="/img/logo-icon.png" width="46" height="46" alt="">
+          <span class="wordmark">AllOne</span>
+        </a>
+        <p>Nền tảng quản lý khách hàng và vận hành tập trung cho đội ngũ kinh doanh hiện đại.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Sản phẩm</h4>
+        <a href="/san-pham">Sản phẩm</a>
+        <a href="/giai-phap">Giải pháp</a>
+        <a href="/bang-gia">Bảng giá</a>
+        <a href="/free-trial">Đăng ký dùng thử</a>
+        <a href="/lien-he">Đặt lịch demo</a>
+      </div>
+      <div class="footer-col">
+        <h4>Công ty</h4>
+        <a href="/">Về chúng tôi</a>
+        <a href="/lien-he">Liên hệ</a>
+        <a href="/tai-nguyen">Tài nguyên</a>
+      </div>
     </div>
-    <div class="footer-col">
-      <h4>Sản phẩm</h4>
-      <a href="/san-pham">Sản phẩm</a>
-      <a href="/giai-phap">Giải pháp</a>
-      <a href="/bang-gia">Bảng giá</a>
-      <a href="/free-trial">Đăng ký dùng thử</a>
-      <a href="/lien-he">Đặt lịch demo</a>
+    <div class="footer-bottom">
+      <p>© <span id="year"></span> AllOne CRM. Bảo lưu mọi quyền.</p>
     </div>
-    <div class="footer-col">
-      <h4>Công ty</h4>
-      <a href="/">Về chúng tôi</a>
-      <a href="/lien-he">Liên hệ</a>
-      <a href="/tai-nguyen">Tài nguyên</a>
-    </div>
-  </div>
-  <div class="container footer-bottom">
-    <p>© <span id="currentYear"></span> AllOne CRM. Bảo lưu mọi quyền.</p>
   </div>
 </footer>
 
-<script src="/js/config.js?v=3"></script>
-<script src="/js/main.js?v=4"></script>
+<script>
+  (function () {
+    var root = document.documentElement;
+    var KEY = "allone-theme";
+
+    try {
+      var saved = localStorage.getItem(KEY);
+      if (saved === "dark" || saved === "light") root.setAttribute("data-theme", saved);
+    } catch (e) {}
+
+    var toggle = document.getElementById("themeToggle");
+    if (toggle) {
+      toggle.addEventListener("click", function () {
+        var systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        var current = root.getAttribute("data-theme") || (systemDark ? "dark" : "light");
+        var next = current === "dark" ? "light" : "dark";
+        root.setAttribute("data-theme", next);
+        try { localStorage.setItem(KEY, next); } catch (e) {}
+      });
+    }
+
+    var navToggle = document.getElementById("navToggle");
+    var header = document.getElementById("siteHeader");
+    if (navToggle && header) {
+      navToggle.addEventListener("click", function () {
+        var open = header.classList.toggle("is-open");
+        navToggle.setAttribute("aria-expanded", String(open));
+      });
+      document.querySelectorAll("#mobileNav a").forEach(function (a) {
+        a.addEventListener("click", function () {
+          header.classList.remove("is-open");
+          navToggle.setAttribute("aria-expanded", "false");
+        });
+      });
+    }
+
+    var y = document.getElementById("year");
+    if (y) y.textContent = new Date().getFullYear();
+
+    var revealEls = document.querySelectorAll(".reveal");
+    if ("IntersectionObserver" in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in-view");
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      revealEls.forEach(function (el, i) {
+        el.style.transitionDelay = Math.min(i * 55, 280) + "ms";
+        io.observe(el);
+      });
+    } else {
+      revealEls.forEach(function (el) { el.classList.add("in-view"); });
+    }
+  })();
+</script>
 </body>
 </html>
