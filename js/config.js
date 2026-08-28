@@ -1,20 +1,14 @@
-// Lead-capture webhook target. Leave empty until the AllOne CRM backend is deployed —
-// js/main.js falls back to a simulated success message while this is unset.
+// Lead-capture forms (Đăng Ký, Liên Hệ) submit straight to Web3Forms — a static-site-friendly
+// relay that emails each submission to the inbox tied to your access key. No backend needed.
 //
-// Once the CRM is live, set this to the ingest endpoint and it will receive a POST
-// with header `Content-Type: application/json` and body shaped like:
-// {
-//   "formType": "dang-ky" | "lien-he",
-//   "submittedAt": "2026-07-29T12:00:00.000Z",
-//   "page": "/dang-ky",
-//   "fields": {
-//     "fullName": "...", "email": "...", "phone": "...",
-//     "company": "...", "teamSize": "...", "message": "..." // message only present on lien-he
-//   }
-// }
+// Setup (one-time):
+//   1. Go to https://web3forms.com, enter the inbox address you want submissions delivered
+//      to, and copy the access key it gives you.
+//   2. Paste it below.
+//   3. Once this is non-empty, js/main.js sends real submissions instead of just logging them
+//      to the console.
 //
-// The endpoint must accept cross-origin requests (CORS) from this site's domain, since
-// this is a static site posting directly from the browser — there is no server hop here.
-// Remember to also add its origin to the connect-src directive in render.yaml's
-// Content-Security-Policy, or the browser will block the request.
-const LEAD_WEBHOOK_URL = "";
+// Swap this out later for your own CRM ingest endpoint if/when it's deployed — js/main.js
+// only needs WEB3FORMS_ACCESS_KEY to stay wired the same way, or can be pointed at a fresh
+// LEAD_WEBHOOK_URL if the payload shape ever needs to change.
+const WEB3FORMS_ACCESS_KEY = "578b134e-52a1-4095-9266-94ba57feba1a";

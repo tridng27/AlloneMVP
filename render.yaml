@@ -44,6 +44,10 @@ services:
         source: /lms.html
         destination: /lms
         status: 301
+      - type: redirect
+        source: /omni.html
+        destination: /omni
+        status: 301
 
       # --- Serve the clean path from its backing .html file ---
       - type: rewrite
@@ -70,6 +74,9 @@ services:
       - type: rewrite
         source: /lms
         destination: /lms.html
+      - type: rewrite
+        source: /omni
+        destination: /omni.html
 
     headers:
       # --- Security headers, applied to every response ---
@@ -88,11 +95,11 @@ services:
       - path: /*
         name: Strict-Transport-Security
         value: "max-age=63072000; includeSubDomains; preload"
-      # connect-src is 'self' only until the CRM webhook domain is finalized —
-      # add it here (e.g. https://crm.yourdomain.com) before wiring js/config.js.
+      # connect-src allows Web3Forms — the form-to-email relay js/config.js posts to.
+      # If that's ever swapped for a different endpoint, update this to match.
       - path: /*
         name: Content-Security-Policy
-        value: "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
+        value: "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://api.web3forms.com; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
 
       # --- HTML documents: revalidate on every request so content edits go live immediately ---
       - path: /*

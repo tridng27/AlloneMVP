@@ -25,6 +25,37 @@ if (navToggle) {
   });
 }
 
+// Giải Pháp dropdown: click/touch toggle (hover/focus-within handled by CSS alone)
+document.querySelectorAll('.nav-item.has-dropdown').forEach((item) => {
+  const toggle = item.querySelector('.nav-dropdown-toggle');
+  if (!toggle) return;
+
+  toggle.addEventListener('click', (event) => {
+    if (window.matchMedia('(hover: hover)').matches) return;
+    event.preventDefault();
+    const isOpen = item.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(isOpen));
+  });
+});
+
+document.addEventListener('click', (event) => {
+  document.querySelectorAll('.nav-item.open').forEach((item) => {
+    if (!item.contains(event.target)) {
+      item.classList.remove('open');
+      item.querySelector('.nav-dropdown-toggle')?.setAttribute('aria-expanded', 'false');
+    }
+  });
+});
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') {
+    document.querySelectorAll('.nav-item.open').forEach((item) => {
+      item.classList.remove('open');
+      item.querySelector('.nav-dropdown-toggle')?.setAttribute('aria-expanded', 'false');
+    });
+  }
+});
+
 // Solutions tabs (section 3)
 const tabsRoot = document.querySelector('[data-tabs]');
 if (tabsRoot) {
@@ -46,11 +77,12 @@ if (tabsRoot) {
   });
 }
 
-// Lead-capture forms (Đăng Ký, Liên Hệ) — posts to LEAD_WEBHOOK_URL (js/config.js) once
-// the CRM backend is deployed; simulates success locally while that's unset.
+// Lead-capture forms (Đăng Ký, Liên Hệ) — posts straight to Web3Forms (js/config.js),
+// which emails each submission to your inbox. Simulates success locally while unset.
 const contactForm = document.getElementById('contactForm');
 const formSuccess = document.getElementById('formSuccess');
 const formError = document.getElementById('formError');
+const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit';
 
 async function submitLead(form) {
   const formData = new FormData(form);
@@ -65,25 +97,29 @@ async function submitLead(form) {
     if (key !== 'hp_website') fields[key] = value;
   });
 
+  const formType = form.dataset.formType || 'unknown';
   const payload = {
-    formType: form.dataset.formType || 'unknown',
-    submittedAt: new Date().toISOString(),
+    access_key: WEB3FORMS_ACCESS_KEY,
+    subject: `AllOne website — new ${formType} submission`,
+    from_name: fields.fullName || 'AllOne website',
     page: location.pathname,
-    fields,
+    submitted_at: new Date().toISOString(),
+    ...fields,
   };
 
-  if (!LEAD_WEBHOOK_URL) {
-    console.info('LEAD_WEBHOOK_URL not configured (js/config.js) — simulating success.', payload);
+  if (!WEB3FORMS_ACCESS_KEY) {
+    console.info('WEB3FORMS_ACCESS_KEY not configured (js/config.js) — simulating success.', payload);
     return true;
   }
 
-  const response = await fetch(LEAD_WEBHOOK_URL, {
+  const response = await fetch(WEB3FORMS_ENDPOINT, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
     body: JSON.stringify(payload),
   });
 
-  return response.ok;
+  const result = await response.json().catch(() => ({}));
+  return response.ok && result.success !== false;
 }
 
 if (contactForm) {

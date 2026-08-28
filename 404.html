@@ -5,20 +5,48 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Không tìm thấy trang — AllOne CRM</title>
 <meta name="robots" content="noindex">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%23433d9f'/%3E%3Ctext x='50' y='67' font-size='54' font-family='Arial, sans-serif' font-weight='700' fill='%23ffffff' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/png" href="/img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Inter+Tight:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/css/styles.css?v=1">
+<link rel="stylesheet" href="/css/styles.css?v=7">
 </head>
 <body>
 
 <header class="site-header" id="site-header">
   <div class="container header-inner">
-    <a href="/" class="logo">Allone</a>
+    <a href="/" class="logo"><img src="/img/logo-icon.png" width="28" height="28" alt="" class="logo-mark">Allone</a>
     <nav class="main-nav" aria-label="Điều hướng chính">
       <a href="/san-pham">Sản Phẩm</a>
-      <a href="/giai-phap">Giải Pháp</a>
+      <div class="nav-item has-dropdown">
+        <a href="/giai-phap" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+          Giải Pháp
+          <svg class="nav-caret" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <div class="nav-dropdown">
+          <a href="/giai-phap" class="nav-dropdown-item">
+            <span class="nav-dropdown-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m16.24 7.76-2.12 6.36-6.36 2.12 2.12-6.36 6.36-2.12Z"/></svg></span>
+            <span>
+              <span class="nav-dropdown-title">CRM – Quản lý khách hàng</span>
+              <span class="nav-dropdown-desc">Lead, bán hàng, tiếp thị và vận hành trên một nền tảng</span>
+            </span>
+          </a>
+          <a href="/omni" class="nav-dropdown-item">
+            <span class="nav-dropdown-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+            <span>
+              <span class="nav-dropdown-title">Omni – Nhắn tin đa kênh</span>
+              <span class="nav-dropdown-desc">Hộp thư hợp nhất, AI trả lời tự động</span>
+            </span>
+          </a>
+          <a href="/lms" class="nav-dropdown-item">
+            <span class="nav-dropdown-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4.5A2.5 2.5 0 0 1 4.5 2H12v18H4.5A2.5 2.5 0 0 0 2 22.5v-18Z"/><path d="M22 4.5A2.5 2.5 0 0 0 19.5 2H12v18h7.5a2.5 2.5 0 0 1 2.5 2.5v-18Z"/></svg></span>
+            <span>
+              <span class="nav-dropdown-title">LMS – Đào tạo &amp; Học tập</span>
+              <span class="nav-dropdown-desc">Khoá học, lớp học và đào tạo nội bộ</span>
+            </span>
+          </a>
+        </div>
+      </div>
       <a href="/bang-gia">Bảng Giá</a>
       <a href="/tai-nguyen">Tài Nguyên</a>
       <a href="/lien-he">Liên Hệ</a>
@@ -50,6 +78,6 @@
   </div>
 </footer>
 
-<script src="/js/main.js?v=1"></script>
+<script src="/js/main.js?v=4"></script>
 </body>
 </html>

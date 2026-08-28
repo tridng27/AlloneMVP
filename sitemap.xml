@@ -3,6 +3,7 @@
   <url><loc>https://your-domain.example/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://your-domain.example/san-pham</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://your-domain.example/lms</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://your-domain.example/omni</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://your-domain.example/giai-phap</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://your-domain.example/bang-gia</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://your-domain.example/tai-nguyen</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
