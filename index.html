@@ -17,19 +17,20 @@
 <link rel="icon" type="image/png" href="/img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
 <style>
   /* ============================================================
      AllOne CRM — homepage redesign
-     Display: Newsreader (Vietnamese-supporting text serif)
-     Body/UI: Be Vietnam Pro (typeface drawn for Vietnamese)
+     Type:    Inter throughout (Latin + Vietnamese), one unified family
      Motif:   the interlocking three-ring mark = sales + marketing
               + operations woven into one platform
      ============================================================ */
 
   :root {
-    --font-display: "Newsreader", Georgia, "Times New Roman", serif;
-    --font-sans: "Be Vietnam Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font-display: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    /* wordmark only — the "AllOne" logotype, matched to the brand logo */
+    --font-wordmark: "Nunito", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
     /* light palette — neutrals carry a cool (blue) bias, pulled toward the mark */
     --ground: #f5f8fb;
@@ -54,7 +55,7 @@
     --radius-s: 10px;
     --radius-m: 14px;
     --radius-l: 22px;
-    --container: 1180px;
+    --container: 1360px;
     --header-h: 74px;
   }
 
@@ -136,7 +137,7 @@
   .container {
     max-width: var(--container);
     margin: 0 auto;
-    padding: 0 28px;
+    padding: 0 20px;
   }
 
   .eyebrow {
@@ -205,10 +206,10 @@
   }
   .logo img { height: 40px; width: 40px; }
   .logo .wordmark {
-    font-family: var(--font-display);
-    font-weight: 600;
+    font-family: var(--font-wordmark);
+    font-weight: 800;
     font-size: 1.5rem;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
     color: var(--ink);
   }
   .main-nav { display: flex; align-items: center; gap: 0.35rem; }
@@ -259,12 +260,14 @@
     height: 10px;
   }
   .nav-item:hover .nav-menu,
-  .nav-item:focus-within .nav-menu {
+  .nav-item:focus-within .nav-menu,
+  .nav-item.is-open .nav-menu {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
     transform: translateX(-50%) translateY(0);
   }
+  .nav-item.is-open .nav-caret { transform: rotate(180deg); }
   .nav-menu a {
     display: grid;
     grid-template-columns: 34px 1fr;
@@ -337,7 +340,8 @@
   .site-header.is-open .mobile-nav { display: flex; }
 
   /* ---------- section rhythm ---------- */
-  .section { padding: 104px 0; }
+  .section { padding: 96px 0; }
+  .partners + .section { padding-top: 72px; }
   .section-head { max-width: 46rem; }
   .section-head h2 {
     font-size: clamp(1.8rem, 3.4vw, 2.6rem);
@@ -348,7 +352,7 @@
     color: var(--ink-soft);
     max-width: 42rem;
   }
-  .section-cta { margin-top: 2.6rem; }
+  .section-cta { display: flex; flex-wrap: wrap; gap: 0.85rem; margin-top: 2.6rem; }
 
   /* weave connector — the three-ring motif on a hairline */
   .weave {
@@ -369,7 +373,7 @@
   .weave svg { color: var(--brand); opacity: 0.9; }
 
   /* ---------- hero ---------- */
-  .hero { padding: 92px 0 84px; overflow: hidden; }
+  .hero { padding: 88px 0 72px; overflow: hidden; }
   .hero-grid {
     display: grid;
     grid-template-columns: 1.06fr 0.94fr;
@@ -382,51 +386,42 @@
     letter-spacing: -0.02em;
     line-height: 1.12;
     font-size: clamp(2.4rem, 5vw, 3.6rem);
-    margin: 0 0 1.3rem;
+    margin: 0 0 1.1rem;
   }
   .hero h1 .hl { color: var(--brand); }
   .hero h1 .hl-ai { color: var(--warm); }
-  .hero h1 .caret {
-    display: inline-block;
-    width: 0.06em;
-    min-width: 3px;
-    height: 0.92em;
-    margin-left: 0.08em;
-    vertical-align: -0.12em;
-    background: var(--brand);
-    border-radius: 1px;
-    animation: caret-blink 1.05s step-end infinite;
-  }
-  @keyframes caret-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
   .hero-sub {
-    font-size: 1.14rem;
+    font-size: 1.1rem;
     color: var(--ink-soft);
-    max-width: 40ch;
+    max-width: 44ch;
   }
   .hero-cta {
     display: flex;
     flex-wrap: wrap;
     gap: 0.85rem;
-    margin: 1.9rem 0 1.6rem;
+    margin: 1.6rem 0 1.4rem;
   }
+  /* hero CTAs: one row, equal width + height regardless of label length */
+  .hero-copy .hero-cta { flex-wrap: nowrap; max-width: 30rem; }
+  .hero-copy .hero-cta .btn { flex: 1 1 0; min-width: 0; }
   .hero-trust {
     font-size: 0.9rem;
     color: var(--ink-soft);
     max-width: 46ch;
-    padding-top: 1.4rem;
+    padding-top: 1.3rem;
     border-top: 1px solid var(--line);
   }
   .hero-values {
     display: grid;
-    gap: 0.7rem;
-    margin-top: 1.5rem;
+    gap: 0.65rem;
+    margin-top: 1.3rem;
   }
   .value-chip {
     display: grid;
     grid-template-columns: 34px 1fr;
     gap: 0.85rem;
     align-items: start;
-    padding: 0.9rem 1rem;
+    padding: 0.8rem 0.95rem;
     background: var(--surface);
     border: 1px solid var(--line);
     border-radius: var(--radius-m);
@@ -448,13 +443,13 @@
   }
   .orbit-system {
     position: relative;
-    width: min(600px, 92vw);
+    width: min(640px, 94vw);
     aspect-ratio: 1;
     margin: 0 auto;
-    --r1: 86px;
-    --r2: 140px;
-    --r3: 196px;
-    --r4: 250px;
+    --r1: 84px;
+    --r2: 138px;
+    --r3: 198px;
+    --r4: 262px;
   }
   .orbit-system::before {
     content: "";
@@ -544,7 +539,10 @@
     border: 1px solid var(--line);
     padding: 2px 9px;
     border-radius: 999px;
-    white-space: nowrap;
+    max-width: 96px;
+    text-align: center;
+    line-height: 1.25;
+    box-shadow: var(--shadow-1);
   }
   .planet-inner.is-ai .planet-disc {
     color: var(--warm);
@@ -566,6 +564,40 @@
     to   { transform: rotate(calc(-1 * var(--a) - 360deg)); }
   }
 
+  /* static module list — replaces the orbit on small screens so every
+     module stays readable without the pills colliding */
+  .module-constellation {
+    display: none;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+    width: 100%;
+    max-width: 340px;
+  }
+  .module-constellation li {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--ink-soft);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    padding: 0.6rem 0.7rem;
+    text-align: center;
+  }
+  .module-constellation .mc-core {
+    grid-column: 1 / -1;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #fff;
+    background: linear-gradient(140deg, var(--brand-deep), var(--brand-strong));
+    border-color: transparent;
+  }
+  .module-constellation .is-ai {
+    color: var(--warm);
+    border-color: color-mix(in srgb, var(--warm) 40%, var(--line));
+    background: color-mix(in srgb, var(--warm-tint) 55%, var(--surface));
+  }
+
   /* ---------- module strip ---------- */
   .module-strip {
     display: flex;
@@ -573,7 +605,7 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 0.7rem 1.4rem;
-    padding: 34px 0;
+    padding: 30px 0;
   }
   .module-strip .ms-label { font-size: 0.8rem; color: var(--ink-faint); letter-spacing: 0.04em; }
   .module-pill {
@@ -591,7 +623,7 @@
   .module-pill b { color: var(--ink); font-weight: 600; }
 
   /* ---------- partner marquee (full-bleed boxed band) ---------- */
-  .partners { padding: 64px 0 84px; }
+  .partners { padding: 56px 0 64px; }
   .partners-label {
     text-align: center;
     font-size: 0.78rem;
@@ -646,33 +678,281 @@
     to   { transform: translateX(0); }
   }
 
-  /* ---------- bento ---------- */
-  .bento {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.15rem;
-    margin-top: 3rem;
-  }
-  .bento-card {
+  /* ---------- solution pager (one module shown at a time: CRM / Omni / LMS / AI) ---------- */
+  .solution-pager { margin-top: 3rem; }
+  .solution-viewport { position: relative; }
+  .solution-card {
+    display: none;
     background: var(--surface);
     border: 1px solid var(--line);
     border-radius: var(--radius-m);
-    padding: 1.7rem;
-    transition: border-color 0.16s ease, transform 0.16s ease, box-shadow 0.16s ease;
+    padding: 2rem 2.2rem;
+    min-height: 320px;
+    transition: border-color 0.16s ease, box-shadow 0.16s ease;
   }
-  .bento-card:hover { border-color: var(--brand); transform: translateY(-3px); box-shadow: var(--shadow-2); }
-  .bento-card.lg { grid-column: span 2; display: flex; flex-direction: column; }
-  .bento-card.lg p { max-width: 44ch; }
-  .card-icon {
-    width: 42px; height: 42px;
+  .solution-card.is-active {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 2.4rem;
+    align-items: center;
+    animation: card-fade-in 0.35s ease;
+  }
+  .sc-body { display: flex; flex-direction: column; min-width: 0; }
+  @keyframes card-fade-in {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .solution-card.is-ai {
+    background: color-mix(in srgb, var(--warm-tint) 45%, var(--surface));
+    border-color: color-mix(in srgb, var(--warm) 26%, var(--line));
+  }
+  .sc-head { display: flex; align-items: center; gap: 0.9rem; margin-bottom: 1.1rem; }
+  .sc-icon {
+    width: 48px; height: 48px;
     display: grid; place-items: center;
     border-radius: var(--radius-s);
     background: var(--brand-tint);
     color: var(--brand);
+    flex-shrink: 0;
+  }
+  .solution-card.is-ai .sc-icon { background: color-mix(in srgb, var(--warm) 16%, transparent); color: var(--warm); }
+  .sc-name { display: block; font-size: 1.32rem; font-weight: 700; }
+  .sc-tag { display: block; font-size: 0.8rem; font-weight: 500; color: var(--ink-faint); }
+  .sc-body > p { font-size: 0.98rem; color: var(--ink-soft); margin-bottom: 1.4rem; }
+  .sc-feats {
+    display: grid;
+    gap: 0.6rem;
+    margin-bottom: 1.4rem;
+  }
+  .sc-feats li {
+    position: relative;
+    padding-left: 1.5rem;
+    font-size: 0.87rem;
+    color: var(--ink-soft);
+    line-height: 1.45;
+  }
+  .sc-feats li::before {
+    content: "";
+    position: absolute;
+    left: 2px;
+    top: 0.34em;
+    width: 12px;
+    height: 7px;
+    border-left: 2px solid var(--brand);
+    border-bottom: 2px solid var(--brand);
+    transform: rotate(-45deg);
+  }
+  .solution-card.is-ai .sc-feats li::before { border-color: var(--warm); }
+  .sc-link {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.86rem;
+    font-weight: 600;
+    color: var(--brand);
+    transition: gap 0.15s ease;
+  }
+  .solution-card.is-ai .sc-link { color: var(--warm); }
+  .sc-link:hover { gap: 0.55rem; }
+
+  .pager-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+    margin-top: 1.5rem;
+  }
+  .pager-arrow {
+    width: 38px; height: 38px;
+    display: grid; place-items: center;
+    flex-shrink: 0;
+    border-radius: 999px;
+    border: 1px solid var(--line-strong);
+    background: var(--surface);
+    color: var(--ink-soft);
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  .pager-arrow:hover { color: var(--brand); border-color: var(--brand); }
+  .pager-dots { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; }
+  .pager-dot {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    min-height: 36px;
+    padding: 0.5rem 0.95rem;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--ink-soft);
+    font-size: 0.84rem;
+    font-weight: 600;
+    transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+  }
+  .pager-dot:hover { color: var(--ink); border-color: var(--line-strong); }
+  .pager-dot .pd-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--line-strong);
+    flex-shrink: 0;
+    transition: background 0.15s ease, transform 0.15s ease;
+  }
+  .pager-dot.is-active { color: var(--brand); border-color: var(--brand); background: var(--brand-tint); }
+  .pager-dot.is-active .pd-dot { background: var(--brand); transform: scale(1.3); }
+  .pager-dot.is-active[data-index="3"] {
+    color: var(--warm);
+    border-color: var(--warm);
+    background: color-mix(in srgb, var(--warm-tint) 55%, var(--surface));
+  }
+  .pager-dot.is-active[data-index="3"] .pd-dot { background: var(--warm); }
+
+  /* ---------- sc-visual: small illustrative widgets, one per module ---------- */
+  .sc-visual { display: flex; justify-content: center; }
+  .viz-card {
+    width: 100%;
+    max-width: 320px;
+    background: var(--ground);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-m);
+    padding: 1.4rem 1.5rem;
+  }
+  .solution-card.is-ai .viz-card {
+    background: color-mix(in srgb, var(--surface) 70%, var(--warm-tint));
+  }
+  .viz-title {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
     margin-bottom: 1.1rem;
   }
-  .bento-card h3 { font-size: 1.16rem; font-weight: 600; margin-bottom: 0.5rem; }
-  .bento-card p { font-size: 0.92rem; color: var(--ink-soft); }
+  .viz-caption {
+    font-size: 0.72rem;
+    color: var(--ink-faint);
+    text-align: center;
+    margin-top: 1.1rem;
+  }
+
+  /* CRM — pipeline bars */
+  .viz-bars { display: grid; gap: 0.75rem; }
+  .viz-bar-row { display: grid; grid-template-columns: 5.4rem 1fr 1.8rem; align-items: center; gap: 0.6rem; }
+  .viz-bar-label { font-size: 0.76rem; color: var(--ink-soft); }
+  .viz-bar-track { height: 8px; border-radius: 999px; background: var(--surface-2); overflow: hidden; }
+  .viz-bar-fill { height: 100%; border-radius: 999px; background: var(--brand); }
+  .viz-bar-value { font-size: 0.78rem; font-weight: 700; color: var(--ink); text-align: right; }
+
+  /* Omni — unified inbox rows */
+  .viz-inbox { display: grid; gap: 0.7rem; }
+  .viz-inbox-row { display: grid; grid-template-columns: auto 1fr; gap: 0.3rem 0.6rem; }
+  .viz-channel-tag {
+    grid-column: 1;
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.66rem;
+    font-weight: 700;
+    padding: 0.15rem 0.5rem;
+    border-radius: 999px;
+    color: var(--brand);
+    background: var(--brand-tint);
+  }
+  .viz-channel-tag.is-zalo { color: var(--brand-deep); background: color-mix(in srgb, var(--brand-deep) 14%, var(--surface)); }
+  .viz-inbox-text {
+    grid-column: 1 / -1;
+    font-size: 0.82rem;
+    color: var(--ink);
+    line-height: 1.35;
+  }
+  .viz-badge {
+    grid-column: 2;
+    justify-self: end;
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    padding: 0.1rem 0.55rem;
+  }
+  .viz-badge.is-flag { color: var(--ink); border-color: var(--ink-faint); }
+  .viz-badge.is-done { color: #fff; background: var(--brand); border-color: var(--brand); }
+
+  /* LMS — progress bar + attendance dots */
+  .viz-progress-head {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+    margin-bottom: 0.5rem;
+  }
+  .viz-progress-value { font-weight: 700; color: var(--ink); }
+  .viz-dots-row { display: flex; gap: 0.4rem; margin-top: 1.2rem; }
+  .viz-dot { width: 16px; height: 16px; border-radius: 50%; flex-shrink: 0; }
+  .viz-dot.is-present { background: var(--brand); }
+  .viz-dot.is-absent { background: transparent; border: 2px solid var(--ink-faint); }
+  .viz-dot.is-future { background: transparent; border: 2px dashed var(--line-strong); }
+
+  /* AI-native — score gauge + risk meter */
+  .viz-gauge { display: flex; justify-content: center; margin-bottom: 1rem; }
+  .viz-risk { display: flex; align-items: center; gap: 0.6rem; }
+  .viz-risk-label { font-size: 0.78rem; color: var(--ink-soft); flex: 1; }
+  .viz-risk-meter { display: flex; gap: 3px; align-items: flex-end; }
+  .viz-risk-seg { width: 7px; background: var(--line-strong); border-radius: 2px; }
+  .viz-risk-seg:nth-child(1) { height: 8px; }
+  .viz-risk-seg:nth-child(2) { height: 13px; }
+  .viz-risk-seg:nth-child(3) { height: 18px; }
+  .viz-risk-seg.is-active { background: var(--warm); }
+  .viz-risk-value { font-size: 0.78rem; font-weight: 700; color: var(--warm); }
+
+  /* ---------- shot-frame: real product screenshots (browser-chrome framed) ---------- */
+  .shot-frame {
+    border-radius: var(--radius-m);
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    box-shadow: var(--shadow-2);
+  }
+  .shot-frame .shot-bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 12px;
+    background: var(--surface-2);
+    border-bottom: 1px solid var(--line);
+  }
+  .shot-frame .shot-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; background: var(--line-strong); }
+  .shot-frame .shot-dot:nth-child(1) { background: #ff5f57; }
+  .shot-frame .shot-dot:nth-child(2) { background: #febc2e; }
+  .shot-frame .shot-dot:nth-child(3) { background: #28c840; }
+  .shot-frame img { display: block; width: 100%; height: auto; }
+  .shot-caption {
+    font-size: 0.72rem;
+    color: var(--ink-faint);
+    text-align: center;
+    margin-top: 0.9rem;
+  }
+  .sc-visual .shot-visual-wrap { display: flex; flex-direction: column; align-items: center; width: 100%; }
+  .sc-visual .shot-frame { width: 100%; max-width: 380px; }
+
+  /* ---------- product screenshot showcase ---------- */
+  .shot-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.8rem;
+    margin-top: 3rem;
+  }
+  .shot-card { display: flex; flex-direction: column; min-width: 0; }
+  .shot-card .shot-cap-title {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--ink);
+    margin: 1rem 0 0.3rem;
+  }
+  .shot-card .shot-cap-desc {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
 
   /* ---------- AI section ---------- */
   .section.is-ai-tint { background: var(--surface-2); }
@@ -702,6 +982,49 @@
     margin-bottom: 0.3rem;
   }
   .principle p:last-child { color: var(--ink-soft); font-size: 0.98rem; }
+
+  /* ---------- transform section header: copy + animated Klein bottle ---------- */
+  .transform-head {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 2.5rem;
+    align-items: center;
+  }
+  .transform-klein { display: grid; place-items: center; }
+  .klein-stage { width: min(220px, 70%); aspect-ratio: 5 / 7; margin: 0 auto; }
+  .klein-stage canvas { display: block; width: 100% !important; height: 100% !important; }
+
+  /* ---------- digital transformation service (media placeholders — swap for real photos) ---------- */
+  .img-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    border: 2px dashed var(--line-strong);
+    border-radius: var(--radius-m);
+    background: var(--surface);
+    padding: 1.4rem;
+    text-align: center;
+    box-sizing: border-box;
+  }
+  .img-placeholder .ph-icon { color: var(--ink-faint); opacity: 0.8; }
+  .img-placeholder .ph-label { font-size: 0.84rem; font-weight: 600; color: var(--ink-soft); max-width: 30ch; line-height: 1.4; }
+  .img-placeholder .ph-spec { font-size: 0.72rem; color: var(--ink-faint); }
+  .transform-hero { margin-top: 2.6rem; margin-bottom: 2.8rem; }
+  .transform-hero-media { aspect-ratio: 21 / 9; }
+  .transform-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.6rem;
+    margin-bottom: 2.8rem;
+  }
+  .transform-card { display: flex; flex-direction: column; min-width: 0; }
+  .transform-card .img-placeholder { aspect-ratio: 4 / 3; margin-bottom: 1.1rem; }
+  .transform-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .transform-card p { font-size: 0.88rem; color: var(--ink-soft); }
 
   /* ---------- pricing ---------- */
   .pricing {
@@ -741,8 +1064,28 @@
   }
   .price-card h3 { font-size: 1.35rem; font-weight: 600; margin-bottom: 0.35rem; }
   .price-tag { font-size: 0.84rem; color: var(--brand); font-weight: 600; margin-bottom: 0.9rem; }
-  .price-desc { font-size: 0.9rem; color: var(--ink-soft); margin-bottom: 1.6rem; flex: 1; }
-  .price-value { font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; margin-bottom: 1.5rem; }
+  .price-desc { font-size: 0.9rem; color: var(--ink-soft); margin-bottom: 1.3rem; }
+  .price-feats { display: grid; gap: 0.6rem; margin-bottom: 1.6rem; }
+  .price-feats li {
+    position: relative;
+    padding-left: 1.65rem;
+    font-size: 0.86rem;
+    color: var(--ink-soft);
+    line-height: 1.45;
+  }
+  .price-feats li::before {
+    content: "";
+    position: absolute;
+    left: 2px;
+    top: 0.32em;
+    width: 13px;
+    height: 7px;
+    border-left: 2px solid var(--brand);
+    border-bottom: 2px solid var(--brand);
+    transform: rotate(-45deg);
+  }
+  .price-card.featured .price-feats li::before { border-color: var(--brand-strong); }
+  .price-value { font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; margin: auto 0 1.5rem; }
 
   /* ---------- CTA banner ---------- */
   .cta-banner {
@@ -835,25 +1178,48 @@
   @media (max-width: 1040px) {
     .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
     .hero-visual { order: -1; max-width: 560px; }
-    .orbit-system { --r1: 82px; --r2: 134px; --r3: 188px; --r4: 240px; }
+    .orbit-system { --r1: 80px; --r2: 130px; --r3: 184px; --r4: 234px; }
+    .planet-label { font-size: 0.66rem; max-width: 84px; }
     .partner-logo { padding: 40px 3.5rem; }
     .partner-logo .plogo { height: 60px; }
     .partner-logo .plogo-wide { height: 50px; }
     .partner-logo .plogo-sq { height: 88px; }
-    .bento { grid-template-columns: 1fr 1fr; }
-    .bento-card.lg { grid-column: span 2; }
     .pricing { grid-template-columns: 1fr; }
     .price-card.featured { order: -1; }
     .footer-grid { grid-template-columns: 1fr 1fr; }
+    .solution-card { padding: 1.8rem; }
+    .solution-card.is-active { grid-template-columns: 1.1fr 0.9fr; gap: 1.6rem; }
+    .viz-card { padding: 1.2rem 1.3rem; }
+    .transform-grid { grid-template-columns: 1fr 1fr; }
+    .transform-hero-media { aspect-ratio: 16 / 9; }
+    .transform-head { grid-template-columns: 1fr; gap: 1.5rem; }
+    .klein-stage { width: min(180px, 55%); }
+    .shot-grid { grid-template-columns: 1fr 1fr; }
   }
   @media (max-width: 720px) {
     .main-nav, .header-actions .btn { display: none; }
     .nav-toggle { display: grid; place-items: center; }
-    .section { padding: 72px 0; }
-    .hero { padding: 56px 0; }
-    .bento, .bento-card.lg { grid-template-columns: 1fr; grid-column: auto; }
+    .section { padding: 64px 0; }
+    .partners + .section { padding-top: 52px; }
+    .hero { padding: 48px 0 56px; }
+    .partners { padding: 44px 0 52px; }
+    .hero-copy .hero-cta { flex-wrap: wrap; max-width: none; }
+    .hero-copy .hero-cta .btn { flex: 1 1 100%; }
+    .solution-card { padding: 1.6rem 1.4rem; min-height: 0; }
+    .solution-card.is-active { grid-template-columns: 1fr; gap: 1.6rem; }
+    .sc-visual { order: 2; }
+    .viz-card { max-width: 360px; margin: 0 auto; }
+    .shot-grid { grid-template-columns: 1fr; }
+    .shot-card .shot-frame { max-width: 420px; margin: 0 auto; }
+    .pager-dot .pd-label { display: none; }
+    .pager-dot { padding: 0.5rem; min-width: 36px; }
+    .transform-grid { grid-template-columns: 1fr; }
+    .transform-hero-media { aspect-ratio: 4 / 3; }
+    .transform-klein { display: none; }
     .footer-grid { grid-template-columns: 1fr; gap: 2.2rem; }
-    .orbit-system { --r1: 54px; --r2: 94px; --r3: 134px; --r4: 174px; width: min(360px, 92vw); }
+    .hero-visual { order: 0; }
+    .orbit-system { display: none; }
+    .module-constellation { display: grid; }
     .partner-logo { padding: 30px 2rem; }
     .partner-logo .plogo { height: 46px; }
     .partner-logo .plogo-wide { height: 38px; }
@@ -934,7 +1300,7 @@
   <section class="hero">
     <div class="container hero-grid">
       <div class="hero-copy">
-        <h1 class="reveal">Hệ sinh thái quản trị <span class="hl">toàn diện</span>, lấy <span class="hl-ai">AI</span> làm <span class="hl-ai">trung tâm</span> <span class="hl">bứt phá doanh nghiệp</span><span class="caret" aria-hidden="true"></span></h1>
+        <h1 class="reveal">Hệ sinh thái quản trị <span class="hl">toàn diện</span>, lấy <span class="hl-ai">AI</span> làm <span class="hl-ai">trung tâm</span> <span class="hl">bứt phá doanh nghiệp</span></h1>
         <p class="hero-sub reveal">AllOne kết nối CRM, nhắn tin đa kênh, đào tạo, lịch hẹn, cuộc gọi và email trong một hệ sinh thái duy nhất — giúp doanh nghiệp chăm sóc khách hàng nhất quán và ra quyết định dựa trên dữ liệu thật.</p>
 
         <div class="hero-cta reveal">
@@ -1040,6 +1406,22 @@
               </div></div>
             </div>
           </div>
+
+          <ul class="module-constellation" aria-label="Các phân hệ trong hệ sinh thái AllOne">
+            <li class="mc-core">AllOne</li>
+            <li class="is-ai">AI</li>
+            <li>CRM</li>
+            <li>Omni</li>
+            <li>HRM</li>
+            <li>LMS</li>
+            <li>Online Meeting</li>
+            <li>SAP</li>
+            <li>Inventory</li>
+            <li>Email Automation</li>
+            <li>EMS</li>
+            <li>Call Center</li>
+            <li>Reply Bot</li>
+          </ul>
       </div>
     </div>
   </section>
@@ -1098,26 +1480,179 @@
   <section class="section">
     <div class="container">
       <div class="section-head reveal">
-        <p class="eyebrow">Giới thiệu sản phẩm</p>
-        <h2>Nền tảng quản lý khách hàng tập trung cho đội ngũ kinh doanh hiện đại</h2>
-        <p class="lead">AllOne CRM thay thế việc quản lý khách hàng rời rạc qua Excel, Zalo và email riêng lẻ bằng một hệ thống duy nhất, nơi mọi bộ phận cùng nhìn thấy một bức tranh khách hàng đầy đủ.</p>
+        <p class="eyebrow">Hệ sinh thái sản phẩm</p>
+        <h2>Bốn phân hệ, một nền tảng khách hàng duy nhất</h2>
+        <p class="lead">CRM, nhắn tin đa kênh, đào tạo và lớp AI xuyên suốt — cùng dùng chung một nguồn dữ liệu, triển khai theo từng giai đoạn để tối ưu chi phí.</p>
       </div>
 
-      <div class="bento">
-        <div class="bento-card lg reveal">
-          <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
-          <h3>Quản lý Lead và Contact tập trung</h3>
-          <p>Mọi khách hàng tiềm năng được ghi nhận, lưu trữ và cập nhật trên một hồ sơ duy nhất — không thất lạc giữa các kênh, không trùng lặp giữa các nhân viên.</p>
+      <div class="solution-pager reveal">
+        <div class="solution-viewport">
+        <div class="solution-card is-active" data-index="0">
+          <div class="sc-body">
+            <div class="sc-head">
+              <span class="sc-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+              <span><span class="sc-name">CRM</span><span class="sc-tag">Quản lý khách hàng</span></span>
+            </div>
+            <p>Lead, Contact 360°, quy trình bán hàng và tự động hoá tiếp thị trên một hồ sơ khách hàng duy nhất.</p>
+            <ul class="sc-feats">
+              <li>Quản lý Lead &amp; Contact tập trung, tự động chống trùng lặp</li>
+              <li>Hồ sơ 360°: dòng thời gian, cuộc gọi ghi âm, email, cuộc họp</li>
+              <li>Pipeline bán hàng &amp; quản lý đội Sale theo KPI</li>
+              <li>Email automation kéo–thả và chiến dịch cold email</li>
+            </ul>
+            <a href="/giai-phap" class="sc-link">Tìm hiểu CRM
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+          <div class="sc-visual" aria-hidden="true">
+            <div class="shot-visual-wrap">
+              <div class="shot-frame">
+                <div class="shot-bar"><span class="shot-dot"></span><span class="shot-dot"></span><span class="shot-dot"></span></div>
+                <img src="/img/products/allone-crm-product-1.jpg" alt="">
+              </div>
+              <p class="shot-caption">Giao diện thực tế, Sale Teams &amp; KPI đội nhóm</p>
+            </div>
+          </div>
         </div>
-        <div class="bento-card reveal">
-          <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 8.97 6.2a2 2 0 0 0 2.06 0L22 7"/></svg></span>
-          <h3>Email Campaign theo template</h3>
-          <p>Xây dựng kịch bản chăm sóc tự động — đúng người, đúng thời điểm.</p>
+
+        <div class="solution-card" data-index="1">
+          <div class="sc-body">
+            <div class="sc-head">
+              <span class="sc-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+              <span><span class="sc-name">Omni</span><span class="sc-tag">Nhắn tin đa kênh</span></span>
+            </div>
+            <p>Hộp thư hợp nhất cho Facebook Messenger và Zalo OA, kèm lớp trả lời tự động theo kịch bản.</p>
+            <ul class="sc-feats">
+              <li>Gộp chat &amp; bình luận nhiều kênh về một hộp thư</li>
+              <li>Trả lời tự động theo kịch bản người thật duyệt, không tự chế nội dung</li>
+              <li>Ba mức xử lý: trả lời sẵn → gợi ý → chuyển người thật</li>
+              <li>Mọi phản hồi tự động đều có nhật ký kiểm toán</li>
+            </ul>
+            <a href="/omni" class="sc-link">Tìm hiểu Omni
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+          <div class="sc-visual" aria-hidden="true">
+            <div class="viz-card">
+              <p class="viz-title">Hộp thư hợp nhất</p>
+              <div class="viz-inbox">
+                <div class="viz-inbox-row">
+                  <span class="viz-channel-tag is-fb">Messenger</span>
+                  <span class="viz-inbox-text">Khách hỏi học phí khoá IELTS</span>
+                  <span class="viz-badge">Tự động trả lời</span>
+                </div>
+                <div class="viz-inbox-row">
+                  <span class="viz-channel-tag is-zalo">Zalo OA</span>
+                  <span class="viz-inbox-text">Yêu cầu đổi lịch tư vấn</span>
+                  <span class="viz-badge is-flag">Chuyển nhân viên</span>
+                </div>
+                <div class="viz-inbox-row">
+                  <span class="viz-channel-tag is-fb">Messenger</span>
+                  <span class="viz-inbox-text">Xác nhận đăng ký thành công</span>
+                  <span class="viz-badge is-done">Đã xử lý</span>
+                </div>
+              </div>
+              <p class="viz-caption">Minh hoạ hộp thư — nội dung mẫu</p>
+            </div>
+          </div>
         </div>
-        <div class="bento-card reveal">
-          <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><path d="M10 6.5h4a3 3 0 0 1 3 3V14M6.5 10v4a3 3 0 0 0 3 3H14"/></svg></span>
-          <h3>Tích hợp đa kênh &amp; automation</h3>
-          <p>Gọi điện, email và workflow automation ngay trong một luồng làm việc.</p>
+
+        <div class="solution-card" data-index="2">
+          <div class="sc-body">
+            <div class="sc-head">
+              <span class="sc-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4.5A2.5 2.5 0 0 1 4.5 2H12v18H4.5A2.5 2.5 0 0 0 2 22.5v-18Z"/><path d="M22 4.5A2.5 2.5 0 0 0 19.5 2H12v18h7.5a2.5 2.5 0 0 1 2.5 2.5v-18Z"/></svg></span>
+              <span><span class="sc-name">LMS</span><span class="sc-tag">Đào tạo &amp; học tập</span></span>
+            </div>
+            <p>Lịch học, điểm danh, bài tập và kho học liệu cho trung tâm giáo dục và đào tạo nội bộ.</p>
+            <ul class="sc-feats">
+              <li>Xếp lịch lớp định kỳ, tự dò trùng giáo viên &amp; phòng học</li>
+              <li>Điểm danh theo buổi với cửa sổ chốt và tính lương giảng dạy</li>
+              <li>Bài tập &amp; bài kiểm tra: 11 dạng câu hỏi, tự động chấm</li>
+              <li>Kho học liệu chia sẻ + tích hợp Google Meet ghi hình</li>
+            </ul>
+            <a href="/lms" class="sc-link">Tìm hiểu LMS
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+          <div class="sc-visual" aria-hidden="true">
+            <div class="viz-card">
+              <p class="viz-title">Tiến độ &amp; điểm danh</p>
+              <div class="viz-progress">
+                <div class="viz-progress-head"><span>Hoàn thành khoá học</span><span class="viz-progress-value">82%</span></div>
+                <div class="viz-bar-track"><div class="viz-bar-fill" style="width:82%"></div></div>
+              </div>
+              <div class="viz-dots-row">
+                <span class="viz-dot is-present"></span>
+                <span class="viz-dot is-present"></span>
+                <span class="viz-dot is-present"></span>
+                <span class="viz-dot is-absent"></span>
+                <span class="viz-dot is-present"></span>
+                <span class="viz-dot is-present"></span>
+                <span class="viz-dot is-future"></span>
+              </div>
+              <p class="viz-caption">Minh hoạ điểm danh 7 buổi gần nhất — số liệu mẫu</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="solution-card is-ai" data-index="3">
+          <div class="sc-body">
+            <div class="sc-head">
+              <span class="sc-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m12 4 2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/><path d="M19 15v4M17 17h4"/></svg></span>
+              <span><span class="sc-name">AI-native</span><span class="sc-tag">Xuyên suốt nền tảng</span></span>
+            </div>
+            <p>AI đọc dữ liệu và hỗ trợ hành động trong từng phân hệ — con người luôn là người xem xét và quyết định cuối cùng.</p>
+            <ul class="sc-feats">
+              <li>Hồ sơ khách hàng AI: tính cách, cách tiếp cận, điểm số &amp; rủi ro rời bỏ</li>
+              <li>Phân tích hội thoại cuộc gọi: tóm tắt, cảm xúc, nhu cầu, cam kết</li>
+              <li>Trợ lý hội thoại truy vấn dữ liệu CRM theo đúng quyền của bạn</li>
+              <li>Tự động hoá AI có kill-switch, danh sách hành động cho phép &amp; nhật ký kiểm toán</li>
+            </ul>
+            <a href="/giai-phap" class="sc-link">Tìm hiểu giải pháp AI
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+          <div class="sc-visual" aria-hidden="true">
+            <div class="viz-card">
+              <p class="viz-title">Hồ sơ khách hàng AI</p>
+              <div class="viz-gauge">
+                <svg width="108" height="108" viewBox="0 0 120 120">
+                  <circle cx="60" cy="60" r="50" fill="none" stroke-width="10" style="stroke:var(--line)"/>
+                  <circle cx="60" cy="60" r="50" fill="none" stroke-width="10" stroke-linecap="round"
+                    stroke-dasharray="314.16" stroke-dashoffset="56.5" transform="rotate(-90 60 60)"
+                    style="stroke:var(--warm)"/>
+                  <text x="60" y="57" text-anchor="middle" font-family="Inter, sans-serif" font-size="26" font-weight="700" style="fill:var(--ink)">82</text>
+                  <text x="60" y="76" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" style="fill:var(--ink-soft)">Điểm AI /100</text>
+                </svg>
+              </div>
+              <div class="viz-risk">
+                <span class="viz-risk-label">Rủi ro rời bỏ</span>
+                <div class="viz-risk-meter">
+                  <span class="viz-risk-seg is-active"></span>
+                  <span class="viz-risk-seg"></span>
+                  <span class="viz-risk-seg"></span>
+                </div>
+                <span class="viz-risk-value">Thấp</span>
+              </div>
+              <p class="viz-caption">Minh hoạ hồ sơ khách hàng AI — số liệu mẫu</p>
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <div class="pager-controls">
+          <button class="pager-arrow" type="button" data-dir="-1" aria-label="Phân hệ trước">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+          </button>
+          <div class="pager-dots" role="tablist" aria-label="Chọn phân hệ">
+            <button class="pager-dot is-active" type="button" data-index="0" role="tab" aria-selected="true"><span class="pd-dot" aria-hidden="true"></span><span class="pd-label">CRM</span></button>
+            <button class="pager-dot" type="button" data-index="1" role="tab" aria-selected="false"><span class="pd-dot" aria-hidden="true"></span><span class="pd-label">Omni</span></button>
+            <button class="pager-dot" type="button" data-index="2" role="tab" aria-selected="false"><span class="pd-dot" aria-hidden="true"></span><span class="pd-label">LMS</span></button>
+            <button class="pager-dot" type="button" data-index="3" role="tab" aria-selected="false"><span class="pd-dot" aria-hidden="true"></span><span class="pd-label">AI-native</span></button>
+          </div>
+          <button class="pager-arrow" type="button" data-dir="1" aria-label="Phân hệ sau">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+          </button>
         </div>
       </div>
 
@@ -1127,25 +1662,107 @@
     </div>
   </section>
 
-  <!-- AI SECTION -->
-  <section class="section is-ai-tint">
+  <section class="section">
     <div class="container">
       <div class="section-head reveal">
-        <p class="eyebrow is-warm">AI-assisted</p>
-        <h2>Biến dữ liệu thành hành động</h2>
-        <p class="lead">AllOne CRM tích hợp AI như một trợ lý phân tích ngay trong luồng làm việc hàng ngày — giúp nhân sự xử lý nhanh hơn và chính xác hơn, thay vì thay thế vai trò ra quyết định của con người.</p>
+        <p class="eyebrow">Giao diện thực tế</p>
+        <h2>Không phải bản mô phỏng, đây là giao diện đang chạy thật</h2>
+        <p class="lead">Ba màn hình lấy trực tiếp từ một khách hàng đang vận hành trên AllOne CRM, không dựng lại cho mục đích trình bày.</p>
+      </div>
+
+      <div class="shot-grid reveal">
+        <div class="shot-card">
+          <div class="shot-frame">
+            <div class="shot-bar"><span class="shot-dot"></span><span class="shot-dot"></span><span class="shot-dot"></span></div>
+            <img src="/img/products/allone-crm-product-1.jpg" alt="Màn hình Sale Teams trong AllOne CRM, hiển thị KPI hoàn thành và doanh thu theo từng đội sale">
+          </div>
+          <p class="shot-cap-title">Sale Teams, theo dõi KPI đội nhóm</p>
+          <p class="shot-cap-desc">KPI hoàn thành, doanh thu và tỷ lệ chốt deal theo từng đội sale, cập nhật theo thời gian thực.</p>
+        </div>
+        <div class="shot-card">
+          <div class="shot-frame">
+            <div class="shot-bar"><span class="shot-dot"></span><span class="shot-dot"></span><span class="shot-dot"></span></div>
+            <img src="/img/products/allone-crm-product-2.jpg" alt="Màn hình quản lý sản phẩm trong AllOne CRM, hiển thị danh sách SKU theo danh mục và tồn kho">
+          </div>
+          <p class="shot-cap-title">Quản lý sản phẩm theo SKU</p>
+          <p class="shot-cap-desc">Theo dõi từng sản phẩm theo danh mục, giá và phân loại, cùng tồn kho theo từng kho ngay trên một màn hình.</p>
+        </div>
+        <div class="shot-card">
+          <div class="shot-frame">
+            <div class="shot-bar"><span class="shot-dot"></span><span class="shot-dot"></span><span class="shot-dot"></span></div>
+            <img src="/img/products/allone-crm-product-3.jpg" alt="Màn hình tồn kho trong AllOne CRM, hiển thị số lượng theo từng kho và cảnh báo dưới định mức">
+          </div>
+          <p class="shot-cap-title">Tồn kho đa kho, cảnh báo tự động</p>
+          <p class="shot-cap-desc">Theo dõi số lượng, đã giữ chỗ và tồn có thể bán theo từng kho, tự động lọc các SKU dưới định mức.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIGITAL TRANSFORMATION SERVICE -->
+  <section class="section is-ai-tint">
+    <div class="container">
+      <div class="transform-head">
+        <div class="section-head reveal">
+          <p class="eyebrow is-warm">Dịch vụ chuyển đổi số</p>
+          <h2>AllOne đồng hành cùng doanh nghiệp trong quá trình chuyển đổi số, tích hợp AI thẳng vào quy trình làm việc hằng ngày của đội ngũ doanh nghiệp</h2>
+          <p class="lead">Một buổi demo AI không đổi được cách một phòng ban làm việc mỗi ngày. Chúng tôi cử người ngồi cùng đội ngũ bạn, từ buổi huấn luyện dùng công cụ đầu tiên đến khi một quy trình AI cụ thể chạy được trong công việc thật, dù doanh nghiệp bạn có dùng AllOne hay không.</p>
+        </div>
+
+        <div class="transform-klein reveal" aria-hidden="true">
+          <div class="klein-stage" id="kleinStage"></div>
+        </div>
+      </div>
+
+      <div class="transform-hero reveal">
+        <div class="img-placeholder transform-hero-media">
+          <svg class="ph-icon" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span class="ph-label">Ảnh bìa: đội ngũ AllOne huấn luyện và tư vấn trực tiếp tại văn phòng khách hàng</span>
+          <span class="ph-spec">Khuyến nghị 1600×686px (21:9)</span>
+        </div>
+      </div>
+
+      <div class="transform-grid">
+        <div class="transform-card reveal">
+          <div class="img-placeholder">
+            <svg class="ph-icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span class="ph-label">Ảnh: buổi huấn luyện dùng AI cho nhân sự, có màn hình và người thật đang thao tác</span>
+            <span class="ph-spec">4:3</span>
+          </div>
+          <h3>Huấn luyện đội ngũ dùng đúng công cụ AI</h3>
+          <p>Chúng tôi ngồi cùng từng phòng ban, chỉ ra chính xác việc nào trong ngày làm việc của họ nên giao cho AI, rồi luyện tay đến khi nhân sự tự làm được, chứ không chỉ xem một lần rồi quên.</p>
+        </div>
+        <div class="transform-card reveal">
+          <div class="img-placeholder">
+            <svg class="ph-icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span class="ph-label">Ảnh: đội kỹ thuật làm việc trực tiếp cùng nhân sự khách hàng tại văn phòng</span>
+            <span class="ph-spec">4:3</span>
+          </div>
+          <h3>Dựng automation AI riêng cho quy trình của bạn</h3>
+          <p>Chúng tôi khảo sát quy trình hiện tại, chọn đúng một hoặc hai điểm đáng làm trước, rồi dựng automation AI cho chính quy trình đó, thay vì lắp một gói giải pháp có sẵn.</p>
+        </div>
+        <div class="transform-card reveal">
+          <div class="img-placeholder">
+            <svg class="ph-icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span class="ph-label">Ảnh: buổi trình bày lộ trình chuyển đổi số với ban lãnh đạo doanh nghiệp</span>
+            <span class="ph-spec">4:3</span>
+          </div>
+          <h3>Lên lộ trình chuyển đổi theo từng giai đoạn thật</h3>
+          <p>Chúng tôi khảo sát cách đội ngũ bạn đang làm việc, xếp thứ tự việc nào nên số hoá trước, việc nào để sau, rồi lên lộ trình theo từng quý, thay vì một kế hoạch làm hết trong một lần.</p>
+        </div>
       </div>
 
       <div class="principle reveal">
         <span class="p-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z"/><path d="m9 12 2 2 4-4"/></svg></span>
         <div>
           <p class="p-label">Nguyên tắc cốt lõi</p>
-          <p>AI hỗ trợ nhân sự ra quyết định — con người luôn là người xem xét và quyết định cuối cùng.</p>
+          <p>Mục tiêu cuối cùng là đội ngũ bạn tự vận hành được công cụ AI sau khi chúng tôi rời đi, không phải phụ thuộc vào chúng tôi mỗi lần cần chỉnh sửa.</p>
         </div>
       </div>
 
       <div class="section-cta reveal">
-        <a href="/giai-phap" class="btn btn-primary">Khám phá giải pháp AI cho doanh nghiệp</a>
+        <a href="/lien-he" class="btn btn-primary">Đặt lịch tư vấn chuyển đổi số</a>
+        <a href="/giai-phap" class="btn btn-ghost">Xem giải pháp AI</a>
       </div>
     </div>
   </section>
@@ -1164,6 +1781,12 @@
           <h3>Standard</h3>
           <p class="price-tag">Dành cho đội nhóm nhỏ</p>
           <p class="price-desc">Phù hợp với đội bán hàng mới bắt đầu số hoá quy trình chăm sóc khách hàng.</p>
+          <ul class="price-feats">
+            <li>Quản lý Lead &amp; Contact tập trung</li>
+            <li>Pipeline bán hàng cơ bản</li>
+            <li>Email chăm sóc theo template</li>
+            <li>Báo cáo hoạt động cơ bản</li>
+          </ul>
           <p class="price-value">Liên hệ tư vấn</p>
           <a href="/bang-gia" class="btn btn-ghost btn-block">Xem chi tiết</a>
         </div>
@@ -1172,6 +1795,12 @@
           <h3>Business</h3>
           <p class="price-tag">Dành cho doanh nghiệp đang tăng trưởng</p>
           <p class="price-desc">Đầy đủ công cụ cho đội ngũ bán hàng và tiếp thị phối hợp trên cùng một hệ thống.</p>
+          <ul class="price-feats">
+            <li>Mọi tính năng của gói Standard</li>
+            <li>Tích hợp đa kênh Omni (Zalo, Facebook, email)</li>
+            <li>Workflow automation &amp; chăm sóc tự động</li>
+            <li>Dashboard đội nhóm &amp; phân quyền theo vai trò</li>
+          </ul>
           <p class="price-value">Liên hệ tư vấn</p>
           <a href="/bang-gia" class="btn btn-primary btn-block">Xem chi tiết</a>
         </div>
@@ -1179,12 +1808,24 @@
           <h3>Enterprise</h3>
           <p class="price-tag">Dành cho tổ chức cần tuỳ chỉnh</p>
           <p class="price-desc">Giải pháp mở rộng cho tổ chức quy mô lớn hoặc có yêu cầu tích hợp riêng.</p>
+          <ul class="price-feats">
+            <li>Mọi tính năng của gói Business</li>
+            <li>Tích hợp riêng (SAP, API, hệ thống nội bộ)</li>
+            <li>Onboarding chuyên trách &amp; cam kết SLA</li>
+            <li>Quy mô người dùng không giới hạn</li>
+          </ul>
           <p class="price-value">Liên hệ tư vấn</p>
           <a href="/bang-gia" class="btn btn-ghost btn-block">Xem chi tiết</a>
         </div>
       </div>
     </div>
   </section>
+
+  <div class="weave" aria-hidden="true">
+    <svg width="46" height="20" viewBox="0 0 46 20" fill="none" stroke="currentColor" stroke-width="1.6">
+      <circle cx="14" cy="10" r="6"/><circle cx="23" cy="10" r="6"/><circle cx="32" cy="10" r="6"/>
+    </svg>
+  </div>
 
   <!-- CTA BANNER -->
   <section class="section cta-banner">
@@ -1270,6 +1911,68 @@
       });
     }
 
+    // desktop dropdown — hover opens it via CSS; this adds click + keyboard
+    var navItems = document.querySelectorAll(".main-nav .nav-item");
+    function closeNavItem(item) {
+      item.classList.remove("is-open");
+      var t = item.querySelector(".nav-trigger");
+      if (t) t.setAttribute("aria-expanded", "false");
+    }
+    navItems.forEach(function (item) {
+      var trigger = item.querySelector(".nav-trigger");
+      if (!trigger) return;
+      trigger.addEventListener("click", function (e) {
+        e.stopPropagation();
+        var open = item.classList.toggle("is-open");
+        trigger.setAttribute("aria-expanded", String(open));
+      });
+      item.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && item.classList.contains("is-open")) {
+          closeNavItem(item);
+          trigger.focus();
+        }
+      });
+    });
+    document.addEventListener("click", function (e) {
+      navItems.forEach(function (item) {
+        if (item.classList.contains("is-open") && !item.contains(e.target)) closeNavItem(item);
+      });
+    });
+
+    // solution pager — one module (CRM / Omni / LMS / AI) shown at a time
+    var pager = document.querySelector(".solution-pager");
+    if (pager) {
+      var scCards = Array.prototype.slice.call(pager.querySelectorAll(".solution-card"));
+      var scDots = Array.prototype.slice.call(pager.querySelectorAll(".pager-dot"));
+      var scActive = 0;
+      var showSolution = function (i) {
+        scActive = (i + scCards.length) % scCards.length;
+        scCards.forEach(function (card, idx) {
+          var isActive = idx === scActive;
+          card.classList.toggle("is-active", isActive);
+          card.setAttribute("aria-hidden", String(!isActive));
+        });
+        scDots.forEach(function (dot, idx) {
+          var isActive = idx === scActive;
+          dot.classList.toggle("is-active", isActive);
+          dot.setAttribute("aria-selected", String(isActive));
+        });
+      };
+      scDots.forEach(function (dot, idx) {
+        dot.addEventListener("click", function () { showSolution(idx); });
+      });
+      pager.querySelectorAll(".pager-arrow").forEach(function (btn) {
+        var dir = Number(btn.getAttribute("data-dir"));
+        btn.addEventListener("click", function () { showSolution(scActive + dir); });
+      });
+      pager.addEventListener("keydown", function (e) {
+        if (!e.target.closest(".pager-dot, .pager-arrow")) return;
+        if (e.key === "ArrowRight") showSolution(scActive + 1);
+        if (e.key === "ArrowLeft") showSolution(scActive - 1);
+      });
+      showSolution(0);
+    }
+
     var y = document.getElementById("year");
     if (y) y.textContent = new Date().getFullYear();
 
@@ -1292,5 +1995,197 @@
     }
   })();
 </script>
-</body>
-</html>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+  // Klein bottle — real parametric 3D model (the classic "figure-8" immersion), not a
+  // flat SVG approximation. Wireframe meridians/parallels + a few highlighted lines
+  // carry traveling "spark" dots (data points) with a short fading trail.
+  (function () {
+    if (typeof THREE === "undefined") return;
+    var stage = document.getElementById("kleinStage");
+    if (!stage || stage.clientWidth === 0 || stage.clientHeight === 0) return;
+
+    function kleinPoint(u, v) {
+      var cu = Math.cos(u), su = Math.sin(u);
+      var x, y;
+      if (u < Math.PI) {
+        x = 6 * cu * (1 + su) + 4 * (1 - cu / 2) * cu * Math.cos(v);
+        y = 16 * su + 4 * (1 - cu / 2) * su * Math.cos(v);
+      } else {
+        x = 6 * cu * (1 + su) + 4 * (1 - cu / 2) * Math.cos(v + Math.PI);
+        y = 16 * su;
+      }
+      var z = 4 * (1 - cu / 2) * Math.sin(v);
+      return [x, y, z];
+    }
+
+    // sample the surface once to find a center/scale that frames it consistently
+    var minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity, minZ = Infinity, maxZ = -Infinity;
+    for (var si = 0; si <= 40; si++) {
+      for (var sj = 0; sj <= 40; sj++) {
+        var sp = kleinPoint((si / 40) * Math.PI * 2, (sj / 40) * Math.PI * 2);
+        minX = Math.min(minX, sp[0]); maxX = Math.max(maxX, sp[0]);
+        minY = Math.min(minY, sp[1]); maxY = Math.max(maxY, sp[1]);
+        minZ = Math.min(minZ, sp[2]); maxZ = Math.max(maxZ, sp[2]);
+      }
+    }
+    var cx = (minX + maxX) / 2, cy = (minY + maxY) / 2, cz = (minZ + maxZ) / 2;
+    var extent = Math.max(maxX - minX, maxY - minY, maxZ - minZ);
+    var scale = 14 / extent;
+
+    function toVec(u, v) {
+      var p = kleinPoint(u, v);
+      return new THREE.Vector3((p[0] - cx) * scale, (p[1] - cy) * scale, (p[2] - cz) * scale);
+    }
+
+    function cssColor(name, fallback) {
+      var v = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+      return v || fallback;
+    }
+
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(38, stage.clientWidth / stage.clientHeight, 0.1, 100);
+    camera.position.set(0, -1, 26);
+    camera.lookAt(0, 0, 0);
+
+    var renderer;
+    try {
+      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    } catch (e) { return; }
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    renderer.setSize(stage.clientWidth, stage.clientHeight);
+    renderer.setClearColor(0x000000, 0);
+    renderer.domElement.addEventListener("webglcontextlost", function (e) { e.preventDefault(); });
+    stage.appendChild(renderer.domElement);
+
+    var group = new THREE.Group();
+    scene.add(group);
+
+    // a faint solid surface under the wireframe — pure line art can't show the handle
+    // actually looping *through* the body (the hole reads as a flat tangle without it)
+    var uDiv = 56, vDiv = 28;
+    var surfPositions = [];
+    var surfIndices = [];
+    for (var su = 0; su <= uDiv; su++) {
+      var su_u = (su / uDiv) * Math.PI * 2;
+      for (var sv = 0; sv <= vDiv; sv++) {
+        var sv_v = (sv / vDiv) * Math.PI * 2;
+        var svec = toVec(su_u, sv_v);
+        surfPositions.push(svec.x, svec.y, svec.z);
+      }
+    }
+    for (var sa = 0; sa < uDiv; sa++) {
+      for (var sb = 0; sb < vDiv; sb++) {
+        var s0 = sa * (vDiv + 1) + sb;
+        var s1 = s0 + 1;
+        var s2 = s0 + (vDiv + 1);
+        var s3 = s2 + 1;
+        surfIndices.push(s0, s2, s1, s1, s2, s3);
+      }
+    }
+    var surfGeo = new THREE.BufferGeometry();
+    surfGeo.setAttribute("position", new THREE.Float32BufferAttribute(surfPositions, 3));
+    surfGeo.setIndex(surfIndices);
+    var surfMat = new THREE.MeshBasicMaterial({ transparent: true, opacity: 0.16, side: THREE.DoubleSide, depthWrite: false });
+    group.add(new THREE.Mesh(surfGeo, surfMat));
+
+    var uLines = 14, vLines = 7, uSeg = 80, vSeg = 60;
+    var meshLines = [];
+    for (var iu = 0; iu < uLines; iu++) {
+      var u = (iu / uLines) * Math.PI * 2;
+      var pts = [];
+      for (var j = 0; j <= vSeg; j++) pts.push(toVec(u, (j / vSeg) * Math.PI * 2));
+      var mat = new THREE.LineBasicMaterial({ transparent: true, opacity: 0.3 });
+      group.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), mat));
+      meshLines.push(mat);
+    }
+    for (var iv = 0; iv < vLines; iv++) {
+      var v = (iv / vLines) * Math.PI * 2;
+      var pts2 = [];
+      for (var k = 0; k <= uSeg; k++) pts2.push(toVec((k / uSeg) * Math.PI * 2, v));
+      var mat2 = new THREE.LineBasicMaterial({ transparent: true, opacity: 0.2 });
+      group.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts2), mat2));
+      meshLines.push(mat2);
+    }
+
+    // sparks run the length of the tube (fixed v, sweeping u top-to-bottom-and-back)
+    // rather than around a single cross-section ring — reads as vertical motion along
+    // the bottle's lines instead of a small horizontal circling loop.
+    var sparkDefs = [
+      { v: 0.0, cssVar: "--brand", fallback: "#0f6fc4" },
+      { v: Math.PI * 0.66, cssVar: "--warm", fallback: "#b96a26" },
+      { v: Math.PI * 1.33, cssVar: "--brand-strong", fallback: "#0a57a3" }
+    ];
+    var sparks = [];
+    sparkDefs.forEach(function (def, idx) {
+      var pts = [];
+      for (var j2 = 0; j2 <= uSeg; j2++) pts.push(toVec((j2 / uSeg) * Math.PI * 2, def.v));
+      var lineMat = new THREE.LineBasicMaterial({ transparent: true, opacity: 0.5 });
+      group.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), lineMat));
+
+      var dots = [];
+      for (var d = 0; d < 3; d++) {
+        var dotMat = new THREE.MeshBasicMaterial({ transparent: true, opacity: 1 - d * 0.32 });
+        var mesh = new THREE.Mesh(new THREE.SphereGeometry(0.32 - d * 0.07, 10, 10), dotMat);
+        group.add(mesh);
+        dots.push({ mesh: mesh, mat: dotMat });
+      }
+      sparks.push({ v: def.v, cssVar: def.cssVar, fallback: def.fallback, lineMat: lineMat, dots: dots, speed: 0.16 + idx * 0.045 });
+    });
+
+    function applyTheme() {
+      var lineColor = new THREE.Color(cssColor("--line-strong", "#ccd8e3"));
+      meshLines.forEach(function (m) { m.color.copy(lineColor); });
+      surfMat.color.copy(new THREE.Color(cssColor("--brand-tint", "#e7f1fa")));
+      sparks.forEach(function (s) {
+        var c = new THREE.Color(cssColor(s.cssVar, s.fallback));
+        s.lineMat.color.copy(c);
+        s.dots.forEach(function (d) { d.mat.color.copy(c); });
+      });
+    }
+    applyTheme();
+
+    var themeToggleBtn = document.getElementById("themeToggle");
+    if (themeToggleBtn) themeToggleBtn.addEventListener("click", function () { setTimeout(applyTheme, 0); });
+    if (window.matchMedia) {
+      try { matchMedia("(prefers-color-scheme: dark)").addEventListener("change", applyTheme); } catch (e) {}
+    }
+
+    var reduceMotion = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var clock = new THREE.Clock();
+    function renderFrame() {
+      var t = clock.getElapsedTime();
+      if (!reduceMotion) group.rotation.y = t * 0.16;
+      sparks.forEach(function (s) {
+        s.dots.forEach(function (d, idx) {
+          var p = reduceMotion ? (idx * 0.1) : ((t * s.speed - idx * 0.09) % 1 + 1) % 1;
+          d.mesh.position.copy(toVec(p * Math.PI * 2, s.v));
+        });
+      });
+      renderer.render(scene, camera);
+    }
+    if (reduceMotion) {
+      group.rotation.y = 0.5;
+      renderFrame();
+    } else {
+      (function animate() {
+        requestAnimationFrame(animate);
+        renderFrame();
+      })();
+    }
+
+    if (window.ResizeObserver) {
+      new ResizeObserver(function () {
+        if (stage.clientWidth === 0 || stage.clientHeight === 0) return;
+        camera.aspect = stage.clientWidth / stage.clientHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(stage.clientWidth, stage.clientHeight);
+        if (reduceMotion) renderFrame();
+      }).observe(stage);
+    }
+  })();
+</script>
+
+
+</body></html>
