@@ -158,6 +158,25 @@
   }
   .eyebrow.is-warm { color: var(--warm); }
 
+  /* blue (software) -> orange (AI) blend: the two layers of our platform, one phrase */
+  .cds-glow {
+    background: linear-gradient(90deg, var(--brand), var(--warm), var(--brand-strong), var(--warm));
+    background-size: 300% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    animation: cds-shift 5s ease-in-out infinite, cds-glow-pulse 2.6s ease-in-out infinite;
+  }
+  @keyframes cds-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+  @keyframes cds-glow-pulse {
+    0%, 100% { filter: drop-shadow(0 0 3px color-mix(in srgb, var(--brand) 50%, var(--warm))); }
+    50% { filter: drop-shadow(0 0 9px color-mix(in srgb, var(--brand) 50%, var(--warm))); }
+  }
+
   /* ---------- buttons ---------- */
   .btn {
     display: inline-flex;
@@ -388,8 +407,16 @@
     font-size: clamp(2.4rem, 5vw, 3.6rem);
     margin: 0 0 1.1rem;
   }
-  .hero h1 .hl { color: var(--brand); }
-  .hero h1 .hl-ai { color: var(--warm); }
+  .hl { color: var(--brand); animation: hl-glow-blue 2.4s ease-in-out infinite; }
+  .hl-ai { color: var(--warm); animation: hl-glow-warm 2.4s ease-in-out infinite; }
+  @keyframes hl-glow-blue {
+    0%, 100% { text-shadow: 0 0 4px color-mix(in srgb, var(--brand) 55%, transparent); }
+    50% { text-shadow: 0 0 15px color-mix(in srgb, var(--brand) 80%, transparent); }
+  }
+  @keyframes hl-glow-warm {
+    0%, 100% { text-shadow: 0 0 4px color-mix(in srgb, var(--warm) 55%, transparent); }
+    50% { text-shadow: 0 0 15px color-mix(in srgb, var(--warm) 80%, transparent); }
+  }
   .hero-sub {
     font-size: 1.1rem;
     color: var(--ink-soft);
@@ -990,39 +1017,74 @@
     gap: 2.5rem;
     align-items: center;
   }
-  .transform-klein { display: grid; place-items: center; }
-  .klein-stage { width: min(220px, 70%); aspect-ratio: 5 / 7; margin: 0 auto; }
+  .transform-klein { display: grid; place-items: center; gap: 1rem; }
+  .klein-stage { width: min(360px, 92%); aspect-ratio: 5 / 7; margin: 0 auto; }
   .klein-stage canvas { display: block; width: 100% !important; height: 100% !important; }
 
-  /* ---------- digital transformation service (media placeholders — swap for real photos) ---------- */
-  .img-placeholder {
-    display: flex;
-    flex-direction: column;
+  .klein-hint-wrap { position: relative; display: inline-flex; }
+  .klein-hint {
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    width: 100%;
-    border: 2px dashed var(--line-strong);
-    border-radius: var(--radius-m);
+    gap: 0.4rem;
+    padding: 0.4rem 0.9rem;
+    border-radius: 999px;
+    border: 1px solid var(--line-strong);
     background: var(--surface);
-    padding: 1.4rem;
-    text-align: center;
-    box-sizing: border-box;
+    color: var(--ink-soft);
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: help;
+    transition: color 0.15s ease, border-color 0.15s ease;
   }
-  .img-placeholder .ph-icon { color: var(--ink-faint); opacity: 0.8; }
-  .img-placeholder .ph-label { font-size: 0.84rem; font-weight: 600; color: var(--ink-soft); max-width: 30ch; line-height: 1.4; }
-  .img-placeholder .ph-spec { font-size: 0.72rem; color: var(--ink-faint); }
-  .transform-hero { margin-top: 2.6rem; margin-bottom: 2.8rem; }
-  .transform-hero-media { aspect-ratio: 21 / 9; }
+  .klein-hint-icon { color: var(--warm); flex-shrink: 0; }
+  .klein-hint:hover, .klein-hint:focus-visible { color: var(--warm); border-color: var(--warm); }
+  .klein-tooltip {
+    position: absolute;
+    bottom: calc(100% + 12px);
+    left: 50%;
+    transform: translateX(-50%) translateY(6px);
+    width: min(320px, 82vw);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-m);
+    box-shadow: var(--shadow-3);
+    padding: 1rem 1.15rem;
+    text-align: left;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.16s ease, transform 0.16s ease, visibility 0.16s;
+    z-index: 30;
+  }
+  .klein-tooltip p { font-size: 0.84rem; line-height: 1.6; color: var(--ink-soft); margin: 0; }
+  .klein-tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 7px solid transparent;
+    border-top-color: var(--surface);
+  }
+  .klein-hint:hover + .klein-tooltip,
+  .klein-hint:focus-visible + .klein-tooltip,
+  .klein-tooltip:hover {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+    pointer-events: auto;
+  }
+
+  /* ---------- digital transformation service ---------- */
   .transform-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1.5rem;
-    margin-top: 1.6rem;
+    margin-top: 3rem;
     margin-bottom: 2.8rem;
   }
   .transform-card { display: flex; flex-direction: column; min-width: 0; }
-  .transform-card .img-placeholder { aspect-ratio: 4 / 3; margin-bottom: 1.1rem; }
   .transform-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
   .transform-card p { font-size: 0.88rem; color: var(--ink-soft); }
 
@@ -1191,9 +1253,8 @@
     .solution-card.is-active { grid-template-columns: 1.1fr 0.9fr; gap: 1.6rem; }
     .viz-card { padding: 1.2rem 1.3rem; }
     .transform-grid { grid-template-columns: 1fr 1fr; }
-    .transform-hero-media { aspect-ratio: 16 / 9; }
     .transform-head { grid-template-columns: 1fr; gap: 1.5rem; }
-    .klein-stage { width: min(180px, 55%); }
+    .klein-stage { width: min(280px, 68%); }
     .shot-grid { grid-template-columns: 1fr 1fr; }
   }
   @media (max-width: 720px) {
@@ -1214,7 +1275,6 @@
     .pager-dot .pd-label { display: none; }
     .pager-dot { padding: 0.5rem; min-width: 36px; }
     .transform-grid { grid-template-columns: 1fr; }
-    .transform-hero-media { aspect-ratio: 4 / 3; }
     .transform-klein { display: none; }
     .footer-grid { grid-template-columns: 1fr; gap: 2.2rem; }
     .hero-visual { order: 0; }
@@ -1481,7 +1541,7 @@
     <div class="container">
       <div class="section-head reveal">
         <p class="eyebrow">Hệ sinh thái sản phẩm</p>
-        <h2>Bốn phân hệ, một nền tảng khách hàng duy nhất</h2>
+        <h2>Đa dịch vụ trong <span class="hl">một nền tảng</span>, từ quản lý khách hàng, nhân sự, sản phẩm đến tồn kho đa kho</h2>
         <p class="lead">CRM, nhắn tin đa kênh, đào tạo và lớp AI xuyên suốt — cùng dùng chung một nguồn dữ liệu, triển khai theo từng giai đoạn để tối ưu chi phí.</p>
       </div>
 
@@ -1510,7 +1570,7 @@
                 <div class="shot-bar"><span class="shot-dot"></span><span class="shot-dot"></span><span class="shot-dot"></span></div>
                 <img src="/img/products/allone-crm-product-1.jpg" alt="">
               </div>
-              <p class="shot-caption">Giao diện thực tế, Sale Teams &amp; KPI đội nhóm</p>
+              <p class="shot-caption">Đa dịch vụ, một nền tảng — Sale Teams &amp; KPI đội nhóm</p>
             </div>
           </div>
         </div>
@@ -1665,9 +1725,9 @@
   <section class="section">
     <div class="container">
       <div class="section-head reveal">
-        <p class="eyebrow">Giao diện thực tế</p>
-        <h2>Không phải bản mô phỏng, đây là giao diện đang chạy thật</h2>
-        <p class="lead">Ba màn hình lấy trực tiếp từ một khách hàng đang vận hành trên AllOne CRM, không dựng lại cho mục đích trình bày.</p>
+        <p class="eyebrow">Năng lực vận hành</p>
+        <h2>Từ đội sale đến kho hàng, vận hành trên <span class="hl">cùng một hệ thống</span></h2>
+        <p class="lead">Ba màn hình dưới đây lấy trực tiếp từ một khách hàng đang vận hành trên AllOne CRM: theo dõi KPI đội sale, quản lý sản phẩm theo SKU và tồn kho đa kho — tất cả trong cùng một nền tảng.</p>
       </div>
 
       <div class="shot-grid reveal">
@@ -1704,49 +1764,35 @@
     <div class="container">
       <div class="transform-head">
         <div class="section-head reveal">
-          <p class="eyebrow is-warm">Dịch vụ chuyển đổi số</p>
-          <h2>AllOne đồng hành cùng doanh nghiệp trong quá trình chuyển đổi số, tích hợp AI thẳng vào quy trình làm việc hằng ngày của đội ngũ doanh nghiệp</h2>
+          <p class="eyebrow is-warm">Dịch vụ <span class="cds-glow">chuyển đổi số</span></p>
+          <h2>AllOne đồng hành cùng doanh nghiệp trong quá trình <span class="cds-glow">chuyển đổi số</span>, tích hợp AI thẳng vào quy trình làm việc hằng ngày của đội ngũ doanh nghiệp</h2>
           <p class="lead">Một buổi demo AI không đổi được cách một phòng ban làm việc mỗi ngày. Chúng tôi cử người ngồi cùng đội ngũ bạn, từ buổi huấn luyện dùng công cụ đầu tiên đến khi một quy trình AI cụ thể chạy được trong công việc thật, dù doanh nghiệp bạn có dùng AllOne hay không.</p>
         </div>
 
-        <div class="transform-klein reveal" aria-hidden="true">
-          <div class="klein-stage" id="kleinStage"></div>
-        </div>
-      </div>
-
-      <div class="transform-hero reveal">
-        <div class="img-placeholder transform-hero-media">
-          <svg class="ph-icon" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          <span class="ph-label">Ảnh bìa: đội ngũ AllOne huấn luyện và tư vấn trực tiếp tại văn phòng khách hàng</span>
-          <span class="ph-spec">Khuyến nghị 1600×686px (21:9)</span>
+        <div class="transform-klein reveal">
+          <div class="klein-stage" id="kleinStage" aria-hidden="true"></div>
+          <div class="klein-hint-wrap">
+            <button type="button" class="klein-hint" aria-describedby="kleinTooltip">
+              <svg class="klein-hint-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+              Hover me
+            </button>
+            <div class="klein-tooltip" id="kleinTooltip" role="tooltip">
+              <p>Bình Klein không có ranh giới trong–ngoài: hai mặt liền thành một, không có điểm bắt đầu hay kết thúc. Lớp ngoài tượng trưng cho hoạt động kinh doanh của bạn, lớp trong là công cụ, phần mềm và AI bạn sử dụng — chúng luôn kết nối liền mạch, không tách rời. Để tạo ra giá trị thật, doanh nghiệp cần làm chủ được công cụ mình đã chọn, và AllOne cam kết đồng hành cùng bạn đến khi đạt được điều đó.</p>
+            </div>
+          </div>
         </div>
       </div>
 
       <div class="transform-grid">
         <div class="transform-card reveal">
-          <div class="img-placeholder">
-            <svg class="ph-icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-            <span class="ph-label">Ảnh: buổi huấn luyện dùng AI cho nhân sự, có màn hình và người thật đang thao tác</span>
-            <span class="ph-spec">4:3</span>
-          </div>
           <h3>Huấn luyện đội ngũ dùng đúng công cụ AI</h3>
           <p>Chúng tôi ngồi cùng từng phòng ban, chỉ ra chính xác việc nào trong ngày làm việc của họ nên giao cho AI, rồi luyện tay đến khi nhân sự tự làm được, chứ không chỉ xem một lần rồi quên.</p>
         </div>
         <div class="transform-card reveal">
-          <div class="img-placeholder">
-            <svg class="ph-icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-            <span class="ph-label">Ảnh: đội kỹ thuật làm việc trực tiếp cùng nhân sự khách hàng tại văn phòng</span>
-            <span class="ph-spec">4:3</span>
-          </div>
           <h3>Dựng automation AI riêng cho quy trình của bạn</h3>
           <p>Chúng tôi khảo sát quy trình hiện tại, chọn đúng một hoặc hai điểm đáng làm trước, rồi dựng automation AI cho chính quy trình đó, thay vì lắp một gói giải pháp có sẵn.</p>
         </div>
         <div class="transform-card reveal">
-          <div class="img-placeholder">
-            <svg class="ph-icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-            <span class="ph-label">Ảnh: buổi trình bày lộ trình chuyển đổi số với ban lãnh đạo doanh nghiệp</span>
-            <span class="ph-spec">4:3</span>
-          </div>
           <h3>Lên lộ trình chuyển đổi theo từng giai đoạn thật</h3>
           <p>Chúng tôi khảo sát cách đội ngũ bạn đang làm việc, xếp thứ tự việc nào nên số hoá trước, việc nào để sau, rồi lên lộ trình theo từng quý, thay vì một kế hoạch làm hết trong một lần.</p>
         </div>
@@ -1761,7 +1807,7 @@
       </div>
 
       <div class="section-cta reveal">
-        <a href="/lien-he" class="btn btn-primary">Đặt lịch tư vấn chuyển đổi số</a>
+        <a href="/lien-he" class="btn btn-ghost">Đặt lịch tư vấn <span class="cds-glow">chuyển đổi số</span></a>
         <a href="/giai-phap" class="btn btn-ghost">Xem giải pháp AI</a>
       </div>
     </div>
@@ -1878,7 +1924,7 @@
 <script src="/js/home.js?v=1"></script>
 
 <script src="/js/vendor/three.min.js?v=1"></script>
-<script src="/js/klein-bottle.js?v=1"></script>
+<script src="/js/klein-bottle.js?v=4"></script>
 
 
 </body></html>
