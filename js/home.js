@@ -10,8 +10,8 @@
     var toggle = document.getElementById("themeToggle");
     if (toggle) {
       toggle.addEventListener("click", function () {
-        var systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-        var current = root.getAttribute("data-theme") || (systemDark ? "dark" : "light");
+        // dark is the page default, so no attribute set means "dark"
+        var current = root.getAttribute("data-theme") || "dark";
         var next = current === "dark" ? "light" : "dark";
         root.setAttribute("data-theme", next);
         try { localStorage.setItem(KEY, next); } catch (e) {}

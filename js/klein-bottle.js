@@ -153,10 +153,8 @@
     });
 
     function isDarkMode() {
-      var explicit = document.documentElement.getAttribute("data-theme");
-      if (explicit === "dark") return true;
-      if (explicit === "light") return false;
-      return !!(window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches);
+      // dark is the page default — only an explicit "light" choice turns it off
+      return document.documentElement.getAttribute("data-theme") !== "light";
     }
 
     function applyTheme() {
@@ -175,9 +173,6 @@
 
     var themeToggleBtn = document.getElementById("themeToggle");
     if (themeToggleBtn) themeToggleBtn.addEventListener("click", function () { setTimeout(applyTheme, 0); });
-    if (window.matchMedia) {
-      try { matchMedia("(prefers-color-scheme: dark)").addEventListener("change", applyTheme); } catch (e) {}
-    }
 
     var reduceMotion = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
     var clock = new THREE.Clock();

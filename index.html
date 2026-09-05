@@ -32,60 +32,8 @@
     /* wordmark only — the "AllOne" logotype, matched to the brand logo */
     --font-wordmark: "Nunito", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
-    /* light palette — neutrals carry a cool (blue) bias, pulled toward the mark */
-    --ground: #f5f8fb;
-    --surface: #ffffff;
-    --surface-2: #eaf0f6;
-    --ink: #0c1a2b;
-    --ink-soft: #52647b;
-    --ink-faint: #8697a9;
-    --line: #e0e7ef;
-    --line-strong: #ccd8e3;
-    --brand: #0f6fc4;         /* cerulean, from the bright faces of the mark */
-    --brand-strong: #0a57a3;
-    --brand-deep: #0a2e6b;    /* navy, from the shaded faces of the mark */
-    --brand-tint: #e7f1fa;
-    --warm: #b96a26;          /* used only for the "AI assist" thread */
-    --warm-tint: #f6ece0;
-    --glow: rgba(15, 111, 196, 0.16);
-    --shadow-1: 0 1px 2px rgba(12, 26, 43, 0.05);
-    --shadow-2: 0 10px 30px -12px rgba(12, 26, 43, 0.18);
-    --shadow-3: 0 30px 70px -28px rgba(10, 46, 107, 0.30);
-
-    --radius-s: 10px;
-    --radius-m: 14px;
-    --radius-l: 22px;
-    --container: 1360px;
-    --header-h: 74px;
-  }
-
-  /* system dark (no explicit choice) — only an OS dark preference flips it,
-     and an explicit light choice still wins via the :not() guard */
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --ground: #0a1017;
-      --surface: #111b26;
-      --surface-2: #17242f;
-      --ink: #eef4fa;
-      --ink-soft: #9fb2c4;
-      --ink-faint: #6c8093;
-      --line: #213141;
-      --line-strong: #2e4254;
-      --brand: #3fa0e6;
-      --brand-strong: #63b3ec;
-      --brand-deep: #0a2e6b;
-      --brand-tint: #122636;
-      --warm: #e0975c;
-      --warm-tint: #281d13;
-      --glow: rgba(63, 160, 230, 0.20);
-      --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.4);
-      --shadow-2: 0 12px 34px -14px rgba(0, 0, 0, 0.6);
-      --shadow-3: 0 34px 80px -30px rgba(0, 0, 0, 0.7);
-    }
-  }
-
-  /* explicit dark choice — wins over a light OS */
-  :root[data-theme="dark"] {
+    /* dark is the page default (independent of OS/browser preference) —
+       light is an explicit opt-in via [data-theme="light"] below */
     --ground: #0a1017;
     --surface: #111b26;
     --surface-2: #17242f;
@@ -104,6 +52,34 @@
     --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.4);
     --shadow-2: 0 12px 34px -14px rgba(0, 0, 0, 0.6);
     --shadow-3: 0 34px 80px -30px rgba(0, 0, 0, 0.7);
+
+    --radius-s: 10px;
+    --radius-m: 14px;
+    --radius-l: 22px;
+    --container: 1360px;
+    --header-h: 74px;
+  }
+
+  /* explicit light choice — the only way to get the light palette now */
+  :root[data-theme="light"] {
+    --ground: #f5f8fb;
+    --surface: #ffffff;
+    --surface-2: #eaf0f6;
+    --ink: #0c1a2b;
+    --ink-soft: #52647b;
+    --ink-faint: #8697a9;
+    --line: #e0e7ef;
+    --line-strong: #ccd8e3;
+    --brand: #0f6fc4;         /* cerulean, from the bright faces of the mark */
+    --brand-strong: #0a57a3;
+    --brand-deep: #0a2e6b;    /* navy, from the shaded faces of the mark */
+    --brand-tint: #e7f1fa;
+    --warm: #b96a26;          /* used only for the "AI assist" thread */
+    --warm-tint: #f6ece0;
+    --glow: rgba(15, 111, 196, 0.16);
+    --shadow-1: 0 1px 2px rgba(12, 26, 43, 0.05);
+    --shadow-2: 0 10px 30px -12px rgba(12, 26, 43, 0.18);
+    --shadow-3: 0 30px 70px -28px rgba(10, 46, 107, 0.30);
   }
 
   * { box-sizing: border-box; }
@@ -321,13 +297,10 @@
     transition: color 0.15s ease, border-color 0.15s ease;
   }
   .theme-toggle:hover { color: var(--brand); border-color: var(--brand); }
-  .theme-toggle .icon-sun { display: none; }
-  :root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
-  :root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) .theme-toggle .icon-sun { display: block; }
-    :root:not([data-theme="light"]) .theme-toggle .icon-moon { display: none; }
-  }
+  /* dark is the default, so the sun (switch-to-light) icon shows by default */
+  .theme-toggle .icon-moon { display: none; }
+  :root[data-theme="light"] .theme-toggle .icon-sun { display: none; }
+  :root[data-theme="light"] .theme-toggle .icon-moon { display: block; }
 
   .nav-toggle {
     display: none;
@@ -692,14 +665,10 @@
   .partner-logo:hover .plogo { opacity: 1; transform: translateY(-2px); }
   .partner-logo .plogo-wide { height: 62px; }
   .partner-logo .plogo-sq { height: 108px; border-radius: 18px; }
-  /* light/dark logo variants — mirrors the .theme-toggle icon swap */
-  .partner-logo .logo-dark { display: none; }
-  :root[data-theme="dark"] .partner-logo .logo-light { display: none; }
-  :root[data-theme="dark"] .partner-logo .logo-dark { display: block; }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) .partner-logo .logo-light { display: none; }
-    :root:not([data-theme="light"]) .partner-logo .logo-dark { display: block; }
-  }
+  /* light/dark logo variants — dark is the default, mirrors the .theme-toggle icon swap */
+  .partner-logo .logo-light { display: none; }
+  :root[data-theme="light"] .partner-logo .logo-light { display: block; }
+  :root[data-theme="light"] .partner-logo .logo-dark { display: none; }
   @keyframes marquee-ltr {
     from { transform: translateX(-25%); }
     to   { transform: translateX(0); }
@@ -1921,10 +1890,10 @@
   </div>
 </footer>
 
-<script src="/js/home.js?v=1"></script>
+<script src="/js/home.js?v=2"></script>
 
 <script src="/js/vendor/three.min.js?v=1"></script>
-<script src="/js/klein-bottle.js?v=4"></script>
+<script src="/js/klein-bottle.js?v=5"></script>
 
 
 </body></html>
