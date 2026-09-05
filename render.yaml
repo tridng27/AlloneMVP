@@ -13,12 +13,16 @@ services:
         destination: /
         status: 301
       - type: redirect
-        source: /san-pham.html
-        destination: /san-pham
+        source: /crm.html
+        destination: /crm
         status: 301
       - type: redirect
-        source: /giai-phap.html
-        destination: /giai-phap
+        source: /case-study-liam-education.html
+        destination: /case-study-liam-education
+        status: 301
+      - type: redirect
+        source: /case-study-aztravel.html
+        destination: /case-study-aztravel
         status: 301
       - type: redirect
         source: /bang-gia.html
@@ -51,11 +55,14 @@ services:
 
       # --- Serve the clean path from its backing .html file ---
       - type: rewrite
-        source: /san-pham
-        destination: /san-pham.html
+        source: /crm
+        destination: /crm.html
       - type: rewrite
-        source: /giai-phap
-        destination: /giai-phap.html
+        source: /case-study-liam-education
+        destination: /case-study-liam-education.html
+      - type: rewrite
+        source: /case-study-aztravel
+        destination: /case-study-aztravel.html
       - type: rewrite
         source: /bang-gia
         destination: /bang-gia.html

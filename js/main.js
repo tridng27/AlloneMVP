@@ -1,4 +1,4 @@
-// Active nav link for the current page (clean URLs: /san-pham, no .html extension)
+// Active nav link for the current page (clean URLs: /crm, no .html extension)
 const currentPage = location.pathname.replace(/\/+$/, '').split('/').pop().replace(/\.html$/, '') || 'index';
 document.querySelectorAll('[data-nav]').forEach((link) => {
   if (link.getAttribute('data-nav') === currentPage) {
@@ -6,6 +6,42 @@ document.querySelectorAll('[data-nav]').forEach((link) => {
     link.setAttribute('aria-current', 'page');
   }
 });
+
+// The "Sản Phẩm" and "Giải Pháp" nav triggers represent a group of pages
+// (dropdown items), so they need to read as active for any page in their group.
+const NAV_GROUPS = {
+  crm: ['crm', 'omni', 'lms'],
+  'case-study-liam-education': ['case-study-liam-education', 'case-study-aztravel'],
+};
+Object.entries(NAV_GROUPS).forEach(([groupNav, pages]) => {
+  if (!pages.includes(currentPage)) return;
+  document.querySelectorAll(`[data-nav="${groupNav}"]`).forEach((link) => {
+    link.classList.add('active');
+    link.setAttribute('aria-current', 'page');
+  });
+});
+
+// Light/dark theme toggle — dark is the default (no attribute set), light is
+// an explicit opt-in persisted to localStorage under the same key home.js uses.
+(function () {
+  var root = document.documentElement;
+  var KEY = 'allone-theme';
+
+  try {
+    var saved = localStorage.getItem(KEY);
+    if (saved === 'dark' || saved === 'light') root.setAttribute('data-theme', saved);
+  } catch (e) {}
+
+  var themeToggle = document.getElementById('themeToggle');
+  if (themeToggle) {
+    themeToggle.addEventListener('click', function () {
+      var current = root.getAttribute('data-theme') || 'dark';
+      var next = current === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem(KEY, next); } catch (e) {}
+    });
+  }
+})();
 
 // Mobile nav toggle
 const navToggle = document.getElementById('navToggle');

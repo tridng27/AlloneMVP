@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AllOne</title>
+<meta name="description" content="AllOne CRM gom Lead, Contact, lịch hẹn, cuộc gọi và email về một hồ sơ khách hàng duy nhất, có lớp AI đề xuất nhưng con người phê duyệt.">
+<link rel="canonical" href="https://your-domain.example/crm">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="vi_VN">
+<meta property="og:url" content="https://your-domain.example/crm">
+<meta property="og:title" content="AllOne">
+<meta property="og:description" content="AllOne CRM gom Lead, Contact, lịch hẹn, cuộc gọi và email về một hồ sơ khách hàng duy nhất, có lớp AI đề xuất nhưng con người phê duyệt.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AllOne">
+<meta name="twitter:description" content="AllOne CRM gom Lead, Contact, lịch hẹn, cuộc gọi và email về một hồ sơ khách hàng duy nhất, có lớp AI đề xuất nhưng con người phê duyệt.">
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/styles.css?v=8">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Bỏ qua điều hướng</a>
+
+<header class="site-header" id="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo"><img src="/img/logo-icon.png" width="28" height="28" alt="" class="logo-mark"><span class="wordmark">Allone</span></a>
+    <nav class="main-nav" aria-label="Điều hướng chính">
+      <div class="nav-item has-dropdown">
+        <a href="/crm" data-nav="crm" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+          Sản Phẩm
+          <svg class="nav-caret" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <div class="nav-dropdown">
+          <a href="/crm" class="nav-dropdown-item">
+            <span class="nav-dropdown-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m16.24 7.76-2.12 6.36-6.36 2.12 2.12-6.36 6.36-2.12Z"/></svg></span>
+            <span>
+              <span class="nav-dropdown-title">CRM Quản lý khách hàng</span>
+              <span class="nav-dropdown-desc">Lead, bán hàng, tiếp thị và vận hành trên một nền tảng</span>
+            </span>
+          </a>
+          <a href="/omni" class="nav-dropdown-item">
+            <span class="nav-dropdown-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+            <span>
+              <span class="nav-dropdown-title">Omni Nhắn tin đa kênh</span>
+              <span class="nav-dropdown-desc">Hộp thư hợp nhất, AI trả lời tự động</span>
+            </span>
+          </a>
+          <a href="/lms" class="nav-dropdown-item">
+            <span class="nav-dropdown-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4.5A2.5 2.5 0 0 1 4.5 2H12v18H4.5A2.5 2.5 0 0 0 2 22.5v-18Z"/><path d="M22 4.5A2.5 2.5 0 0 0 19.5 2H12v18h7.5a2.5 2.5 0 0 1 2.5 2.5v-18Z"/></svg></span>
+            <span>
+              <span class="nav-dropdown-title">LMS Đào tạo &amp; Học tập</span>
+              <span class="nav-dropdown-desc">Khoá học, lớp học và đào tạo nội bộ</span>
+            </span>
+          </a>
+        </div>
+      </div>
+      <div class="nav-item has-dropdown">
+        <a href="/case-study-liam-education" data-nav="case-study-liam-education" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+          Giải Pháp
+          <svg class="nav-caret" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <div class="nav-dropdown">
+          <a href="/case-study-liam-education" class="nav-dropdown-item">
+            <span class="nav-dropdown-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5Z"/><path d="M6 12v5c0 1.1 2.7 2 6 2s6-.9 6-2v-5"/></svg></span>
+            <span>
+              <span class="nav-dropdown-title">Liam Education</span>
+              <span class="nav-dropdown-desc">Trung tâm Anh ngữ giao tiếp công sở CRM + LMS</span>
+            </span>
+          </a>
+          <a href="/case-study-aztravel" class="nav-dropdown-item">
+            <span class="nav-dropdown-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20M12 2c2.5 2.5 4 6 4 10s-1.5 7.5-4 10c-2.5-2.5-4-6-4-10s1.5-7.5 4-10Z"/></svg></span>
+            <span>
+              <span class="nav-dropdown-title">AZTravel</span>
+              <span class="nav-dropdown-desc">Du lịch &amp; khách sạn tại Đà Nẵng, Hà Nội CRM</span>
+            </span>
+          </a>
+        </div>
+      </div>
+      <a href="/bang-gia" data-nav="bang-gia">Bảng Giá</a>
+      <a href="/tai-nguyen" data-nav="tai-nguyen">Tài Nguyên</a>
+      <a href="/lien-he" data-nav="lien-he">Liên Hệ</a>
+    </nav>
+    <div class="header-actions">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Đổi giao diện sáng/tối">
+        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a href="/free-trial" class="btn btn-ghost btn-sm">Free Trial</a>
+      <a href="/dang-ky" class="btn btn-primary btn-sm">Đăng Ký</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Mở menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="/crm">Sản Phẩm</a>
+    <a href="/crm" class="mobile-nav-sub">CRM Quản lý khách hàng</a>
+    <a href="/omni" class="mobile-nav-sub">Omni Nhắn tin đa kênh</a>
+    <a href="/lms" class="mobile-nav-sub">LMS Đào tạo &amp; Học tập</a>
+    <a href="/case-study-liam-education">Giải Pháp</a>
+    <a href="/case-study-liam-education" class="mobile-nav-sub">Case study: Liam Education</a>
+    <a href="/case-study-aztravel" class="mobile-nav-sub">Case study: AZTravel</a>
+    <a href="/bang-gia">Bảng Giá</a>
+    <a href="/tai-nguyen">Tài Nguyên</a>
+    <a href="/lien-he">Liên Hệ</a>
+    <a href="/free-trial" class="btn btn-ghost">Free Trial</a>
+    <a href="/dang-ky" class="btn btn-primary">Đăng Ký</a>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">CRM</p>
+      <h1>Quản lý khách hàng trên <span class="text-highlight">một nguồn dữ liệu duy nhất</span></h1>
+      <p>AllOne CRM gom Lead, Contact, lịch hẹn, cuộc gọi và email về cùng một hồ sơ khách hàng. Đội bán hàng, tiếp thị và chăm sóc cùng đọc một nguồn dữ liệu, thay vì mỗi bộ phận giữ một bảng tính riêng.</p>
+      <div class="hero-cta">
+        <a href="/dang-ky" class="btn btn-primary btn-lg">Bắt đầu dùng thử</a>
+        <a href="/lien-he" class="btn btn-ghost btn-lg">Đặt lịch demo</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Vấn đề thật</p>
+        <h2>Bạn không thiếu người. Bạn đang trả lương cho việc đối chiếu bảng tính.</h2>
+        <p class="section-lead">Đây là chuỗi bốn bước mà chúng tôi gặp lại ở gần như mọi doanh nghiệp trước khi triển khai. Nó bắt đầu rất nhỏ và kết thúc bằng chi phí nhân sự.</p>
+      </div>
+
+      <div class="step-strip">
+        <div class="step-strip-item">
+          <span class="step-strip-node">01</span>
+          <h3>Mỗi bộ phận một bảng tính</h3>
+          <p>Sale giữ file khách hàng, kế toán giữ file công nợ, chăm sóc giữ file lịch hẹn. Không file nào sai, nhưng không file nào khớp nhau.</p>
+        </div>
+        <div class="step-strip-item">
+          <span class="step-strip-node">02</span>
+          <h3>Đối chiếu trở thành một việc làm</h3>
+          <p>Ai đó phải ngồi so khớp các bảng mỗi tuần. Nhiều doanh nghiệp thuê hẳn nhân sự part-time hoặc outsource chỉ để làm đúng việc này.</p>
+        </div>
+        <div class="step-strip-item">
+          <span class="step-strip-node">03</span>
+          <h3>Người giỏi làm việc hành chính</h3>
+          <p>Nhân sự chính thức vừa làm chuyên môn vừa nhập liệu và tổng hợp báo cáo. Khối lượng việc lặp lại tăng dần cho tới khi họ nghỉ.</p>
+        </div>
+        <div class="step-strip-item">
+          <span class="step-strip-node">04</span>
+          <h3>Người nghỉ, dữ liệu đi theo</h3>
+          <p>Lịch sử chăm sóc nằm trong file cá nhân và trí nhớ của người cũ. Người mới bắt đầu lại từ đầu với chính những khách hàng đã có.</p>
+        </div>
+      </div>
+
+      <div class="callout-box">
+        <p class="principle-label">Cách AllOne CRM cắt chuỗi này</p>
+        <p>Không thêm một bảng tính nữa vào bộ sưu tập. Mỗi khách hàng có đúng một hồ sơ, mọi bộ phận ghi và đọc trên chính hồ sơ đó, nên không còn gì để đối chiếu.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Năng lực cốt lõi</p>
+        <h2>Năm nhóm công việc, cùng chạy trên một hồ sơ khách hàng</h2>
+        <p class="section-lead">Chọn nhóm công việc gần với đội ngũ của bạn nhất để xem CRM xử lý phần đó ra sao.</p>
+      </div>
+
+      <div class="tabs" data-tabs>
+        <div class="tab-list" role="tablist" aria-label="Năng lực AllOne CRM">
+          <button class="tab-btn active" role="tab" aria-selected="true" data-tab="t1">Quản lý khách hàng</button>
+          <button class="tab-btn" role="tab" aria-selected="false" data-tab="t2">Đội ngũ bán hàng</button>
+          <button class="tab-btn" role="tab" aria-selected="false" data-tab="t3">Tiếp thị tự động</button>
+          <button class="tab-btn" role="tab" aria-selected="false" data-tab="t4">Giao tiếp đa kênh</button>
+          <button class="tab-btn" role="tab" aria-selected="false" data-tab="t5">Vận hành và phân quyền</button>
+        </div>
+
+        <div class="tab-panels">
+          <div class="tab-panel active" data-panel="t1">
+            <div>
+              <h3>Một hồ sơ, toàn bộ vòng đời khách hàng</h3>
+              <p>Từ lúc là Lead mới đăng ký tư vấn đến khi thành khách hàng đang mua lại, mọi thông tin nằm trên cùng một hồ sơ. Người tiếp nhận sau đọc được đầy đủ những gì đã xảy ra trước đó.</p>
+            </div>
+            <ul class="check-list">
+              <li>Lưu toàn bộ lịch sử tương tác: cuộc gọi, email, ghi chú và tài liệu đính kèm.</li>
+              <li>Hợp nhất hồ sơ trùng lặp thay vì để hai nhân viên chăm sóc cùng một người.</li>
+              <li>Theo dõi trạng thái chuyển đổi theo từng giai đoạn, không đoán bằng cảm tính.</li>
+              <li>Tra cứu lại bất kỳ khách hàng nào mà không cần hỏi người phụ trách cũ.</li>
+            </ul>
+          </div>
+
+          <div class="tab-panel" data-panel="t2">
+            <div>
+              <h3>Đội sale làm việc theo pipeline, không theo trí nhớ</h3>
+              <p>Mỗi cơ hội bán hàng có chủ sở hữu, giai đoạn và bước tiếp theo rõ ràng. Quản lý nhìn được tiến độ thật mà không cần yêu cầu báo cáo thủ công.</p>
+            </div>
+            <ul class="check-list">
+              <li>Quản lý lịch hẹn và lịch làm việc theo từng cá nhân hoặc nhóm.</li>
+              <li>Theo dõi chỉ tiêu và tỷ lệ chuyển đổi cập nhật theo thời gian thực.</li>
+              <li>Phân công khách hàng minh bạch, tránh hai người cùng gọi một Lead.</li>
+              <li>Xem lại lý do thắng thua của từng cơ hội để điều chỉnh cách tiếp cận.</li>
+            </ul>
+          </div>
+
+          <div class="tab-panel" data-panel="t3">
+            <div>
+              <h3>Chăm sóc tự động, nội dung do bạn viết</h3>
+              <p>Xây luồng email chăm sóc bằng thao tác kéo thả, không cần lập trình. Hệ thống gửi đúng thời điểm và ghi lại kết quả ngay trên hồ sơ khách hàng.</p>
+            </div>
+            <ul class="check-list">
+              <li>Thiết kế luồng email nhiều bước theo hành vi của từng nhóm khách hàng.</li>
+              <li>Theo dõi tỷ lệ mở và click để biết chiến dịch nào đáng lặp lại.</li>
+              <li>Tự động phân loại lại danh sách theo mức độ tương tác thực tế.</li>
+              <li>Dừng chiến dịch cho một khách hàng ngay khi họ đã liên hệ trực tiếp.</li>
+            </ul>
+          </div>
+
+          <div class="tab-panel" data-panel="t4">
+            <div>
+              <h3>Gọi, gửi email và họp ngay trong hồ sơ</h3>
+              <p>Nhân viên không rời khỏi hệ thống để liên lạc với khách hàng. Mọi cuộc gọi và email đều tự động gắn vào đúng hồ sơ, không cần ghi chép lại.</p>
+            </div>
+            <ul class="check-list">
+              <li>Gọi trực tiếp từ hồ sơ khách hàng qua tổng đài đã tích hợp.</li>
+              <li>Gửi email chăm sóc riêng lẻ ngay tại trang khách hàng.</li>
+              <li>Tạo phòng họp trực tuyến và lưu biên bản vào đúng hồ sơ.</li>
+              <li>Xem lại toàn bộ dòng thời gian liên lạc theo thứ tự thời gian.</li>
+            </ul>
+          </div>
+
+          <div class="tab-panel" data-panel="t5">
+            <div>
+              <h3>Ai thấy gì, ai làm được gì, do bạn quyết định</h3>
+              <p>Phân quyền theo vai trò và phòng ban, chi tiết tới từng nhóm chức năng. Khi tổ chức thay đổi, quyền truy cập đổi theo ngay mà không gián đoạn công việc.</p>
+            </div>
+            <ul class="check-list">
+              <li>Phân quyền theo từng nhóm chức năng, không phải tất cả hoặc không gì cả.</li>
+              <li>Thay đổi quyền có hiệu lực ngay, không cần chờ hết ca làm việc.</li>
+              <li>Cấu hình dashboard và báo cáo riêng theo vai trò từng người dùng.</li>
+              <li>Ghi log thao tác để rà soát lại khi cần đối chiếu trách nhiệm.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-tint" id="ai-assisted">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow eyebrow-ai">Lớp AI</p>
+        <h2>AI đọc <span class="text-highlight-ai">dữ liệu thật của bạn</span>, rồi dừng lại trước khi hành động</h2>
+        <p class="section-lead">AI trong AllOne CRM trả lời dựa trên đúng dữ liệu Lead và Contact trong hệ thống của bạn. Nó không suy diễn ngoài dữ liệu đó, và không tự thực thi những việc bạn chưa cho phép.</p>
+      </div>
+
+      <div class="principle-box is-ai">
+        <span class="chip-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z"/><path d="m9 12 2 2 4-4"/></svg></span>
+        <div>
+          <p class="principle-label">AI đề xuất, con người phê duyệt</p>
+          <p>Mọi automation đều tắt theo mặc định cho tới khi được bật thủ công. Thao tác rủi ro cao cần một lớp AI xác minh độc lập trước khi thực thi, và mọi hành động đều được ghi log.</p>
+        </div>
+      </div>
+
+      <div class="step-strip">
+        <div class="step-strip-item">
+          <span class="step-strip-node">01</span>
+          <h3>Insight</h3>
+          <ul class="check-list check-list-ai">
+            <li>Tổng hợp hồ sơ khách hàng 360 độ từ mọi điểm chạm đã ghi nhận.</li>
+            <li>Tóm tắt email, cuộc gọi và lịch sử tương tác thay vì bắt bạn đọc lại từ đầu.</li>
+            <li>Đưa thông tin quan trọng tới đúng người phụ trách.</li>
+          </ul>
+        </div>
+        <div class="step-strip-item">
+          <span class="step-strip-node">02</span>
+          <h3>Analyze</h3>
+          <ul class="check-list check-list-ai">
+            <li>Phân tích funnel và tỷ lệ chuyển đổi để chỉ ra điểm nghẽn cụ thể.</li>
+            <li>Đánh giá chất lượng hội thoại chăm sóc theo tiêu chí thống nhất.</li>
+            <li>Tổng hợp báo cáo và phát hiện bất thường trong vận hành.</li>
+          </ul>
+        </div>
+        <div class="step-strip-item">
+          <span class="step-strip-node">03</span>
+          <h3>Prediction</h3>
+          <ul class="check-list check-list-ai">
+            <li>Chấm điểm Lead để đội sale gọi đúng người trước.</li>
+            <li>Cảnh báo sớm khách hàng có nguy cơ rời bỏ hoặc bỏ lịch hẹn.</li>
+            <li>Gợi ý hành động tiếp theo kèm lý do, để người dùng tự quyết định.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section-cta">
+        <a href="/lien-he" class="btn btn-primary">Xem AI chạy trên dữ liệu của bạn</a>
+        <a href="/bang-gia" class="btn btn-ghost">Xem bảng giá</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Tích hợp</p>
+        <h2>Kết nối với công cụ bạn đang dùng, không thay toàn bộ hạ tầng</h2>
+        <p class="section-lead">CRM kết nối tổng đài, họp trực tuyến và các hệ thống sẵn có, để dữ liệu liên lạc chảy về đúng hồ sơ khách hàng thay vì nằm rời rạc ở từng công cụ.</p>
+      </div>
+
+      <div class="bento-grid">
+        <div class="bento-card">
+          <span class="bento-icon icon-message"></span>
+          <h3>Tổng đài và cuộc gọi</h3>
+          <p>Tích hợp với VoIP24h và BussCall để gọi ngay từ hồ sơ khách hàng. Lịch sử cuộc gọi được lưu tự động, không cần nhập tay sau mỗi cuộc.</p>
+        </div>
+        <div class="bento-card">
+          <span class="bento-icon icon-video"></span>
+          <h3>Họp trực tuyến</h3>
+          <p>Tích hợp Zoom để tạo phòng họp gắn với đúng khách hàng và lịch hẹn. Biên bản và thời gian họp quay về hồ sơ sau khi kết thúc.</p>
+        </div>
+        <div class="bento-card">
+          <span class="bento-icon icon-mail"></span>
+          <h3>Email doanh nghiệp</h3>
+          <p>Kết nối hộp thư đang dùng để email gửi đi và nhận về gắn vào đúng hồ sơ. Người tiếp nhận sau thấy được toàn bộ mạch trao đổi.</p>
+        </div>
+        <div class="bento-card">
+          <span class="bento-icon icon-route"></span>
+          <h3>Các sản phẩm khác trong AllOne</h3>
+          <p>Omni đẩy hội thoại Zalo và Messenger về đúng hồ sơ Lead. LMS gắn khoá học của học viên vào chính hồ sơ khách hàng đó.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="ca-nhan-hoa">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Cá nhân hóa và triển khai</p>
+        <h2>Hệ thống chạy theo quy trình của bạn, triển khai theo từng giai đoạn</h2>
+        <p class="section-lead">Mỗi doanh nghiệp có cơ cấu và quy trình riêng. AllOne CRM được cấu hình theo cách bạn đang vận hành, và mở rộng theo đúng nhịp bạn cần thay vì bắt trả trọn gói ngay từ đầu.</p>
+      </div>
+
+      <div class="grid-2col">
+        <ul class="check-list">
+          <li>Tùy chỉnh module, trường dữ liệu, biểu mẫu và giao diện theo đặc thù của bạn.</li>
+          <li>Thiết kế workflow và quy trình phê duyệt riêng cho từng bộ phận.</li>
+          <li>Phân quyền theo đúng cơ cấu tổ chức hiện tại, không ép theo khuôn mẫu.</li>
+        </ul>
+        <ul class="check-list">
+          <li>Dựng dashboard và KPI theo chỉ số doanh nghiệp thực sự theo dõi.</li>
+          <li>Tích hợp email, tổng đài, lịch và hệ thống sẵn có vào cùng một luồng.</li>
+          <li>Mở rộng theo giai đoạn để kiểm soát chi phí và giảm rủi ro triển khai.</li>
+        </ul>
+      </div>
+
+      <h3 class="subsection-title">Quy trình triển khai</h3>
+      <div class="step-strip">
+        <div class="step-strip-item">
+          <span class="step-strip-node">1</span>
+          <h4>Khảo sát nhu cầu</h4>
+          <p>Tìm hiểu quy trình, cơ cấu tổ chức và mục tiêu hiện tại của doanh nghiệp.</p>
+        </div>
+        <div class="step-strip-item">
+          <span class="step-strip-node">2</span>
+          <h4>Thiết kế giải pháp</h4>
+          <p>Đề xuất module, workflow và mô hình phân quyền phù hợp với khảo sát.</p>
+        </div>
+        <div class="step-strip-item">
+          <span class="step-strip-node">3</span>
+          <h4>Cấu hình và tích hợp</h4>
+          <p>Thiết lập hệ thống và kết nối với các công cụ doanh nghiệp đang dùng.</p>
+        </div>
+        <div class="step-strip-item">
+          <span class="step-strip-node">4</span>
+          <h4>Đào tạo và tối ưu</h4>
+          <p>Hướng dẫn đội ngũ sử dụng, theo dõi thực tế và điều chỉnh sau triển khai.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Khách hàng</p>
+        <h2>Hai doanh nghiệp đã cắt được việc đối chiếu thủ công</h2>
+        <p class="section-lead">Cùng một vấn đề, hai ngành khác nhau. Đọc chi tiết cách hệ thống được cấu hình cho từng bên.</p>
+      </div>
+
+      <div class="module-grid-featured">
+        <a href="/case-study-liam-education" class="module-card module-card-featured module-card-link">
+          <span class="module-tag">CRM + LMS</span>
+          <span class="module-card-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5Z"/><path d="M6 12v5c0 1.1 2.7 2 6 2s6-.9 6-2v-5"/></svg></span>
+          <h3>Liam Education</h3>
+          <p>Trung tâm Anh ngữ giao tiếp công sở gom hồ sơ học viên, lớp học và học phí về một hệ thống, thay vì nhiều Google Sheet do từng bộ phận giữ.</p>
+          <span class="module-card-cta">Đọc case study</span>
+        </a>
+        <a href="/case-study-aztravel" class="module-card module-card-featured module-card-link">
+          <span class="module-tag">CRM</span>
+          <span class="module-card-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20M12 2c2.5 2.5 4 6 4 10s-1.5 7.5-4 10c-2.5-2.5-4-6-4-10s1.5-7.5 4-10Z"/></svg></span>
+          <h3>AZTravel</h3>
+          <p>Công ty du lịch hai chi nhánh Đà Nẵng và Hà Nội đưa booking tour, khách hàng và công nợ khách sạn về cùng một nguồn dữ liệu.</p>
+          <span class="module-card-cta">Đọc case study</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Phạm vi</p>
+        <h2>CRM lo phần khách hàng. Phần còn lại thuộc về sản phẩm khác.</h2>
+        <p class="section-lead">Chúng tôi không xây một hệ thống ôm hết mọi nghiệp vụ nhưng không việc nào làm sâu. Mỗi sản phẩm làm đúng phần của mình và chia sẻ chung một nguồn dữ liệu.</p>
+      </div>
+
+      <div class="table-wrap">
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Nghiệp vụ</th>
+              <th>Thuộc về</th>
+              <th>Cách kết nối</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Lead, Contact, pipeline bán hàng, email marketing</td>
+              <td>CRM</td>
+              <td>Nằm trực tiếp trong CRM</td>
+            </tr>
+            <tr>
+              <td>Tin nhắn Facebook Messenger và Zalo OA</td>
+              <td>Omni</td>
+              <td>Hội thoại đồng bộ về đúng hồ sơ Lead trong CRM</td>
+            </tr>
+            <tr>
+              <td>Khoá học, lớp học, điểm danh, bài tập</td>
+              <td>LMS</td>
+              <td>Học viên gắn với hồ sơ khách hàng tương ứng trong CRM</td>
+            </tr>
+            <tr>
+              <td>Gọi điện, họp trực tuyến</td>
+              <td>Đối tác tích hợp</td>
+              <td>VoIP24h, BussCall và Zoom ghi dữ liệu về hồ sơ CRM</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Câu hỏi thường gặp</p>
+        <h2>Những điều doanh nghiệp hỏi trước khi triển khai</h2>
+      </div>
+
+      <div class="bento-grid">
+        <div class="bento-card">
+          <h3>Dữ liệu cũ trong Excel có chuyển sang được không?</h3>
+          <p>Có. Trong bước cấu hình, đội triển khai nhập dữ liệu khách hàng hiện có từ file Excel hoặc Google Sheet của bạn và xử lý trùng lặp trước khi bàn giao.</p>
+        </div>
+        <div class="bento-card">
+          <h3>Triển khai mất bao lâu?</h3>
+          <p>Phụ thuộc vào số module và mức độ tùy chỉnh. Sau buổi khảo sát, chúng tôi đưa ra mốc thời gian cụ thể cho từng giai đoạn thay vì một con số chung chung.</p>
+        </div>
+        <div class="bento-card">
+          <h3>Đội ngũ không rành công nghệ thì sao?</h3>
+          <p>Đào tạo nằm trong quy trình triển khai. Mục tiêu là đội ngũ bạn tự vận hành được hệ thống sau khi chúng tôi bàn giao, không phải gọi hỗ trợ mỗi lần cần chỉnh sửa.</p>
+        </div>
+        <div class="bento-card">
+          <h3>Có bắt buộc dùng cả ba sản phẩm không?</h3>
+          <p>Không. Nhiều doanh nghiệp bắt đầu với riêng CRM và mở thêm Omni hoặc LMS khi thực sự cần. AZTravel hiện chỉ dùng CRM.</p>
+        </div>
+        <div class="bento-card">
+          <h3>AI có tự gửi email cho khách hàng không?</h3>
+          <p>Không, trừ khi bạn bật. Mọi automation tắt theo mặc định, và các thao tác rủi ro cao cần thêm một lớp xác minh độc lập trước khi chạy.</p>
+        </div>
+        <div class="bento-card">
+          <h3>Chi phí tính thế nào?</h3>
+          <p>Theo số module, số người dùng và mức độ tùy chỉnh. Trang bảng giá liệt kê rõ những yếu tố quyết định con số cuối cùng.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-cta-banner">
+    <div class="container cta-banner-inner">
+      <h2>Xem CRM chạy trên dữ liệu thật của doanh nghiệp bạn</h2>
+      <div class="hero-cta">
+        <a href="/dang-ky" class="btn btn-primary btn-lg">Bắt đầu dùng thử</a>
+        <a href="/lien-he" class="btn btn-ghost btn-lg">Đặt lịch demo</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a href="/" class="logo"><img src="/img/logo-icon.png" width="28" height="28" alt="" class="logo-mark"><span class="wordmark">Allone</span></a>
+      <p>Nền tảng quản lý khách hàng và vận hành tập trung cho đội ngũ kinh doanh hiện đại.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Sản phẩm</h4>
+      <a href="/crm">CRM</a>
+      <a href="/omni">Omni</a>
+      <a href="/lms">LMS</a>
+      <a href="/bang-gia">Bảng giá</a>
+    </div>
+    <div class="footer-col">
+      <h4>Giải pháp</h4>
+      <a href="/case-study-liam-education">Case study: Liam Education</a>
+      <a href="/case-study-aztravel">Case study: AZTravel</a>
+      <a href="/free-trial">Đăng ký dùng thử</a>
+      <a href="/lien-he">Đặt lịch demo</a>
+    </div>
+    <div class="footer-col">
+      <h4>Công ty</h4>
+      <a href="/">Về chúng tôi</a>
+      <a href="/lien-he">Liên hệ</a>
+      <a href="/tai-nguyen">Tài nguyên</a>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <p>© <span id="currentYear"></span> AllOne CRM. Bảo lưu mọi quyền.</p>
+  </div>
+</footer>
+
+<script src="/js/config.js?v=3"></script>
+<script src="/js/main.js?v=5"></script>
+</body>
+</html>

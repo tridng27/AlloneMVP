@@ -44,7 +44,6 @@
       var trigger = item.querySelector(".nav-trigger");
       if (!trigger) return;
       trigger.addEventListener("click", function (e) {
-        e.stopPropagation();
         var open = item.classList.toggle("is-open");
         trigger.setAttribute("aria-expanded", String(open));
       });
