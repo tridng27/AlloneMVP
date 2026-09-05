@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/css/styles.css?v=8">
+<link rel="stylesheet" href="/css/styles.css?v=12">
 </head>
 <body>
 
@@ -111,12 +111,14 @@
 
 <main id="main">
 
-  <section class="page-hero">
+  <section class="hero-centered">
+    <span class="hero-glow hero-glow-a" aria-hidden="true"></span>
+    <span class="hero-glow hero-glow-b" aria-hidden="true"></span>
     <div class="container">
-      <p class="eyebrow">Bảng giá</p>
-      <h1>Báo giá theo <span class="text-highlight">đúng phần bạn dùng</span></h1>
-      <p>AllOne không bán gói trọn gói cố định. Chi phí được tính theo số sản phẩm, số người dùng và mức độ tùy chỉnh mà doanh nghiệp bạn thực sự cần, nên bảng dưới đây mô tả phạm vi từng gói thay vì một con số chung cho mọi công ty.</p>
-      <div class="hero-cta">
+      <p class="pill-eyebrow">Bảng giá</p>
+      <h1>Báo giá theo <span class="text-gradient">đúng phần bạn dùng</span></h1>
+      <p class="hero-lede">AllOne không bán gói trọn gói cố định. Chi phí được tính theo số sản phẩm, số người dùng và mức độ tùy chỉnh mà doanh nghiệp bạn thực sự cần, nên bảng dưới đây mô tả phạm vi từng gói thay vì một con số chung cho mọi công ty.</p>
+      <div class="hero-cta-center">
         <a href="/lien-he" class="btn btn-primary btn-lg">Nhận báo giá cho đội ngũ của bạn</a>
         <a href="/dang-ky" class="btn btn-ghost btn-lg">Dùng thử trước khi quyết định</a>
       </div>
@@ -125,46 +127,61 @@
 
   <section class="section">
     <div class="container">
-      <div class="section-head">
-        <p class="eyebrow">Cách tính giá</p>
+      <div class="section-head" style="margin-inline: auto; text-align: center;">
+        <p class="eyebrow" style="justify-content: center;">Cách tính giá</p>
         <h2>Bốn yếu tố quyết định con số cuối cùng</h2>
         <p class="section-lead">Chúng tôi công khai cách tính thay vì công khai một mức giá không đúng với ai cả. Sau buổi khảo sát, bạn nhận được báo giá cụ thể dựa trên bốn yếu tố này.</p>
       </div>
 
-      <div class="bento-grid">
-        <div class="bento-card">
-          <span class="bento-icon icon-workflow"></span>
+      <div class="numbered-grid">
+        <div class="numbered-card">
+          <div class="nc-head">
+            <span class="nc-num">01</span>
+            <span class="nc-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><path d="M10 6.5h4a3 3 0 0 1 3 3V14M6.5 10v4a3 3 0 0 0 3 3H14"/></svg></span>
+          </div>
           <h3>Số sản phẩm sử dụng</h3>
           <p>Dùng riêng CRM khác với dùng cả CRM, Omni và LMS. Bạn chỉ trả cho sản phẩm đang bật, và mở thêm khi thực sự cần.</p>
         </div>
-        <div class="bento-card">
-          <span class="bento-icon icon-users"></span>
+        <div class="numbered-card">
+          <div class="nc-head">
+            <span class="nc-num">02</span>
+            <span class="nc-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+          </div>
           <h3>Số người dùng</h3>
           <p>Quy mô đội ngũ truy cập hệ thống quyết định phần lớn chi phí. Số này thay đổi được khi doanh nghiệp mở rộng hoặc thu hẹp.</p>
         </div>
-        <div class="bento-card">
-          <span class="bento-icon icon-route"></span>
+        <div class="numbered-card">
+          <div class="nc-head">
+            <span class="nc-num">03</span>
+            <span class="nc-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="19" r="3"/><circle cx="18" cy="5" r="3"/><path d="M9 19h8a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2H9"/></svg></span>
+          </div>
           <h3>Mức độ tùy chỉnh</h3>
           <p>Cấu hình theo quy trình sẵn có tốn ít hơn so với dựng workflow, trường dữ liệu và mô hình phân quyền riêng cho từng phòng ban.</p>
         </div>
-        <div class="bento-card">
-          <span class="bento-icon icon-zap"></span>
+        <div class="numbered-card">
+          <div class="nc-head">
+            <span class="nc-num">04</span>
+            <span class="nc-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8Z"/></svg></span>
+          </div>
           <h3>Tích hợp hệ thống</h3>
           <p>Kết nối tổng đài, họp trực tuyến, email và các hệ thống bạn đang chạy được tính theo số lượng và độ phức tạp của từng kết nối.</p>
         </div>
       </div>
 
-      <div class="callout-box">
-        <p class="principle-label">Triển khai theo giai đoạn</p>
-        <p>Bạn không cần bật mọi thứ trong tháng đầu tiên. Phần lớn doanh nghiệp bắt đầu với một sản phẩm và một phòng ban, rồi mở rộng khi đội ngũ đã quen hệ thống, để chi phí đi theo tiến độ sử dụng thật.</p>
+      <div class="callout-feature">
+        <span class="callout-icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></span>
+        <div>
+          <p class="principle-label">Triển khai theo giai đoạn</p>
+          <p>Bạn không cần bật mọi thứ trong tháng đầu tiên. Phần lớn doanh nghiệp bắt đầu với một sản phẩm và một phòng ban, rồi mở rộng khi đội ngũ đã quen hệ thống, để chi phí đi theo tiến độ sử dụng thật.</p>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="section section-alt">
     <div class="container">
-      <div class="section-head">
-        <p class="eyebrow">Ba gói</p>
+      <div class="section-head" style="margin-inline: auto; text-align: center;">
+        <p class="eyebrow" style="justify-content: center;">Ba gói</p>
         <h2>Chọn phạm vi gần với đội ngũ của bạn nhất</h2>
         <p class="section-lead">Mọi gói đều chạy trên cùng một nền tảng và cùng một nguồn dữ liệu. Khác biệt nằm ở quy mô sử dụng, mức độ tự động hóa và độ sâu tùy chỉnh.</p>
       </div>
@@ -222,8 +239,8 @@
 
   <section class="section">
     <div class="container">
-      <div class="section-head">
-        <p class="eyebrow">So sánh chi tiết</p>
+      <div class="section-head" style="margin-inline: auto; text-align: center;">
+        <p class="eyebrow" style="justify-content: center;">So sánh chi tiết</p>
         <h2>Từng tính năng, theo từng gói</h2>
         <p class="section-lead">Dùng bảng này để tự xác định gói phù hợp trước khi liên hệ. Nếu bạn cần một dòng cụ thể trong gói thấp hơn, hãy nói với đội tư vấn khi nhận báo giá.</p>
       </div>
@@ -241,21 +258,21 @@
           <tbody>
             <tr>
               <td>Quản lý Lead và Contact tập trung</td>
-              <td>Có</td>
-              <td>Có</td>
-              <td>Có</td>
+              <td><span class="status-pill is-active">Có</span></td>
+              <td><span class="status-pill is-active">Có</span></td>
+              <td><span class="status-pill is-active">Có</span></td>
             </tr>
             <tr>
               <td>Lịch hẹn và lịch sử tương tác</td>
-              <td>Có</td>
-              <td>Có</td>
-              <td>Có</td>
+              <td><span class="status-pill is-active">Có</span></td>
+              <td><span class="status-pill is-active">Có</span></td>
+              <td><span class="status-pill is-active">Có</span></td>
             </tr>
             <tr>
               <td>Gửi email chăm sóc theo danh sách</td>
-              <td>Có</td>
-              <td>Có</td>
-              <td>Có</td>
+              <td><span class="status-pill is-active">Có</span></td>
+              <td><span class="status-pill is-active">Có</span></td>
+              <td><span class="status-pill is-active">Có</span></td>
             </tr>
             <tr>
               <td>Dashboard và báo cáo</td>
@@ -272,44 +289,44 @@
             <tr>
               <td>Email Campaign tự động nhiều bước</td>
               <td>Không</td>
-              <td>Có</td>
-              <td>Có</td>
+              <td><span class="status-pill is-active">Có</span></td>
+              <td><span class="status-pill is-active">Có</span></td>
             </tr>
             <tr>
               <td>Theo dõi tỷ lệ mở, click và phân loại tự động</td>
               <td>Không</td>
-              <td>Có</td>
-              <td>Có</td>
+              <td><span class="status-pill is-active">Có</span></td>
+              <td><span class="status-pill is-active">Có</span></td>
             </tr>
             <tr>
               <td>Tích hợp gọi điện và lưu lịch sử cuộc gọi</td>
               <td>Không</td>
-              <td>Có</td>
-              <td>Có</td>
+              <td><span class="status-pill is-active">Có</span></td>
+              <td><span class="status-pill is-active">Có</span></td>
             </tr>
             <tr>
               <td>Quản lý đội nhóm theo chỉ tiêu KPI</td>
               <td>Không</td>
-              <td>Có</td>
-              <td>Có</td>
+              <td><span class="status-pill is-active">Có</span></td>
+              <td><span class="status-pill is-active">Có</span></td>
             </tr>
             <tr>
               <td>Workflow automation và tác vụ AI</td>
               <td>Không</td>
               <td>Không</td>
-              <td>Có</td>
+              <td><span class="status-pill is-active">Có</span></td>
             </tr>
             <tr>
               <td>Tích hợp hệ thống bên ngoài theo yêu cầu</td>
               <td>Không</td>
               <td>Không</td>
-              <td>Có</td>
+              <td><span class="status-pill is-active">Có</span></td>
             </tr>
             <tr>
               <td>Hỗ trợ triển khai và tư vấn quy trình riêng</td>
               <td>Không</td>
               <td>Không</td>
-              <td>Có</td>
+              <td><span class="status-pill is-active">Có</span></td>
             </tr>
           </tbody>
         </table>
@@ -321,8 +338,8 @@
 
   <section class="section section-tint">
     <div class="container">
-      <div class="section-head">
-        <p class="eyebrow">Có trong mọi gói</p>
+      <div class="section-head" style="margin-inline: auto; text-align: center;">
+        <p class="eyebrow" style="justify-content: center;">Có trong mọi gói</p>
         <h2>Những thứ không phụ thuộc vào gói bạn chọn</h2>
       </div>
 
@@ -343,33 +360,39 @@
 
   <section class="section">
     <div class="container">
-      <div class="section-head">
-        <p class="eyebrow">Câu hỏi thường gặp</p>
+      <div class="section-head" style="margin-inline: auto; text-align: center;">
+        <p class="eyebrow" style="justify-content: center;">Câu hỏi thường gặp</p>
         <h2>Trước khi bạn gửi yêu cầu báo giá</h2>
       </div>
 
-      <div class="bento-grid">
-        <div class="bento-card">
+      <div class="faq-grid">
+        <div class="faq-card">
+          <span class="faq-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 2-3 4"/><path d="M12 17h.01"/></svg></span>
           <h3>Vì sao không niêm yết giá cụ thể?</h3>
           <p>Vì hai doanh nghiệp cùng quy mô có thể chênh nhau rất nhiều về số sản phẩm, mức tùy chỉnh và số tích hợp. Chúng tôi công khai bốn yếu tố tính giá ở đầu trang để bạn ước lượng được trước khi trao đổi.</p>
         </div>
-        <div class="bento-card">
+        <div class="faq-card">
+          <span class="faq-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span>
           <h3>Gói nào phù hợp với tôi?</h3>
           <p>Nếu mục tiêu là gom dữ liệu về một nơi, bắt đầu ở Standard. Nếu đội sale và marketing cần tự động hóa chăm sóc, chọn Business. Nếu quy trình phê duyệt hoặc phân quyền có đặc thù riêng, bạn cần Enterprise.</p>
         </div>
-        <div class="bento-card">
+        <div class="faq-card">
+          <span class="faq-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="M3.3 7 12 12l8.7-5"/><path d="M12 22V12"/></svg></span>
           <h3>Tôi có phải mua cả ba sản phẩm không?</h3>
           <p>Không. CRM, Omni và LMS được tính riêng và bật riêng. AZTravel hiện chỉ chạy CRM, còn Liam Education dùng CRM cùng LMS.</p>
         </div>
-        <div class="bento-card">
+        <div class="faq-card">
+          <span class="faq-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></span>
           <h3>Bắt đầu nhỏ rồi mở rộng có được không?</h3>
           <p>Được, và đó là cách chúng tôi khuyến nghị. Triển khai theo giai đoạn giúp đội ngũ quen dần và giữ chi phí đi sát với mức sử dụng thật.</p>
         </div>
-        <div class="bento-card">
+        <div class="faq-card">
+          <span class="faq-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09Z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2Z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></span>
           <h3>Có được dùng thử trước khi trả phí không?</h3>
           <p>Có. Bạn đăng ký dùng thử để xem hệ thống tổ chức dữ liệu Lead và Contact ra sao, rồi mới quyết định phạm vi triển khai.</p>
         </div>
-        <div class="bento-card">
+        <div class="faq-card">
+          <span class="faq-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2Z"/><path d="M14 2v6h6M8 13h8M8 17h8M8 9h2"/></svg></span>
           <h3>Chi phí triển khai và đào tạo nằm ở đâu?</h3>
           <p>Chúng được nêu thành mục riêng trong báo giá, cùng với phạm vi công việc tương ứng, để bạn thấy rõ phần nào là phí sử dụng và phần nào là phí triển khai.</p>
         </div>

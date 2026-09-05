@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/css/styles.css?v=8">
+<link rel="stylesheet" href="/css/styles.css?v=12">
 </head>
 <body>
 
@@ -111,43 +111,147 @@
 
 <main id="main">
 
-  <section class="page-hero">
+  <section class="hero-centered">
+    <span class="hero-glow hero-glow-a" aria-hidden="true"></span>
+    <span class="hero-glow hero-glow-b" aria-hidden="true"></span>
     <div class="container">
-      <p class="eyebrow">LMS</p>
-      <h1>Đưa toàn bộ vòng đời đào tạo ra khỏi <span class="text-highlight">bảng tính và nhóm chat</span></h1>
-      <p>AllOne LMS quản lý khoá học, thời khoá biểu, điểm danh, bài tập và lớp học trực tuyến trong một hệ thống. Dùng được cho cả trung tâm đào tạo vận hành theo lớp lẫn phòng đào tạo nội bộ doanh nghiệp.</p>
-      <div class="hero-cta">
+      <p class="pill-eyebrow">LMS</p>
+      <h1>Đưa toàn bộ vòng đời đào tạo ra khỏi <span class="text-gradient">bảng tính và nhóm chat</span></h1>
+      <p class="hero-lede">AllOne LMS quản lý khoá học, thời khoá biểu, điểm danh, bài tập và lớp học trực tuyến trong một hệ thống. Dùng được cho cả trung tâm đào tạo vận hành theo lớp lẫn phòng đào tạo nội bộ doanh nghiệp.</p>
+      <div class="hero-cta-center">
         <a href="/dang-ky" class="btn btn-primary btn-lg">Bắt đầu dùng thử</a>
         <a href="/lien-he" class="btn btn-ghost btn-lg">Đặt lịch demo</a>
+      </div>
+
+      <div class="proof-strip">
+        <p class="proof-label">Đối tác tích hợp lớp học trực tuyến</p>
+        <div class="proof-logos">
+          <span class="proof-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m22 9-6 3.2V11.8L22 15V9Z"/></svg>Zoom</span>
+        </div>
+      </div>
+
+      <div class="mock-frame" style="margin-top: 2.5rem; text-align: left;">
+        <div class="mock-bar">
+          <span class="mock-dots"><span></span><span></span><span></span><span class="mock-title">LMS Workspace: Vận hành lớp học</span></span>
+          <span class="status-pill is-active">Đang chạy: Zoom đã đồng bộ</span>
+        </div>
+        <div class="mock-inner">
+          <div class="mock-stat-grid">
+            <div class="mock-stat">
+              <p class="mock-stat-label">Chuyên cần 7 buổi gần nhất</p>
+              <div class="mock-stat-value is-success">82%</div>
+              <p class="mock-stat-sub">Hoàn thành điểm danh</p>
+            </div>
+            <div class="mock-stat">
+              <p class="mock-stat-label">Thời khoá biểu hôm nay</p>
+              <div class="mock-stat-value is-accent">4</div>
+              <p class="mock-stat-sub">Phòng học trực tuyến đang chạy</p>
+            </div>
+            <div class="mock-stat">
+              <p class="mock-stat-label">Tỷ lệ nộp bài tập</p>
+              <div class="mock-stat-value">94%</div>
+              <p class="mock-stat-sub">Bài đã nộp đúng hạn</p>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1.6fr 1fr; gap: 1.1rem; margin-top: 1.1rem;">
+            <div class="table-wrap" style="margin-bottom: 0;">
+              <table class="example-table">
+                <thead>
+                  <tr>
+                    <th>Buổi</th>
+                    <th>Giảng viên</th>
+                    <th>Trạng thái</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Buổi #14 · 19:30-21:00 · Phòng A02 &amp; Zoom</td>
+                    <td>Giảng viên A</td>
+                    <td><span class="status-pill is-active">Đang chạy</span></td>
+                  </tr>
+                  <tr>
+                    <td>Buổi #15 · 19:30-21:00 · Ngày mai</td>
+                    <td>Giảng viên B</td>
+                    <td><span class="status-pill is-pending">Sắp diễn ra</span></td>
+                  </tr>
+                  <tr>
+                    <td>Buổi #16 · 19:30-21:00 · Thứ 6</td>
+                    <td>Giảng viên A</td>
+                    <td><span class="mock-badge is-muted">Đã lên lịch</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div>
+              <p class="mock-col-label" style="margin-bottom: 0.6rem;">Sổ điểm danh live</p>
+              <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                <div class="mock-row-item">
+                  <span style="display: flex; align-items: center; gap: 0.5rem;"><span class="ow-avatar">A</span>Học viên A</span>
+                  <span class="mock-badge is-success">Có mặt · 19:28</span>
+                </div>
+                <div class="mock-row-item">
+                  <span style="display: flex; align-items: center; gap: 0.5rem;"><span class="ow-avatar">B</span>Học viên B</span>
+                  <span class="mock-badge is-success">Có mặt · 19:30</span>
+                </div>
+                <div class="mock-row-item">
+                  <span style="display: flex; align-items: center; gap: 0.5rem;"><span class="ow-avatar">C</span>Học viên C</span>
+                  <span class="mock-badge is-muted">Phép trễ</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="mock-caption">Giao diện minh hoạ</p>
       </div>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
-      <div class="section-head">
-        <p class="eyebrow">Vấn đề thật</p>
+      <div class="section-head" style="margin-inline: auto; text-align: center;">
+        <p class="eyebrow" style="justify-content: center;">Vấn đề thật</p>
         <h2>Lớp học chạy trên trí nhớ của người điều phối</h2>
         <p class="section-lead">Thời khoá biểu nằm trong một file, điểm danh trong file khác, bài tập gửi qua nhóm chat, học liệu trôi trong lịch sử tin nhắn. Mọi thứ vẫn chạy, cho tới ngày người điều phối nghỉ phép.</p>
       </div>
 
-      <div class="grid-2col">
-        <ul class="check-list">
-          <li>Học viên hỏi lại lịch học và link lớp vì phải lục lại tin nhắn cũ.</li>
-          <li>Giảng viên điểm danh trên giấy rồi nhập lại vào bảng tính sau buổi dạy.</li>
-        </ul>
-        <ul class="check-list">
-          <li>Quản lý không biết lớp nào đang vắng nhiều cho tới lúc tổng kết khoá.</li>
-          <li>Đổi lịch một buổi kéo theo hàng chục tin nhắn thông báo thủ công.</li>
-        </ul>
+      <div class="bento-grid" style="grid-template-columns: repeat(2, 1fr);">
+        <div class="bento-card" style="display: flex; gap: 1rem; align-items: flex-start;">
+          <span aria-hidden="true" style="flex-shrink: 0; width: 40px; height: 40px; border-radius: var(--radius-sm); background: color-mix(in srgb, #e5484d 14%, transparent); border: 1px solid color-mix(in srgb, #e5484d 30%, transparent); color: #e5484d; display: flex; align-items: center; justify-content: center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+          <div>
+            <h3>Trôi lịch và thông tin kết nối</h3>
+            <p>Học viên hỏi lại lịch học và link lớp vì phải lục lại tin nhắn cũ.</p>
+          </div>
+        </div>
+        <div class="bento-card" style="display: flex; gap: 1rem; align-items: flex-start;">
+          <span aria-hidden="true" style="flex-shrink: 0; width: 40px; height: 40px; border-radius: var(--radius-sm); background: color-mix(in srgb, #e5484d 14%, transparent); border: 1px solid color-mix(in srgb, #e5484d 30%, transparent); color: #e5484d; display: flex; align-items: center; justify-content: center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2Z"/><path d="M14 2v6h6M8 13h8M8 17h8M8 9h2"/></svg></span>
+          <div>
+            <h3>Nhập liệu thủ công hai lần</h3>
+            <p>Giảng viên điểm danh trên giấy rồi nhập lại vào bảng tính sau buổi dạy.</p>
+          </div>
+        </div>
+        <div class="bento-card" style="display: flex; gap: 1rem; align-items: flex-start;">
+          <span aria-hidden="true" style="flex-shrink: 0; width: 40px; height: 40px; border-radius: var(--radius-sm); background: color-mix(in srgb, #e5484d 14%, transparent); border: 1px solid color-mix(in srgb, #e5484d 30%, transparent); color: #e5484d; display: flex; align-items: center; justify-content: center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/><path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/><path d="m2 2 20 20"/></svg></span>
+          <div>
+            <h3>Mất kiểm soát tỷ lệ thôi học</h3>
+            <p>Quản lý không biết lớp nào đang vắng nhiều cho tới lúc tổng kết khoá.</p>
+          </div>
+        </div>
+        <div class="bento-card" style="display: flex; gap: 1rem; align-items: flex-start;">
+          <span aria-hidden="true" style="flex-shrink: 0; width: 40px; height: 40px; border-radius: var(--radius-sm); background: color-mix(in srgb, #e5484d 14%, transparent); border: 1px solid color-mix(in srgb, #e5484d 30%, transparent); color: #e5484d; display: flex; align-items: center; justify-content: center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m16 3 4 4-4 4"/><path d="M20 7H4"/><path d="m8 21-4-4 4-4"/><path d="M4 17h16"/></svg></span>
+          <div>
+            <h3>Khủng hoảng đổi lịch đột xuất</h3>
+            <p>Đổi lịch một buổi kéo theo hàng chục tin nhắn thông báo thủ công.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="section section-alt">
     <div class="container">
-      <div class="section-head">
-        <p class="eyebrow">Năng lực cốt lõi</p>
+      <div class="section-head" style="margin-inline: auto; text-align: center;">
+        <p class="eyebrow" style="justify-content: center;">Năng lực cốt lõi</p>
         <h2>Bảy phần việc, cùng một hệ thống</h2>
         <p class="section-lead">Mở khoá học, xếp lịch, điểm danh, giao bài, họp lớp và lưu tài liệu đều liên kết với nhau, thay vì là các công cụ rời phải tự đối chiếu.</p>
       </div>
@@ -157,11 +261,32 @@
           <span class="bento-icon icon-book"></span>
           <h3>Khoá học và lộ trình học tập</h3>
           <p>Dựng khoá học theo module hoặc theo buổi, gắn học viên vào đúng lớp và theo dõi tiến độ hoàn thành của từng người. Quản lý nhìn được tiến độ cả lớp mà không cần hỏi giảng viên.</p>
+          <div style="margin-top: 1.25rem; padding-top: 1.1rem; border-top: 1px solid var(--border); display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem;">
+            <div style="padding: 0.6rem; background: var(--bg-subtle); border: 1px solid var(--border); border-radius: var(--radius-sm);">
+              <div style="font-size: 0.72rem; font-weight: 600; color: var(--text);">Module 1</div>
+              <div style="margin-top: 0.4rem; height: 5px; border-radius: 99px; background: var(--border); overflow: hidden;"><div style="height: 100%; width: 100%; background: var(--success);"></div></div>
+              <div style="font-size: 0.66rem; color: var(--success); margin-top: 0.3rem;">Hoàn thành</div>
+            </div>
+            <div style="padding: 0.6rem; background: var(--bg-subtle); border: 1px solid var(--border); border-radius: var(--radius-sm);">
+              <div style="font-size: 0.72rem; font-weight: 600; color: var(--text);">Module 2</div>
+              <div style="margin-top: 0.4rem; height: 5px; border-radius: 99px; background: var(--border); overflow: hidden;"><div style="height: 100%; width: 70%; background: var(--accent);"></div></div>
+              <div style="font-size: 0.66rem; color: var(--accent); margin-top: 0.3rem;">Đang diễn ra</div>
+            </div>
+            <div style="padding: 0.6rem; background: var(--bg-subtle); border: 1px solid var(--border); border-radius: var(--radius-sm);">
+              <div style="font-size: 0.72rem; font-weight: 600; color: var(--text);">Module 3</div>
+              <div style="margin-top: 0.4rem; height: 5px; border-radius: 99px; background: var(--border); overflow: hidden;"><div style="height: 100%; width: 0%; background: var(--text-faint);"></div></div>
+              <div style="font-size: 0.66rem; color: var(--text-faint); margin-top: 0.3rem;">Chưa mở khoá</div>
+            </div>
+          </div>
         </div>
         <div class="bento-card">
           <span class="bento-icon icon-calendar"></span>
           <h3>Thời khoá biểu</h3>
           <p>Xếp lịch theo lớp, giảng viên và phòng học, phát hiện trùng lịch trước khi công bố. Thay đổi lịch hiển thị ngay cho cả người dạy lẫn người học.</p>
+          <div class="mock-row-item" style="margin-top: 1rem;">
+            <span>Kiểm soát trùng lịch</span>
+            <span class="mock-badge is-success">Tự động</span>
+          </div>
         </div>
         <div class="bento-card">
           <span class="bento-icon icon-clipboard-check"></span>
@@ -194,54 +319,68 @@
 
   <section class="section">
     <div class="container">
-      <div class="section-head">
-        <p class="eyebrow">Theo vai trò</p>
+      <div class="section-head" style="margin-inline: auto; text-align: center;">
+        <p class="eyebrow" style="justify-content: center;">Theo vai trò</p>
         <h2>Ba nhóm người dùng, ba nhu cầu khác nhau</h2>
       </div>
 
       <div class="tabs" data-tabs>
-        <div class="tab-list" role="tablist" aria-label="LMS dành cho ai">
+        <div class="tab-list tab-list-center" role="tablist" aria-label="LMS dành cho ai">
           <button class="tab-btn active" role="tab" aria-selected="true" data-tab="p1">Học viên</button>
           <button class="tab-btn" role="tab" aria-selected="false" data-tab="p2">Giảng viên</button>
           <button class="tab-btn" role="tab" aria-selected="false" data-tab="p3">Quản trị đào tạo</button>
         </div>
 
-        <div class="tab-panels">
-          <div class="tab-panel active" data-panel="p1">
-            <div>
-              <h3>Biết chính xác học gì, học khi nào, nộp gì</h3>
-              <p>Một nơi duy nhất thay cho việc dò lại tin nhắn cũ trong nhóm chat. Lịch học, tài liệu và hạn nộp bài đều nằm trong tài khoản của học viên.</p>
+        <div class="tab-shell">
+          <div class="tab-panels">
+            <div class="tab-panel active" data-panel="p1">
+              <div>
+                <h3>Biết chính xác học gì, học khi nào, nộp gì</h3>
+                <p>Một nơi duy nhất thay cho việc dò lại tin nhắn cũ trong nhóm chat. Lịch học, tài liệu và hạn nộp bài đều nằm trong tài khoản của học viên.</p>
+              </div>
+              <div class="grid-2col" style="margin-bottom: 0;">
+                <ul class="check-list">
+                  <li>Xem thời khoá biểu, tài liệu buổi học và tiến độ khoá học của mình.</li>
+                  <li>Nộp bài tập và nhận phản hồi, điểm số ngay trên hệ thống.</li>
+                </ul>
+                <ul class="check-list">
+                  <li>Vào lớp trực tuyến đúng giờ từ lịch, không cần tìm lại link.</li>
+                  <li>Nhận nhắc lịch học và hạn nộp bài tự động.</li>
+                </ul>
+              </div>
             </div>
-            <ul class="check-list">
-              <li>Xem thời khoá biểu, tài liệu buổi học và tiến độ khoá học của mình.</li>
-              <li>Nộp bài tập và nhận phản hồi, điểm số ngay trên hệ thống.</li>
-              <li>Vào lớp trực tuyến đúng giờ từ lịch, không cần tìm lại link.</li>
-              <li>Nhận nhắc lịch học và hạn nộp bài tự động.</li>
-            </ul>
-          </div>
-          <div class="tab-panel" data-panel="p2">
-            <div>
-              <h3>Ít việc hành chính hơn, nhiều thời gian dạy hơn</h3>
-              <p>Điểm danh, giao bài và chấm bài diễn ra ngay trong buổi học. Không còn bước nhập lại số liệu vào bảng tính sau khi lớp kết thúc.</p>
+            <div class="tab-panel" data-panel="p2">
+              <div>
+                <h3>Ít việc hành chính hơn, nhiều thời gian dạy hơn</h3>
+                <p>Điểm danh, giao bài và chấm bài diễn ra ngay trong buổi học. Không còn bước nhập lại số liệu vào bảng tính sau khi lớp kết thúc.</p>
+              </div>
+              <div class="grid-2col" style="margin-bottom: 0;">
+                <ul class="check-list">
+                  <li>Điểm danh theo buổi và xem lịch sử chuyên cần của cả lớp.</li>
+                  <li>Giao bài, chấm bài và phản hồi học viên tại cùng một nơi.</li>
+                </ul>
+                <ul class="check-list">
+                  <li>Đăng tài liệu và cập nhật nội dung khoá học theo thời gian thực.</li>
+                  <li>Mở lớp trực tuyến gắn sẵn với đúng buổi trong thời khoá biểu.</li>
+                </ul>
+              </div>
             </div>
-            <ul class="check-list">
-              <li>Điểm danh theo buổi và xem lịch sử chuyên cần của cả lớp.</li>
-              <li>Giao bài, chấm bài và phản hồi học viên tại cùng một nơi.</li>
-              <li>Đăng tài liệu và cập nhật nội dung khoá học theo thời gian thực.</li>
-              <li>Mở lớp trực tuyến gắn sẵn với đúng buổi trong thời khoá biểu.</li>
-            </ul>
-          </div>
-          <div class="tab-panel" data-panel="p3">
-            <div>
-              <h3>Nhìn toàn cảnh vận hành đào tạo</h3>
-              <p>Tình trạng mọi lớp, mọi giảng viên và mọi khoá học hiển thị trên cùng một hệ thống. Không cần tổng hợp thủ công từ nhiều bảng tính vào cuối kỳ.</p>
+            <div class="tab-panel" data-panel="p3">
+              <div>
+                <h3>Nhìn toàn cảnh vận hành đào tạo</h3>
+                <p>Tình trạng mọi lớp, mọi giảng viên và mọi khoá học hiển thị trên cùng một hệ thống. Không cần tổng hợp thủ công từ nhiều bảng tính vào cuối kỳ.</p>
+              </div>
+              <div class="grid-2col" style="margin-bottom: 0;">
+                <ul class="check-list">
+                  <li>Quản lý khoá học, lớp học, giảng viên và học viên tập trung.</li>
+                  <li>Theo dõi tỷ lệ chuyên cần và tiến độ hoàn thành theo từng lớp.</li>
+                </ul>
+                <ul class="check-list">
+                  <li>Phân quyền theo vai trò học viên, giảng viên và quản trị viên.</li>
+                  <li>Xếp và điều chỉnh thời khoá biểu toàn trung tâm không chồng lịch.</li>
+                </ul>
+              </div>
             </div>
-            <ul class="check-list">
-              <li>Quản lý khoá học, lớp học, giảng viên và học viên tập trung.</li>
-              <li>Theo dõi tỷ lệ chuyên cần và tiến độ hoàn thành theo từng lớp.</li>
-              <li>Phân quyền theo vai trò học viên, giảng viên và quản trị viên.</li>
-              <li>Xếp và điều chỉnh thời khoá biểu toàn trung tâm không chồng lịch.</li>
-            </ul>
           </div>
         </div>
       </div>
@@ -250,8 +389,8 @@
 
   <section class="section section-tint">
     <div class="container">
-      <div class="section-head">
-        <p class="eyebrow">Phạm vi</p>
+      <div class="section-head" style="margin-inline: auto; text-align: center;">
+        <p class="eyebrow" style="justify-content: center;">Phạm vi</p>
         <h2>LMS lo phần dạy và học. Phần còn lại kết nối qua sản phẩm khác.</h2>
         <p class="section-lead">Chúng tôi không nhồi mọi nghiệp vụ vào một module. LMS làm sâu phần vận hành lớp học, còn tuyển sinh và chăm sóc học viên tiềm năng thuộc về CRM và Omni, dùng chung một nguồn dữ liệu.</p>
       </div>
@@ -268,27 +407,27 @@
           <tbody>
             <tr>
               <td>Khoá học, thời khoá biểu, điểm danh, bài tập, học liệu</td>
-              <td>LMS</td>
+              <td class="owner-lms">LMS</td>
               <td>Nằm trực tiếp trong LMS</td>
             </tr>
             <tr>
               <td>Tuyển sinh và chăm sóc học viên tiềm năng</td>
-              <td>CRM</td>
+              <td class="owner-crm">CRM</td>
               <td>Lead chuyển thành học viên và gắn vào lớp tương ứng</td>
             </tr>
             <tr>
               <td>Chiến dịch email tuyển sinh</td>
-              <td>CRM</td>
+              <td class="owner-crm">CRM</td>
               <td>Chạy trên danh sách liên hệ dùng chung</td>
             </tr>
             <tr>
               <td>Nhắc lịch qua Zalo và Messenger</td>
-              <td>Omni</td>
+              <td class="owner-omni">Omni</td>
               <td>Thông báo đi theo kênh học viên đang dùng</td>
             </tr>
             <tr>
               <td>Lớp học trực tuyến</td>
-              <td>Đối tác tích hợp</td>
+              <td class="owner-partner">Đối tác tích hợp</td>
               <td>Zoom gắn phòng họp vào từng buổi học</td>
             </tr>
           </tbody>
@@ -299,18 +438,24 @@
 
   <section class="section">
     <div class="container">
-      <div class="section-head">
-        <p class="eyebrow">Khách hàng</p>
+      <div class="section-head" style="margin-inline: auto; text-align: center;">
+        <p class="eyebrow" style="justify-content: center;">Khách hàng</p>
         <h2>Một trung tâm đang chạy CRM cùng LMS</h2>
       </div>
 
-      <div class="module-grid-featured">
-        <a href="/case-study-liam-education" class="module-card module-card-featured module-card-link">
-          <span class="module-tag">CRM + LMS</span>
-          <span class="module-card-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5Z"/><path d="M6 12v5c0 1.1 2.7 2 6 2s6-.9 6-2v-5"/></svg></span>
-          <h3>Liam Education</h3>
-          <p>Trung tâm Anh ngữ giao tiếp công sở dùng CRM cho hành trình tư vấn và ghi danh, LMS cho lớp học và điểm danh, trên cùng một hồ sơ học viên.</p>
-          <span class="module-card-cta">Đọc case study</span>
+      <div class="case-cards" style="max-width: 640px; margin-inline: auto;">
+        <a href="/case-study-liam-education" class="case-card">
+          <div>
+            <div class="case-card-top">
+              <span class="case-tag">CRM + LMS</span>
+              <span class="case-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5Z"/><path d="M6 12v5c0 1.1 2.7 2 6 2s6-.9 6-2v-5"/></svg></span>
+            </div>
+            <h3>Liam Education</h3>
+            <p>Trung tâm Anh ngữ giao tiếp công sở dùng CRM cho hành trình tư vấn và ghi danh, LMS cho lớp học và điểm danh, trên cùng một hồ sơ học viên.</p>
+          </div>
+          <span class="case-link">Đọc case study
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
         </a>
       </div>
     </div>
@@ -318,25 +463,29 @@
 
   <section class="section section-alt">
     <div class="container">
-      <div class="section-head">
-        <p class="eyebrow">Câu hỏi thường gặp</p>
+      <div class="section-head" style="margin-inline: auto; text-align: center;">
+        <p class="eyebrow" style="justify-content: center;">Câu hỏi thường gặp</p>
         <h2>Những điều trung tâm và phòng đào tạo hỏi trước</h2>
       </div>
 
-      <div class="bento-grid">
-        <div class="bento-card">
+      <div class="faq-grid" style="grid-template-columns: repeat(2, 1fr);">
+        <div class="faq-card">
+          <span class="faq-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 2-3 4"/><path d="M12 17h.01"/></svg></span>
           <h3>Dùng cho trung tâm hay cho đào tạo nội bộ?</h3>
           <p>Cả hai. Trung tâm vận hành theo lớp và khoá học, phòng đào tạo nội bộ vận hành theo chương trình cho nhân viên. Cùng một hệ thống, khác cách cấu hình.</p>
         </div>
-        <div class="bento-card">
+        <div class="faq-card">
+          <span class="faq-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
           <h3>Có bắt buộc dùng CRM kèm theo không?</h3>
           <p>Không. LMS chạy độc lập được. Khi có CRM, phần tuyển sinh nối liền với phần lớp học nên học viên không phải nhập thông tin hai lần.</p>
         </div>
-        <div class="bento-card">
+        <div class="faq-card">
+          <span class="faq-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m22 9-6 3.2V11.8L22 15V9Z"/></svg></span>
           <h3>Lớp trực tuyến chạy trên nền tảng nào?</h3>
           <p>Qua tích hợp Zoom, gắn trực tiếp vào buổi học trong thời khoá biểu. Học viên vào lớp từ lịch của mình.</p>
         </div>
-        <div class="bento-card">
+        <div class="faq-card">
+          <span class="faq-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5Z"/><path d="M6 12v5c0 1.1 2.7 2 6 2s6-.9 6-2v-5"/></svg></span>
           <h3>Dữ liệu học viên cũ có nhập được không?</h3>
           <p>Có. Danh sách học viên, lớp và lịch sử khoá học được nhập từ file hiện có trong bước cấu hình trước khi bàn giao.</p>
         </div>
@@ -344,10 +493,10 @@
     </div>
   </section>
 
-  <section class="section section-cta-banner">
-    <div class="container cta-banner-inner">
+  <section class="section cta-final">
+    <div class="container">
       <h2>Xem LMS chạy với lịch học thật của trung tâm bạn</h2>
-      <div class="hero-cta">
+      <div class="hero-cta-center">
         <a href="/dang-ky" class="btn btn-primary btn-lg">Bắt đầu dùng thử</a>
         <a href="/lien-he" class="btn btn-ghost btn-lg">Đặt lịch demo</a>
       </div>
