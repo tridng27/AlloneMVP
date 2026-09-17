@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/css/styles.css?v=13">
+<link rel="stylesheet" href="/css/styles.css?v=14">
 </head>
 <body>
 
@@ -57,30 +57,36 @@
           </a>
         </div>
       </div>
+      <a href="/bang-gia" data-nav="bang-gia">Bảng Giá</a>
       <div class="nav-item has-dropdown">
-        <a href="/case-study-liam-education" data-nav="case-study-liam-education" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
-          Giải Pháp
+        <a href="/tai-nguyen" data-nav="tai-nguyen" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+          Tài Nguyên
           <svg class="nav-caret" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
         <div class="nav-dropdown">
+          <a href="/tai-nguyen" class="nav-dropdown-item">
+            <span class="nav-dropdown-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg></span>
+            <span>
+              <span class="nav-dropdown-title">Thư viện tài liệu</span>
+              <span class="nav-dropdown-desc">Hướng dẫn sử dụng, chuẩn bị dữ liệu và câu hỏi thường gặp</span>
+            </span>
+          </a>
           <a href="/case-study-liam-education" class="nav-dropdown-item">
             <span class="nav-dropdown-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5Z"/><path d="M6 12v5c0 1.1 2.7 2 6 2s6-.9 6-2v-5"/></svg></span>
             <span>
-              <span class="nav-dropdown-title">Liam Education</span>
+              <span class="nav-dropdown-title">Case study: Liam Education</span>
               <span class="nav-dropdown-desc">Trung tâm Anh ngữ giao tiếp công sở CRM + LMS</span>
             </span>
           </a>
           <a href="/case-study-aztravel" class="nav-dropdown-item">
             <span class="nav-dropdown-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20M12 2c2.5 2.5 4 6 4 10s-1.5 7.5-4 10c-2.5-2.5-4-6-4-10s1.5-7.5 4-10Z"/></svg></span>
             <span>
-              <span class="nav-dropdown-title">AZTravel</span>
+              <span class="nav-dropdown-title">Case study: AZTravel</span>
               <span class="nav-dropdown-desc">Du lịch &amp; khách sạn tại Đà Nẵng, Hà Nội CRM</span>
             </span>
           </a>
         </div>
       </div>
-      <a href="/bang-gia" data-nav="bang-gia">Bảng Giá</a>
-      <a href="/tai-nguyen" data-nav="tai-nguyen">Tài Nguyên</a>
       <a href="/lien-he" data-nav="lien-he">Liên Hệ</a>
     </nav>
     <div class="header-actions">
@@ -97,42 +103,99 @@
     <a href="/crm" class="mobile-nav-sub">CRM Quản lý khách hàng</a>
     <a href="/omni" class="mobile-nav-sub">Omni Nhắn tin đa kênh</a>
     <a href="/lms" class="mobile-nav-sub">LMS Đào tạo &amp; Học tập</a>
-    <a href="/case-study-liam-education">Giải Pháp</a>
-    <a href="/case-study-liam-education" class="mobile-nav-sub">Case study: Liam Education</a>
-    <a href="/case-study-aztravel" class="mobile-nav-sub">Case study: AZTravel</a>
     <a href="/bang-gia">Bảng Giá</a>
     <a href="/tai-nguyen">Tài Nguyên</a>
+    <a href="/tai-nguyen" class="mobile-nav-sub">Thư viện tài liệu</a>
+    <a href="/case-study-liam-education" class="mobile-nav-sub">Case study: Liam Education</a>
+    <a href="/case-study-aztravel" class="mobile-nav-sub">Case study: AZTravel</a>
     <a href="/lien-he">Liên Hệ</a>
     <a href="/dang-ky" class="btn btn-primary">Đăng Ký</a>
   </div>
 </header>
 
 <main id="main">
-
-  <section class="page-hero">
+  <section class="page-hero case-hero">
     <div class="container">
-      <p class="eyebrow">Case Study</p>
-      <h1>Cách AZTravel giúp hai chi nhánh <span class="text-highlight">làm việc trên cùng một nguồn booking</span></h1>
-      <p>Công ty du lịch tại Đà Nẵng và Hà Nội chuyển booking tour, hồ sơ khách hàng và công nợ đối tác khách sạn từ nhiều Google Sheet sang một hệ thống CRM.</p>
-      <div class="case-meta">
-        <div class="case-meta-item"><span>Ngành</span><span>Du lịch và lữ hành</span></div>
-        <div class="case-meta-item"><span>Địa bàn</span><span>Đà Nẵng và Hà Nội</span></div>
-        <div class="case-meta-item"><span>Dịch vụ</span><span>Tour giá rẻ và đặt phòng khách sạn</span></div>
-        <div class="case-meta-item"><span>Sản phẩm triển khai</span><span>CRM</span></div>
+      <div class="case-hero-grid">
+        <div>
+          <nav class="breadcrumb" aria-label="Đường dẫn"><a href="/">Trang chủ</a><span>/</span><a href="/tai-nguyen">Tài nguyên</a><span>/</span>Case study</nav>
+          <p class="eyebrow">Case study</p>
+          <h1>Cách AZTravel giúp hai chi nhánh <span class="text-highlight">làm việc trên cùng một nguồn booking</span></h1>
+          <p>Công ty du lịch tại Đà Nẵng và Hà Nội chuyển booking tour, hồ sơ khách hàng và công nợ đối tác khách sạn từ nhiều Google Sheet sang một hệ thống CRM.</p>
+        </div>
+        <div class="cs-factcard">
+          <h2>Hồ sơ triển khai</h2>
+          <dl class="cs-facts">
+            <div><dt>Ngành</dt><dd>Du lịch và lữ hành</dd></div>
+            <div><dt>Địa bàn</dt><dd>Đà Nẵng và Hà Nội</dd></div>
+            <div><dt>Dịch vụ</dt><dd>Tour giá rẻ và đặt phòng khách sạn</dd></div>
+            <div><dt>Sản phẩm triển khai</dt><dd class="cs-pills"><span class="cs-pill">CRM</span></dd></div>
+          </dl>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="section">
+  <section class="section section-tight">
     <div class="container">
-      <div class="case-body-grid">
-        <div>
-          <p class="eyebrow">Bối cảnh</p>
-          <h3>Hai địa bàn, hai nhịp mùa vụ, một thương hiệu</h3>
+      <div class="cs-summary">
+        <div class="cs-sum is-problem"><h3>Vấn đề</h3><p>Booking, khách hàng, đối tác khách sạn và công nợ chia theo nhóm tour và theo địa bàn trên nhiều Google Sheet.</p></div>
+        <div class="cs-sum is-approach"><h3>Cách làm</h3><p>Một CRM duy nhất giữ khách hàng, booking và đối tác, cập nhật theo thời gian thực.</p></div>
+        <div class="cs-sum is-result"><h3>Kết quả</h3><p>Hai chi nhánh làm việc trên cùng một tập booking, không còn thuê người đối chiếu theo mùa vụ.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 2rem;">
+    <div class="container">
+      <div class="cs-steps">
+        <div class="cs-step">
+          <div class="cs-num" aria-hidden="true">01</div>
+          <div class="cs-step-body">
+            <p class="eyebrow">Bối cảnh</p>
+            <h3>Hai địa bàn, hai nhịp mùa vụ, một thương hiệu</h3>
+            <p>AZTravel bán tour giá rẻ và dịch vụ khách sạn tại hai địa bàn du lịch lớn nhất miền Trung và miền Bắc. Cạnh tranh ở phân khúc này nằm ở giá và tốc độ phản hồi, nên đội sale phải chốt nhanh và giữ chi phí vận hành thấp.</p>
+            <p>Hai chi nhánh chạy song song với tệp khách và lịch khởi hành riêng, nhưng bán chung một thương hiệu và làm việc với nhiều đối tác khách sạn trùng nhau. Điều đó biến việc giữ cho số liệu hai bên khớp nhau thành một phần công việc thường xuyên.</p>
+          </div>
         </div>
-        <div>
-          <p>AZTravel bán tour giá rẻ và dịch vụ khách sạn tại hai địa bàn du lịch lớn nhất miền Trung và miền Bắc. Cạnh tranh ở phân khúc này nằm ở giá và tốc độ phản hồi, nên đội sale phải chốt nhanh và giữ chi phí vận hành thấp.</p>
-          <p>Hai chi nhánh chạy song song với tệp khách và lịch khởi hành riêng, nhưng bán chung một thương hiệu và làm việc với nhiều đối tác khách sạn trùng nhau. Điều đó biến việc giữ cho số liệu hai bên khớp nhau thành một phần công việc thường xuyên.</p>
+        <div class="cs-step">
+          <div class="cs-num" aria-hidden="true">02</div>
+          <div class="cs-step-body">
+            <p class="eyebrow">Thách thức</p>
+            <h3>Mùa cao điểm là mùa dễ trùng lịch và sai công nợ nhất</h3>
+            <p>Thông tin booking, khách hàng, đối tác khách sạn và công nợ được quản lý bằng nhiều Google Spreadsheet chia theo nhóm tour và theo địa bàn. Khi lượng khách thấp, cách làm này vẫn trôi.</p>
+            <p>Vào cao điểm thì không. Đội sale phải tự đối chiếu chéo giữa các bảng để tránh nhận trùng chỗ trên cùng một lịch khởi hành, hoặc ghi sai công nợ với đối tác khách sạn. Công ty phải thuê thêm nhân sự part-time và outsource chỉ để làm công việc đối chiếu này trong mùa bận.</p>
+            <p>Hệ quả đi kèm là áp lực lên nhân sự chính thức. Họ vốn đã kín lịch tư vấn và chăm sóc khách, nay gánh thêm phần rà soát số liệu, và tỷ lệ nghỉ việc tăng theo.</p>
+          </div>
+        </div>
+        <div class="cs-step is-solution">
+          <div class="cs-num" aria-hidden="true">03</div>
+          <div class="cs-step-body">
+            <p class="eyebrow eyebrow-ai">Giải pháp triển khai</p>
+            <h3>Một CRM cho khách hàng, booking và đối tác</h3>
+            <p>AZTravel triển khai riêng CRM, không mở thêm sản phẩm nào khác. Mục tiêu đặt ra rất hẹp: đưa mọi thứ liên quan tới một booking về cùng một chỗ để không còn gì phải đối chiếu.</p>
+            <div class="cs-scope">
+              <div class="cs-scope-card">
+                <span class="cs-scope-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m16.24 7.76-2.12 6.36-6.36 2.12 2.12-6.36 6.36-2.12Z"/></svg></span>
+                <span class="cs-scope-tag">CRM</span>
+                <h4>Dữ liệu tập trung</h4>
+                <p>Khách hàng, booking tour và đối tác khách sạn cập nhật theo thời gian thực thay vì gõ tay vào nhiều bảng.</p>
+              </div>
+              <div class="cs-scope-card">
+                <span class="cs-scope-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20M12 2c2.5 2.5 4 6 4 10s-1.5 7.5-4 10c-2.5-2.5-4-6-4-10s1.5-7.5 4-10Z"/></svg></span>
+                <span class="cs-scope-tag">CRM</span>
+                <h4>Lịch khởi hành và số chỗ</h4>
+                <p>Quản lý theo từng tour, giảm rủi ro hai chi nhánh cùng nhận một chỗ trống.</p>
+              </div>
+              <div class="cs-scope-card">
+                <span class="cs-scope-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12 5 5L20 6"/></svg></span>
+                <span class="cs-scope-tag">CRM</span>
+                <h4>Công nợ đối tác</h4>
+                <p>Theo dõi ngay trên hồ sơ booking, thay vì rà soát thủ công vào cuối tháng.</p>
+              </div>
+            </div>
+            <div class="cs-scope-note"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.07 0l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.07 0l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><p><strong>Một tập booking dùng chung</strong> để Đà Nẵng và Hà Nội nhìn thấy cùng một tình trạng chỗ, thay vì mỗi chi nhánh giữ một bảng riêng.</p></div>
+          </div>
         </div>
       </div>
     </div>
@@ -140,51 +203,30 @@
 
   <section class="section section-alt">
     <div class="container">
-      <div class="case-body-grid">
-        <div>
-          <p class="eyebrow">Thách thức</p>
-          <h3>Mùa cao điểm là mùa dễ trùng lịch và sai công nợ nhất</h3>
-        </div>
-        <div>
-          <p>Thông tin booking, khách hàng, đối tác khách sạn và công nợ được quản lý bằng nhiều Google Spreadsheet chia theo nhóm tour và theo địa bàn. Khi lượng khách thấp, cách làm này vẫn trôi.</p>
-          <p>Vào cao điểm thì không. Đội sale phải tự đối chiếu chéo giữa các bảng để tránh nhận trùng chỗ trên cùng một lịch khởi hành, hoặc ghi sai công nợ với đối tác khách sạn. Công ty phải thuê thêm nhân sự part-time và outsource chỉ để làm công việc đối chiếu này trong mùa bận.</p>
-          <p>Hệ quả đi kèm là áp lực lên nhân sự chính thức. Họ vốn đã kín lịch tư vấn và chăm sóc khách, nay gánh thêm phần rà soát số liệu, và tỷ lệ nghỉ việc tăng theo.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="case-body-grid">
-        <div>
-          <p class="eyebrow eyebrow-ai">Giải pháp triển khai</p>
-          <h3>Một CRM cho khách hàng, booking và đối tác</h3>
-        </div>
-        <div>
-          <p>AZTravel triển khai riêng CRM, không mở thêm sản phẩm nào khác. Mục tiêu đặt ra rất hẹp: đưa mọi thứ liên quan tới một booking về cùng một chỗ để không còn gì phải đối chiếu.</p>
-          <ul class="check-list">
-            <li><strong>Dữ liệu tập trung</strong> cho khách hàng, booking tour và đối tác khách sạn, cập nhật theo thời gian thực thay vì gõ tay vào nhiều bảng.</li>
-            <li><strong>Lịch khởi hành và số chỗ</strong> quản lý theo từng tour, giảm rủi ro hai chi nhánh cùng nhận một chỗ trống.</li>
-            <li><strong>Công nợ đối tác</strong> theo dõi ngay trên hồ sơ booking, thay vì rà soát thủ công vào cuối tháng.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-tint">
-    <div class="container">
       <div class="section-head">
         <p class="eyebrow">Vận hành sau triển khai</p>
-        <h2>Điều thay đổi trong một ngày cao điểm</h2>
+        <h2>Một ngày cao điểm, trước và sau</h2>
         <p class="section-lead">Cao điểm vẫn là cao điểm. Khác biệt nằm ở chỗ đội sale không còn phải dừng lại để kiểm tra xem bảng của chi nhánh kia đã cập nhật chưa.</p>
       </div>
 
-      <div class="outcomes-grid">
-        <div class="outcome-card"><p>Nhân viên hai chi nhánh nhìn cùng một tình trạng chỗ trên mỗi lịch khởi hành.</p></div>
-        <div class="outcome-card"><p>Công nợ với từng khách sạn gắn thẳng vào booking phát sinh ra nó, nên không cần dựng lại vào cuối tháng.</p></div>
-        <div class="outcome-card"><p>Lịch sử trao đổi với khách nằm trên hồ sơ, ai tiếp nhận tiếp cũng đọc được đầy đủ.</p></div>
+      <div class="cs-ba">
+        <div class="cs-ba-col is-before">
+          <div class="cs-ba-head"><h3>Trên nhiều bảng tính</h3><span class="cs-ba-tag">Trước</span></div>
+          <ul class="cs-ba-list">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/></svg><span>Mỗi chi nhánh giữ một bảng chỗ trống, phải hỏi nhau trước khi chốt khách.</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/></svg><span>Công nợ với từng khách sạn dựng lại thủ công vào cuối tháng.</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/></svg><span>Lịch sử trao đổi với khách nằm trong file và tin nhắn của người phụ trách.</span></li>
+          </ul>
+        </div>
+        <div class="cs-ba-arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        <div class="cs-ba-col is-after">
+          <div class="cs-ba-head"><h3>Trên một hệ thống</h3><span class="cs-ba-tag">Sau</span></div>
+          <ul class="cs-ba-list">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12 5 5L20 6"/></svg><span>Nhân viên hai chi nhánh nhìn cùng một tình trạng chỗ trên mỗi lịch khởi hành.</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12 5 5L20 6"/></svg><span>Công nợ với từng khách sạn gắn thẳng vào booking phát sinh ra nó, nên không cần dựng lại vào cuối tháng.</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12 5 5L20 6"/></svg><span>Lịch sử trao đổi với khách nằm trên hồ sơ, ai tiếp nhận tiếp cũng đọc được đầy đủ.</span></li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
@@ -196,10 +238,10 @@
         <h2>Ba thay đổi công ty ghi nhận được</h2>
       </div>
 
-      <div class="outcomes-grid">
-        <div class="outcome-card"><p><strong>Hai chi nhánh, một nguồn dữ liệu.</strong> Đà Nẵng và Hà Nội làm việc trên cùng một tập booking và khách hàng, không còn hai phiên bản sự thật.</p></div>
-        <div class="outcome-card"><p><strong>Không còn cần nhân sự đối chiếu theo mùa vụ.</strong> Khi việc so khớp giữa các bảng tính được loại bỏ, nhu cầu thuê part-time hoặc outsource cho công việc này cũng không còn.</p></div>
-        <div class="outcome-card"><p><strong>Đội sale quay lại làm việc của đội sale.</strong> Thời gian trước đây dành cho rà soát số liệu chuyển sang tư vấn và chăm sóc khách, giảm áp lực dẫn tới nghỉ việc.</p></div>
+      <div class="cs-results">
+        <div class="cs-result"><span class="bento-icon icon-workflow" aria-hidden="true"></span><h3>Hai chi nhánh, một nguồn dữ liệu</h3><p>Đà Nẵng và Hà Nội làm việc trên cùng một tập booking và khách hàng, không còn hai phiên bản sự thật.</p></div>
+        <div class="cs-result"><span class="bento-icon icon-clipboard-check" aria-hidden="true"></span><h3>Không còn đối chiếu theo mùa vụ</h3><p>Khi việc so khớp giữa các bảng tính được loại bỏ, nhu cầu thuê part-time hoặc outsource cho công việc này cũng không còn.</p></div>
+        <div class="cs-result"><span class="bento-icon icon-user-check" aria-hidden="true"></span><h3>Đội sale quay lại việc của đội sale</h3><p>Thời gian trước đây dành cho rà soát số liệu chuyển sang tư vấn và chăm sóc khách, giảm áp lực dẫn tới nghỉ việc.</p></div>
       </div>
     </div>
   </section>
@@ -212,16 +254,23 @@
         <p class="section-lead">AZTravel bán tour, Liam Education dạy tiếng Anh, nhưng cả hai cùng gặp một chuỗi vấn đề. Điểm khác nhau chỉ là tên các file trong Google Drive.</p>
       </div>
 
-      <div class="outcomes-grid">
-        <div class="outcome-card"><p><strong>Hợp nhất dữ liệu.</strong> Thông tin khách hàng, giao dịch và chứng từ nằm trên một nền tảng thay vì nhiều bảng tính do từng bộ phận tự giữ.</p></div>
-        <div class="outcome-card"><p><strong>Giảm phụ thuộc nhân sự thời vụ.</strong> Không còn cần thuê thêm người chỉ để đối chiếu chéo số liệu giữa các bảng.</p></div>
-        <div class="outcome-card"><p><strong>Giảm áp lực nghỉ việc.</strong> Cắt khối lượng việc thủ công lặp lại là cách trực tiếp nhất để giữ nhân sự đang có.</p></div>
-        <div class="outcome-card"><p><strong>Dễ bàn giao.</strong> Lịch sử làm việc nằm trên hệ thống, nên người mới tiếp nhận nhanh mà không cần người cũ ngồi kể lại.</p></div>
-        <div class="outcome-card"><p><strong>Ra quyết định trên số liệu hiện tại.</strong> Báo cáo lấy từ dữ liệu đang chạy, không phải bản tổng hợp thủ công của tuần trước.</p></div>
+      <div class="cs-takeaways">
+        <div class="cs-take"><span class="cs-take-ico" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5 5L20 6"/></svg></span><div><h4>Hợp nhất dữ liệu</h4><p>Thông tin khách hàng, giao dịch và chứng từ nằm trên một nền tảng thay vì nhiều bảng tính do từng bộ phận tự giữ.</p></div></div>
+        <div class="cs-take"><span class="cs-take-ico" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5 5L20 6"/></svg></span><div><h4>Giảm phụ thuộc nhân sự thời vụ</h4><p>Không còn cần thuê thêm người chỉ để đối chiếu chéo số liệu giữa các bảng.</p></div></div>
+        <div class="cs-take"><span class="cs-take-ico" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5 5L20 6"/></svg></span><div><h4>Giảm áp lực nghỉ việc</h4><p>Cắt khối lượng việc thủ công lặp lại là cách trực tiếp nhất để giữ nhân sự đang có.</p></div></div>
+        <div class="cs-take"><span class="cs-take-ico" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5 5L20 6"/></svg></span><div><h4>Dễ bàn giao</h4><p>Lịch sử làm việc nằm trên hệ thống, nên người mới tiếp nhận nhanh mà không cần người cũ ngồi kể lại.</p></div></div>
+        <div class="cs-take"><span class="cs-take-ico" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5 5L20 6"/></svg></span><div><h4>Ra quyết định trên số liệu hiện tại</h4><p>Báo cáo lấy từ dữ liệu đang chạy, không phải bản tổng hợp thủ công của tuần trước.</p></div></div>
       </div>
 
       <div class="section-cta">
-        <a href="/case-study-liam-education" class="btn btn-ghost">Đọc case study Liam Education</a>
+        <a href="/case-study-liam-education" class="cs-next">
+          <div>
+            <p class="cs-next-label">Case study tiếp theo</p>
+            <h3>Liam Education: bỏ hẳn công việc đối chiếu bảng tính</h3>
+            <p>Trung tâm Anh ngữ giao tiếp công sở đưa hồ sơ học viên, lớp học và học phí về CRM và LMS dùng chung một hồ sơ.</p>
+          </div>
+          <span class="cs-next-arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
       </div>
     </div>
   </section>
@@ -235,7 +284,6 @@
       </div>
     </div>
   </section>
-
 </main>
 
 <footer class="site-footer">
@@ -252,17 +300,17 @@
       <a href="/bang-gia">Bảng giá</a>
     </div>
     <div class="footer-col">
-      <h4>Giải pháp</h4>
+      <h4>Tài nguyên</h4>
+      <a href="/tai-nguyen">Thư viện tài liệu</a>
       <a href="/case-study-liam-education">Case study: Liam Education</a>
       <a href="/case-study-aztravel">Case study: AZTravel</a>
-      <a href="/dang-ky">Đăng ký dùng thử</a>
-      <a href="/lien-he">Đặt lịch demo</a>
     </div>
     <div class="footer-col">
       <h4>Công ty</h4>
       <a href="/">Về chúng tôi</a>
       <a href="/lien-he">Liên hệ</a>
-      <a href="/tai-nguyen">Tài nguyên</a>
+      <a href="/dang-ky">Đăng ký dùng thử</a>
+      <a href="/lien-he">Đặt lịch demo</a>
     </div>
   </div>
   <div class="container footer-bottom">
@@ -270,6 +318,6 @@
   </div>
 </footer>
 
-<script src="/js/main.js?v=6"></script>
+<script src="/js/main.js?v=7"></script>
 </body>
 </html>

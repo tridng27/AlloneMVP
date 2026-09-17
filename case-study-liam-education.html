@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/css/styles.css?v=13">
+<link rel="stylesheet" href="/css/styles.css?v=14">
 </head>
 <body>
 
@@ -57,30 +57,36 @@
           </a>
         </div>
       </div>
+      <a href="/bang-gia" data-nav="bang-gia">Bảng Giá</a>
       <div class="nav-item has-dropdown">
-        <a href="/case-study-liam-education" data-nav="case-study-liam-education" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
-          Giải Pháp
+        <a href="/tai-nguyen" data-nav="tai-nguyen" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+          Tài Nguyên
           <svg class="nav-caret" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
         <div class="nav-dropdown">
+          <a href="/tai-nguyen" class="nav-dropdown-item">
+            <span class="nav-dropdown-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg></span>
+            <span>
+              <span class="nav-dropdown-title">Thư viện tài liệu</span>
+              <span class="nav-dropdown-desc">Hướng dẫn sử dụng, chuẩn bị dữ liệu và câu hỏi thường gặp</span>
+            </span>
+          </a>
           <a href="/case-study-liam-education" class="nav-dropdown-item">
             <span class="nav-dropdown-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5Z"/><path d="M6 12v5c0 1.1 2.7 2 6 2s6-.9 6-2v-5"/></svg></span>
             <span>
-              <span class="nav-dropdown-title">Liam Education</span>
+              <span class="nav-dropdown-title">Case study: Liam Education</span>
               <span class="nav-dropdown-desc">Trung tâm Anh ngữ giao tiếp công sở CRM + LMS</span>
             </span>
           </a>
           <a href="/case-study-aztravel" class="nav-dropdown-item">
             <span class="nav-dropdown-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20M12 2c2.5 2.5 4 6 4 10s-1.5 7.5-4 10c-2.5-2.5-4-6-4-10s1.5-7.5 4-10Z"/></svg></span>
             <span>
-              <span class="nav-dropdown-title">AZTravel</span>
+              <span class="nav-dropdown-title">Case study: AZTravel</span>
               <span class="nav-dropdown-desc">Du lịch &amp; khách sạn tại Đà Nẵng, Hà Nội CRM</span>
             </span>
           </a>
         </div>
       </div>
-      <a href="/bang-gia" data-nav="bang-gia">Bảng Giá</a>
-      <a href="/tai-nguyen" data-nav="tai-nguyen">Tài Nguyên</a>
       <a href="/lien-he" data-nav="lien-he">Liên Hệ</a>
     </nav>
     <div class="header-actions">
@@ -97,42 +103,93 @@
     <a href="/crm" class="mobile-nav-sub">CRM Quản lý khách hàng</a>
     <a href="/omni" class="mobile-nav-sub">Omni Nhắn tin đa kênh</a>
     <a href="/lms" class="mobile-nav-sub">LMS Đào tạo &amp; Học tập</a>
-    <a href="/case-study-liam-education">Giải Pháp</a>
-    <a href="/case-study-liam-education" class="mobile-nav-sub">Case study: Liam Education</a>
-    <a href="/case-study-aztravel" class="mobile-nav-sub">Case study: AZTravel</a>
     <a href="/bang-gia">Bảng Giá</a>
     <a href="/tai-nguyen">Tài Nguyên</a>
+    <a href="/tai-nguyen" class="mobile-nav-sub">Thư viện tài liệu</a>
+    <a href="/case-study-liam-education" class="mobile-nav-sub">Case study: Liam Education</a>
+    <a href="/case-study-aztravel" class="mobile-nav-sub">Case study: AZTravel</a>
     <a href="/lien-he">Liên Hệ</a>
     <a href="/dang-ky" class="btn btn-primary">Đăng Ký</a>
   </div>
 </header>
 
 <main id="main">
-
-  <section class="page-hero">
+  <section class="page-hero case-hero">
     <div class="container">
-      <p class="eyebrow">Case Study</p>
-      <h1>Liam Education <span class="text-highlight">loại bỏ công việc đối chiếu bảng tính</span> như thế nào</h1>
-      <p>Trung tâm Anh ngữ giao tiếp công sở chuyển hồ sơ học viên, lớp học và học phí từ nhiều Google Sheet sang CRM và LMS dùng chung một hồ sơ.</p>
-      <div class="case-meta">
-        <div class="case-meta-item"><span>Ngành</span><span>Đào tạo Anh ngữ giao tiếp công sở</span></div>
-        <div class="case-meta-item"><span>Học viên</span><span>Người đi làm, không phải học sinh, sinh viên</span></div>
-        <div class="case-meta-item"><span>Sản phẩm triển khai</span><span>CRM và LMS</span></div>
-        <div class="case-meta-item"><span>Hệ thống trước đó</span><span>Google Sheets theo từng bộ phận</span></div>
+      <div class="case-hero-grid">
+        <div>
+          <nav class="breadcrumb" aria-label="Đường dẫn"><a href="/">Trang chủ</a><span>/</span><a href="/tai-nguyen">Tài nguyên</a><span>/</span>Case study</nav>
+          <p class="eyebrow">Case study</p>
+          <h1>Liam Education <span class="text-highlight">loại bỏ công việc đối chiếu bảng tính</span> như thế nào</h1>
+          <p>Trung tâm Anh ngữ giao tiếp công sở chuyển hồ sơ học viên, lớp học và học phí từ nhiều Google Sheet sang CRM và LMS dùng chung một hồ sơ.</p>
+        </div>
+        <div class="cs-factcard">
+          <h2>Hồ sơ triển khai</h2>
+          <dl class="cs-facts">
+            <div><dt>Ngành</dt><dd>Đào tạo Anh ngữ giao tiếp công sở</dd></div>
+            <div><dt>Học viên</dt><dd>Người đi làm, không phải học sinh, sinh viên</dd></div>
+            <div><dt>Sản phẩm triển khai</dt><dd class="cs-pills"><span class="cs-pill">CRM</span><span class="cs-pill">LMS</span></dd></div>
+            <div><dt>Hệ thống trước đó</dt><dd>Google Sheets theo từng bộ phận</dd></div>
+          </dl>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="section">
+  <section class="section section-tight">
     <div class="container">
-      <div class="case-body-grid">
-        <div>
-          <p class="eyebrow">Bối cảnh</p>
-          <h3>Một trung tâm dạy đúng một thứ, cho đúng một nhóm người</h3>
+      <div class="cs-summary">
+        <div class="cs-sum is-problem"><h3>Vấn đề</h3><p>Hồ sơ học viên, lớp học và học phí nằm rải rác trên nhiều Google Sheet, mỗi bộ phận giữ một bản.</p></div>
+        <div class="cs-sum is-approach"><h3>Cách làm</h3><p>CRM lo hành trình học viên trước lớp, LMS lo lớp học, cả hai đọc chung một hồ sơ.</p></div>
+        <div class="cs-sum is-result"><h3>Kết quả</h3><p>Công việc đối chiếu giữa các bảng không còn lý do tồn tại, đội ngũ quay lại tư vấn và giảng dạy.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 2rem;">
+    <div class="container">
+      <div class="cs-steps">
+        <div class="cs-step">
+          <div class="cs-num" aria-hidden="true">01</div>
+          <div class="cs-step-body">
+            <p class="eyebrow">Bối cảnh</p>
+            <h3>Một trung tâm dạy đúng một thứ, cho đúng một nhóm người</h3>
+            <p>Liam Education dạy tiếng Anh giao tiếp trong môi trường công sở. Học viên là người đã đi làm, đăng ký để nói được trong họp hành, email và trao đổi với đối tác, nên trung tâm không chạy theo mô hình luyện thi cho học sinh sinh viên như phần lớn thị trường.</p>
+            <p>Nhóm học viên này kéo theo một đặc thù vận hành: nhiều người tới từ hợp đồng doanh nghiệp, khi công ty cử nhân viên đi học theo đợt. Một hồ sơ tư vấn có thể dẫn tới nhiều học viên, và lịch học phải xếp quanh giờ làm của họ.</p>
+          </div>
         </div>
-        <div>
-          <p>Liam Education dạy tiếng Anh giao tiếp trong môi trường công sở. Học viên là người đã đi làm, đăng ký để nói được trong họp hành, email và trao đổi với đối tác, nên trung tâm không chạy theo mô hình luyện thi cho học sinh sinh viên như phần lớn thị trường.</p>
-          <p>Nhóm học viên này kéo theo một đặc thù vận hành: nhiều người tới từ hợp đồng doanh nghiệp, khi công ty cử nhân viên đi học theo đợt. Một hồ sơ tư vấn có thể dẫn tới nhiều học viên, và lịch học phải xếp quanh giờ làm của họ.</p>
+        <div class="cs-step">
+          <div class="cs-num" aria-hidden="true">02</div>
+          <div class="cs-step-body">
+            <p class="eyebrow">Thách thức</p>
+            <h3>Khi đối chiếu dữ liệu trở thành một vị trí riêng</h3>
+            <p>Hồ sơ học viên, lịch tư vấn, tiến độ lớp học và chứng từ học phí nằm rải rác trên nhiều Google Spreadsheet, mỗi bộ phận giữ một bản. Không bản nào sai, nhưng cũng không bản nào khớp hoàn toàn với bản còn lại.</p>
+            <p>Để trả lời những câu hỏi cơ bản như học viên nào đã đóng học phí, lớp nào đã điểm danh, hay hợp đồng doanh nghiệp nào còn chờ xác nhận, trung tâm phải thuê thêm nhân sự part-time và outsource chỉ để so khớp các bảng với nhau. Đó là chi phí lương trả cho việc mà lẽ ra không cần ai làm.</p>
+            <p>Cùng lúc, đội ngũ chính thức vừa tư vấn, vừa đứng lớp, vừa xử lý hành chính. Khối lượng việc lặp lại đó khiến tỷ lệ nghỉ việc ở mức cao, và mỗi lần một người rời đi, lịch sử chăm sóc học viên trong file cá nhân và trí nhớ của họ cũng đi theo.</p>
+          </div>
+        </div>
+        <div class="cs-step is-solution">
+          <div class="cs-num" aria-hidden="true">03</div>
+          <div class="cs-step-body">
+            <p class="eyebrow eyebrow-ai">Giải pháp triển khai</p>
+            <h3>CRM cho hành trình học viên, LMS cho lớp học</h3>
+            <p>Trung tâm triển khai hai sản phẩm cùng lúc, chia rõ phạm vi để không chồng lấn. CRM quản lý mọi thứ trước khi học viên vào lớp, LMS quản lý mọi thứ sau đó.</p>
+            <div class="cs-scope">
+              <div class="cs-scope-card">
+                <span class="cs-scope-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m16.24 7.76-2.12 6.36-6.36 2.12 2.12-6.36 6.36-2.12Z"/></svg></span>
+                <span class="cs-scope-tag">CRM</span>
+                <h4>Trước khi vào lớp</h4>
+                <p>Theo dõi học viên từ lúc là Lead đăng ký tư vấn tới khi ghi danh, bao gồm cả kênh khách hàng doanh nghiệp cử nhân viên đi học theo đợt.</p>
+              </div>
+              <div class="cs-scope-card">
+                <span class="cs-scope-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4.5A2.5 2.5 0 0 1 4.5 2H12v18H4.5A2.5 2.5 0 0 0 2 22.5v-18Z"/><path d="M22 4.5A2.5 2.5 0 0 0 19.5 2H12v18h7.5a2.5 2.5 0 0 1 2.5 2.5v-18Z"/></svg></span>
+                <span class="cs-scope-tag">LMS</span>
+                <h4>Sau khi vào lớp</h4>
+                <p>Xếp lớp theo cấp độ giao tiếp công sở, ghi điểm danh từng buổi, giao và chấm bài tập, theo dõi tiến độ của từng học viên.</p>
+              </div>
+            </div>
+            <div class="cs-scope-note"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.07 0l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.07 0l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><p><strong>Một hồ sơ dùng chung</strong> để tư vấn viên và giảng viên nhìn thấy cùng một dữ liệu, thay vì mỗi bên giữ một phiên bản riêng.</p></div>
+          </div>
         </div>
       </div>
     </div>
@@ -140,51 +197,30 @@
 
   <section class="section section-alt">
     <div class="container">
-      <div class="case-body-grid">
-        <div>
-          <p class="eyebrow">Thách thức</p>
-          <h3>Khi đối chiếu dữ liệu trở thành một vị trí riêng</h3>
-        </div>
-        <div>
-          <p>Hồ sơ học viên, lịch tư vấn, tiến độ lớp học và chứng từ học phí nằm rải rác trên nhiều Google Spreadsheet, mỗi bộ phận giữ một bản. Không bản nào sai, nhưng cũng không bản nào khớp hoàn toàn với bản còn lại.</p>
-          <p>Để trả lời những câu hỏi cơ bản như học viên nào đã đóng học phí, lớp nào đã điểm danh, hay hợp đồng doanh nghiệp nào còn chờ xác nhận, trung tâm phải thuê thêm nhân sự part-time và outsource chỉ để so khớp các bảng với nhau. Đó là chi phí lương trả cho việc mà lẽ ra không cần ai làm.</p>
-          <p>Cùng lúc, đội ngũ chính thức vừa tư vấn, vừa đứng lớp, vừa xử lý hành chính. Khối lượng việc lặp lại đó khiến tỷ lệ nghỉ việc ở mức cao, và mỗi lần một người rời đi, lịch sử chăm sóc học viên trong file cá nhân và trí nhớ của họ cũng đi theo.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="case-body-grid">
-        <div>
-          <p class="eyebrow eyebrow-ai">Giải pháp triển khai</p>
-          <h3>CRM cho hành trình học viên, LMS cho lớp học</h3>
-        </div>
-        <div>
-          <p>Trung tâm triển khai hai sản phẩm cùng lúc, chia rõ phạm vi để không chồng lấn. CRM quản lý mọi thứ trước khi học viên vào lớp, LMS quản lý mọi thứ sau đó, và cả hai đọc chung một hồ sơ.</p>
-          <ul class="check-list">
-            <li><strong>CRM</strong> theo dõi học viên từ lúc là Lead đăng ký tư vấn tới khi ghi danh, bao gồm cả kênh khách hàng doanh nghiệp cử nhân viên đi học theo đợt.</li>
-            <li><strong>LMS</strong> xếp lớp theo cấp độ giao tiếp công sở, ghi điểm danh từng buổi, giao và chấm bài tập, theo dõi tiến độ của từng học viên.</li>
-            <li><strong>Một hồ sơ dùng chung</strong> để tư vấn viên và giảng viên nhìn thấy cùng một dữ liệu, thay vì mỗi bên giữ một phiên bản riêng.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-tint">
-    <div class="container">
       <div class="section-head">
         <p class="eyebrow">Vận hành sau triển khai</p>
-        <h2>Điều thay đổi trong một ngày làm việc bình thường</h2>
+        <h2>Một ngày làm việc bình thường, trước và sau</h2>
         <p class="section-lead">Thay đổi lớn nhất không phải là có thêm phần mềm, mà là những bước công việc trước đây phải làm thủ công thì nay không còn tồn tại.</p>
       </div>
 
-      <div class="outcomes-grid">
-        <div class="outcome-card"><p>Giảng viên ghi điểm danh ngay trong buổi học, không nhập lại vào bảng tính sau khi lớp kết thúc.</p></div>
-        <div class="outcome-card"><p>Tư vấn viên mở hồ sơ học viên và thấy đủ lịch sử trao đổi, tình trạng học phí và lớp đang theo, trong cùng một màn hình.</p></div>
-        <div class="outcome-card"><p>Hợp đồng doanh nghiệp theo dõi được theo từng đợt cử người đi học, thay vì ghi chú rời trong file của người phụ trách.</p></div>
+      <div class="cs-ba">
+        <div class="cs-ba-col is-before">
+          <div class="cs-ba-head"><h3>Trên nhiều bảng tính</h3><span class="cs-ba-tag">Trước</span></div>
+          <ul class="cs-ba-list">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/></svg><span>Giảng viên ghi điểm danh trong buổi học rồi nhập lại vào bảng tính sau khi lớp kết thúc.</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/></svg><span>Tư vấn viên phải mở nhiều file mới biết học viên đã đóng học phí và đang theo lớp nào.</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/></svg><span>Hợp đồng doanh nghiệp nằm trong ghi chú rời của người phụ trách từng đợt.</span></li>
+          </ul>
+        </div>
+        <div class="cs-ba-arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        <div class="cs-ba-col is-after">
+          <div class="cs-ba-head"><h3>Trên một hệ thống</h3><span class="cs-ba-tag">Sau</span></div>
+          <ul class="cs-ba-list">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12 5 5L20 6"/></svg><span>Giảng viên ghi điểm danh ngay trong buổi học, không nhập lại vào bảng tính sau khi lớp kết thúc.</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12 5 5L20 6"/></svg><span>Tư vấn viên mở hồ sơ học viên và thấy đủ lịch sử trao đổi, tình trạng học phí và lớp đang theo, trong cùng một màn hình.</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12 5 5L20 6"/></svg><span>Hợp đồng doanh nghiệp theo dõi được theo từng đợt cử người đi học, ngay trên hồ sơ của hợp đồng.</span></li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
@@ -196,10 +232,10 @@
         <h2>Ba thay đổi trung tâm ghi nhận được</h2>
       </div>
 
-      <div class="outcomes-grid">
-        <div class="outcome-card"><p><strong>Không còn cần nhân sự đối chiếu.</strong> Vì dữ liệu học viên, lớp học và học phí nằm trên một hệ thống, công việc so khớp giữa các spreadsheet không còn lý do tồn tại.</p></div>
-        <div class="outcome-card"><p><strong>Áp lực lên đội ngũ giảm.</strong> Phần việc hành chính lặp lại được cắt bớt, nên nhân sự chính thức dành thời gian cho tư vấn và giảng dạy, giảm nguyên nhân trực tiếp dẫn tới nghỉ việc.</p></div>
-        <div class="outcome-card"><p><strong>Bàn giao không còn phụ thuộc người cũ.</strong> Tư vấn viên mới tiếp nhận hồ sơ và đọc được toàn bộ lịch sử ngay, thay vì bắt đầu lại với khách hàng đã có.</p></div>
+      <div class="cs-results">
+        <div class="cs-result"><span class="bento-icon icon-clipboard-check" aria-hidden="true"></span><h3>Không còn cần nhân sự đối chiếu</h3><p>Vì dữ liệu học viên, lớp học và học phí nằm trên một hệ thống, công việc so khớp giữa các spreadsheet không còn lý do tồn tại.</p></div>
+        <div class="cs-result"><span class="bento-icon icon-users" aria-hidden="true"></span><h3>Áp lực lên đội ngũ giảm</h3><p>Phần việc hành chính lặp lại được cắt bớt, nên nhân sự chính thức dành thời gian cho tư vấn và giảng dạy, giảm nguyên nhân trực tiếp dẫn tới nghỉ việc.</p></div>
+        <div class="cs-result"><span class="bento-icon icon-user-check" aria-hidden="true"></span><h3>Bàn giao không phụ thuộc người cũ</h3><p>Tư vấn viên mới tiếp nhận hồ sơ và đọc được toàn bộ lịch sử ngay, thay vì bắt đầu lại với khách hàng đã có.</p></div>
       </div>
     </div>
   </section>
@@ -212,16 +248,23 @@
         <p class="section-lead">Liam Education không phải trường hợp cá biệt. Bất kỳ doanh nghiệp nào để dữ liệu phân tán theo bộ phận cũng đi qua cùng một chuỗi, chỉ khác tên gọi của các file.</p>
       </div>
 
-      <div class="outcomes-grid">
-        <div class="outcome-card"><p><strong>Hợp nhất dữ liệu.</strong> Thông tin khách hàng, giao dịch và chứng từ nằm trên một nền tảng thay vì nhiều bảng tính do từng bộ phận tự giữ.</p></div>
-        <div class="outcome-card"><p><strong>Giảm phụ thuộc nhân sự thời vụ.</strong> Không còn cần thuê thêm người chỉ để đối chiếu chéo số liệu giữa các bảng.</p></div>
-        <div class="outcome-card"><p><strong>Giảm áp lực nghỉ việc.</strong> Cắt khối lượng việc thủ công lặp lại là cách trực tiếp nhất để giữ nhân sự đang có.</p></div>
-        <div class="outcome-card"><p><strong>Dễ bàn giao.</strong> Lịch sử làm việc nằm trên hệ thống, nên người mới tiếp nhận nhanh mà không cần người cũ ngồi kể lại.</p></div>
-        <div class="outcome-card"><p><strong>Ra quyết định trên số liệu hiện tại.</strong> Báo cáo lấy từ dữ liệu đang chạy, không phải bản tổng hợp thủ công của tuần trước.</p></div>
+      <div class="cs-takeaways">
+        <div class="cs-take"><span class="cs-take-ico" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5 5L20 6"/></svg></span><div><h4>Hợp nhất dữ liệu</h4><p>Thông tin khách hàng, giao dịch và chứng từ nằm trên một nền tảng thay vì nhiều bảng tính do từng bộ phận tự giữ.</p></div></div>
+        <div class="cs-take"><span class="cs-take-ico" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5 5L20 6"/></svg></span><div><h4>Giảm phụ thuộc nhân sự thời vụ</h4><p>Không còn cần thuê thêm người chỉ để đối chiếu chéo số liệu giữa các bảng.</p></div></div>
+        <div class="cs-take"><span class="cs-take-ico" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5 5L20 6"/></svg></span><div><h4>Giảm áp lực nghỉ việc</h4><p>Cắt khối lượng việc thủ công lặp lại là cách trực tiếp nhất để giữ nhân sự đang có.</p></div></div>
+        <div class="cs-take"><span class="cs-take-ico" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5 5L20 6"/></svg></span><div><h4>Dễ bàn giao</h4><p>Lịch sử làm việc nằm trên hệ thống, nên người mới tiếp nhận nhanh mà không cần người cũ ngồi kể lại.</p></div></div>
+        <div class="cs-take"><span class="cs-take-ico" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5 5L20 6"/></svg></span><div><h4>Ra quyết định trên số liệu hiện tại</h4><p>Báo cáo lấy từ dữ liệu đang chạy, không phải bản tổng hợp thủ công của tuần trước.</p></div></div>
       </div>
 
       <div class="section-cta">
-        <a href="/case-study-aztravel" class="btn btn-ghost">Đọc case study AZTravel</a>
+        <a href="/case-study-aztravel" class="cs-next">
+          <div>
+            <p class="cs-next-label">Case study tiếp theo</p>
+            <h3>AZTravel: hai chi nhánh trên cùng một nguồn booking</h3>
+            <p>Công ty du lịch tại Đà Nẵng và Hà Nội đưa booking tour, hồ sơ khách hàng và công nợ đối tác khách sạn về một hệ thống CRM.</p>
+          </div>
+          <span class="cs-next-arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
       </div>
     </div>
   </section>
@@ -235,7 +278,6 @@
       </div>
     </div>
   </section>
-
 </main>
 
 <footer class="site-footer">
@@ -252,17 +294,17 @@
       <a href="/bang-gia">Bảng giá</a>
     </div>
     <div class="footer-col">
-      <h4>Giải pháp</h4>
+      <h4>Tài nguyên</h4>
+      <a href="/tai-nguyen">Thư viện tài liệu</a>
       <a href="/case-study-liam-education">Case study: Liam Education</a>
       <a href="/case-study-aztravel">Case study: AZTravel</a>
-      <a href="/dang-ky">Đăng ký dùng thử</a>
-      <a href="/lien-he">Đặt lịch demo</a>
     </div>
     <div class="footer-col">
       <h4>Công ty</h4>
       <a href="/">Về chúng tôi</a>
       <a href="/lien-he">Liên hệ</a>
-      <a href="/tai-nguyen">Tài nguyên</a>
+      <a href="/dang-ky">Đăng ký dùng thử</a>
+      <a href="/lien-he">Đặt lịch demo</a>
     </div>
   </div>
   <div class="container footer-bottom">
@@ -270,6 +312,6 @@
   </div>
 </footer>
 
-<script src="/js/main.js?v=6"></script>
+<script src="/js/main.js?v=7"></script>
 </body>
 </html>

@@ -7,11 +7,11 @@ document.querySelectorAll('[data-nav]').forEach((link) => {
   }
 });
 
-// The "Sản Phẩm" and "Giải Pháp" nav triggers represent a group of pages
+// The "Sản Phẩm" and "Tài Nguyên" nav triggers represent a group of pages
 // (dropdown items), so they need to read as active for any page in their group.
 const NAV_GROUPS = {
   crm: ['crm', 'omni', 'lms'],
-  'case-study-liam-education': ['case-study-liam-education', 'case-study-aztravel'],
+  'tai-nguyen': ['tai-nguyen', 'case-study-liam-education', 'case-study-aztravel'],
 };
 Object.entries(NAV_GROUPS).forEach(([groupNav, pages]) => {
   if (!pages.includes(currentPage)) return;
@@ -61,7 +61,7 @@ if (navToggle) {
   });
 }
 
-// Giải Pháp dropdown: click/touch toggle (hover/focus-within handled by CSS alone)
+// Nav dropdowns: click/touch toggle (hover/focus-within handled by CSS alone)
 document.querySelectorAll('.nav-item.has-dropdown').forEach((item) => {
   const toggle = item.querySelector('.nav-dropdown-toggle');
   if (!toggle) return;
