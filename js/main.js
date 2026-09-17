@@ -191,6 +191,26 @@ if (contactForm) {
   });
 }
 
+// Pricing (bang-gia): annual is the listed rate, monthly is the same figure +20%.
+// Both values ship in the markup, so this only ever swaps text.
+const billingBtns = Array.from(document.querySelectorAll('.billing-btn'));
+if (billingBtns.length) {
+  const priceNums = Array.from(document.querySelectorAll('.price-num[data-annual]'));
+  billingBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const cycle = btn.getAttribute('data-cycle');
+      billingBtns.forEach((b) => {
+        const on = b === btn;
+        b.classList.toggle('is-active', on);
+        b.setAttribute('aria-pressed', String(on));
+      });
+      priceNums.forEach((el) => {
+        el.textContent = el.getAttribute(cycle === 'monthly' ? 'data-monthly' : 'data-annual');
+      });
+    });
+  });
+}
+
 // Footer year
 const yearEl = document.getElementById('currentYear');
 if (yearEl) {

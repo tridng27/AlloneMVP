@@ -38,7 +38,11 @@ services:
         status: 301
       - type: redirect
         source: /free-trial.html
-        destination: /free-trial
+        destination: /dang-ky
+        status: 301
+      - type: redirect
+        source: /free-trial
+        destination: /dang-ky
         status: 301
       - type: redirect
         source: /dang-ky.html
@@ -72,9 +76,6 @@ services:
       - type: rewrite
         source: /lien-he
         destination: /lien-he.html
-      - type: rewrite
-        source: /free-trial
-        destination: /free-trial.html
       - type: rewrite
         source: /dang-ky
         destination: /dang-ky.html

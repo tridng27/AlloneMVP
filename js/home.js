@@ -60,38 +60,63 @@
       });
     });
 
-    // solution pager — one module (CRM / Omni / LMS / AI) shown at a time
-    var pager = document.querySelector(".solution-pager");
-    if (pager) {
-      var scCards = Array.prototype.slice.call(pager.querySelectorAll(".solution-card"));
-      var scDots = Array.prototype.slice.call(pager.querySelectorAll(".pager-dot"));
-      var scActive = 0;
-      var showSolution = function (i) {
-        scActive = (i + scCards.length) % scCards.length;
-        scCards.forEach(function (card, idx) {
-          var isActive = idx === scActive;
-          card.classList.toggle("is-active", isActive);
-          card.setAttribute("aria-hidden", String(!isActive));
-        });
-        scDots.forEach(function (dot, idx) {
-          var isActive = idx === scActive;
-          dot.classList.toggle("is-active", isActive);
-          dot.setAttribute("aria-selected", String(isActive));
+    // product bento: four open cards on desktop, an accordion on phones.
+    // markup ships expanded, so this only ever collapses things — no JS, no loss.
+    var bentoCards = Array.prototype.slice.call(document.querySelectorAll(".bento-card"));
+    if (bentoCards.length) {
+      var narrow = window.matchMedia("(max-width: 720px)");
+
+      var setCard = function (card, open) {
+        var btn = card.querySelector(".bc-summary");
+        var body = card.querySelector(".bc-body");
+        if (!btn || !body) return;
+        btn.setAttribute("aria-expanded", String(open));
+        body.hidden = !open;
+      };
+
+      var applyBento = function () {
+        var collapsible = narrow.matches;
+        bentoCards.forEach(function (card, i) {
+          card.classList.toggle("is-collapsible", collapsible);
+          var btn = card.querySelector(".bc-summary");
+          if (btn) btn.tabIndex = collapsible ? 0 : -1;
+          // on phones the first card stays open so the section never reads as empty
+          setCard(card, collapsible ? i === 0 : true);
         });
       };
-      scDots.forEach(function (dot, idx) {
-        dot.addEventListener("click", function () { showSolution(idx); });
+
+      bentoCards.forEach(function (card) {
+        var btn = card.querySelector(".bc-summary");
+        if (!btn) return;
+        btn.addEventListener("click", function () {
+          if (!card.classList.contains("is-collapsible")) return;
+          setCard(card, btn.getAttribute("aria-expanded") !== "true");
+        });
       });
-      pager.querySelectorAll(".pager-arrow").forEach(function (btn) {
-        var dir = Number(btn.getAttribute("data-dir"));
-        btn.addEventListener("click", function () { showSolution(scActive + dir); });
+
+      applyBento();
+      if (narrow.addEventListener) narrow.addEventListener("change", applyBento);
+      else if (narrow.addListener) narrow.addListener(applyBento);
+    }
+
+    // pricing: annual is the listed rate, monthly is the same figure +20%.
+    // both values ship in the markup, so this only ever swaps text.
+    var billingBtns = Array.prototype.slice.call(document.querySelectorAll(".billing-btn"));
+    if (billingBtns.length) {
+      var priceNums = Array.prototype.slice.call(document.querySelectorAll(".price-num[data-annual]"));
+      billingBtns.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var cycle = btn.getAttribute("data-cycle");
+          billingBtns.forEach(function (b) {
+            var on = b === btn;
+            b.classList.toggle("is-active", on);
+            b.setAttribute("aria-pressed", String(on));
+          });
+          priceNums.forEach(function (el) {
+            el.textContent = el.getAttribute(cycle === "monthly" ? "data-monthly" : "data-annual");
+          });
+        });
       });
-      pager.addEventListener("keydown", function (e) {
-        if (!e.target.closest(".pager-dot, .pager-arrow")) return;
-        if (e.key === "ArrowRight") showSolution(scActive + 1);
-        if (e.key === "ArrowLeft") showSolution(scActive - 1);
-      });
-      showSolution(0);
     }
 
     var y = document.getElementById("year");

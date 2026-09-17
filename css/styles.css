@@ -1616,3 +1616,105 @@ section[id] { scroll-margin-top: 88px; }
   .mock-col-grid { grid-template-columns: 1fr; }
   .proof-logos { gap: 1rem 1.5rem; }
 }
+
+/* ===================== Billing cycle switch (bang-gia) ===================== */
+.billing-switch {
+  display: inline-flex;
+  gap: 0.25rem;
+  padding: 0.28rem;
+  margin-bottom: 2rem;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+}
+.billing-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem 1.05rem;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.billing-btn:hover { color: var(--text); }
+.billing-btn.is-active { background: var(--bg-elev); color: var(--accent); box-shadow: var(--shadow-sm); }
+.billing-save {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-radius: var(--radius-pill);
+  padding: 0.14rem 0.5rem;
+}
+.billing-btn.is-active .billing-save { background: var(--accent); color: #fff; }
+
+/* price figure inside .price-value: number + unit on one baseline */
+.price-value { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0.4rem; }
+.price-num { font-variant-numeric: tabular-nums; }
+.price-unit {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+.price-card-featured .price-num { color: var(--accent); }
+
+/* a caption under a table, for scope notes and fine print */
+.table-note {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-top: 0.9rem;
+  max-width: 60ch;
+}
+.table-note + .table-note { margin-top: 0.4rem; }
+.example-table .cell-num { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--text); white-space: nowrap; }
+.example-table .cell-muted { color: var(--text-secondary); }
+
+/* terms list — numbered, for contractual points */
+.terms-list { display: grid; gap: 0.7rem; counter-reset: term; max-width: 62rem; }
+.terms-list li {
+  position: relative;
+  counter-increment: term;
+  padding: 0.85rem 1.1rem 0.85rem 3rem;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+.terms-list li::before {
+  content: counter(term, decimal-leading-zero);
+  position: absolute;
+  left: 1.1rem;
+  top: 0.85rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+.terms-list b { color: var(--text); font-weight: 600; }
+
+@media (max-width: 720px) {
+  .billing-switch { display: flex; width: 100%; }
+  .billing-btn { flex: 1; justify-content: center; padding: 0.55rem 0.5rem; font-size: 0.82rem; }
+  .billing-save { display: none; }
+}
+
+/* heading with a second, quieter line (product + ecosystem section heads) */
+.h2-sub {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 0.62em;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--text-secondary);
+}
+
+/* comparison table: the AllOne column is the one being argued for */
+.example-table th.col-own { color: var(--accent); background: var(--accent-soft); }
+.example-table td.col-own { color: var(--text); background: color-mix(in srgb, var(--accent-soft) 45%, transparent); }

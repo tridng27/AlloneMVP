@@ -47,7 +47,6 @@
     --brand-tint: #122636;
     --warm: #e0975c;
     --warm-tint: #281d13;
-    --glow: rgba(63, 160, 230, 0.20);
     --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.4);
     --shadow-2: 0 12px 34px -14px rgba(0, 0, 0, 0.6);
     --shadow-3: 0 34px 80px -30px rgba(0, 0, 0, 0.7);
@@ -75,7 +74,6 @@
     --brand-tint: #e7f1fa;
     --warm: #b96a26;          /* used only for the "AI assist" thread */
     --warm-tint: #f6ece0;
-    --glow: rgba(15, 111, 196, 0.16);
     --shadow-1: 0 1px 2px rgba(12, 26, 43, 0.05);
     --shadow-2: 0 10px 30px -12px rgba(12, 26, 43, 0.18);
     --shadow-3: 0 30px 70px -28px rgba(10, 46, 107, 0.30);
@@ -178,7 +176,7 @@
   /* ---------- header ---------- */
   .site-header {
     position: sticky;
-    top: 0;
+    top: env(safe-area-inset-top, 0px);
     z-index: 200;
     background: color-mix(in srgb, var(--ground) 84%, transparent);
     backdrop-filter: blur(14px);
@@ -363,20 +361,43 @@
   }
   .weave svg { color: var(--brand); opacity: 0.9; }
 
-  /* ---------- hero ---------- */
-  .hero { padding: 88px 0 72px; overflow: hidden; }
-  .hero-grid {
-    display: grid;
-    grid-template-columns: 1.06fr 0.94fr;
-    gap: 4.5rem;
+  /* ---------- hero (centred: badge, headline, CTAs, value row) ---------- */
+  .hero { padding: 76px 0 40px; overflow: hidden; }
+  .hero-copy { max-width: 62rem; margin: 0 auto; text-align: center; }
+  .hero-badge {
+    display: inline-flex;
     align-items: center;
+    gap: 0.6rem;
+    padding: 0.42rem 0.95rem;
+    margin-bottom: 1.5rem;
+    border-radius: 999px;
+    border: 1px solid color-mix(in srgb, var(--brand) 32%, var(--line));
+    background: var(--brand-tint);
+    color: var(--brand);
+    font-size: 0.71rem;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+  }
+  .hb-dot { position: relative; width: 8px; height: 8px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
+  .hb-dot::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: currentColor;
+    animation: hb-ping 1.9s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+  @keyframes hb-ping {
+    0% { transform: scale(1); opacity: 0.65; }
+    70%, 100% { transform: scale(2.6); opacity: 0; }
   }
   .hero h1 {
     font-family: var(--font-sans);
     font-weight: 700;
     letter-spacing: -0.02em;
     line-height: 1.12;
-    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    font-size: clamp(2.05rem, 4.7vw, 3.5rem);
     margin: 0 0 1.1rem;
   }
   .hl { color: var(--brand); animation: hl-glow-blue 2.4s ease-in-out infinite; }
@@ -389,213 +410,148 @@
     0%, 100% { text-shadow: 0 0 4px color-mix(in srgb, var(--warm) 55%, transparent); }
     50% { text-shadow: 0 0 15px color-mix(in srgb, var(--warm) 80%, transparent); }
   }
+  /* the phone layout drops these clauses; see the 720px block */
+  .wide-only { display: inline; }
   .hero-sub {
-    font-size: 1.1rem;
+    font-size: 1.08rem;
     color: var(--ink-soft);
-    max-width: 44ch;
+    max-width: 58ch;
+    margin: 0 auto;
   }
   .hero-cta {
     display: flex;
     flex-wrap: wrap;
     gap: 0.85rem;
-    margin: 1.6rem 0 1.4rem;
+    justify-content: center;
+    margin: 1.8rem 0 0;
   }
   /* hero CTAs: one row, equal width + height regardless of label length */
-  .hero-copy .hero-cta { flex-wrap: nowrap; max-width: 30rem; }
+  .hero-copy .hero-cta { flex-wrap: nowrap; max-width: 30rem; margin-inline: auto; }
   .hero-copy .hero-cta .btn { flex: 1 1 0; min-width: 0; }
-  .hero-trust {
-    font-size: 0.9rem;
-    color: var(--ink-soft);
-    max-width: 46ch;
-    padding-top: 1.3rem;
-    border-top: 1px solid var(--line);
-  }
   .hero-values {
     display: grid;
-    gap: 0.65rem;
-    margin-top: 1.3rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.85rem;
+    margin-top: 2.5rem;
+    text-align: left;
   }
   .value-chip {
     display: grid;
-    grid-template-columns: 34px 1fr;
+    grid-template-columns: 38px 1fr;
     gap: 0.85rem;
     align-items: start;
-    padding: 0.8rem 0.95rem;
+    padding: 0.95rem 1rem;
     background: var(--surface);
     border: 1px solid var(--line);
     border-radius: var(--radius-m);
   }
   .value-chip .vc-icon {
-    width: 34px; height: 34px;
+    width: 38px; height: 38px;
     display: grid; place-items: center;
     border-radius: var(--radius-s);
     background: var(--brand-tint);
     color: var(--brand);
   }
-  .value-chip p { font-size: 0.86rem; color: var(--ink); font-weight: 500; }
+  .value-chip.is-ai .vc-icon { background: color-mix(in srgb, var(--warm) 15%, transparent); color: var(--warm); }
+  .vc-title { font-size: 0.89rem; font-weight: 700; color: var(--ink); margin-bottom: 0.25rem; }
+  .value-chip p { font-size: 0.83rem; color: var(--ink-soft); line-height: 1.5; }
 
-  /* hero visual AllOne at the centre, modules in orbit (no container) */
-  .hero-visual {
-    position: relative;
+  /* ---------- lead pipeline: 5-across on desktop, vertical stepper below ---------- */
+  .pipeline-band { padding: 0 0 8px; }
+  .pipeline-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-l);
+    box-shadow: var(--shadow-2);
+    padding: 1.5rem 1.7rem 1.7rem;
+  }
+  .pl-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.8rem;
+    padding-bottom: 1.05rem;
+    margin-bottom: 1.4rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .pl-title-group { display: flex; flex-wrap: wrap; align-items: center; gap: 0.7rem; }
+  .pl-live {
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--brand);
+    box-shadow: 0 0 0 4px var(--brand-tint);
+    flex-shrink: 0;
+  }
+  .pl-title { font-size: 0.95rem; font-weight: 600; color: var(--ink); }
+  .pl-chip {
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--brand);
+    background: var(--brand-tint);
+    border-radius: 999px;
+    padding: 0.22rem 0.65rem;
+  }
+  .pl-meta { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.78rem; color: var(--ink-faint); }
+  .pl-steps {
     display: grid;
-    place-items: center;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0.9rem;
   }
-  .orbit-system {
-    position: relative;
-    width: min(640px, 94vw);
-    aspect-ratio: 1;
-    margin: 0 auto;
-    --r1: 84px;
-    --r2: 138px;
-    --r3: 198px;
-    --r4: 262px;
-  }
-  .orbit-system::before {
-    content: "";
-    position: absolute;
-    inset: 12%;
-    border-radius: 50%;
-    background: radial-gradient(circle, var(--glow), transparent 68%);
-    opacity: 0.7;
-  }
-  .orbit-ring {
-    position: absolute;
-    inset: 0;
-    margin: auto;
-    border: 1px solid var(--line-strong);
-    border-radius: 50%;
-    opacity: 0.5;
-  }
-  .orbit-ring.r1 { width: calc(var(--r1) * 2); height: calc(var(--r1) * 2); }
-  .orbit-ring.r2 { width: calc(var(--r2) * 2); height: calc(var(--r2) * 2); }
-  .orbit-ring.r3 { width: calc(var(--r3) * 2); height: calc(var(--r3) * 2); border-style: dashed; opacity: 0.4; }
-  .orbit-ring.r4 { width: calc(var(--r4) * 2); height: calc(var(--r4) * 2); border-style: dashed; opacity: 0.26; }
-
-  .orbit-core {
-    position: absolute;
-    inset: 0;
-    margin: auto;
-    width: 128px;
-    height: 128px;
-    display: grid;
-    place-items: center;
-    z-index: 2;
-  }
-  .orbit-core::before {
-    content: "";
-    position: absolute;
-    inset: -20px;
-    border-radius: 50%;
-    background: radial-gradient(circle, var(--glow), transparent 70%);
-  }
-  .orbit-core img {
-    position: relative;
-    width: 116px;
-    filter: drop-shadow(0 14px 34px var(--glow));
-    animation: corepulse 6s ease-in-out infinite;
-  }
-
-  .orbiter {
-    position: absolute;
-    inset: 0;
-    margin: auto;
-    width: 0;
-    height: 0;
-    transform: rotate(var(--a));
-    animation: orbit var(--dur) linear infinite;
-    will-change: transform;
-  }
-  .orbiter .planet {
-    position: absolute;
-    left: 0;
-    top: 0;
-    transform: translate(-50%, -50%) translateY(calc(-1 * var(--r)));
-  }
-  .orbiter .planet-inner {
-    transform: rotate(calc(-1 * var(--a)));
-    animation: orbit-rev var(--dur) linear infinite;
+  .pl-step { display: flex; min-width: 0; }
+  /* the marker column only exists in the stacked stepper */
+  .pl-marker { display: none; }
+  .pl-body {
     display: flex;
     flex-direction: column;
+    flex: 1;
+    min-width: 0;
+    padding: 1rem 1.05rem;
+    background: var(--ground);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-m);
+  }
+  .pl-step.is-ai .pl-body {
+    background: color-mix(in srgb, var(--warm-tint) 45%, var(--surface));
+    border-color: color-mix(in srgb, var(--warm) 30%, var(--line));
+  }
+  .pl-step.is-human .pl-body {
+    background: var(--surface);
+    border-color: color-mix(in srgb, var(--brand) 26%, var(--line));
+  }
+  .pl-step-top { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.65rem; }
+  .pl-num {
+    font-size: 0.63rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    background: var(--surface-2);
+    border-radius: 5px;
+    padding: 0.16rem 0.48rem;
+  }
+  .pl-step.is-ai .pl-num { color: var(--warm); background: color-mix(in srgb, var(--warm) 15%, transparent); }
+  .pl-step.is-human .pl-num { color: var(--brand); background: var(--brand-tint); }
+  .pl-actor { font-size: 0.63rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--ink-faint); }
+  .pl-step.is-ai .pl-actor { color: var(--warm); }
+  .pl-step.is-human .pl-actor { color: var(--brand); }
+  .pl-step h3 { font-size: 0.92rem; font-weight: 600; line-height: 1.3; margin-bottom: 0.35rem; }
+  .pl-step p { font-size: 0.8rem; color: var(--ink-soft); line-height: 1.45; }
+  .pl-foot {
+    display: flex;
     align-items: center;
-    gap: 7px;
-  }
-  .planet-disc {
-    width: 48px;
-    height: 48px;
-    display: grid;
-    place-items: center;
-    border-radius: 50%;
-    background: var(--surface);
-    border: 1px solid var(--line-strong);
-    box-shadow: var(--shadow-1);
-    color: var(--brand);
-  }
-  .planet-label {
-    font-size: 0.69rem;
+    gap: 0.42rem;
+    margin-top: auto;
+    padding-top: 0.85rem;
+    font-size: 0.73rem;
     font-weight: 600;
     color: var(--ink-soft);
-    background: var(--surface);
-    border: 1px solid var(--line);
-    padding: 2px 9px;
-    border-radius: 999px;
-    max-width: 96px;
-    text-align: center;
-    line-height: 1.25;
-    box-shadow: var(--shadow-1);
   }
-  .planet-inner.is-ai .planet-disc {
-    color: var(--warm);
-    border-color: color-mix(in srgb, var(--warm) 45%, var(--line));
-    background: color-mix(in srgb, var(--warm-tint) 65%, var(--surface));
-  }
-  .planet-inner.is-ai .planet-label { color: var(--warm); }
-
-  @keyframes corepulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.035); }
-  }
-  @keyframes orbit {
-    from { transform: rotate(var(--a)); }
-    to   { transform: rotate(calc(var(--a) + 360deg)); }
-  }
-  @keyframes orbit-rev {
-    from { transform: rotate(calc(-1 * var(--a))); }
-    to   { transform: rotate(calc(-1 * var(--a) - 360deg)); }
-  }
-
-  /* static module list replaces the orbit on small screens so every
-     module stays readable without the pills colliding */
-  .module-constellation {
-    display: none;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.5rem;
-    width: 100%;
-    max-width: 340px;
-  }
-  .module-constellation li {
-    font-size: 0.82rem;
-    font-weight: 500;
-    color: var(--ink-soft);
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: var(--radius-s);
-    padding: 0.6rem 0.7rem;
-    text-align: center;
-  }
-  .module-constellation .mc-core {
-    grid-column: 1 / -1;
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: 0.95rem;
-    color: #fff;
-    background: linear-gradient(140deg, var(--brand-deep), var(--brand-strong));
-    border-color: transparent;
-  }
-  .module-constellation .is-ai {
-    color: var(--warm);
-    border-color: color-mix(in srgb, var(--warm) 40%, var(--line));
-    background: color-mix(in srgb, var(--warm-tint) 55%, var(--surface));
-  }
+  .pl-foot svg { color: var(--brand); flex-shrink: 0; }
+  .pl-step.is-ai .pl-foot svg { color: var(--warm); }
+  .pl-note { font-size: 0.72rem; color: var(--ink-faint); text-align: center; margin-top: 1.2rem; }
 
   /* ---------- module strip ---------- */
   .module-strip {
@@ -673,35 +629,54 @@
     to   { transform: translateX(0); }
   }
 
-  /* ---------- solution pager (one module shown at a time: CRM / Omni / LMS / AI) ---------- */
-  .solution-pager { margin-top: 3rem; }
-  .solution-viewport { position: relative; }
-  .solution-card {
-    display: none;
+  /* ---------- product bento ----------
+     desktop: four cards, everything visible
+     phone: the same four cards collapse into an accordion (js/home.js) */
+  .bento-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.6rem;
+    margin-top: 3rem;
+  }
+  .bento-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: 2rem 2.1rem;
     background: var(--surface);
     border: 1px solid var(--line);
-    border-radius: var(--radius-m);
-    padding: 2rem 2.2rem;
-    min-height: 320px;
-    transition: border-color 0.16s ease, box-shadow 0.16s ease;
+    border-radius: var(--radius-l);
+    transition: border-color 0.16s ease, box-shadow 0.16s ease, transform 0.16s ease;
   }
-  .solution-card.is-active {
-    display: grid;
-    grid-template-columns: 1.15fr 0.85fr;
-    gap: 2.4rem;
-    align-items: center;
-    animation: card-fade-in 0.35s ease;
-  }
-  .sc-body { display: flex; flex-direction: column; min-width: 0; }
-  @keyframes card-fade-in {
-    from { opacity: 0; transform: translateY(8px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  .solution-card.is-ai {
+  .bento-card:hover { border-color: var(--line-strong); box-shadow: var(--shadow-2); transform: translateY(-2px); }
+  .bento-card.is-ai {
     background: color-mix(in srgb, var(--warm-tint) 45%, var(--surface));
     border-color: color-mix(in srgb, var(--warm) 26%, var(--line));
   }
-  .sc-head { display: flex; align-items: center; gap: 0.9rem; margin-bottom: 1.1rem; }
+  .bento-card.is-ai:hover { border-color: color-mix(in srgb, var(--warm) 52%, var(--line)); }
+
+  .bc-summary {
+    display: grid;
+    grid-template-columns: 48px 1fr auto;
+    align-items: center;
+    gap: 0.9rem;
+    width: 100%;
+    padding: 0;
+    margin-bottom: 1.15rem;
+    background: none;
+    border: 0;
+    text-align: left;
+    color: inherit;
+    /* not a control until the accordion is live */
+    pointer-events: none;
+  }
+  .bento-card.is-collapsible .bc-summary { pointer-events: auto; }
+  .bc-caret { display: none; color: var(--ink-faint); transition: transform 0.18s ease; }
+  .bento-card.is-collapsible .bc-caret { display: block; }
+  .bento-card.is-collapsible .bc-summary[aria-expanded="true"] .bc-caret { transform: rotate(180deg); }
+  .bc-body { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+  .bc-body[hidden] { display: none; }
+
   .sc-icon {
     width: 48px; height: 48px;
     display: grid; place-items: center;
@@ -710,15 +685,28 @@
     color: var(--brand);
     flex-shrink: 0;
   }
-  .solution-card.is-ai .sc-icon { background: color-mix(in srgb, var(--warm) 16%, transparent); color: var(--warm); }
-  .sc-name { display: block; font-size: 1.32rem; font-weight: 700; }
+  .bento-card.is-ai .sc-icon { background: color-mix(in srgb, var(--warm) 16%, transparent); color: var(--warm); }
+  .sc-name { display: block; font-size: 1.3rem; font-weight: 700; letter-spacing: -0.015em; }
   .sc-tag { display: block; font-size: 0.8rem; font-weight: 500; color: var(--ink-faint); }
-  .sc-body > p { font-size: 0.98rem; color: var(--ink-soft); margin-bottom: 1.4rem; }
-  .sc-feats {
-    display: grid;
-    gap: 0.6rem;
-    margin-bottom: 1.4rem;
+  .bc-tag {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    background: var(--ground);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 0.26rem 0.7rem;
+    white-space: nowrap;
   }
+  .bento-card.is-ai .bc-tag {
+    color: var(--warm);
+    background: color-mix(in srgb, var(--warm) 10%, transparent);
+    border-color: color-mix(in srgb, var(--warm) 40%, var(--line));
+  }
+  .bc-body > p { font-size: 0.95rem; color: var(--ink-soft); margin-bottom: 1.4rem; }
+  .sc-feats { display: grid; gap: 0.6rem; margin-bottom: 1.4rem; }
   .sc-feats li {
     position: relative;
     padding-left: 1.5rem;
@@ -737,9 +725,18 @@
     border-bottom: 2px solid var(--brand);
     transform: rotate(-45deg);
   }
-  .solution-card.is-ai .sc-feats li::before { border-color: var(--warm); }
-  .sc-link {
+  .bento-card.is-ai .sc-feats li::before { border-color: var(--warm); }
+  .bc-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.8rem;
     margin-top: auto;
+    padding-top: 1.4rem;
+    border-top: 1px solid var(--line);
+  }
+  .sc-link {
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
@@ -748,156 +745,10 @@
     color: var(--brand);
     transition: gap 0.15s ease;
   }
-  .solution-card.is-ai .sc-link { color: var(--warm); }
+  .bento-card.is-ai .sc-link { color: var(--warm); }
   .sc-link:hover { gap: 0.55rem; }
-
-  .pager-controls {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.7rem;
-    margin-top: 1.5rem;
-  }
-  .pager-arrow {
-    width: 38px; height: 38px;
-    display: grid; place-items: center;
-    flex-shrink: 0;
-    border-radius: 999px;
-    border: 1px solid var(--line-strong);
-    background: var(--surface);
-    color: var(--ink-soft);
-    transition: color 0.15s ease, border-color 0.15s ease;
-  }
-  .pager-arrow:hover { color: var(--brand); border-color: var(--brand); }
-  .pager-dots { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; }
-  .pager-dot {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.45rem;
-    min-height: 36px;
-    padding: 0.5rem 0.95rem;
-    border-radius: 999px;
-    border: 1px solid var(--line);
-    background: var(--surface);
-    color: var(--ink-soft);
-    font-size: 0.84rem;
-    font-weight: 600;
-    transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
-  }
-  .pager-dot:hover { color: var(--ink); border-color: var(--line-strong); }
-  .pager-dot .pd-dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--line-strong);
-    flex-shrink: 0;
-    transition: background 0.15s ease, transform 0.15s ease;
-  }
-  .pager-dot.is-active { color: var(--brand); border-color: var(--brand); background: var(--brand-tint); }
-  .pager-dot.is-active .pd-dot { background: var(--brand); transform: scale(1.3); }
-  .pager-dot.is-active[data-index="3"] {
-    color: var(--warm);
-    border-color: var(--warm);
-    background: color-mix(in srgb, var(--warm-tint) 55%, var(--surface));
-  }
-  .pager-dot.is-active[data-index="3"] .pd-dot { background: var(--warm); }
-
-  /* ---------- sc-visual: small illustrative widgets, one per module ---------- */
-  .sc-visual { display: flex; justify-content: center; }
-  .viz-card {
-    width: 100%;
-    max-width: 320px;
-    background: var(--ground);
-    border: 1px solid var(--line);
-    border-radius: var(--radius-m);
-    padding: 1.4rem 1.5rem;
-  }
-  .solution-card.is-ai .viz-card {
-    background: color-mix(in srgb, var(--surface) 70%, var(--warm-tint));
-  }
-  .viz-title {
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-    margin-bottom: 1.1rem;
-  }
-  .viz-caption {
-    font-size: 0.72rem;
-    color: var(--ink-faint);
-    text-align: center;
-    margin-top: 1.1rem;
-  }
-
-  /* CRM pipeline bars */
-  .viz-bars { display: grid; gap: 0.75rem; }
-  .viz-bar-row { display: grid; grid-template-columns: 5.4rem 1fr 1.8rem; align-items: center; gap: 0.6rem; }
-  .viz-bar-label { font-size: 0.76rem; color: var(--ink-soft); }
-  .viz-bar-track { height: 8px; border-radius: 999px; background: var(--surface-2); overflow: hidden; }
-  .viz-bar-fill { height: 100%; border-radius: 999px; background: var(--brand); }
-  .viz-bar-value { font-size: 0.78rem; font-weight: 700; color: var(--ink); text-align: right; }
-
-  /* Omni unified inbox rows */
-  .viz-inbox { display: grid; gap: 0.7rem; }
-  .viz-inbox-row { display: grid; grid-template-columns: auto 1fr; gap: 0.3rem 0.6rem; }
-  .viz-channel-tag {
-    grid-column: 1;
-    display: inline-flex;
-    align-items: center;
-    font-size: 0.66rem;
-    font-weight: 700;
-    padding: 0.15rem 0.5rem;
-    border-radius: 999px;
-    color: var(--brand);
-    background: var(--brand-tint);
-  }
-  .viz-channel-tag.is-zalo { color: var(--brand-deep); background: color-mix(in srgb, var(--brand-deep) 14%, var(--surface)); }
-  .viz-inbox-text {
-    grid-column: 1 / -1;
-    font-size: 0.82rem;
-    color: var(--ink);
-    line-height: 1.35;
-  }
-  .viz-badge {
-    grid-column: 2;
-    justify-self: end;
-    font-size: 0.68rem;
-    font-weight: 600;
-    color: var(--ink-soft);
-    border: 1px solid var(--line-strong);
-    border-radius: 999px;
-    padding: 0.1rem 0.55rem;
-  }
-  .viz-badge.is-flag { color: var(--ink); border-color: var(--ink-faint); }
-  .viz-badge.is-done { color: #fff; background: var(--brand); border-color: var(--brand); }
-
-  /* LMS progress bar + attendance dots */
-  .viz-progress-head {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.8rem;
-    color: var(--ink-soft);
-    margin-bottom: 0.5rem;
-  }
-  .viz-progress-value { font-weight: 700; color: var(--ink); }
-  .viz-dots-row { display: flex; gap: 0.4rem; margin-top: 1.2rem; }
-  .viz-dot { width: 16px; height: 16px; border-radius: 50%; flex-shrink: 0; }
-  .viz-dot.is-present { background: var(--brand); }
-  .viz-dot.is-absent { background: transparent; border: 2px solid var(--ink-faint); }
-  .viz-dot.is-future { background: transparent; border: 2px dashed var(--line-strong); }
-
-  /* AI-native score gauge + risk meter */
-  .viz-gauge { display: flex; justify-content: center; margin-bottom: 1rem; }
-  .viz-risk { display: flex; align-items: center; gap: 0.6rem; }
-  .viz-risk-label { font-size: 0.78rem; color: var(--ink-soft); flex: 1; }
-  .viz-risk-meter { display: flex; gap: 3px; align-items: flex-end; }
-  .viz-risk-seg { width: 7px; background: var(--line-strong); border-radius: 2px; }
-  .viz-risk-seg:nth-child(1) { height: 8px; }
-  .viz-risk-seg:nth-child(2) { height: 13px; }
-  .viz-risk-seg:nth-child(3) { height: 18px; }
-  .viz-risk-seg.is-active { background: var(--warm); }
-  .viz-risk-value { font-size: 0.78rem; font-weight: 700; color: var(--warm); }
+  .bc-note { font-size: 0.78rem; color: var(--ink-faint); }
+  .bento-card.is-ai .bc-note { color: var(--warm); font-weight: 600; }
 
   /* ---------- shot-frame: real product screenshots (browser-chrome framed) ---------- */
   .shot-frame {
@@ -920,34 +771,85 @@
   .shot-frame .shot-dot:nth-child(2) { background: #febc2e; }
   .shot-frame .shot-dot:nth-child(3) { background: #28c840; }
   .shot-frame img { display: block; width: 100%; height: auto; }
-  .shot-caption {
-    font-size: 0.72rem;
-    color: var(--ink-faint);
-    text-align: center;
-    margin-top: 0.9rem;
-  }
-  .sc-visual .shot-visual-wrap { display: flex; flex-direction: column; align-items: center; width: 100%; }
-  .sc-visual .shot-frame { width: 100%; max-width: 380px; }
-
-  /* ---------- product screenshot showcase ---------- */
-  .shot-grid {
+  /* ---------- product screenshot showcase ----------
+     desktop: copy column beside the screenshot, sides alternating
+     stacked: header, screenshot, then copy (the order the mobile layout reads in) */
+  .showcase-list { display: grid; gap: 1.6rem; margin-top: 3rem; }
+  .showcase-row {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1.8rem;
+    grid-template-columns: 0.82fr 1.18fr;
+    grid-template-areas: "head shot" "copy shot";
+    align-content: center;
+    column-gap: 2.6rem;
+    row-gap: 0.95rem;
+    padding: 2rem 2.2rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-l);
+  }
+  .showcase-row.is-flipped {
+    grid-template-columns: 1.18fr 0.82fr;
+    grid-template-areas: "shot head" "shot copy";
+  }
+  .sw-head { grid-area: head; align-self: end; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.7rem; }
+  .sw-shot { grid-area: shot; align-self: center; min-width: 0; }
+  .sw-copy { grid-area: copy; align-self: start; min-width: 0; }
+  .sw-badge {
+    display: inline-flex;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--brand);
+    background: var(--brand-tint);
+    border-radius: 999px;
+    padding: 0.28rem 0.75rem;
+  }
+  .sw-badge.is-neutral { color: var(--ink-soft); background: var(--surface-2); }
+  .sw-badge.is-warm { color: var(--warm); background: color-mix(in srgb, var(--warm) 13%, transparent); }
+  .sw-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.55rem; }
+  .sw-desc { font-size: 0.93rem; color: var(--ink-soft); margin-bottom: 1.15rem; }
+  .sw-points { display: grid; gap: 0.5rem; }
+  .sw-points li {
+    position: relative;
+    padding-left: 1.5rem;
+    font-size: 0.84rem;
+    color: var(--ink-soft);
+    line-height: 1.45;
+  }
+  .sw-points li::before {
+    content: "";
+    position: absolute;
+    left: 2px;
+    top: 0.34em;
+    width: 12px;
+    height: 7px;
+    border-left: 2px solid var(--brand);
+    border-bottom: 2px solid var(--brand);
+    transform: rotate(-45deg);
+  }
+
+  /* ---------- case studies ---------- */
+  .case-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.6rem;
     margin-top: 3rem;
   }
-  .shot-card { display: flex; flex-direction: column; min-width: 0; }
-  .shot-card .shot-cap-title {
-    font-weight: 700;
-    font-size: 0.95rem;
-    color: var(--ink);
-    margin: 1rem 0 0.3rem;
+  .case-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: 2rem 2.1rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-l);
   }
-  .shot-card .shot-cap-desc {
-    font-size: 0.85rem;
-    color: var(--ink-soft);
-    line-height: 1.5;
-  }
+  .cc-top { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem; margin-bottom: 1.1rem; }
+  .cc-region { font-size: 0.78rem; color: var(--ink-faint); }
+  .cc-name { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.6rem; }
+  .cc-desc { font-size: 0.93rem; color: var(--ink-soft); }
+  .cc-foot { margin-top: auto; padding-top: 1.4rem; }
 
   /* ---------- AI section ---------- */
   .section.is-ai-tint { background: var(--surface-2); }
@@ -1057,11 +959,46 @@
   .transform-card p { font-size: 0.88rem; color: var(--ink-soft); }
 
   /* ---------- pricing ---------- */
+  .billing-switch {
+    display: inline-flex;
+    gap: 0.25rem;
+    margin-top: 2.2rem;
+    padding: 0.28rem;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+  }
+  .billing-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.5rem 1.05rem;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--ink-soft);
+    font-size: 0.86rem;
+    font-weight: 600;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .billing-btn:hover { color: var(--ink); }
+  .billing-btn.is-active { background: var(--surface); color: var(--brand); box-shadow: var(--shadow-1); }
+  .billing-save {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    color: var(--brand);
+    background: var(--brand-tint);
+    border-radius: 999px;
+    padding: 0.14rem 0.5rem;
+  }
+  .billing-btn.is-active .billing-save { background: var(--brand); color: #fff; }
+
   .pricing {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.4rem;
-    margin-top: 3rem;
+    margin-top: 2rem;
     align-items: stretch;
   }
   .price-card {
@@ -1083,7 +1020,8 @@
   .price-badge {
     position: absolute;
     top: -13px;
-    left: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
     background: var(--brand);
     color: #fff;
     font-size: 0.72rem;
@@ -1115,7 +1053,40 @@
     transform: rotate(-45deg);
   }
   .price-card.featured .price-feats li::before { border-color: var(--brand-strong); }
-  .price-value { font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; margin: auto 0 1.5rem; }
+  .price-value {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: auto 0 1.5rem;
+  }
+  .price-num {
+    font-family: var(--font-display);
+    font-size: 1.85rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+  }
+  .price-card.featured .price-num { color: var(--brand); }
+  .price-unit { font-size: 0.82rem; color: var(--ink-soft); }
+
+  .price-notes {
+    margin-top: 2rem;
+    padding: 1.3rem 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-m);
+    display: grid;
+    gap: 0.5rem;
+    max-width: 52rem;
+  }
+  .price-notes p { font-size: 0.86rem; color: var(--ink-soft); }
+  .price-notes b { color: var(--ink); font-weight: 600; }
+  .price-notes a { color: var(--brand); font-weight: 600; }
+  .price-notes a:hover { text-decoration: underline; }
+  .price-notes .price-num { font-size: inherit; font-family: inherit; font-weight: 700; color: var(--ink); }
+  .price-fineprint { font-size: 0.78rem !important; color: var(--ink-faint) !important; }
 
   /* ---------- CTA banner ---------- */
   .cta-banner {
@@ -1206,10 +1177,18 @@
 
   /* ---------- responsive ---------- */
   @media (max-width: 1040px) {
-    .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
-    .hero-visual { order: -1; max-width: 560px; }
-    .orbit-system { --r1: 80px; --r2: 130px; --r3: 184px; --r4: 234px; }
-    .planet-label { font-size: 0.66rem; max-width: 84px; }
+    .hero-values { grid-template-columns: 1fr; max-width: 36rem; margin-inline: auto; }
+    .showcase-row {
+      grid-template-columns: 1fr;
+      grid-template-areas: "head" "shot" "copy";
+      row-gap: 1.2rem;
+    }
+    .showcase-row.is-flipped {
+      grid-template-columns: 1fr;
+      grid-template-areas: "head" "shot" "copy";
+    }
+    .bento-grid { grid-template-columns: 1fr; }
+    .case-grid { grid-template-columns: 1fr; }
     .partner-logo { padding: 40px 3.5rem; }
     .partner-logo .plogo { height: 60px; }
     .partner-logo .plogo-wide { height: 50px; }
@@ -1217,48 +1196,88 @@
     .pricing { grid-template-columns: 1fr; }
     .price-card.featured { order: -1; }
     .footer-grid { grid-template-columns: 1fr 1fr; }
-    .solution-card { padding: 1.8rem; }
-    .solution-card.is-active { grid-template-columns: 1.1fr 0.9fr; gap: 1.6rem; }
-    .viz-card { padding: 1.2rem 1.3rem; }
     .transform-grid { grid-template-columns: 1fr 1fr; }
     .transform-head { grid-template-columns: 1fr; gap: 1.5rem; }
     .klein-stage { width: min(280px, 68%); }
-    .shot-grid { grid-template-columns: 1fr 1fr; }
+    /* five steps never divide evenly into two or three columns, so below the
+       desktop grid the sequence becomes a numbered vertical stepper */
+    .pl-steps { grid-template-columns: 1fr; gap: 0; }
+    .pl-step { position: relative; gap: 0.9rem; padding-bottom: 0.9rem; }
+    .pl-step:last-child { padding-bottom: 0; }
+    .pl-marker {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-shrink: 0;
+      width: 28px;
+    }
+    .pl-dot {
+      width: 28px;
+      height: 28px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--brand);
+      color: #fff;
+      font-size: 0.78rem;
+      font-weight: 700;
+      box-shadow: var(--shadow-1);
+      flex-shrink: 0;
+    }
+    .pl-step.is-ai .pl-dot { background: var(--warm); }
+    .pl-rail { flex: 1; width: 2px; background: var(--line-strong); margin-top: 4px; }
+    .pl-step:last-child .pl-rail { display: none; }
+    .pl-step-top .pl-num { display: none; }
+    .pl-step-top { justify-content: flex-end; margin-bottom: 0.3rem; }
+    .pl-body { padding: 0.85rem 0.95rem; }
+    .pl-step h3 { font-size: 0.9rem; }
+    .pl-foot { padding-top: 0.7rem; }
   }
   @media (max-width: 720px) {
     .main-nav, .header-actions .btn { display: none; }
     .nav-toggle { display: grid; place-items: center; }
     .section { padding: 64px 0; }
     .partners + .section { padding-top: 52px; }
-    .hero { padding: 48px 0 56px; }
+    .hero { padding: 40px 0 32px; }
     .partners { padding: 44px 0 52px; }
+    .wide-only { display: none; }
+    .hero-badge { font-size: 0.64rem; letter-spacing: 0.09em; margin-bottom: 1.1rem; padding: 0.36rem 0.8rem; }
+    .hero h1 { font-size: clamp(1.6rem, 6vw, 2rem); line-height: 1.18; margin-bottom: 0.85rem; }
+    .hero-sub { font-size: 0.94rem; line-height: 1.55; }
     .hero-copy .hero-cta { flex-wrap: wrap; max-width: none; }
     .hero-copy .hero-cta .btn { flex: 1 1 100%; }
-    .solution-card { padding: 1.6rem 1.4rem; min-height: 0; }
-    .solution-card.is-active { grid-template-columns: 1fr; gap: 1.6rem; }
-    .sc-visual { order: 2; }
-    .viz-card { max-width: 360px; margin: 0 auto; }
-    .shot-grid { grid-template-columns: 1fr; }
-    .shot-card .shot-frame { max-width: 420px; margin: 0 auto; }
-    .pager-dot .pd-label { display: none; }
-    .pager-dot { padding: 0.5rem; min-width: 36px; }
+    .hero-values { gap: 0.7rem; margin-top: 2rem; }
+    .value-chip { padding: 0.85rem 0.9rem; }
+    .pipeline-card { padding: 1.2rem 1.1rem 1.4rem; }
+    .pl-head { padding-bottom: 0.9rem; margin-bottom: 1.1rem; }
+    .pl-meta { display: none; }
+    .bento-card { padding: 1.25rem 1.3rem; }
+    .bento-card:hover { transform: none; box-shadow: none; border-color: var(--line); }
+    .bento-card.is-collapsible .bc-summary { grid-template-columns: 40px 1fr auto; gap: 0.75rem; margin-bottom: 0; }
+    .bento-card.is-collapsible .bc-summary[aria-expanded="true"] { margin-bottom: 1.1rem; }
+    .bento-card.is-collapsible .bc-tag { display: none; }
+    .bento-card .sc-icon { width: 40px; height: 40px; }
+    .bento-card .sc-name { font-size: 1.05rem; }
+    .showcase-row { padding: 1.3rem 1.2rem; }
+    .showcase-row .shot-frame { max-width: 420px; margin: 0 auto; }
+    .sw-title { font-size: 1.12rem; }
+    .case-card { padding: 1.5rem 1.4rem; }
+    .billing-switch { display: flex; width: 100%; }
+    .billing-btn { flex: 1; justify-content: center; padding: 0.55rem 0.6rem; font-size: 0.82rem; }
+    .billing-save { display: none; }
+    .price-notes { padding: 1.1rem 1.2rem; }
     .transform-grid { grid-template-columns: 1fr; }
     .transform-klein { display: none; }
     .footer-grid { grid-template-columns: 1fr; gap: 2.2rem; }
-    .hero-visual { order: 0; }
-    .orbit-system { display: none; }
-    .module-constellation { display: grid; }
     .partner-logo { padding: 30px 2rem; }
     .partner-logo .plogo { height: 46px; }
     .partner-logo .plogo-wide { height: 38px; }
     .partner-logo .plogo-sq { height: 68px; }
-    .orbit-core { width: 104px; height: 104px; }
-    .orbit-core img { width: 88px; }
-    .planet-disc { width: 40px; height: 40px; }
-    .planet-label { font-size: 0.66rem; padding: 2px 7px; }
     .container { padding: 0 20px; }
   }
 </style>
+
+
 </head>
 <body>
 
@@ -1316,7 +1335,6 @@
         <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
         <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
       </button>
-      <a href="/free-trial" class="btn btn-ghost btn-sm">Free Trial</a>
       <a href="/dang-ky" class="btn btn-primary btn-sm">Đăng Ký</a>
       <button class="nav-toggle" id="navToggle" type="button" aria-label="Mở menu" aria-expanded="false">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
@@ -1335,7 +1353,6 @@
     <a href="/bang-gia">Bảng Giá</a>
     <a href="/tai-nguyen">Tài Nguyên</a>
     <a href="/lien-he">Liên Hệ</a>
-    <a href="/free-trial" class="btn btn-ghost">Free Trial</a>
     <a href="/dang-ky" class="btn btn-primary">Đăng Ký</a>
   </div>
 </header>
@@ -1343,130 +1360,155 @@
 <main>
   <!-- HERO -->
   <section class="hero">
-    <div class="container hero-grid">
+    <div class="container">
       <div class="hero-copy">
-        <h1 class="reveal">Hệ sinh thái quản trị <span class="hl">toàn diện</span>, lấy <span class="hl-ai">AI</span> làm <span class="hl-ai">trung tâm</span> <span class="hl">bứt phá doanh nghiệp</span></h1>
-        <p class="hero-sub reveal">AllOne kết nối CRM, nhắn tin đa kênh, đào tạo, lịch hẹn, cuộc gọi và email trong một hệ sinh thái duy nhất giúp doanh nghiệp chăm sóc khách hàng nhất quán và ra quyết định dựa trên dữ liệu thật.</p>
+        <p class="hero-badge reveal"><span class="hb-dot" aria-hidden="true"></span>Hệ sinh thái quản trị AI-native</p>
+
+        <h1 class="reveal">Hệ sinh thái quản trị <span class="hl">toàn diện</span>, lấy <span class="hl-ai">AI</span> làm <span class="hl-ai">trung tâm</span><span class="wide-only"> <span class="hl">bứt phá doanh nghiệp</span></span></h1>
+        <p class="hero-sub reveal">AllOne kết nối CRM, nhắn tin đa kênh, đào tạo, lịch hẹn, cuộc gọi và email trên một nền tảng dữ liệu thống nhất.<span class="wide-only"> Nhờ đó, doanh nghiệp chăm sóc khách hàng nhất quán và ra quyết định dựa trên dữ liệu thực.</span></p>
 
         <div class="hero-cta reveal">
-          <a href="/free-trial" class="btn btn-primary btn-lg">Đăng ký dùng thử</a>
+          <a href="/dang-ky" class="btn btn-primary btn-lg">Đăng ký dùng thử</a>
           <a href="/crm" class="btn btn-ghost btn-lg">Khám phá giải pháp AI</a>
         </div>
 
-        <p class="hero-trust reveal">Được xây dựng để đội ngũ bán hàng, tiếp thị và vận hành cùng làm việc trên một nguồn dữ liệu duy nhất không còn thông tin khách hàng rải rác trên nhiều công cụ.</p>
-
         <div class="hero-values reveal">
           <div class="value-chip">
-            <span class="vc-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M3 12h3M18 12h3M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="3"/></svg></span>
-            <p>Ứng dụng AI hỗ trợ ra quyết định trong suốt hành trình khách hàng</p>
+            <span class="vc-icon" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></span>
+            <div>
+              <p class="vc-title">Một nguồn dữ liệu duy nhất</p>
+              <p>AllOne giúp đội ngũ bán hàng, tiếp thị và vận hành làm việc trên một nguồn dữ liệu thống nhất. Thay vì để thông tin khách hàng rải rác trên nhiều công cụ.</p>
+            </div>
+          </div>
+          <div class="value-chip is-ai">
+            <span class="vc-icon" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 4 2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/><path d="M19 15v4M17 17h4"/></svg></span>
+            <div>
+              <p class="vc-title">AI hỗ trợ ra quyết định</p>
+              <p>AI hỗ trợ phân tích và đề xuất trong suốt hành trình khách hàng. Sau đó con người xem xét và đưa ra quyết định cuối cùng.</p>
+            </div>
           </div>
           <div class="value-chip">
-            <span class="vc-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></span>
-            <p>Cá nhân hoá nền tảng theo đúng quy trình, triển khai theo từng giai đoạn để tối ưu chi phí</p>
+            <span class="vc-icon" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3"/><path d="M1 14h6M9 8h6M17 16h6"/></svg></span>
+            <div>
+              <p class="vc-title">Cá nhân hoá theo quy trình</p>
+              <p>Cá nhân hoá nền tảng theo đúng quy trình, triển khai theo từng giai đoạn để tối ưu chi phí.</p>
+            </div>
           </div>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="hero-visual reveal">
-          <div class="orbit-system" aria-hidden="true">
-            <div class="orbit-ring r1"></div>
-            <div class="orbit-ring r2"></div>
-            <div class="orbit-ring r3"></div>
-            <div class="orbit-ring r4"></div>
-
-            <div class="orbit-core">
-              <img src="/img/logo-icon.png" alt="">
-            </div>
-
-            <div class="orbiter" style="--a: 0deg; --dur: 28s; --r: var(--r1);">
-              <div class="planet"><div class="planet-inner is-ai">
-                <span class="planet-disc"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 4 2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/><path d="M19 15v4M17 17h4"/></svg></span>
-                <span class="planet-label">AI</span>
-              </div></div>
-            </div>
-            <div class="orbiter" style="--a: 40deg; --dur: 44s; --r: var(--r2);">
-              <div class="planet"><div class="planet-inner">
-                <span class="planet-disc"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
-                <span class="planet-label">CRM</span>
-              </div></div>
-            </div>
-            <div class="orbiter" style="--a: 160deg; --dur: 44s; --r: var(--r2);">
-              <div class="planet"><div class="planet-inner">
-                <span class="planet-disc"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
-                <span class="planet-label">Omni</span>
-              </div></div>
-            </div>
-            <div class="orbiter" style="--a: 280deg; --dur: 44s; --r: var(--r2);">
-              <div class="planet"><div class="planet-inner">
-                <span class="planet-disc"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M6 16c.5-1.7 1.6-2.6 3-2.6s2.5.9 3 2.6"/><path d="M15 9h3M15 13h3"/></svg></span>
-                <span class="planet-label">HRM</span>
-              </div></div>
-            </div>
-            <div class="orbiter" style="--a: 20deg; --dur: 60s; --r: var(--r3);">
-              <div class="planet"><div class="planet-inner">
-                <span class="planet-disc"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4.5A2.5 2.5 0 0 1 4.5 2H12v18H4.5A2.5 2.5 0 0 0 2 22.5v-18Z"/><path d="M22 4.5A2.5 2.5 0 0 0 19.5 2H12v18h7.5a2.5 2.5 0 0 1 2.5 2.5v-18Z"/></svg></span>
-                <span class="planet-label">LMS</span>
-              </div></div>
-            </div>
-            <div class="orbiter" style="--a: 110deg; --dur: 60s; --r: var(--r3);">
-              <div class="planet"><div class="planet-inner">
-                <span class="planet-disc"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m22 9-6 3.2V11.8L22 15V9Z"/></svg></span>
-                <span class="planet-label">Online Meeting</span>
-              </div></div>
-            </div>
-            <div class="orbiter" style="--a: 200deg; --dur: 60s; --r: var(--r3);">
-              <div class="planet"><div class="planet-inner">
-                <span class="planet-disc"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></span>
-                <span class="planet-label">SAP</span>
-              </div></div>
-            </div>
-            <div class="orbiter" style="--a: 290deg; --dur: 60s; --r: var(--r3);">
-              <div class="planet"><div class="planet-inner">
-                <span class="planet-disc"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8V6a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 6v12a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 18Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg></span>
-                <span class="planet-label">Inventory</span>
-              </div></div>
-            </div>
-            <div class="orbiter" style="--a: 65deg; --dur: 78s; --r: var(--r4);">
-              <div class="planet"><div class="planet-inner">
-                <span class="planet-disc"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10"/><path d="m2 7 10 6 10-6"/><path d="M19 14.5 17 18h4l-2 3.5"/></svg></span>
-                <span class="planet-label">Email Automation</span>
-              </div></div>
-            </div>
-            <div class="orbiter" style="--a: 155deg; --dur: 78s; --r: var(--r4);">
-              <div class="planet"><div class="planet-inner">
-                <span class="planet-disc"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M8 2v4M16 2v4"/><path d="m9 15 2 2 4-4"/></svg></span>
-                <span class="planet-label">EMS</span>
-              </div></div>
-            </div>
-            <div class="orbiter" style="--a: 245deg; --dur: 78s; --r: var(--r4);">
-              <div class="planet"><div class="planet-inner">
-                <span class="planet-disc"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13v-1a8 8 0 0 1 16 0v1"/><path d="M4 13h2a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1Z"/><path d="M20 13h-2a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1Z"/><path d="M18 19a3 3 0 0 1-3 3h-3"/></svg></span>
-                <span class="planet-label">Call Center</span>
-              </div></div>
-            </div>
-            <div class="orbiter" style="--a: 335deg; --dur: 78s; --r: var(--r4);">
-              <div class="planet"><div class="planet-inner">
-                <span class="planet-disc"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="18" height="11" rx="2"/><path d="M12 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm0 0v4"/><path d="M8 15h.01M16 15h.01M2 14h1M21 14h1"/></svg></span>
-                <span class="planet-label">Reply Bot</span>
-              </div></div>
-            </div>
+  <!-- LEAD PIPELINE CANVAS -->
+  <section class="pipeline-band">
+    <div class="container">
+      <div class="pipeline-card reveal">
+        <div class="pl-head">
+          <div class="pl-title-group">
+            <span class="pl-live" aria-hidden="true"></span>
+            <p class="pl-title">Quy trình tiếp nhận và đánh giá Lead tự động</p>
+            <span class="pl-chip">Minh hoạ quy trình</span>
           </div>
+          <p class="pl-meta">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/></svg>
+            Dữ liệu đồng bộ theo thời gian thực
+          </p>
+        </div>
 
-          <ul class="module-constellation" aria-label="Các phân hệ trong hệ sinh thái AllOne">
-            <li class="mc-core">AllOne</li>
-            <li class="is-ai">AI</li>
-            <li>CRM</li>
-            <li>Omni</li>
-            <li>HRM</li>
-            <li>LMS</li>
-            <li>Online Meeting</li>
-            <li>SAP</li>
-            <li>Inventory</li>
-            <li>Email Automation</li>
-            <li>EMS</li>
-            <li>Call Center</li>
-            <li>Reply Bot</li>
-          </ul>
+        <ol class="pl-steps">
+          <li class="pl-step">
+            <div class="pl-marker" aria-hidden="true">
+              <span class="pl-dot">1</span>
+              <span class="pl-rail"></span>
+            </div>
+            <div class="pl-body">
+              <div class="pl-step-top">
+                <span class="pl-num">Bước 01</span>
+                <span class="pl-actor">Hệ thống</span>
+              </div>
+              <h3>Lead mới</h3>
+              <p>Tiếp nhận từ website, Zalo OA và Messenger.</p>
+              <p class="pl-foot">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+                Tự động hợp nhất
+              </p>
+            </div>
+          </li>
+          <li class="pl-step is-ai">
+            <div class="pl-marker" aria-hidden="true">
+              <span class="pl-dot">2</span>
+              <span class="pl-rail"></span>
+            </div>
+            <div class="pl-body">
+              <div class="pl-step-top">
+                <span class="pl-num">Bước 02</span>
+                <span class="pl-actor">AI</span>
+              </div>
+              <h3>AI nghiên cứu &amp; phân loại</h3>
+              <p>Phân tích nhu cầu, chấm điểm tiềm năng và tổng hợp hồ sơ.</p>
+              <p class="pl-foot">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 4 2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/></svg>
+                Chấm điểm tiềm năng
+              </p>
+            </div>
+          </li>
+          <li class="pl-step">
+            <div class="pl-marker" aria-hidden="true">
+              <span class="pl-dot">3</span>
+              <span class="pl-rail"></span>
+            </div>
+            <div class="pl-body">
+              <div class="pl-step-top">
+                <span class="pl-num">Bước 03</span>
+                <span class="pl-actor">Hệ thống</span>
+              </div>
+              <h3>AllOne phân phối Lead</h3>
+              <p>Giao cho nhân viên phù hợp theo quy tắc và SLA đã cấu hình.</p>
+              <p class="pl-foot">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h5l4 6 4-6h5"/><path d="M3 18h5l3-4.5"/></svg>
+                Định tuyến theo quy tắc
+              </p>
+            </div>
+          </li>
+          <li class="pl-step is-human">
+            <div class="pl-marker" aria-hidden="true">
+              <span class="pl-dot">4</span>
+              <span class="pl-rail"></span>
+            </div>
+            <div class="pl-body">
+              <div class="pl-step-top">
+                <span class="pl-num">Bước 04</span>
+                <span class="pl-actor">Con người</span>
+              </div>
+              <h3>Sale liên hệ khách hàng</h3>
+              <p>Gọi điện, trao đổi qua Omni và kích hoạt kịch bản chốt deal.</p>
+              <p class="pl-foot">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+                Ghi âm &amp; tóm tắt
+              </p>
+            </div>
+          </li>
+          <li class="pl-step is-ai">
+            <div class="pl-marker" aria-hidden="true">
+              <span class="pl-dot">5</span>
+              <span class="pl-rail"></span>
+            </div>
+            <div class="pl-body">
+              <div class="pl-step-top">
+                <span class="pl-num">Bước 05</span>
+                <span class="pl-actor">AI</span>
+              </div>
+              <h3>AI đề xuất bước tiếp theo</h3>
+              <p>Nhắc việc, soạn nháp email và dự báo khả năng chốt hợp đồng.</p>
+              <p class="pl-foot">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                Tự động hoá tiếp thị
+              </p>
+            </div>
+          </li>
+        </ol>
+
+        <p class="pl-note">Sơ đồ minh hoạ luồng xử lý Lead mặc định quy tắc phân phối và kịch bản được cấu hình theo từng doanh nghiệp.</p>
       </div>
     </div>
   </section>
@@ -1521,225 +1563,183 @@
       </div>
     </div>
   </div>
-  <!-- PRODUCT TEASER -->
-  <section class="section">
-    <div class="container">
-      <div class="section-head reveal">
-        <p class="eyebrow">Hệ sinh thái sản phẩm</p>
-        <h2>Đa dịch vụ trong <span class="hl">một nền tảng</span>, từ quản lý khách hàng, nhân sự, sản phẩm đến tồn kho đa kho</h2>
-        <p class="lead">CRM, nhắn tin đa kênh, đào tạo và lớp AI xuyên suốt cùng dùng chung một nguồn dữ liệu, triển khai theo từng giai đoạn để tối ưu chi phí.</p>
-      </div>
-
-      <div class="solution-pager reveal">
-        <div class="solution-viewport">
-        <div class="solution-card is-active" data-index="0">
-          <div class="sc-body">
-            <div class="sc-head">
-              <span class="sc-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
-              <span><span class="sc-name">CRM</span><span class="sc-tag">Quản lý khách hàng</span></span>
-            </div>
-            <p>Lead, Contact 360°, quy trình bán hàng và tự động hoá tiếp thị trên một hồ sơ khách hàng duy nhất.</p>
-            <ul class="sc-feats">
-              <li>Quản lý Lead &amp; Contact tập trung, tự động chống trùng lặp</li>
-              <li>Hồ sơ 360°: dòng thời gian, cuộc gọi ghi âm, email, cuộc họp</li>
-              <li>Pipeline bán hàng &amp; quản lý đội Sale theo KPI</li>
-              <li>Email automation kéo-thả và chiến dịch cold email</li>
-            </ul>
-            <a href="/crm" class="sc-link">Tìm hiểu CRM
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </a>
-          </div>
-          <div class="sc-visual" aria-hidden="true">
-            <div class="shot-visual-wrap">
-              <div class="shot-frame">
-                <div class="shot-bar"><span class="shot-dot"></span><span class="shot-dot"></span><span class="shot-dot"></span></div>
-                <img src="/img/products/allone-crm-product-1.jpg" alt="">
-              </div>
-              <p class="shot-caption">Đa dịch vụ, một nền tảng Sale Teams &amp; KPI đội nhóm</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="solution-card" data-index="1">
-          <div class="sc-body">
-            <div class="sc-head">
-              <span class="sc-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
-              <span><span class="sc-name">Omni</span><span class="sc-tag">Nhắn tin đa kênh</span></span>
-            </div>
-            <p>Hộp thư hợp nhất cho Facebook Messenger và Zalo OA, kèm lớp trả lời tự động theo kịch bản.</p>
-            <ul class="sc-feats">
-              <li>Gộp chat &amp; bình luận nhiều kênh về một hộp thư</li>
-              <li>Trả lời tự động theo kịch bản người thật duyệt, không tự chế nội dung</li>
-              <li>Ba mức xử lý: trả lời sẵn → gợi ý → chuyển người thật</li>
-              <li>Mọi phản hồi tự động đều có nhật ký kiểm toán</li>
-            </ul>
-            <a href="/omni" class="sc-link">Tìm hiểu Omni
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </a>
-          </div>
-          <div class="sc-visual" aria-hidden="true">
-            <div class="viz-card">
-              <p class="viz-title">Hộp thư hợp nhất</p>
-              <div class="viz-inbox">
-                <div class="viz-inbox-row">
-                  <span class="viz-channel-tag is-fb">Messenger</span>
-                  <span class="viz-inbox-text">Khách hỏi học phí khoá IELTS</span>
-                  <span class="viz-badge">Tự động trả lời</span>
-                </div>
-                <div class="viz-inbox-row">
-                  <span class="viz-channel-tag is-zalo">Zalo OA</span>
-                  <span class="viz-inbox-text">Yêu cầu đổi lịch tư vấn</span>
-                  <span class="viz-badge is-flag">Chuyển nhân viên</span>
-                </div>
-                <div class="viz-inbox-row">
-                  <span class="viz-channel-tag is-fb">Messenger</span>
-                  <span class="viz-inbox-text">Xác nhận đăng ký thành công</span>
-                  <span class="viz-badge is-done">Đã xử lý</span>
-                </div>
-              </div>
-              <p class="viz-caption">Minh hoạ hộp thư nội dung mẫu</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="solution-card" data-index="2">
-          <div class="sc-body">
-            <div class="sc-head">
-              <span class="sc-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4.5A2.5 2.5 0 0 1 4.5 2H12v18H4.5A2.5 2.5 0 0 0 2 22.5v-18Z"/><path d="M22 4.5A2.5 2.5 0 0 0 19.5 2H12v18h7.5a2.5 2.5 0 0 1 2.5 2.5v-18Z"/></svg></span>
-              <span><span class="sc-name">LMS</span><span class="sc-tag">Đào tạo &amp; học tập</span></span>
-            </div>
-            <p>Lịch học, điểm danh, bài tập và kho học liệu cho trung tâm giáo dục và đào tạo nội bộ.</p>
-            <ul class="sc-feats">
-              <li>Xếp lịch lớp định kỳ, tự dò trùng giáo viên &amp; phòng học</li>
-              <li>Điểm danh theo buổi với cửa sổ chốt và tính lương giảng dạy</li>
-              <li>Bài tập &amp; bài kiểm tra: 11 dạng câu hỏi, tự động chấm</li>
-              <li>Kho học liệu chia sẻ + tích hợp Google Meet ghi hình</li>
-            </ul>
-            <a href="/lms" class="sc-link">Tìm hiểu LMS
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </a>
-          </div>
-          <div class="sc-visual" aria-hidden="true">
-            <div class="viz-card">
-              <p class="viz-title">Tiến độ &amp; điểm danh</p>
-              <div class="viz-progress">
-                <div class="viz-progress-head"><span>Hoàn thành khoá học</span><span class="viz-progress-value">82%</span></div>
-                <div class="viz-bar-track"><div class="viz-bar-fill" style="width:82%"></div></div>
-              </div>
-              <div class="viz-dots-row">
-                <span class="viz-dot is-present"></span>
-                <span class="viz-dot is-present"></span>
-                <span class="viz-dot is-present"></span>
-                <span class="viz-dot is-absent"></span>
-                <span class="viz-dot is-present"></span>
-                <span class="viz-dot is-present"></span>
-                <span class="viz-dot is-future"></span>
-              </div>
-              <p class="viz-caption">Minh hoạ điểm danh 7 buổi gần nhất số liệu mẫu</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="solution-card is-ai" data-index="3">
-          <div class="sc-body">
-            <div class="sc-head">
-              <span class="sc-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m12 4 2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/><path d="M19 15v4M17 17h4"/></svg></span>
-              <span><span class="sc-name">AI-native</span><span class="sc-tag">Xuyên suốt nền tảng</span></span>
-            </div>
-            <p>AI đọc dữ liệu và hỗ trợ hành động trong từng phân hệ con người luôn là người xem xét và quyết định cuối cùng.</p>
-            <ul class="sc-feats">
-              <li>Hồ sơ khách hàng AI: tính cách, cách tiếp cận, điểm số &amp; rủi ro rời bỏ</li>
-              <li>Phân tích hội thoại cuộc gọi: tóm tắt, cảm xúc, nhu cầu, cam kết</li>
-              <li>Trợ lý hội thoại truy vấn dữ liệu CRM theo đúng quyền của bạn</li>
-              <li>Tự động hoá AI có kill-switch, danh sách hành động cho phép &amp; nhật ký kiểm toán</li>
-            </ul>
-            <a href="/crm" class="sc-link">Tìm hiểu giải pháp AI
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </a>
-          </div>
-          <div class="sc-visual" aria-hidden="true">
-            <div class="viz-card">
-              <p class="viz-title">Hồ sơ khách hàng AI</p>
-              <div class="viz-gauge">
-                <svg width="108" height="108" viewBox="0 0 120 120">
-                  <circle cx="60" cy="60" r="50" fill="none" stroke-width="10" style="stroke:var(--line)"/>
-                  <circle cx="60" cy="60" r="50" fill="none" stroke-width="10" stroke-linecap="round"
-                    stroke-dasharray="314.16" stroke-dashoffset="56.5" transform="rotate(-90 60 60)"
-                    style="stroke:var(--warm)"/>
-                  <text x="60" y="57" text-anchor="middle" font-family="Inter, sans-serif" font-size="26" font-weight="700" style="fill:var(--ink)">82</text>
-                  <text x="60" y="76" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" style="fill:var(--ink-soft)">Điểm AI /100</text>
-                </svg>
-              </div>
-              <div class="viz-risk">
-                <span class="viz-risk-label">Rủi ro rời bỏ</span>
-                <div class="viz-risk-meter">
-                  <span class="viz-risk-seg is-active"></span>
-                  <span class="viz-risk-seg"></span>
-                  <span class="viz-risk-seg"></span>
-                </div>
-                <span class="viz-risk-value">Thấp</span>
-              </div>
-              <p class="viz-caption">Minh hoạ hồ sơ khách hàng AI số liệu mẫu</p>
-            </div>
-          </div>
-        </div>
-        </div>
-
-        <div class="pager-controls">
-          <button class="pager-arrow" type="button" data-dir="-1" aria-label="Phân hệ trước">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
-          </button>
-          <div class="pager-dots" role="tablist" aria-label="Chọn phân hệ">
-            <button class="pager-dot is-active" type="button" data-index="0" role="tab" aria-selected="true"><span class="pd-dot" aria-hidden="true"></span><span class="pd-label">CRM</span></button>
-            <button class="pager-dot" type="button" data-index="1" role="tab" aria-selected="false"><span class="pd-dot" aria-hidden="true"></span><span class="pd-label">Omni</span></button>
-            <button class="pager-dot" type="button" data-index="2" role="tab" aria-selected="false"><span class="pd-dot" aria-hidden="true"></span><span class="pd-label">LMS</span></button>
-            <button class="pager-dot" type="button" data-index="3" role="tab" aria-selected="false"><span class="pd-dot" aria-hidden="true"></span><span class="pd-label">AI-native</span></button>
-          </div>
-          <button class="pager-arrow" type="button" data-dir="1" aria-label="Phân hệ sau">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
-          </button>
-        </div>
-      </div>
-
-      <div class="section-cta reveal">
-        <a href="/crm" class="btn btn-ghost">Xem toàn bộ sản phẩm</a>
-      </div>
-    </div>
-  </section>
-
+  <!-- OPERATIONAL SHOWCASE -->
   <section class="section">
     <div class="container">
       <div class="section-head reveal">
         <p class="eyebrow">Năng lực vận hành</p>
         <h2>Từ đội sale đến kho hàng, vận hành trên <span class="hl">cùng một hệ thống</span></h2>
-        <p class="lead">Ba màn hình dưới đây lấy trực tiếp từ một khách hàng đang vận hành trên AllOne CRM: theo dõi KPI đội sale, quản lý sản phẩm theo SKU và tồn kho đa kho tất cả trong cùng một nền tảng.</p>
+        <p class="lead">Ba màn hình dưới đây được lấy trực tiếp từ một khách hàng đang vận hành AllOne CRM: theo dõi KPI đội sale, quản lý sản phẩm theo SKU và tồn kho đa kho trên cùng một nền tảng.</p>
       </div>
 
-      <div class="shot-grid reveal">
-        <div class="shot-card">
-          <div class="shot-frame">
-            <div class="shot-bar"><span class="shot-dot"></span><span class="shot-dot"></span><span class="shot-dot"></span></div>
-            <img src="/img/products/allone-crm-product-1.jpg" alt="Màn hình Sale Teams trong AllOne CRM, hiển thị KPI hoàn thành và doanh thu theo từng đội sale">
+      <div class="showcase-list">
+        <article class="showcase-row reveal">
+          <div class="sw-head">
+            <p class="sw-badge">Quản trị hiệu suất</p>
           </div>
-          <p class="shot-cap-title">Sale Teams, theo dõi KPI đội nhóm</p>
-          <p class="shot-cap-desc">KPI hoàn thành, doanh thu và tỷ lệ chốt deal theo từng đội sale, cập nhật theo thời gian thực.</p>
-        </div>
-        <div class="shot-card">
-          <div class="shot-frame">
-            <div class="shot-bar"><span class="shot-dot"></span><span class="shot-dot"></span><span class="shot-dot"></span></div>
-            <img src="/img/products/allone-crm-product-2.jpg" alt="Màn hình quản lý sản phẩm trong AllOne CRM, hiển thị danh sách SKU theo danh mục và tồn kho">
+          <div class="sw-shot">
+            <div class="shot-frame">
+              <div class="shot-bar"><span class="shot-dot"></span><span class="shot-dot"></span><span class="shot-dot"></span></div>
+              <img src="/img/products/allone-crm-product-1.jpg" alt="Màn hình Sale Teams trong AllOne CRM, hiển thị KPI hoàn thành và doanh thu theo từng đội sale" loading="lazy" decoding="async">
+            </div>
           </div>
-          <p class="shot-cap-title">Quản lý sản phẩm theo SKU</p>
-          <p class="shot-cap-desc">Theo dõi từng sản phẩm theo danh mục, giá và phân loại, cùng tồn kho theo từng kho ngay trên một màn hình.</p>
-        </div>
-        <div class="shot-card">
-          <div class="shot-frame">
-            <div class="shot-bar"><span class="shot-dot"></span><span class="shot-dot"></span><span class="shot-dot"></span></div>
-            <img src="/img/products/allone-crm-product-3.jpg" alt="Màn hình tồn kho trong AllOne CRM, hiển thị số lượng theo từng kho và cảnh báo dưới định mức">
+          <div class="sw-copy">
+            <h3 class="sw-title">Sale Teams: theo dõi KPI đội nhóm</h3>
+            <p class="sw-desc">Theo dõi mức hoàn thành KPI, doanh thu và tỷ lệ chốt của từng đội sale theo thời gian thực.</p>
+            <ul class="sw-points">
+              <li>Minh bạch chỉ số doanh số của từng cá nhân và từng đội</li>
+              <li>Theo dõi tiến độ đạt mục tiêu theo tuần và theo tháng</li>
+            </ul>
           </div>
-          <p class="shot-cap-title">Tồn kho đa kho, cảnh báo tự động</p>
-          <p class="shot-cap-desc">Theo dõi số lượng, đã giữ chỗ và tồn có thể bán theo từng kho, tự động lọc các SKU dưới định mức.</p>
-        </div>
+        </article>
+        <article class="showcase-row is-flipped reveal">
+          <div class="sw-head">
+            <p class="sw-badge is-neutral">Danh mục sản phẩm</p>
+          </div>
+          <div class="sw-shot">
+            <div class="shot-frame">
+              <div class="shot-bar"><span class="shot-dot"></span><span class="shot-dot"></span><span class="shot-dot"></span></div>
+              <img src="/img/products/allone-crm-product-2.jpg" alt="Màn hình quản lý sản phẩm trong AllOne CRM, hiển thị danh sách SKU theo danh mục và tồn kho" loading="lazy" decoding="async">
+            </div>
+          </div>
+          <div class="sw-copy">
+            <h3 class="sw-title">Quản lý sản phẩm theo SKU</h3>
+            <p class="sw-desc">Theo dõi từng sản phẩm theo danh mục, giá và phân loại, cùng tồn kho theo từng kho ngay trên một màn hình.</p>
+            <ul class="sw-points">
+              <li>Phân loại theo danh mục, phân khúc và biến thể đa thuộc tính</li>
+              <li>Đồng bộ bảng giá và chính sách chiết khấu tới đội sale</li>
+            </ul>
+          </div>
+        </article>
+        <article class="showcase-row reveal">
+          <div class="sw-head">
+            <p class="sw-badge is-warm">Kho hàng &amp; logistics</p>
+          </div>
+          <div class="sw-shot">
+            <div class="shot-frame">
+              <div class="shot-bar"><span class="shot-dot"></span><span class="shot-dot"></span><span class="shot-dot"></span></div>
+              <img src="/img/products/allone-crm-product-3.jpg" alt="Màn hình tồn kho trong AllOne CRM, hiển thị số lượng theo từng kho và cảnh báo dưới định mức" loading="lazy" decoding="async">
+            </div>
+          </div>
+          <div class="sw-copy">
+            <h3 class="sw-title">Tồn kho đa kho và cảnh báo tự động</h3>
+            <p class="sw-desc">Theo dõi lượng tồn, lượng đã giữ chỗ và lượng có thể bán theo từng kho; cảnh báo khi SKU xuống dưới định mức.</p>
+            <ul class="sw-points">
+              <li>Kiểm soát lượng giữ chỗ cho đơn đang tư vấn dở dang</li>
+              <li>Tự động cảnh báo bổ sung hàng theo ngưỡng an toàn</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCT BENTO -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Hệ sinh thái sản phẩm</p>
+        <h2>Quản lý nhiều nghiệp vụ trên <span class="hl">một nền tảng</span>, từ khách hàng và nhân sự đến sản phẩm, kho hàng</h2>
+        <p class="lead">Tất cả tính năng dùng chung một nguồn dữ liệu. AI được tích hợp xuyên suốt và hệ thống có thể triển khai theo từng giai đoạn để tối ưu chi phí.</p>
+      </div>
+
+      <div class="bento-grid">
+        <article class="bento-card reveal">
+          <button class="bc-summary" type="button" aria-expanded="true" aria-controls="bento-crm">
+            <span class="sc-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+            <span><span class="sc-name">CRM</span><span class="sc-tag">Quản lý khách hàng</span></span>
+            <span class="bc-tag">CRM module</span>
+            <svg class="bc-caret" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="bc-body" id="bento-crm">
+            <p>Lead, Contact 360°, quy trình bán hàng và tự động hoá tiếp thị trên một hồ sơ khách hàng duy nhất.</p>
+            <ul class="sc-feats">
+            <li>Quản lý Lead và Contact tập trung, tự động phát hiện dữ liệu trùng lặp</li>
+            <li>Hồ sơ 360°: lịch sử tương tác, cuộc gọi, email và cuộc họp</li>
+            <li>Pipeline bán hàng và quản lý KPI theo đội nhóm</li>
+            <li>Email automation theo hành trình chăm sóc khách hàng</li>
+            </ul>
+            <div class="bc-foot">
+              <a href="/crm" class="sc-link">Tìm hiểu CRM
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+              <span class="bc-note">Sale Teams &amp; KPI đội nhóm</span>
+            </div>
+          </div>
+        </article>
+        <article class="bento-card reveal">
+          <button class="bc-summary" type="button" aria-expanded="true" aria-controls="bento-omni">
+            <span class="sc-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+            <span><span class="sc-name">Omni</span><span class="sc-tag">Nhắn tin đa kênh</span></span>
+            <span class="bc-tag">Omni channel</span>
+            <svg class="bc-caret" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="bc-body" id="bento-omni">
+            <p>Hộp thư hợp nhất cho Facebook Messenger và Zalo OA, kèm lớp trả lời tự động theo kịch bản.</p>
+            <ul class="sc-feats">
+            <li>Gộp chat &amp; bình luận nhiều kênh về một hộp thư</li>
+            <li>Trả lời tự động theo kịch bản người thật duyệt, không tự chế nội dung</li>
+            <li>Ba mức xử lý: trả lời sẵn → gợi ý → chuyển người thật</li>
+            <li>Mọi phản hồi tự động đều có nhật ký kiểm toán</li>
+            </ul>
+            <div class="bc-foot">
+              <a href="/omni" class="sc-link">Tìm hiểu Omni
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+              <span class="bc-note">Hộp thư hợp nhất Messenger &amp; Zalo</span>
+            </div>
+          </div>
+        </article>
+        <article class="bento-card reveal">
+          <button class="bc-summary" type="button" aria-expanded="true" aria-controls="bento-lms">
+            <span class="sc-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4.5A2.5 2.5 0 0 1 4.5 2H12v18H4.5A2.5 2.5 0 0 0 2 22.5v-18Z"/><path d="M22 4.5A2.5 2.5 0 0 0 19.5 2H12v18h7.5a2.5 2.5 0 0 1 2.5 2.5v-18Z"/></svg></span>
+            <span><span class="sc-name">LMS</span><span class="sc-tag">Đào tạo &amp; học tập</span></span>
+            <span class="bc-tag">LMS module</span>
+            <svg class="bc-caret" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="bc-body" id="bento-lms">
+            <p>Lịch học, điểm danh, bài tập và kho học liệu cho trung tâm giáo dục và đào tạo nội bộ.</p>
+            <ul class="sc-feats">
+            <li>Xếp lịch lớp định kỳ, kiểm tra trùng lặp lịch giáo viên và phòng học</li>
+            <li>Điểm danh theo buổi và ghi nhận giờ dạy để tính lương</li>
+            <li>Bài tập, bài kiểm tra với nhiều dạng câu hỏi và cơ chế chấm phù hợp</li>
+            <li>Kho học liệu dùng chung và tích hợp Google Meet để lưu bản ghi</li>
+            </ul>
+            <div class="bc-foot">
+              <a href="/lms" class="sc-link">Tìm hiểu LMS
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+              <span class="bc-note">Hoàn thành khoá học &amp; điểm danh</span>
+            </div>
+          </div>
+        </article>
+        <article class="bento-card is-ai reveal">
+          <button class="bc-summary" type="button" aria-expanded="true" aria-controls="bento-ai">
+            <span class="sc-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m12 4 2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/><path d="M19 15v4M17 17h4"/></svg></span>
+            <span><span class="sc-name">AI-native</span><span class="sc-tag">Xuyên suốt nền tảng</span></span>
+            <span class="bc-tag">AI core layer</span>
+            <svg class="bc-caret" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="bc-body" id="bento-ai">
+            <p>AI đọc dữ liệu và hỗ trợ hành động trong từng phân hệ con người luôn là người xem xét và quyết định cuối cùng.</p>
+            <ul class="sc-feats">
+            <li>Hồ sơ khách hàng AI: tính cách, cách tiếp cận, điểm số &amp; rủi ro rời bỏ</li>
+            <li>Phân tích hội thoại cuộc gọi: tóm tắt, cảm xúc, nhu cầu, cam kết</li>
+            <li>Trợ lý hội thoại truy vấn dữ liệu CRM theo đúng quyền của bạn</li>
+            <li>Tự động hoá AI có kill-switch, danh sách hành động cho phép &amp; nhật ký kiểm toán</li>
+            </ul>
+            <div class="bc-foot">
+              <a href="/crm" class="sc-link">Tìm hiểu giải pháp AI
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+              <span class="bc-note">Human in the loop</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="section-cta reveal">
+        <a href="/crm" class="btn btn-ghost">Xem toàn bộ sản phẩm</a>
       </div>
     </div>
   </section>
@@ -1750,8 +1750,8 @@
       <div class="transform-head">
         <div class="section-head reveal">
           <p class="eyebrow is-warm">Dịch vụ <span class="cds-glow">chuyển đổi số</span></p>
-          <h2>AllOne đồng hành cùng doanh nghiệp trong quá trình <span class="cds-glow">chuyển đổi số</span>, tích hợp AI thẳng vào quy trình làm việc hằng ngày của đội ngũ doanh nghiệp</h2>
-          <p class="lead">Một buổi demo AI không đổi được cách một phòng ban làm việc mỗi ngày. Chúng tôi cử người ngồi cùng đội ngũ bạn, từ buổi huấn luyện dùng công cụ đầu tiên đến khi một quy trình AI cụ thể chạy được trong công việc thật, dù doanh nghiệp bạn có dùng AllOne hay không.</p>
+          <h2>AllOne đồng hành cùng doanh nghiệp trong quá trình <span class="cds-glow">chuyển đổi số</span> và đưa AI vào quy trình làm việc hằng ngày</h2>
+          <p class="lead">Một buổi demo AI không thể thay đổi cách một phòng ban làm việc mỗi ngày. Đội ngũ AllOne làm việc cùng doanh nghiệp, từ đào tạo sử dụng công cụ đến khi một quy trình AI cụ thể được đưa vào công việc thực tế.</p>
         </div>
 
         <div class="transform-klein reveal">
@@ -1770,15 +1770,15 @@
 
       <div class="transform-grid">
         <div class="transform-card reveal">
-          <h3>Huấn luyện đội ngũ dùng đúng công cụ AI</h3>
-          <p>Chúng tôi ngồi cùng từng phòng ban, chỉ ra chính xác việc nào trong ngày làm việc của họ nên giao cho AI, rồi luyện tay đến khi nhân sự tự làm được, chứ không chỉ xem một lần rồi quên.</p>
+          <h3>Huấn luyện đội ngũ sử dụng đúng công cụ AI</h3>
+          <p>AllOne làm việc cùng từng phòng ban để xác định công việc phù hợp với AI và hướng dẫn nhân sự thực hành đến khi có thể tự sử dụng.</p>
         </div>
         <div class="transform-card reveal">
           <h3>Dựng automation AI riêng cho quy trình của bạn</h3>
           <p>Chúng tôi khảo sát quy trình hiện tại, chọn đúng một hoặc hai điểm đáng làm trước, rồi dựng automation AI cho chính quy trình đó, thay vì lắp một gói giải pháp có sẵn.</p>
         </div>
         <div class="transform-card reveal">
-          <h3>Lên lộ trình chuyển đổi theo từng giai đoạn thật</h3>
+          <h3>Xây dựng lộ trình chuyển đổi theo từng giai đoạn</h3>
           <p>Chúng tôi khảo sát cách đội ngũ bạn đang làm việc, xếp thứ tự việc nào nên số hoá trước, việc nào để sau, rồi lên lộ trình theo từng quý, thay vì một kế hoạch làm hết trong một lần.</p>
         </div>
       </div>
@@ -1787,7 +1787,7 @@
         <span class="p-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z"/><path d="m9 12 2 2 4-4"/></svg></span>
         <div>
           <p class="p-label">Nguyên tắc cốt lõi</p>
-          <p>Mục tiêu cuối cùng là đội ngũ bạn tự vận hành được công cụ AI sau khi chúng tôi rời đi, không phải phụ thuộc vào chúng tôi mỗi lần cần chỉnh sửa.</p>
+          <p>Mục tiêu cuối cùng là đội ngũ có thể tự vận hành hệ thống và công cụ AI sau bàn giao, không cần phụ thuộc vào AllOne cho mọi điều chỉnh.</p>
         </div>
       </div>
 
@@ -1804,59 +1804,103 @@
       <div class="section-head reveal">
         <p class="eyebrow">Bảng giá</p>
         <h2>Chọn gói phù hợp với quy mô đội ngũ của bạn</h2>
-        <p class="lead">Mọi gói đều xây dựng trên cùng nền tảng AllOne CRM khác biệt ở quy mô sử dụng và mức độ tuỳ chỉnh.</p>
+        <p class="lead">Các gói được xây dựng trên cùng hệ sinh thái AllOne nhưng khác nhau ở phân hệ sử dụng, quy mô và mức độ tùy chỉnh.</p>
+      </div>
+
+      <div class="billing-switch reveal" role="group" aria-label="Chu kỳ thanh toán">
+        <button class="billing-btn is-active" type="button" data-cycle="annual" aria-pressed="true">Theo năm <span class="billing-save">Tiết kiệm 20%</span></button>
+        <button class="billing-btn" type="button" data-cycle="monthly" aria-pressed="false">Theo tháng</button>
       </div>
 
       <div class="pricing">
         <div class="price-card reveal">
-          <h3>Standard</h3>
-          <p class="price-tag">Dành cho đội nhóm nhỏ</p>
-          <p class="price-desc">Phù hợp với đội bán hàng mới bắt đầu số hoá quy trình chăm sóc khách hàng.</p>
+          <h3>Miễn phí</h3>
+          <p class="price-tag">Dùng thử trước khi triển khai</p>
+          <p class="price-desc">Dùng thử, giới hạn số người dùng và dung lượng lưu trữ.</p>
           <ul class="price-feats">
-            <li>Quản lý Lead &amp; Contact tập trung</li>
-            <li>Pipeline bán hàng cơ bản</li>
-            <li>Email chăm sóc theo template</li>
-            <li>Báo cáo hoạt động cơ bản</li>
+            <li>Giới hạn số người dùng và dung lượng lưu trữ</li>
+            <li>Vận hành quy mô nhỏ trên nền tảng đầy đủ</li>
           </ul>
-          <p class="price-value">Liên hệ tư vấn</p>
+          <p class="price-value"><span class="price-num">0</span><span class="price-unit">đ / người dùng / tháng</span></p>
           <a href="/bang-gia" class="btn btn-ghost btn-block">Xem chi tiết</a>
         </div>
+
         <div class="price-card featured reveal">
           <span class="price-badge">Phổ biến</span>
-          <h3>Business</h3>
-          <p class="price-tag">Dành cho doanh nghiệp đang tăng trưởng</p>
-          <p class="price-desc">Đầy đủ công cụ cho đội ngũ bán hàng và tiếp thị phối hợp trên cùng một hệ thống.</p>
+          <h3>Tiêu chuẩn</h3>
+          <p class="price-tag">Cho doanh nghiệp đang vận hành</p>
+          <p class="price-desc">Áp dụng chung cho các phân hệ CRM, HRM, ERP và SAP.</p>
           <ul class="price-feats">
-            <li>Mọi tính năng của gói Standard</li>
-            <li>Tích hợp đa kênh Omni (Zalo, Facebook, email)</li>
-            <li>Workflow automation &amp; chăm sóc tự động</li>
-            <li>Dashboard đội nhóm &amp; phân quyền theo vai trò</li>
+            <li>Dùng chung cho CRM, HRM, ERP và SAP</li>
+            <li>Tính theo số người dùng thực tế phát sinh trong kỳ</li>
+            <li>LMS tính riêng theo số học viên</li>
           </ul>
-          <p class="price-value">Liên hệ tư vấn</p>
+          <p class="price-value"><span class="price-num" data-annual="89.000" data-monthly="106.800">89.000</span><span class="price-unit">đ / người dùng / tháng</span></p>
           <a href="/bang-gia" class="btn btn-primary btn-block">Xem chi tiết</a>
         </div>
+
         <div class="price-card reveal">
-          <h3>Enterprise</h3>
-          <p class="price-tag">Dành cho tổ chức cần tuỳ chỉnh</p>
-          <p class="price-desc">Giải pháp mở rộng cho tổ chức quy mô lớn hoặc có yêu cầu tích hợp riêng.</p>
+          <h3>Theo yêu cầu</h3>
+          <p class="price-tag">Cho tổ chức cần tùy chỉnh</p>
+          <p class="price-desc">Doanh nghiệp quy mô lớn hoặc cần tùy chỉnh theo đặc thù vận hành; báo giá riêng.</p>
           <ul class="price-feats">
-            <li>Mọi tính năng của gói Business</li>
-            <li>Tích hợp riêng (SAP, API, hệ thống nội bộ)</li>
-            <li>Onboarding chuyên trách &amp; cam kết SLA</li>
-            <li>Quy mô người dùng không giới hạn</li>
+            <li>Tùy chỉnh theo đặc thù vận hành của doanh nghiệp</li>
+            <li>Tích hợp với hệ thống nội bộ sẵn có</li>
+            <li>Chi phí phát triển và tích hợp báo giá theo dự án</li>
           </ul>
-          <p class="price-value">Liên hệ tư vấn</p>
+          <p class="price-value"><span class="price-num">Thương lượng</span></p>
           <a href="/bang-gia" class="btn btn-ghost btn-block">Xem chi tiết</a>
         </div>
+      </div>
+
+      <div class="price-notes reveal">
+        <p><b>LMS tính theo số học viên:</b> <span class="price-num" data-annual="5.000" data-monthly="6.000">5.000</span>đ / học viên / tháng (gói Tiêu chuẩn), <span class="price-num" data-annual="8.000" data-monthly="9.600">8.000</span>đ / học viên / tháng (gói Nâng cao).</p>
+        <p>Phụ phí tổng đài, chi phí triển khai, đào tạo và cố vấn chuyển đổi số được tính riêng. <a href="/bang-gia">Xem bảng giá đầy đủ</a>.</p>
+        <p class="price-fineprint">Giá niêm yết áp dụng cho hợp đồng thanh toán theo năm. Phần mềm là dịch vụ không chịu thuế GTGT.</p>
       </div>
     </div>
   </section>
 
-  <div class="weave" aria-hidden="true">
-    <svg width="46" height="20" viewBox="0 0 46 20" fill="none" stroke="currentColor" stroke-width="1.6">
-      <circle cx="14" cy="10" r="6"/><circle cx="23" cy="10" r="6"/><circle cx="32" cy="10" r="6"/>
-    </svg>
-  </div>
+  <!-- CASE STUDIES -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Giải pháp doanh nghiệp thực tế</p>
+        <h2>Các doanh nghiệp tối ưu hoá vận hành cùng <span class="hl">AllOne</span></h2>
+        <p class="lead">Cùng một vấn đề dữ liệu phân tán, hai ngành khác nhau. Đọc chi tiết cách hệ thống được cấu hình cho từng bên.</p>
+      </div>
+
+      <div class="case-grid">
+        <article class="case-card reveal">
+          <div class="cc-top">
+            <span class="sw-badge">Giáo dục CRM + LMS</span>
+            <span class="cc-region">Hà Nội &amp; TP. HCM</span>
+          </div>
+          <h3 class="cc-name">Liam Education</h3>
+          <p class="cc-desc">Trung tâm Anh ngữ giao tiếp công sở chuyển hồ sơ học viên, lớp học và học phí từ nhiều Google Sheet sang CRM và LMS dùng chung một hồ sơ.</p>
+          <div class="cc-foot">
+            <a href="/case-study-liam-education" class="sc-link">Xem chi tiết case study
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <article class="case-card reveal">
+          <div class="cc-top">
+            <span class="sw-badge is-neutral">Du lịch &amp; khách sạn</span>
+            <span class="cc-region">Đà Nẵng &amp; Hà Nội</span>
+          </div>
+          <h3 class="cc-name">AZTravel</h3>
+          <p class="cc-desc">Công ty du lịch tại Đà Nẵng và Hà Nội chuyển booking tour, hồ sơ khách hàng và công nợ đối tác khách sạn từ nhiều Google Sheet sang một hệ thống CRM.</p>
+          <div class="cc-foot">
+            <a href="/case-study-aztravel" class="sc-link">Xem chi tiết case study
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
 
   <!-- CTA BANNER -->
   <section class="section cta-banner">
@@ -1896,7 +1940,7 @@
         <h4>Giải pháp</h4>
         <a href="/case-study-liam-education">Case study: Liam Education</a>
         <a href="/case-study-aztravel">Case study: AZTravel</a>
-        <a href="/free-trial">Đăng ký dùng thử</a>
+        <a href="/dang-ky">Đăng ký dùng thử</a>
         <a href="/lien-he">Đặt lịch demo</a>
       </div>
       <div class="footer-col">
@@ -1912,7 +1956,7 @@
   </div>
 </footer>
 
-<script src="/js/home.js?v=3"></script>
+<script src="/js/home.js?v=6"></script>
 
 <script src="/js/vendor/three.min.js?v=1"></script>
 <script src="/js/klein-bottle.js?v=5"></script>
