@@ -56,6 +56,38 @@ services:
         source: /omni.html
         destination: /omni
         status: 301
+      - type: redirect
+        source: /giai-phap-quan-tri-hop-nhat.html
+        destination: /giai-phap-quan-tri-hop-nhat
+        status: 301
+      - type: redirect
+        source: /giai-phap-ban-hang-khach-hang.html
+        destination: /giai-phap-ban-hang-khach-hang
+        status: 301
+      - type: redirect
+        source: /giai-phap-kho-chuoi-cung-ung.html
+        destination: /giai-phap-kho-chuoi-cung-ung
+        status: 301
+      - type: redirect
+        source: /giai-phap-dao-tao-hoc-tap.html
+        destination: /giai-phap-dao-tao-hoc-tap
+        status: 301
+      - type: redirect
+        source: /giai-phap-tu-dong-hoa-ai-agent.html
+        destination: /giai-phap-tu-dong-hoa-ai-agent
+        status: 301
+      - type: redirect
+        source: /giai-phap-cham-soc-da-kenh.html
+        destination: /giai-phap-cham-soc-da-kenh
+        status: 301
+      - type: redirect
+        source: /giai-phap-ung-dung-rieng.html
+        destination: /giai-phap-ung-dung-rieng
+        status: 301
+      - type: redirect
+        source: /giai-phap.html
+        destination: /giai-phap
+        status: 301
 
       # --- Serve the clean path from its backing .html file ---
       - type: rewrite
@@ -85,6 +117,30 @@ services:
       - type: rewrite
         source: /omni
         destination: /omni.html
+      - type: rewrite
+        source: /giai-phap-quan-tri-hop-nhat
+        destination: /giai-phap-quan-tri-hop-nhat.html
+      - type: rewrite
+        source: /giai-phap-ban-hang-khach-hang
+        destination: /giai-phap-ban-hang-khach-hang.html
+      - type: rewrite
+        source: /giai-phap-kho-chuoi-cung-ung
+        destination: /giai-phap-kho-chuoi-cung-ung.html
+      - type: rewrite
+        source: /giai-phap-dao-tao-hoc-tap
+        destination: /giai-phap-dao-tao-hoc-tap.html
+      - type: rewrite
+        source: /giai-phap-tu-dong-hoa-ai-agent
+        destination: /giai-phap-tu-dong-hoa-ai-agent.html
+      - type: rewrite
+        source: /giai-phap-cham-soc-da-kenh
+        destination: /giai-phap-cham-soc-da-kenh.html
+      - type: rewrite
+        source: /giai-phap-ung-dung-rieng
+        destination: /giai-phap-ung-dung-rieng.html
+      - type: rewrite
+        source: /giai-phap
+        destination: /giai-phap.html
 
     headers:
       # --- Security headers, applied to every response ---

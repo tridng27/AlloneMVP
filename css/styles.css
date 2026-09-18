@@ -959,7 +959,7 @@ section[id] { scroll-margin-top: 88px; }
 .site-footer { background: var(--bg-subtle); color: var(--text-secondary); padding: 4rem 0 0; }
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.3fr 0.9fr 0.9fr 0.9fr;
+  grid-template-columns: 1.2fr repeat(4, minmax(0, 0.85fr));
   gap: 2.5rem;
   padding-bottom: 3rem;
   border-bottom: 1px solid var(--border);
@@ -2065,3 +2065,35 @@ section[id] { scroll-margin-top: 88px; }
   .cs-next { grid-template-columns: 1fr; }
   .cs-ba-col { padding: 1.35rem; }
 }
+
+
+/* ---------------------------------------------------------------------------
+   Giải Pháp mega-menu
+   Seven entries do not fit the single 280px column the other dropdowns use,
+   so this one opens as two columns anchored to the trigger's left edge.
+   Centred (the default) a 640px panel would clip off-screen on a narrow laptop.
+   --------------------------------------------------------------------------- */
+.nav-item.has-dropdown.is-wide .nav-dropdown {
+  left: 0;
+  transform: translateX(0) translateY(-6px);
+  width: min(640px, calc(100vw - 48px));
+  min-width: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.1rem 0.35rem;
+}
+.nav-item.has-dropdown.is-wide.open .nav-dropdown,
+.nav-item.has-dropdown.is-wide:hover .nav-dropdown,
+.nav-item.has-dropdown.is-wide:focus-within .nav-dropdown {
+  transform: translateX(0) translateY(0);
+}
+.nav-dropdown-foot {
+  grid-column: 1 / -1;
+  margin-top: 0.35rem;
+  padding: 0.7rem 0.75rem 0.25rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+.nav-dropdown-foot:hover { text-decoration: underline; }

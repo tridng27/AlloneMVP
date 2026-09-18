@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tự động hoá quy trình và AI Agent | Giải pháp AllOne</title>
+<meta name="description" content="AI Agent xử lý phần việc lặp lại trong quy trình AllOne, với phân quyền, nhật ký kiểm toán và điểm duyệt của con người.">
+<link rel="canonical" href="https://allone.vn/giai-phap-tu-dong-hoa-ai-agent">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="vi_VN">
+<meta property="og:url" content="https://allone.vn/giai-phap-tu-dong-hoa-ai-agent">
+<meta property="og:title" content="Tự động hoá quy trình và AI Agent | Giải pháp AllOne">
+<meta property="og:description" content="AI Agent xử lý phần việc lặp lại trong quy trình AllOne, với phân quyền, nhật ký kiểm toán và điểm duyệt của con người.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Tự động hoá quy trình và AI Agent | Giải pháp AllOne">
+<meta name="twitter:description" content="AI Agent xử lý phần việc lặp lại trong quy trình AllOne, với phân quyền, nhật ký kiểm toán và điểm duyệt của con người.">
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/home.css?v=1">
+</head>
+<body>
+<a class="skip-link" href="#main">Bỏ qua điều hướng</a>
+
+<header class="site-header" id="siteHeader">
+  <div class="container header-inner">
+    <a href="/" class="logo" aria-label="AllOne CRM trang chủ">
+      <img class="logo-mark" src="/img/logo-mark.png" width="38" height="38" alt="">
+      <img class="logo-type for-dark" src="/img/logo-wordmark-dark.png" width="667" height="214" alt="AllOne All in one platform">
+      <img class="logo-type for-light" src="/img/logo-wordmark.png" width="667" height="214" alt="AllOne All in one platform">
+    </a>
+
+    <nav class="main-nav" aria-label="Điều hướng chính">
+      <div class="nav-item">
+        <button class="nav-trigger" aria-haspopup="true" aria-expanded="false">Sản Phẩm <svg class="nav-caret" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="nav-menu" role="menu">
+          <a href="/crm" role="menuitem">
+            <span class="nm-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="10" r="3"/><path d="M6.5 19a6 6 0 0 1 11 0"/></svg></span>
+            <span><span class="nm-title">CRM Quản lý khách hàng</span><span class="nm-desc">Lead, bán hàng, tiếp thị và vận hành trên một nền tảng</span></span>
+          </a>
+          <a href="/omni" role="menuitem">
+            <span class="nm-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+            <span><span class="nm-title">Omni Nhắn tin đa kênh</span><span class="nm-desc">Hộp thư hợp nhất, AI trả lời tự động</span></span>
+          </a>
+          <a href="/lms" role="menuitem">
+            <span class="nm-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4.5A2.5 2.5 0 0 1 4.5 2H12v18H4.5A2.5 2.5 0 0 0 2 22.5v-18Z"/><path d="M22 4.5A2.5 2.5 0 0 0 19.5 2H12v18h7.5a2.5 2.5 0 0 1 2.5 2.5v-18Z"/></svg></span>
+            <span><span class="nm-title">LMS Đào tạo &amp; Học tập</span><span class="nm-desc">Khoá học, lớp học và đào tạo nội bộ</span></span>
+          </a>
+        </div>
+      </div>
+      <div class="nav-item is-wide">
+        <button class="nav-trigger" aria-haspopup="true" aria-expanded="false">Giải Pháp <svg class="nav-caret" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="nav-menu" role="menu">
+          <a href="/giai-phap-quan-tri-hop-nhat" role="menuitem">
+            <span class="nm-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v16"/><path d="M15 10h2a2 2 0 0 1 2 2v9"/><path d="M9 7h2M9 11h2M9 15h2"/></svg></span>
+            <span><span class="nm-title">Quản trị doanh nghiệp hợp nhất</span><span class="nm-desc">Dữ liệu, vai trò và quy trình liên phòng ban trên một nền tảng</span></span>
+          </a>
+          <a href="/giai-phap-ban-hang-khach-hang" role="menuitem">
+            <span class="nm-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+            <span><span class="nm-title">Quản lý bán hàng và khách hàng</span><span class="nm-desc">Hành trình từ Lead, cơ hội đến chăm sóc sau bán</span></span>
+          </a>
+          <a href="/giai-phap-kho-chuoi-cung-ung" role="menuitem">
+            <span class="nm-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8l9 5 9-5Z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg></span>
+            <span><span class="nm-title">Quản lý kho và chuỗi cung ứng</span><span class="nm-desc">Nguồn hàng, định mức SKU và tồn kho đa kho</span></span>
+          </a>
+          <a href="/giai-phap-dao-tao-hoc-tap" role="menuitem">
+            <span class="nm-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4.5A2.5 2.5 0 0 1 4.5 2H12v18H4.5A2.5 2.5 0 0 0 2 22.5v-18Z"/><path d="M22 4.5A2.5 2.5 0 0 0 19.5 2H12v18h7.5a2.5 2.5 0 0 1 2.5 2.5v-18Z"/></svg></span>
+            <span><span class="nm-title">Điều hành đào tạo và học tập</span><span class="nm-desc">Lịch học, điểm danh, bài kiểm tra và học liệu</span></span>
+          </a>
+          <a href="/giai-phap-tu-dong-hoa-ai-agent" role="menuitem" aria-current="page">
+            <span class="nm-icon is-ai" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 4 2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/><path d="M19 15v4M17 17h4"/></svg></span>
+            <span><span class="nm-title">Tự động hoá quy trình và AI Agent</span><span class="nm-desc">Số hoá phê duyệt, AI phân tích và đề xuất bước tiếp</span></span>
+          </a>
+          <a href="/giai-phap-cham-soc-da-kenh" role="menuitem">
+            <span class="nm-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+            <span><span class="nm-title">Chăm sóc khách hàng đa kênh</span><span class="nm-desc">Hộp thư hợp nhất Messenger và Zalo OA</span></span>
+          </a>
+          <a href="/giai-phap-ung-dung-rieng" role="menuitem">
+            <span class="nm-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h7M15 7h5M4 12h3M11 12h9M4 17h11M19 17h1"/><circle cx="13" cy="7" r="2"/><circle cx="9" cy="12" r="2"/><circle cx="17" cy="17" r="2"/></svg></span>
+            <span><span class="nm-title">Ứng dụng nghiệp vụ riêng theo yêu cầu</span><span class="nm-desc">Tuỳ biến theo quy trình đặc thù của tổ chức</span></span>
+          </a>
+          <p class="nm-foot">
+            <span>Bắt đầu từ bài toán bạn đang cần giải quyết</span>
+            <a href="/giai-phap">Xem tất cả giải pháp <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </p>
+        </div>
+      </div>
+      <a href="/bang-gia">Bảng Giá</a>
+      <div class="nav-item">
+        <button class="nav-trigger" aria-haspopup="true" aria-expanded="false">Tài Nguyên <svg class="nav-caret" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="nav-menu" role="menu">
+          <a href="/tai-nguyen" role="menuitem">
+            <span class="nm-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg></span>
+            <span><span class="nm-title">Thư viện tài liệu</span><span class="nm-desc">Hướng dẫn sử dụng, chuẩn bị dữ liệu và câu hỏi thường gặp</span></span>
+          </a>
+          <a href="/case-study-liam-education" role="menuitem">
+            <span class="nm-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4.5A2.5 2.5 0 0 1 4.5 2H12v18H4.5A2.5 2.5 0 0 0 2 22.5v-18Z"/><path d="M22 4.5A2.5 2.5 0 0 0 19.5 2H12v18h7.5a2.5 2.5 0 0 1 2.5 2.5v-18Z"/></svg></span>
+            <span><span class="nm-title">Case study: Liam Education</span><span class="nm-desc">Trung tâm Anh ngữ giao tiếp công sở CRM + LMS</span></span>
+          </a>
+          <a href="/case-study-aztravel" role="menuitem">
+            <span class="nm-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8l9 5 9-5Z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg></span>
+            <span><span class="nm-title">Case study: AZTravel</span><span class="nm-desc">Du lịch &amp; khách sạn tại Đà Nẵng, Hà Nội CRM</span></span>
+          </a>
+        </div>
+      </div>
+      <a href="/lien-he">Liên Hệ</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Đổi giao diện sáng/tối">
+        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a href="/dang-ky" class="btn btn-primary btn-sm">Đăng Ký</a>
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Mở menu" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-nav" id="mobileNav">
+    <a href="/">Trang chủ</a>
+    <a href="/crm">Sản Phẩm</a>
+    <a href="/crm" class="sub">CRM Quản lý khách hàng</a>
+    <a href="/omni" class="sub">Omni Nhắn tin đa kênh</a>
+    <a href="/lms" class="sub">LMS Đào tạo &amp; Học tập</a>
+    <a href="/giai-phap">Giải Pháp</a>
+    <a href="/giai-phap-quan-tri-hop-nhat" class="sub">Quản trị doanh nghiệp hợp nhất</a>
+    <a href="/giai-phap-ban-hang-khach-hang" class="sub">Quản lý bán hàng và khách hàng</a>
+    <a href="/giai-phap-kho-chuoi-cung-ung" class="sub">Quản lý kho và chuỗi cung ứng</a>
+    <a href="/giai-phap-dao-tao-hoc-tap" class="sub">Điều hành đào tạo và học tập</a>
+    <a href="/giai-phap-tu-dong-hoa-ai-agent" class="sub">Tự động hoá quy trình và AI Agent</a>
+    <a href="/giai-phap-cham-soc-da-kenh" class="sub">Chăm sóc khách hàng đa kênh</a>
+    <a href="/giai-phap-ung-dung-rieng" class="sub">Ứng dụng nghiệp vụ riêng theo yêu cầu</a>
+    <a href="/bang-gia">Bảng Giá</a>
+    <a href="/tai-nguyen">Tài Nguyên</a>
+    <a href="/tai-nguyen" class="sub">Thư viện tài liệu</a>
+    <a href="/case-study-liam-education" class="sub">Case study: Liam Education</a>
+    <a href="/case-study-aztravel" class="sub">Case study: AZTravel</a>
+    <a href="/lien-he">Liên Hệ</a>
+    <a href="/dang-ky" class="btn btn-primary">Đăng Ký</a>
+  </div>
+</header>
+
+
+<main id="main">
+  <div class="container">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="/">Trang chủ</a>
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+      <a href="/giai-phap">Giải pháp</a>
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+      <span class="is-here" aria-current="page">Tự động hoá quy trình và AI Agent</span>
+    </nav>
+  </div>
+
+  <!-- HERO -->
+  <section class="sol-hero">
+    <div class="container sol-hero-inner">
+      <div>
+        <p class="hero-badge reveal"><span class="hb-dot" aria-hidden="true"></span>Giải pháp 05</p>
+        <h1 class="reveal">Đưa AI vào <span class="hl-ai">đúng vị trí</span> trong quy trình, không chỉ thêm một ô chat</h1>
+        <p class="hero-sub reveal">AI phát huy giá trị khi làm việc trên dữ liệu có cấu trúc, trong một quy trình có phân quyền và điểm kiểm soát rõ ràng. Ở AllOne, con người vẫn duyệt ở những bước quan trọng.</p>
+        <div class="hero-cta reveal">
+          <a href="/lien-he" class="btn btn-primary btn-lg">Đặt lịch demo theo nghiệp vụ</a>
+          <a href="#cach-lam" class="btn btn-ghost btn-lg">Xem cách triển khai</a>
+        </div>
+      </div>
+
+      <div class="mock is-ai reveal">
+        <div class="mock-bar">
+          <p class="mb-title"><span class="mb-live" aria-hidden="true"></span>Luồng AI Agent</p>
+          <span class="mb-chip">Minh hoạ</span>
+        </div>
+        <div class="mock-body">
+          <div class="mock-tiles">
+            <div class="mock-tile">
+              <p class="mt-label">Tác vụ AI đang bật</p>
+              <p class="mt-value is-warm">6</p>
+            </div>
+            <div class="mock-tile">
+              <p class="mt-label">Cần người duyệt</p>
+              <p class="mt-value ">2</p>
+            </div>
+            <div class="mock-tile">
+              <p class="mt-label">Ghi nhật ký</p>
+              <p class="mt-value ">100%</p>
+            </div>
+          </div>
+          <div class="mock-rows">
+            <div class="mock-row">
+              <p class="mr-main">Tóm tắt cuộc gọi<span class="mr-sub">AI trích nhu cầu và cập nhật hồ sơ khách</span></p>
+              <span class="mr-badge is-warm">AI đã xử lý</span>
+            </div>
+            <div class="mock-row">
+              <p class="mr-main">Chiết khấu vượt hạn mức<span class="mr-sub">Vượt ngưỡng đã cấu hình, chuyển người phụ trách</span></p>
+              <span class="mr-badge is-brand">Chờ người duyệt</span>
+            </div>
+            <div class="mock-row">
+              <p class="mr-main">Câu hỏi ngoài kịch bản<span class="mr-sub">Không khớp kịch bản nào, bàn giao cho nhân viên</span></p>
+              <span class="mr-badge ">Đã chuyển</span>
+            </div>
+          </div>
+        </div>
+        <p class="mock-note">Giao diện minh hoạ, số liệu mẫu. Màn hình thật được cấu hình theo từng doanh nghiệp.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE PROBLEM -->
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Vấn đề thật</p>
+        <h2>Điều gì đang <span class="hl-ai">tốn thời gian</span> của đội ngũ</h2>
+        <p class="lead">Ba tình huống lặp đi lặp lại ở phần lớn doanh nghiệp trước khi dữ liệu được đưa về một nơi.</p>
+      </div>
+      <div class="prob-grid">
+        <article class="prob-card reveal">
+          <p class="pc-num">01</p>
+          <h3>Demo AI xong rồi thôi</h3>
+          <p>Một buổi trình diễn không thay đổi cách một phòng ban làm việc mỗi ngày. Tuần sau đội ngũ vẫn quay về bảng tính cũ.</p>
+        </article>
+        <article class="prob-card reveal">
+          <p class="pc-num">02</p>
+          <h3>Không ai dám giao việc thật cho AI</h3>
+          <p>Vì không biết AI đã làm gì, dựa trên dữ liệu nào, và làm sao dừng lại khi nó sai.</p>
+        </article>
+        <article class="prob-card reveal">
+          <p class="pc-num">03</p>
+          <h3>Việc lặp lại vẫn làm tay</h3>
+          <p>Nhập liệu, tóm tắt cuộc gọi, soạn phản hồi mẫu vẫn chiếm phần lớn thời gian của nhân sự chuyên môn.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section class="section is-ai-tint" id="cach-lam">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow is-warm">Cách AllOne xử lý</p>
+        <h2>Ba việc nền tảng này <span class="hl-ai">làm thay</span> đội ngũ</h2>
+        <p class="lead">Không phải thêm một phần mềm nữa, mà gom đúng phần dữ liệu và quy trình mà bài toán này cần.</p>
+      </div>
+      <div class="cap-grid">
+        <article class="cap-card is-ai reveal">
+          <span class="cap-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 4 2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/><path d="M19 15v4M17 17h4"/></svg></span>
+          <h3>AI xử lý phần việc lặp lại</h3>
+          <p>Những việc có đầu vào rõ ràng và lặp đi lặp lại được giao cho AI, để người làm phần cần phán đoán.</p>
+          <ul class="cap-feats">
+            <li>Phân loại và chấm điểm Lead theo nhu cầu</li>
+            <li>Tóm tắt cuộc gọi và cập nhật hồ sơ khách</li>
+            <li>Soạn nháp phản hồi để nhân viên duyệt rồi gửi</li>
+          </ul>
+        </article>
+        <article class="cap-card is-ai reveal">
+          <span class="cap-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z"/><path d="m9 12 2 2 4-4"/></svg></span>
+          <h3>Hàng rào an toàn quanh mỗi tác vụ</h3>
+          <p>AI chỉ chạy trong phạm vi được cấp, và mọi bước đều để lại dấu vết kiểm tra được.</p>
+          <ul class="cap-feats">
+            <li>Chỉ thao tác trong danh sách quyền đã cấp</li>
+            <li>Nhật ký kiểm toán cho mọi phản hồi tự động</li>
+            <li>Tắt ngay một tác vụ khi phát hiện bất thường</li>
+          </ul>
+        </article>
+        <article class="cap-card is-ai reveal">
+          <span class="cap-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+          <h3>Con người duyệt bước cuối</h3>
+          <p>Những quyết định có hệ quả thật vẫn dừng lại chờ người, theo ngưỡng do doanh nghiệp đặt.</p>
+          <ul class="cap-feats">
+            <li>Phê duyệt báo giá và chiết khấu vượt hạn mức</li>
+            <li>Tiếp nhận tình huống nằm ngoài kịch bản</li>
+            <li>Chỉnh lại luồng xử lý mà không cần lập trình</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="mod-band reveal">
+        <span class="mb-lead">Phân hệ được bật cho giải pháp này:</span>
+        <span class="module-pill">CRM · Khách hàng</span>
+        <span class="module-pill">Omni · Đa kênh</span>
+        <span class="module-pill">Kho hàng · SKU &amp; tồn kho</span>
+        <span class="module-pill">LMS · Đào tạo</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FLOW -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Luồng vận hành</p>
+        <h2>4 bước, từ dữ liệu vào đến kết quả ra</h2>
+        <p class="lead">Quy tắc và ngưỡng ở từng bước được cấu hình theo từng doanh nghiệp, đây là luồng mặc định.</p>
+      </div>
+
+      <div class="pipeline-card reveal" style="margin-top:3.4rem">
+        <ol class="pl-steps is-4">
+          <li class="pl-step is-ai">
+            <div class="pl-marker" aria-hidden="true">
+              <span class="pl-dot">1</span>
+              <span class="pl-rail"></span>
+            </div>
+            <div class="pl-body">
+              <div class="pl-step-top">
+                <span class="pl-num">Bước 01</span>
+                <span class="pl-actor">AI</span>
+              </div>
+              <h3>AI đọc và đề xuất</h3>
+              <p>Xử lý dữ liệu trong phạm vi được cấp và đưa ra đề xuất.</p>
+            </div>
+          </li>
+          <li class="pl-step">
+            <div class="pl-marker" aria-hidden="true">
+              <span class="pl-dot">2</span>
+              <span class="pl-rail"></span>
+            </div>
+            <div class="pl-body">
+              <div class="pl-step-top">
+                <span class="pl-num">Bước 02</span>
+                <span class="pl-actor">Hệ thống</span>
+              </div>
+              <h3>Hàng rào kiểm tra</h3>
+              <p>Đối chiếu quyền, hạn mức và kịch bản trước khi cho chạy.</p>
+            </div>
+          </li>
+          <li class="pl-step is-human">
+            <div class="pl-marker" aria-hidden="true">
+              <span class="pl-dot">3</span>
+              <span class="pl-rail"></span>
+            </div>
+            <div class="pl-body">
+              <div class="pl-step-top">
+                <span class="pl-num">Bước 03</span>
+                <span class="pl-actor">Con người</span>
+              </div>
+              <h3>Con người duyệt</h3>
+              <p>Bước có hệ quả thật dừng lại chờ người phụ trách xác nhận.</p>
+            </div>
+          </li>
+          <li class="pl-step">
+            <div class="pl-marker" aria-hidden="true">
+              <span class="pl-dot">4</span>
+              <span class="pl-rail"></span>
+            </div>
+            <div class="pl-body">
+              <div class="pl-step-top">
+                <span class="pl-num">Bước 04</span>
+                <span class="pl-actor">Hệ thống</span>
+              </div>
+              <h3>Ghi nhận</h3>
+              <p>Lưu nhật ký đầy đủ để truy vết và điều chỉnh về sau.</p>
+            </div>
+          </li>
+        </ol>
+        <p class="pl-note">Sơ đồ minh hoạ luồng xử lý mặc định. Quy tắc phân phối và kịch bản được cấu hình theo từng doanh nghiệp.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- OTHER SOLUTIONS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Giải pháp khác</p>
+        <h2>Bài toán của bạn có thể nằm ở chỗ khác</h2>
+        <p class="lead">Các giải pháp dùng chung một nền tảng, nên bật thêm về sau không phải làm lại từ đầu.</p>
+      </div>
+      <div class="other-grid">
+        <a class="other-card" href="/giai-phap-quan-tri-hop-nhat">
+          <span class="oc-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v16"/><path d="M15 10h2a2 2 0 0 1 2 2v9"/><path d="M9 7h2M9 11h2M9 15h2"/></svg></span>
+          <span class="oc-name">Quản trị doanh nghiệp hợp nhất</span>
+          <svg class="oc-go" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="other-card" href="/giai-phap-ban-hang-khach-hang">
+          <span class="oc-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+          <span class="oc-name">Quản lý bán hàng và khách hàng</span>
+          <svg class="oc-go" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="other-card" href="/giai-phap-kho-chuoi-cung-ung">
+          <span class="oc-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8l9 5 9-5Z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg></span>
+          <span class="oc-name">Quản lý kho và chuỗi cung ứng</span>
+          <svg class="oc-go" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="other-card" href="/giai-phap-dao-tao-hoc-tap">
+          <span class="oc-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4.5A2.5 2.5 0 0 1 4.5 2H12v18H4.5A2.5 2.5 0 0 0 2 22.5v-18Z"/><path d="M22 4.5A2.5 2.5 0 0 0 19.5 2H12v18h7.5a2.5 2.5 0 0 1 2.5 2.5v-18Z"/></svg></span>
+          <span class="oc-name">Điều hành đào tạo và học tập</span>
+          <svg class="oc-go" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="other-card" href="/giai-phap-cham-soc-da-kenh">
+          <span class="oc-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+          <span class="oc-name">Chăm sóc khách hàng đa kênh</span>
+          <svg class="oc-go" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="other-card" href="/giai-phap-ung-dung-rieng">
+          <span class="oc-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h7M15 7h5M4 12h3M11 12h9M4 17h11M19 17h1"/><circle cx="13" cy="7" r="2"/><circle cx="9" cy="12" r="2"/><circle cx="17" cy="17" r="2"/></svg></span>
+          <span class="oc-name">Ứng dụng nghiệp vụ riêng theo yêu cầu</span>
+          <svg class="oc-go" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section cta-banner">
+    <div class="container cta-inner">
+      <h2>Tự động hoá quy trình và AI Agent: trao đổi bài toán của bạn</h2>
+      <ul class="benefit-list">
+        <li>Khảo sát cách đội ngũ bạn đang làm việc hôm nay, trước khi bàn tới phần mềm.</li>
+        <li>Demo trên đúng nghiệp vụ của bạn, không phải dữ liệu mẫu chung chung.</li>
+        <li>Lộ trình theo từng giai đoạn, để chi phí đi cùng nhịp triển khai.</li>
+      </ul>
+      <div class="hero-cta">
+        <a href="/lien-he" class="btn btn-primary btn-lg">Đặt lịch tư vấn</a>
+        <a href="/dang-ky" class="btn btn-ghost btn-lg">Bắt đầu dùng thử</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="logo">
+          <img class="logo-mark" src="/img/logo-mark.png" width="46" height="46" alt="">
+          <img class="logo-type for-dark" src="/img/logo-wordmark-dark.png" width="667" height="214" alt="AllOne All in one platform">
+          <img class="logo-type for-light" src="/img/logo-wordmark.png" width="667" height="214" alt="AllOne All in one platform">
+        </a>
+        <p>Nền tảng quản lý khách hàng và vận hành tập trung cho đội ngũ kinh doanh hiện đại.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Giải pháp</h4>
+        <a href="/giai-phap-quan-tri-hop-nhat">Quản trị doanh nghiệp hợp nhất</a>
+        <a href="/giai-phap-ban-hang-khach-hang">Quản lý bán hàng và khách hàng</a>
+        <a href="/giai-phap-kho-chuoi-cung-ung">Quản lý kho và chuỗi cung ứng</a>
+        <a href="/giai-phap-dao-tao-hoc-tap">Điều hành đào tạo và học tập</a>
+        <a href="/giai-phap-tu-dong-hoa-ai-agent">Tự động hoá quy trình và AI Agent</a>
+        <a href="/giai-phap-cham-soc-da-kenh">Chăm sóc khách hàng đa kênh</a>
+        <a href="/giai-phap-ung-dung-rieng">Ứng dụng nghiệp vụ riêng theo yêu cầu</a>
+      </div>
+      <div class="footer-col">
+        <h4>Sản phẩm</h4>
+        <a href="/crm">CRM</a>
+        <a href="/omni">Omni</a>
+        <a href="/lms">LMS</a>
+        <a href="/bang-gia">Bảng giá</a>
+      </div>
+      <div class="footer-col">
+        <h4>Tài nguyên</h4>
+        <a href="/tai-nguyen">Thư viện tài liệu</a>
+        <a href="/case-study-liam-education">Case study: Liam Education</a>
+        <a href="/case-study-aztravel">Case study: AZTravel</a>
+      </div>
+      <div class="footer-col">
+        <h4>Công ty</h4>
+        <a href="/">Về chúng tôi</a>
+        <a href="/lien-he">Liên hệ</a>
+        <a href="/dang-ky">Đăng ký dùng thử</a>
+        <a href="/lien-he">Đặt lịch demo</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="year"></span> AllOne CRM. Bảo lưu mọi quyền.</p>
+    </div>
+  </div>
+</footer>
+<script src="/js/home.js?v=6"></script>
+</body>
+</html>
