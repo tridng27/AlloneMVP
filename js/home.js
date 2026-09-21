@@ -119,6 +119,33 @@
       });
     }
 
+    // operational showcase: one panel per tab. the markup ships every panel
+    // visible, so without JS they simply stack.
+    var opsTabs = Array.prototype.slice.call(document.querySelectorAll(".ops-tab"));
+    if (opsTabs.length) {
+      var showTab = function (tab, focus) {
+        opsTabs.forEach(function (t) {
+          var on = t === tab;
+          t.classList.toggle("is-active", on);
+          t.setAttribute("aria-selected", String(on));
+          t.tabIndex = on ? 0 : -1;
+          var panel = document.getElementById(t.getAttribute("aria-controls"));
+          if (panel) panel.hidden = !on;
+        });
+        if (focus) tab.focus();
+      };
+      opsTabs.forEach(function (tab, i) {
+        tab.addEventListener("click", function () { showTab(tab); });
+        tab.addEventListener("keydown", function (e) {
+          var d = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
+          if (!d) return;
+          e.preventDefault();
+          showTab(opsTabs[(i + d + opsTabs.length) % opsTabs.length], true);
+        });
+      });
+      showTab(opsTabs[0]);
+    }
+
     var y = document.getElementById("year");
     if (y) y.textContent = new Date().getFullYear();
 

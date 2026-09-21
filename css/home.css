@@ -1680,3 +1680,238 @@
   }
   /* the header is sticky, so in-page anchors need clearance */
   section[id], main [id] { scroll-margin-top: calc(var(--header-h) + 14px); }
+
+  /* ============================================================
+     HOMEPAGE, feedback round 21/09
+     appended after the base media queries on purpose, so every rule
+     below that changes with the viewport carries its own breakpoints
+     ============================================================ */
+
+  /* compound words are glued with &nbsp; in the markup; this keeps the
+     remaining line breaks even instead of leaving one orphaned word */
+  p, li { text-wrap: pretty; }
+
+  /* the Giải Pháp mega-menu: descriptions wrap inside their own column */
+  .nav-menu a > span:last-child { min-width: 0; }
+  .nav-menu .nm-desc { white-space: normal; overflow-wrap: break-word; }
+
+  /* lead pipeline: the two "Hệ thống" steps get a filled brand tone,
+     matching the weight of the warm AI steps beside them */
+  .pl-step.is-system .pl-body {
+    background: color-mix(in srgb, var(--brand-tint) 72%, var(--surface));
+    border-color: color-mix(in srgb, var(--brand) 40%, var(--line));
+  }
+  .pl-step.is-system .pl-num { color: var(--brand); background: color-mix(in srgb, var(--brand) 17%, transparent); }
+  .pl-step.is-system .pl-actor { color: var(--brand); }
+
+  /* three content sections in a row share one background, so their
+     paddings stacked into a 270px gap; this halves it */
+  .section.is-snug { padding-block: 80px; }
+
+  /* ---------- platform band: principles list + one-data-source diagram ---------- */
+  .platform-band { padding: 104px 0 40px; }
+  .platform-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 3.5rem;
+    align-items: center;
+    margin-top: 3.4rem;
+  }
+  .platform-list { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+  .pf-item {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: 1.1rem;
+    padding: 1.45rem 0.25rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .pf-icon {
+    width: 44px; height: 44px;
+    display: grid; place-items: center;
+    border-radius: var(--radius-s);
+    background: var(--brand-tint);
+    color: var(--brand);
+  }
+  .pf-item.is-ai .pf-icon { background: color-mix(in srgb, var(--warm) 15%, transparent); color: var(--warm); }
+  .pf-num { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; color: var(--ink-faint); margin-bottom: 0.2rem; }
+  .pf-item.is-ai .pf-num { color: var(--warm); }
+  .pf-title { font-family: var(--font-sans); font-size: 1.08rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 0.35rem; }
+  .pf-desc { font-size: 0.93rem; color: var(--ink-soft); }
+
+  .platform-media {
+    margin: 0;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-l);
+    box-shadow: var(--shadow-2);
+    overflow: hidden;
+  }
+  .pm-stage {
+    padding: 1.8rem 1.5rem 1.4rem;
+    background: radial-gradient(75% 70% at 50% 50%, var(--brand-tint), transparent 72%), var(--surface);
+  }
+  .pm-svg { width: 100%; height: auto; font-family: var(--font-sans); overflow: visible; }
+  .pm-link { fill: none; stroke: var(--line-strong); stroke-width: 2; }
+  .pm-flow {
+    fill: none;
+    stroke: var(--brand);
+    stroke-width: 2.4;
+    stroke-linecap: round;
+    stroke-dasharray: 5 15;
+    animation: pm-flow 1.4s linear infinite;
+  }
+  @keyframes pm-flow { to { stroke-dashoffset: -40; } }
+  .pm-ai-ring {
+    fill: none;
+    stroke: var(--warm);
+    stroke-width: 1.6;
+    stroke-dasharray: 3 8;
+    opacity: 0.85;
+    animation: pm-flow 3s linear infinite;
+  }
+  .pm-core rect { fill: var(--brand); filter: drop-shadow(0 10px 22px color-mix(in srgb, var(--brand) 40%, transparent)); }
+  .pm-core text { fill: #fff; text-anchor: middle; }
+  .pm-core-big { font-size: 22px; font-weight: 700; }
+  .pm-core-sub { font-size: 13px; font-weight: 500; opacity: 0.88; }
+  .pm-ai-tag rect { fill: var(--warm-tint); stroke: color-mix(in srgb, var(--warm) 50%, var(--line)); }
+  .pm-ai-tag text { fill: var(--warm); font-size: 12px; font-weight: 700; text-anchor: middle; }
+  .pm-node rect { fill: var(--surface); stroke: var(--line-strong); stroke-width: 1.2; }
+  .pm-node-dot { fill: var(--brand); }
+  .pm-node-title { fill: var(--ink); font-size: 16px; font-weight: 700; }
+  .pm-node-sub { fill: var(--ink-soft); font-size: 12.5px; }
+  .pm-cap {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem 1rem;
+    padding: 0.95rem 1.3rem;
+    border-top: 1px solid var(--line);
+    font-size: 0.8rem;
+    color: var(--ink-faint);
+  }
+  .pm-cap a { display: inline-flex; align-items: center; gap: 0.35rem; color: var(--brand); font-weight: 600; transition: gap 0.15s ease; }
+  .pm-cap a:hover { gap: 0.55rem; }
+
+  /* ---------- operational showcase: tabs + one large panel ---------- */
+  .ops { margin-top: 2.8rem; }
+  .ops-tabs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 1.6rem;
+  }
+  .ops-tab {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+    background: transparent;
+    border: 1px dashed var(--line-strong);
+    border-radius: 999px;
+    padding: 0.55rem 1.15rem;
+    white-space: nowrap;
+    transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+  }
+  .ops-tab:hover { color: var(--ink); border-color: var(--brand); }
+  .ops-tab.is-active { color: var(--brand); border: 1px solid var(--brand); background: var(--brand-tint); box-shadow: 0 0 0 1px var(--brand); }
+  .ops-panel {
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    gap: 3.4rem;
+    align-items: center;
+    padding: 3rem 3.2rem 3.2rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-l);
+  }
+  .ops-panel[hidden] { display: none; }
+  .ops-panel + .ops-panel { margin-top: 1.6rem; }
+  .op-title {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: clamp(1.7rem, 3vw, 2.45rem);
+    letter-spacing: -0.02em;
+    line-height: 1.12;
+    margin: 1.1rem 0 1rem;
+  }
+  .op-dim { color: var(--ink-faint); }
+  .op-desc { font-size: 1rem; color: var(--ink-soft); margin-bottom: 1.5rem; }
+  .op-checks { display: grid; gap: 0.75rem; }
+  .op-checks li { display: flex; align-items: flex-start; gap: 0.7rem; font-size: 0.97rem; color: var(--ink); }
+  .op-checks svg { color: var(--brand); flex-shrink: 0; margin-top: 0.22rem; }
+
+  .op-shot { position: relative; }
+  .os-stat {
+    position: absolute;
+    width: 216px;
+    padding: 0.85rem 1rem 0.9rem;
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-m);
+    box-shadow: var(--shadow-3);
+  }
+  .os-stat.is-top { top: 16%; left: -2.4rem; }
+  .os-stat.is-bottom { right: -1.4rem; bottom: -1.6rem; }
+  .os-label { font-size: 0.66rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--ink-faint); }
+  .os-value {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.2rem 0.45rem;
+    margin-top: 0.25rem;
+    font-size: 1.45rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+  }
+  .os-value small { font-size: 0.74rem; font-weight: 500; letter-spacing: 0; color: var(--ink-soft); }
+  .os-bar { display: block; height: 6px; margin-top: 0.55rem; border-radius: 999px; background: var(--surface-2); overflow: hidden; }
+  .os-bar > span { display: block; height: 100%; border-radius: inherit; background: var(--brand); }
+  .os-meta { font-size: 0.74rem; color: var(--ink-soft); margin-top: 0.45rem; line-height: 1.45; }
+  .os-meta.is-warn { color: var(--warm); font-weight: 600; }
+  .os-stat.is-alert { border-color: color-mix(in srgb, var(--warm) 50%, var(--line)); }
+  .os-stat.is-alert .os-label, .os-stat.is-alert .os-value { color: var(--warm); }
+  .os-steps { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.5rem; }
+  .os-steps span { font-size: 0.72rem; padding: 0.16rem 0.55rem; border-radius: 999px; background: var(--surface-2); color: var(--ink-soft); }
+  .os-steps .is-now { background: var(--brand-tint); color: var(--brand); font-weight: 700; }
+  .op-foot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.8rem 1.2rem;
+    margin-top: 2.6rem;
+  }
+  .op-foot .btn svg { margin-left: 0.1rem; }
+  .op-note { font-size: 0.74rem; color: var(--ink-faint); }
+
+  @media (max-width: 1040px) {
+    .platform-grid { grid-template-columns: 1fr; gap: 2.4rem; }
+    .ops-panel { grid-template-columns: 1fr; gap: 2.2rem; padding: 2.2rem 2rem 2.4rem; }
+    .os-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-top: 1rem; }
+    .os-stat, .os-stat.is-top, .os-stat.is-bottom { position: static; width: auto; box-shadow: none; }
+    .op-foot { margin-top: 1.4rem; }
+  }
+  @media (max-width: 720px) {
+    .section.is-snug { padding-block: 56px; }
+    .platform-band { padding: 68px 0 24px; }
+    .platform-grid { margin-top: 2.2rem; }
+    .pf-item { grid-template-columns: 40px 1fr; gap: 0.9rem; padding: 1.15rem 0.1rem; }
+    .pf-icon { width: 40px; height: 40px; }
+    .pm-stage { padding: 1.1rem 0.6rem 0.9rem; }
+    .ops { margin-top: 2rem; }
+    .ops-tabs { flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; scrollbar-width: none; margin-inline: -20px; padding: 2px 20px; }
+    .ops-tabs::-webkit-scrollbar { display: none; }
+    .ops-tab { font-size: 0.84rem; padding: 0.5rem 0.95rem; }
+    .ops-panel { padding: 1.5rem 1.3rem 1.6rem; gap: 1.6rem; }
+    .op-title { font-size: 1.55rem; margin-top: 0.9rem; }
+    .op-desc { font-size: 0.94rem; margin-bottom: 1.2rem; }
+    .op-checks li { font-size: 0.92rem; }
+    .op-foot .btn { width: 100%; justify-content: center; }
+  }
+  @media (max-width: 560px) {
+    .os-stats { grid-template-columns: 1fr; }
+  }

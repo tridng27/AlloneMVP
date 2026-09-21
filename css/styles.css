@@ -2097,3 +2097,13 @@ section[id] { scroll-margin-top: 88px; }
   color: var(--accent);
 }
 .nav-dropdown-foot:hover { text-decoration: underline; }
+/* the two-column menu has narrow columns, so its descriptions must wrap
+   (the base .nav-dropdown-item is nowrap for the single-column menus) */
+.nav-item.has-dropdown.is-wide .nav-dropdown-item { white-space: normal; }
+.nav-item.has-dropdown.is-wide .nav-dropdown-item > span:last-child { min-width: 0; }
+/* a few grids on lms/omni pin two columns with an inline style, which beat the
+   768px collapse above and left ~64px-wide cards on phones */
+@media (max-width: 768px) {
+  .bento-grid[style*="grid-template-columns"],
+  .faq-grid[style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
+}
