@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/css/styles.css?v=17">
+<link rel="stylesheet" href="/css/styles.css?v=18">
 </head>
 <body>
 
@@ -180,7 +180,7 @@
 </header>
 
 <main id="main">
-  <section class="page-hero">
+  <section class="page-hero is-centered">
     <div class="container">
       <p class="eyebrow">Tài nguyên</p>
       <h1>Case study và <span class="text-highlight">thư viện tài liệu</span></h1>
@@ -201,21 +201,25 @@
           <div class="cs-card-top"><span class="cs-pill">CRM</span><span class="cs-pill">LMS</span></div>
           <h3>Liam Education loại bỏ công&nbsp;việc đối chiếu bảng&nbsp;tính như thế nào</h3>
           <p>Trung&nbsp;tâm Anh ngữ giao tiếp công sở chuyển hồ&nbsp;sơ học viên, lớp học và học phí từ nhiều Google Sheet sang CRM và LMS dùng chung một hồ&nbsp;sơ.</p>
-          <div class="cs-card-facts">
+          <div class="cs-card-foot">
+            <div class="cs-card-facts">
             <div class="cs-card-fact"><span>Ngành</span><span>Đào&nbsp;tạo Anh ngữ</span></div>
             <div class="cs-card-fact"><span>Hệ thống trước đó</span><span>Google Sheets</span></div>
+            </div>
+            <span class="cs-card-cta">Đọc case study <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:-2px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </div>
-          <span class="cs-card-cta">Đọc case study <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:-2px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </a>
         <a href="/case-study-aztravel" class="cs-card">
           <div class="cs-card-top"><span class="cs-pill">CRM</span></div>
           <h3>Cách AZTravel giúp hai chi nhánh làm&nbsp;việc trên cùng một nguồn booking</h3>
           <p>Công ty du lịch tại Đà Nẵng và Hà Nội chuyển booking tour, hồ&nbsp;sơ khách&nbsp;hàng và công nợ đối tác khách sạn từ nhiều Google Sheet sang một hệ thống CRM.</p>
-          <div class="cs-card-facts">
+          <div class="cs-card-foot">
+            <div class="cs-card-facts">
             <div class="cs-card-fact"><span>Ngành</span><span>Du lịch và lữ hành</span></div>
             <div class="cs-card-fact"><span>Địa bàn</span><span>Đà Nẵng, Hà Nội</span></div>
+            </div>
+            <span class="cs-card-cta">Đọc case study <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:-2px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </div>
-          <span class="cs-card-cta">Đọc case study <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:-2px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </a>
       </div>
     </div>
@@ -229,7 +233,7 @@
         <p class="section-lead">Chúng tôi chưa xuất bản hướng dẫn nào ở đây, và không muốn lấp chỗ trống bằng nội dung viết cho có. Những đường dẫn dưới đây trả lời được phần lớn câu hỏi thường gặp.</p>
       </div>
 
-      <div class="bento-grid">
+      <div class="bento-grid route-grid">
         <div class="bento-card">
           <span class="bento-icon icon-users"></span>
           <h3>Sản&nbsp;phẩm làm được gì</h3>
@@ -260,25 +264,44 @@
         <p class="section-lead">Thứ tự ưu tiên dựa trên câu hỏi đội tư&nbsp;vấn nhận nhiều nhất, không phải theo khối lượng nội dung dễ viết nhất.</p>
       </div>
 
-      <div class="grid-2col">
-        <ul class="check-list">
-          <li>Hướng dẫn sử dụng theo từng vai trò: nhân&nbsp;viên sale, quản lý, quản&nbsp;trị hệ thống.</li>
-          <li>Tài liệu chuẩn bị dữ&nbsp;liệu trước khi chuyển từ Excel và Google Sheet sang hệ thống.</li>
-        </ul>
-        <ul class="check-list">
-          <li>Hướng dẫn viết kịch bản trả lời tự&nbsp;động cho AI trong Omni.</li>
-          <li>Mẫu quy&nbsp;trình tham khảo cho các mô hình vận&nbsp;hành phổ biến.</li>
-        </ul>
+      <div class="split-media" data-hl-root>
+        <div class="soon-box">
+          <ol class="hl-points">
+            <li><button type="button" class="hl-point" data-hl-point="d1"><b>1</b><span>Hướng dẫn sử dụng theo từng vai trò: nhân&nbsp;viên sale, quản lý, quản&nbsp;trị hệ thống.</span></button></li>
+            <li><button type="button" class="hl-point" data-hl-point="d2"><b>2</b><span>Tài liệu chuẩn bị dữ&nbsp;liệu trước khi chuyển từ Excel và Google Sheet sang hệ thống.</span></button></li>
+            <li><button type="button" class="hl-point" data-hl-point="d3"><b>3</b><span>Hướng dẫn viết kịch bản trả lời tự&nbsp;động cho AI trong Omni.</span></button></li>
+            <li><button type="button" class="hl-point" data-hl-point="d4"><b>4</b><span>Mẫu quy&nbsp;trình tham khảo cho các mô hình vận&nbsp;hành phổ biến.</span></button></li>
+          </ol>
+        </div>
+        <div class="mock-frame">
+                <div class="mock-bar">
+                  <span class="mock-dots"><span></span><span></span><span></span><span class="mock-title">Thư viện tài liệu AllOne</span></span>
+                  <span class="status-pill is-active">Đang biên soạn</span>
+                </div>
+                <div class="rm">
+                  <div class="rm-grid">
+                    <div class="rm-card" data-hl-target="d-1" data-n="1"><p class="rm-label">Tài liệu 01</p><div class="rm-row"><span>Hướng dẫn theo vai trò</span><span class="rm-tag is-warm">Sắp có</span></div><p class="pv-note">Sale, quản lý, quản&nbsp;trị</p></div>
+                    <div class="rm-card" data-hl-target="d-2" data-n="2"><p class="rm-label">Tài liệu 02</p><div class="rm-row"><span>Chuẩn bị dữ&nbsp;liệu</span><span class="rm-tag is-warm">Sắp có</span></div><p class="pv-note">Từ Excel, Google Sheet</p></div>
+                    <div class="rm-card" data-hl-target="d-3" data-n="3"><p class="rm-label">Tài liệu 03</p><div class="rm-row"><span>Kịch bản AI cho Omni</span><span class="rm-tag is-warm">Sắp có</span></div><p class="pv-note">Viết kịch bản trả lời</p></div>
+                    <div class="rm-card" data-hl-target="d-4" data-n="4"><p class="rm-label">Tài liệu 04</p><div class="rm-row"><span>Mẫu quy&nbsp;trình</span><span class="rm-tag is-warm">Sắp có</span></div><p class="pv-note">Theo mô hình vận&nbsp;hành</p></div>
+                  </div>
+                </div>
+                <p class="mock-caption">Minh hoạ bố cục thư viện khi tài liệu được xuất bản</p>
+              </div>
       </div>
     </div>
   </section>
 
   <section class="section section-cta-banner">
-    <div class="container cta-banner-inner">
-      <h2>Cần câu trả lời trước khi tài liệu kịp lên trang?</h2>
-      <div class="hero-cta">
-        <a href="/lien-he" class="btn btn-primary btn-lg">Hỏi đội tư&nbsp;vấn</a>
-        <a href="/crm" class="btn btn-ghost btn-lg">Xem sản&nbsp;phẩm</a>
+    <div class="container">
+      <div class="cta-panel is-brand">
+        <div class="cta-copy">
+          <h2>Cần câu trả lời trước khi tài liệu kịp lên trang?</h2>
+        </div>
+        <div class="cta-actions">
+          <a href="/lien-he" class="btn btn-primary btn-lg">Hỏi đội tư&nbsp;vấn</a>
+          <a href="/crm" class="btn btn-ghost btn-lg">Xem sản&nbsp;phẩm</a>
+        </div>
       </div>
     </div>
   </section>
@@ -328,5 +351,6 @@
 
 <script src="/js/config.js?v=3"></script>
 <script src="/js/main.js?v=7"></script>
+<script src="/js/showcase.js?v=1"></script>
 </body>
 </html>

@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/css/styles.css?v=17">
+<link rel="stylesheet" href="/css/styles.css?v=18">
 </head>
 <body>
 
@@ -181,19 +181,39 @@
 
 <main id="main">
 
-  <section class="hero-centered">
+  <section class="hero-centered is-split">
     <span class="hero-glow hero-glow-a" aria-hidden="true"></span>
     <span class="hero-glow hero-glow-b" aria-hidden="true"></span>
-    <div class="container">
-      <p class="pill-eyebrow">CRM</p>
-      <h1>Nền&nbsp;tảng quản&nbsp;trị dữ&nbsp;liệu khách&nbsp;hàng <span class="text-gradient">được cấu hình theo cách doanh&nbsp;nghiệp vận&nbsp;hành</span></h1>
-      <p class="hero-lede">AllOne kết&nbsp;nối CRM, HRM, LMS và ERP trên một nền&nbsp;tảng dữ&nbsp;liệu. AI được tích hợp xuyên&nbsp;suốt để hỗ trợ doanh&nbsp;nghiệp tự&nbsp;động hóa quy&nbsp;trình và quản&nbsp;trị hiệu&nbsp;quả hơn.</p>
-      <div class="hero-cta-center">
-        <a href="/dang-ky" class="btn btn-primary btn-lg">Dùng&nbsp;thử miễn phí</a>
-        <a href="/lien-he" class="btn btn-ghost btn-lg">Đặt lịch demo</a>
+    <div class="container hero-split-grid">
+      <div>
+        <p class="pill-eyebrow">CRM</p>
+        <h1>Quản trị dữ&nbsp;liệu khách&nbsp;hàng <span class="text-gradient">theo đúng cách doanh&nbsp;nghiệp bạn vận&nbsp;hành</span></h1>
+        <p class="hero-lede">AllOne kết&nbsp;nối CRM, HRM, LMS và ERP trên một nền&nbsp;tảng dữ&nbsp;liệu. AI được tích hợp xuyên&nbsp;suốt để hỗ trợ doanh&nbsp;nghiệp tự&nbsp;động hóa quy&nbsp;trình và quản&nbsp;trị hiệu&nbsp;quả hơn.</p>
+        <div class="hero-cta-center">
+          <a href="/dang-ky" class="btn btn-primary btn-lg">Dùng&nbsp;thử miễn phí</a>
+          <a href="/lien-he" class="btn btn-ghost btn-lg">Đặt lịch demo</a>
+        </div>
       </div>
-
-      
+      <div class="sh-wrap">
+        <div class="sh-frame">
+          <div class="hl-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+          <img src="/img/products/allone-crm-product-1.jpg" width="1438" height="841" alt="Màn hình Sale Teams trong AllOne CRM, hiển thị KPI hoàn thành và doanh thu theo từng đội sale" decoding="async">
+        </div>
+        <div class="sh-stats">
+          <div class="sh-stat is-top">
+            <p class="sh-label">Nhóm Sale A · tháng 8</p>
+            <p class="sh-value">86%<small>KPI hoàn thành</small></p>
+            <span class="sh-bar"><span style="width:86%"></span></span>
+            <p class="sh-meta">Doanh thu 612 tr · 12 thành viên</p>
+          </div>
+          <div class="sh-stat is-bottom">
+            <p class="sh-label">Dẫn đầu: Nguyễn Thảo</p>
+            <p class="sh-value">186 tr<small>doanh thu · 92% KPI</small></p>
+            <p class="sh-meta is-warn">Phạm Sơn mới đạt 54% KPI, cần hỗ trợ</p>
+          </div>
+        </div>
+        <p class="sh-note">Số liệu minh hoạ lấy từ màn hình demo của AllOne.</p>
+      </div>
     </div>
   </section>
 
@@ -205,8 +225,10 @@
         <p class="section-lead">Những vấn đề chưa được xử lý làm tăng chi&nbsp;phí nhân&nbsp;sự và giảm hiệu&nbsp;suất vận&nbsp;hành.</p>
       </div>
 
-      <div class="numbered-grid">
-        <div class="numbered-card">
+      <div class="problem-split" data-hl-root>
+        <div>
+          <div class="numbered-grid">
+        <div tabindex="0" data-hl-point="p1" class="numbered-card">
           <div class="nc-head">
             <span class="nc-num">01</span>
             <span class="nc-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h18M9 21V9"></path></svg></span>
@@ -214,7 +236,7 @@
           <h3>Đứt&nbsp;gãy trong vận&nbsp;hành</h3>
           <p>Sale giữ file khách&nbsp;hàng, kế toán giữ file công nợ, chăm&nbsp;sóc giữ file lịch&nbsp;hẹn. Không file nào sai, nhưng không file nào khớp nhau.</p>
         </div>
-        <div class="numbered-card">
+        <div tabindex="0" data-hl-point="p2" class="numbered-card">
           <div class="nc-head">
             <span class="nc-num">02</span>
             <span class="nc-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m16 3 4 4-4 4"></path><path d="M20 7H4"></path><path d="m8 21-4-4 4-4"></path><path d="M4 17h16"></path></svg></span>
@@ -222,7 +244,7 @@
           <h3>Lãng phí thời gian đối chiếu dữ&nbsp;liệu</h3>
           <p>Mỗi tuần, nhân&nbsp;sự phải so khớp nhiều bảng dữ&nbsp;liệu. Doanh&nbsp;nghiệp thậm chí phải thuê thêm nhân&nbsp;sự bán thời gian hoặc outsource chỉ để xử lý công&nbsp;việc lặp lại này.</p>
         </div>
-        <div class="numbered-card">
+        <div tabindex="0" data-hl-point="p3" class="numbered-card">
           <div class="nc-head">
             <span class="nc-num">03</span>
             <span class="nc-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1"></rect><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><path d="M8 12h8M8 16h5"></path></svg></span>
@@ -230,7 +252,7 @@
           <h3>Suy giảm hiệu&nbsp;suất nhân&nbsp;sự</h3>
           <p>Nhân&nbsp;sự chính thức vừa làm chuyên môn, vừa nhập liệu và tổng hợp báo cáo. Khối lượng công&nbsp;việc lặp lại tăng dần, làm giảm thời gian dành cho công&nbsp;việc chính.</p>
         </div>
-        <div class="numbered-card is-alert">
+        <div tabindex="0" data-hl-point="p4" class="numbered-card is-alert">
           <div class="nc-head">
             <span class="nc-num">04</span>
             <span class="nc-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><path d="m17 8 5 5M22 8l-5 5"></path></svg></span>
@@ -239,13 +261,34 @@
           <p>Dữ&nbsp;liệu chăm&nbsp;sóc khách&nbsp;hàng nằm trong file cá nhân và trí nhớ của nhân&nbsp;sự cũ. Nhân&nbsp;sự mới khó bắt đầu lại với chính những khách&nbsp;hàng đã có.</p>
         </div>
       </div>
-
-      <div class="callout-feature">
+          <div class="callout-feature">
         <span class="callout-icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><path d="M20 4 8.12 15.88M14.47 14.48 20 20M8.12 8.12 12 12"></path></svg></span>
         <div>
           <p class="principle-label">Chi&nbsp;phí nhân&nbsp;sự - Hiệu&nbsp;suất công&nbsp;việc - doanh thu tiềm năng</p>
           <p>AllOne giúp doanh&nbsp;nghiệp xử lý các vấn đề trên bằng dữ&nbsp;liệu tập trung và quy&nbsp;trình được kết&nbsp;nối.</p>
         </div>
+      </div>
+        </div>
+        <figure class="hub-figure">
+          <div class="hub-stage">
+            <svg class="hub-svg" viewBox="0 0 560 380" role="img" aria-labelledby="crmHubTitle">
+              <title id="crmHubTitle">Bốn vấn đề vận&nbsp;hành cùng được xử lý trên một nguồn dữ&nbsp;liệu của AllOne</title>
+              <ellipse class="hub-ring" cx="280" cy="190" rx="134" ry="74"/>
+              <path class="hub-link" d="M174 61 C 210 61, 224 100, 230 146"/><path class="hub-flow" d="M174 61 C 210 61, 224 100, 230 146"/>
+              <path class="hub-link" d="M386 61 C 350 61, 336 100, 330 146"/><path class="hub-flow" d="M386 61 C 350 61, 336 100, 330 146"/>
+              <path class="hub-link" d="M174 319 C 210 319, 224 280, 230 234"/><path class="hub-flow" d="M174 319 C 210 319, 224 280, 230 234"/>
+              <path class="hub-link" d="M386 319 C 350 319, 336 280, 330 234"/><path class="hub-flow" d="M386 319 C 350 319, 336 280, 330 234"/>
+              <g class="hub-core"><rect x="200" y="146" width="160" height="88" rx="18"/>
+                <text class="hub-core-big" x="280" y="186">AllOne</text>
+                <text class="hub-core-sub" x="280" y="210">1 nguồn dữ&nbsp;liệu</text></g>
+              <g class="hub-node" data-hl-target="p1" transform="translate(6 30)"><rect width="168" height="62" rx="14"/><circle class="hub-dot" cx="22" cy="31" r="6"/><text class="hub-node-title" x="38" y="27">01 Vận&nbsp;hành</text><text class="hub-node-sub" x="38" y="45">Một luồng dữ&nbsp;liệu</text></g>
+              <g class="hub-node" data-hl-target="p2" transform="translate(386 30)"><rect width="168" height="62" rx="14"/><circle class="hub-dot" cx="22" cy="31" r="6"/><text class="hub-node-title" x="38" y="27">02 Đối chiếu</text><text class="hub-node-sub" x="38" y="45">Hết so khớp thủ&nbsp;công</text></g>
+              <g class="hub-node" data-hl-target="p3" transform="translate(6 288)"><rect width="168" height="62" rx="14"/><circle class="hub-dot" cx="22" cy="31" r="6"/><text class="hub-node-title" x="38" y="27">03 Hiệu&nbsp;suất</text><text class="hub-node-sub" x="38" y="45">Bớt nhập liệu lặp lại</text></g>
+              <g class="hub-node" data-hl-target="p4" transform="translate(386 288)"><rect width="168" height="62" rx="14"/><circle class="hub-dot" cx="22" cy="31" r="6"/><text class="hub-node-title" x="38" y="27">04 Khách&nbsp;hàng</text><text class="hub-node-sub" x="38" y="45">Lịch&nbsp;sử đi theo hồ&nbsp;sơ</text></g>
+            </svg>
+          </div>
+          <figcaption class="hub-cap">Minh hoạ: bốn vấn đề bên trái cùng được xử lý trên một nguồn dữ&nbsp;liệu dùng chung.</figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -272,12 +315,12 @@
             <div class="tab-panel active tab-split" data-panel="t1">
               <div>
                 <h3>Một hồ&nbsp;sơ, toàn bộ vòng&nbsp;đời khách&nbsp;hàng</h3>
-                <p>CRM thông thường giúp bạn lưu thông&nbsp;tin khách&nbsp;hàng. AllOne tập trung toàn bộ lịch&nbsp;sử khách&nbsp;hàng trên một dòng thời gian để người tiếp&nbsp;nhận biết chính&nbsp;xác những gì đã xảy ra trước đó.</p>
+                <p>Lưu toàn&nbsp;bộ lịch&nbsp;sử trao đổi theo thời&nbsp;gian, giúp người tiếp nhận nắm rõ tiến&nbsp;độ làm việc để chăm&nbsp;sóc khách&nbsp;hàng một cách chu&nbsp;đáo nhất.</p>
                 <ul class="check-list">
-                  <li>Lưu toàn bộ lịch&nbsp;sử tương&nbsp;tác trên một hồ&nbsp;sơ: cuộc gọi, email, ghi chú và tài liệu không còn nằm ở những nơi riêng biệt.</li>
-                  <li>Tự phát hiện khách&nbsp;hàng trùng: tránh trường hợp hai nhân&nbsp;viên cùng chăm&nbsp;sóc một người vì khách được nhập thành hai Lead khác nhau.</li>
-                  <li>AI tự tổng hợp hồ&nbsp;sơ khách&nbsp;hàng: thay vì nhân&nbsp;viên phải đọc từng ghi chú để hiểu khách đã được xử lý thế nào.</li>
-                  <li>Gắn tài liệu trực tiếp với khách&nbsp;hàng: báo giá, hồ&nbsp;sơ hoặc tài liệu liên quan đi cùng khách&nbsp;hàng trong suốt quá trình.</li>
+                  <li>Gom trọn lịch&nbsp;sử cuộc gọi, email, ghi chú và tài&nbsp;liệu về một hồ&nbsp;sơ duy&nbsp;nhất, không còn nằm rải&nbsp;rác nhiều nơi.</li>
+                  <li>Tự&nbsp;động nhận&nbsp;diện khách&nbsp;hàng trùng&nbsp;lặp, tránh việc hai nhân&nbsp;sự cùng chăm&nbsp;sóc một người.</li>
+                  <li>AI tự tóm&nbsp;tắt nhanh tình&nbsp;trạng khách&nbsp;hàng, không cần mất thời&nbsp;gian đọc lại từng ghi chú cũ.</li>
+                  <li>Báo&nbsp;giá và tài&nbsp;liệu luôn đi liền với hồ&nbsp;sơ khách&nbsp;hàng, tra&nbsp;cứu tức&nbsp;thì mọi lúc.</li>
                 </ul>
               </div>
               <div class="mock-frame">
@@ -311,10 +354,10 @@
                 <h3>Đội sale làm việc theo pipeline, không theo trí nhớ</h3>
                 <p>Không chỉ biết “có bao nhiêu Lead”, AllOne cho quản lý thấy Lead đang ở đâu, ai đang xử lý, đang chờ bước nào và kết quả chuyển đổi ra sao.</p>
                 <ul class="check-list">
-                  <li>Theo dõi Lead theo từng giai đoạn: nhìn ngay cơ hội đang ở đâu trong quy trình bán hàng.</li>
-                  <li>KPI cập nhật khi dữ liệu phát sinh: quản lý không cần chờ Sales tổng hợp cuối ngày.</li>
-                  <li>Phân công khách hàng minh bạch, tránh hai người cùng gọi một Lead.</li>
-                  <li>Xem lý do mất cơ hội: dùng dữ liệu thực tế để điều chỉnh cách tiếp cận thay vì đoán.</li>
+                  <li>Quản lý Lead theo từng giai&nbsp;đoạn, nhìn rõ ngay từng cơ&nbsp;hội đang ở bước nào trong quy&nbsp;trình bán&nbsp;hàng.</li>
+                  <li>KPI cập nhật khi phát sinh dữ&nbsp;liệu, quản lý không còn phải chờ Sales tổng hợp báo&nbsp;cáo cuối ngày.</li>
+                  <li>Phân&nbsp;bổ khách&nbsp;hàng minh&nbsp;bạch và tự&nbsp;động, loại&nbsp;bỏ việc hai nhân&nbsp;viên cùng gọi một Lead.</li>
+                  <li>Nắm rõ lý do mất cơ&nbsp;hội để điều&nbsp;chỉnh cách tiếp&nbsp;cận dựa trên dữ&nbsp;liệu thật thay vì đoán mò.</li>
                 </ul>
               </div>
               <div class="mock-frame">
@@ -348,10 +391,10 @@
                 <h3>Kiểm soát nội dung chăm sóc tự động</h3>
                 <p>Automation không chỉ là “gửi email tự động”. AllOne liên kết hành trình chăm sóc và kết quả thực tế với hồ sơ, trạng thái của từng Lead.</p>
                 <ul class="check-list">
-                  <li>Thiết kế nhiều bước chăm sóc bằng kéo-thả: không cần lập trình.</li>
-                  <li>Phân nhóm khách hàng trước khi gửi: không gửi cùng một nội dung cho mọi người.</li>
-                  <li>Tự cập nhật nhóm khách hàng theo tương tác: dữ liệu khách hàng thay đổi theo hành vi thực tế.</li>
-                  <li>Dừng luồng chăm sóc khi khách chuyển sang xử lý trực tiếp: tránh việc khách đã được Sales gọi nhưng vẫn nhận email tự động không phù hợp.</li>
+                  <li>Thiết kế luồng chăm&nbsp;sóc bằng kéo&nbsp;-&nbsp;thả đơn giản, không cần đội&nbsp;ngũ kỹ&nbsp;thuật.</li>
+                  <li>Cá nhân hóa nội dung theo từng nhóm khách, xóa bỏ việc gửi thông&nbsp;điệp đại&nbsp;trà.</li>
+                  <li>Tự&nbsp;động chuyển nhóm khách theo hành&nbsp;vi tương&nbsp;tác thật trên thời&nbsp;gian thực.</li>
+                  <li>Dừng gửi tự&nbsp;động ngay khi Sales gọi điện trực&nbsp;tiếp, bảo&nbsp;đảm trải&nbsp;nghiệm tinh&nbsp;tế.</li>
                 </ul>
               </div>
               <div class="mock-frame">
@@ -545,87 +588,51 @@
       <div class="section-head" style="margin-inline: auto; text-align: center;">
         <p class="eyebrow" style="justify-content: center;">Cá nhân hóa và triển khai</p>
         <h2>AllOne CRM được thiết kế theo cách doanh&nbsp;nghiệp của bạn vận&nbsp;hành</h2>
-        <p class="section-lead">Mỗi doanh&nbsp;nghiệp có cơ cấu, quy&nbsp;trình và cách quản lý khác nhau. AllOne CRM được cấu hình theo dữ&nbsp;liệu, quy&nbsp;trình, phân quyền và công&nbsp;cụ doanh&nbsp;nghiệp đang sử dụng, sau đó mở rộng theo từng giai&nbsp;đoạn.</p>
+        <p class="section-lead">Thích ứng hoàn&nbsp;hảo với cách bạn đang vận&nbsp;hành. AllOne được thiết&nbsp;lập chuẩn&nbsp;xác theo dữ&nbsp;liệu, phân&nbsp;quyền và công&nbsp;cụ hiện&nbsp;tại, giúp doanh&nbsp;nghiệp tự&nbsp;tin mở&nbsp;rộng theo từng giai&nbsp;đoạn.</p>
       </div>
 
-      <div class="split-cards">
-        <div class="split-card">
-          <ul class="check-list">
-            <li>Tùy chỉnh module, trường dữ&nbsp;liệu, biểu mẫu và giao&nbsp;diện theo từng bộ phận.</li>
-            <li>Thiết kế workflow và quy&nbsp;trình phê duyệt riêng cho từng bộ phận.</li>
-            <li>Phân quyền theo đúng cơ cấu tổ&nbsp;chức, vị trí và phạm vi công&nbsp;việc.</li>
-          </ul>
-        </div>
-        <div class="split-card">
-          <ul class="check-list">
-            <li>Dashboard và KPI được xây dựng theo đúng chỉ số doanh&nbsp;nghiệp cần theo dõi.</li>
-            <li>Tích hợp email, tổng đài, lịch và hệ thống sẵn có vào cùng một luồng.</li>
-            <li>Mở rộng theo giai&nbsp;đoạn để kiểm&nbsp;soát chi&nbsp;phí và giảm rủi&nbsp;ro triển khai.</li>
-          </ul>
-        </div>
-      </div>
-
-      <h3 class="subsection-title" style="text-align: center; margin-top: 0;">Quy&nbsp;trình triển khai</h3>
-      <div class="process-grid">
-        <div class="process-card">
-          <span class="process-num">1</span>
-          <h4>Khảo sát nhu cầu</h4>
-          <p>Tìm hiểu quy&nbsp;trình, cơ cấu tổ&nbsp;chức và mục tiêu hiện tại của doanh&nbsp;nghiệp.</p>
-        </div>
-        <div class="process-card">
-          <span class="process-num">2</span>
-          <h4>Thiết kế giải&nbsp;pháp</h4>
-          <p>Đề&nbsp;xuất module, workflow và mô hình phân quyền phù&nbsp;hợp với khảo sát.</p>
-        </div>
-        <div class="process-card">
-          <span class="process-num">3</span>
-          <h4>Cấu hình và tích hợp</h4>
-          <p>Thiết lập hệ thống và kết&nbsp;nối với các công&nbsp;cụ doanh&nbsp;nghiệp đang dùng.</p>
-        </div>
-        <div class="process-card">
-          <span class="process-num">4</span>
-          <h4>Đào&nbsp;tạo và tối&nbsp;ưu</h4>
-          <p>Hướng dẫn đội&nbsp;ngũ sử dụng, theo dõi thực&nbsp;tế và điều chỉnh sau triển khai.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="section-head" style="margin-inline: auto; text-align: center;">
-        <p class="eyebrow" style="justify-content: center;">Khách&nbsp;hàng</p>
-        <h2>Đối tác đồng&nbsp;hành cùng AllOne</h2>
-        <p class="section-lead">Cùng một vấn đề, hai ngành khác nhau. Đọc chi tiết cách hệ thống được cấu hình cho từng bên.</p>
-      </div>
-
-      <div class="case-cards">
-        <a href="/case-study-liam-education" class="case-card">
-          <div>
-            <div class="case-card-top">
-              <span class="case-tag">CRM + LMS</span>
-              <span class="case-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5Z"></path><path d="M6 12v5c0 1.1 2.7 2 6 2s6-.9 6-2v-5"></path></svg></span>
+      <div class="split-media" data-hl-root data-hl-delay="3800">
+        <ol class="hl-points">
+            <li><button type="button" class="hl-point" data-hl-point="c1" data-screen="sec"><b>1</b><span>Tùy chỉnh module, trường dữ&nbsp;liệu, biểu mẫu và giao&nbsp;diện theo từng bộ phận.</span></button></li>
+            <li><button type="button" class="hl-point" data-hl-point="c2" data-screen="contact"><b>2</b><span>Thiết kế workflow và quy&nbsp;trình phê duyệt riêng cho từng bộ phận.</span></button></li>
+            <li><button type="button" class="hl-point" data-hl-point="c3" data-screen="sec"><b>3</b><span>Phân quyền theo đúng cơ cấu tổ&nbsp;chức, vị trí và phạm vi công&nbsp;việc.</span></button></li>
+            <li><button type="button" class="hl-point" data-hl-point="c4" data-screen="kpi"><b>4</b><span>Dashboard và KPI được xây dựng theo đúng chỉ số doanh&nbsp;nghiệp cần theo dõi.</span></button></li>
+            <li><button type="button" class="hl-point" data-hl-point="c5" data-screen="meet"><b>5</b><span>Tích hợp email, tổng đài, lịch và hệ thống sẵn có vào cùng một luồng.</span></button></li>
+            <li><button type="button" class="hl-point" data-hl-point="c6" data-screen="sec"><b>6</b><span>Mở rộng theo giai&nbsp;đoạn để kiểm&nbsp;soát chi&nbsp;phí và giảm rủi&nbsp;ro triển khai.</span></button></li>
+        </ol>
+        <div class="hl-media">
+          <div class="hl-frame">
+            <div class="hl-bar" aria-hidden="true"><i></i><i></i><i></i><span>AllOne CRM</span></div>
+            <div class="hl-screens">
+              <div class="hl-screen" data-hl-screen="sec"><img src="/img/products/Security-AllOne.png" width="1856" height="931" alt="Màn hình Security của AllOne: nhóm quyền, thành viên và phân quyền theo phân hệ" loading="lazy" decoding="async"><span class="hl-box" data-hl-target="c1" style="--x:2.3%;--y:68.5%;--w:10.1%;--h:3.6%"><span>Data Customization: trường và biểu mẫu</span></span><span class="hl-box" data-hl-target="c3" style="--x:14.9%;--y:28.1%;--w:16%;--h:23.8%"><span>Nhóm quyền theo phòng&nbsp;ban</span></span><span class="hl-box" data-hl-target="c6" style="--x:0.4%;--y:23.1%;--w:12.4%;--h:62.8%"><span>Bật thêm phân&nbsp;hệ khi cần</span></span></div>
+              <div class="hl-screen" data-hl-screen="contact"><img src="/img/products/AllOne-Contact.jpg" width="1861" height="938" alt="Hồ sơ Lead trong AllOne CRM với trạng thái quy trình và lịch sử tương tác" loading="lazy" decoding="async"><span class="hl-box" data-hl-target="c2" style="--x:15.7%;--y:30.4%;--w:21.6%;--h:12.3%"><span>Trạng thái Lead theo quy&nbsp;trình riêng</span></span></div>
+              <div class="hl-screen" data-hl-screen="kpi"><img src="/img/products/allone-crm-product-1.jpg" width="1438" height="841" alt="Màn hình Sale Teams với KPI hoàn thành theo từng đội" loading="lazy" decoding="async"><span class="hl-box is-below" data-hl-target="c4" style="--x:19.1%;--y:10.4%;--w:79.3%;--h:30.8%"><span>KPI theo từng đội sale</span></span></div>
+              <div class="hl-screen" data-hl-screen="meet"><img src="/img/products/Meet-creation.jpg" width="1852" height="935" alt="Tạo lịch Google Meet ngay trong hồ sơ khách hàng" loading="lazy" decoding="async"><span class="hl-box" data-hl-target="c5" style="--x:40.5%;--y:15%;--w:35.9%;--h:47%"><span>Email và lịch họp ngay trong hồ&nbsp;sơ</span></span></div>
             </div>
-            <h3>Liam Education</h3>
-            <p>Trung&nbsp;tâm Anh ngữ giao tiếp công sở gom hồ&nbsp;sơ học viên, lớp học và học phí về một hệ thống, thay vì nhiều Google Sheet do từng bộ phận giữ.</p>
           </div>
-          <span class="case-link">Đọc case study
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
-          </span>
-        </a>
-        <a href="/case-study-aztravel" class="case-card">
-          <div>
-            <div class="case-card-top">
-              <span class="case-tag">CRM</span>
-              <span class="case-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20M12 2c2.5 2.5 4 6 4 10s-1.5 7.5-4 10c-2.5-2.5-4-6-4-10s1.5-7.5 4-10Z"></path></svg></span>
-            </div>
-            <h3>AZTravel</h3>
-            <p>Công ty du lịch hai chi nhánh Đà Nẵng và Hà Nội đưa booking tour, khách&nbsp;hàng và công nợ khách sạn về cùng một nguồn dữ&nbsp;liệu.</p>
-          </div>
-          <span class="case-link">Đọc case study
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
-          </span>
-        </a>
+          <p class="hl-cap">Ảnh chụp màn hình AllOne. Khung sáng đánh dấu phần tương ứng với từng ý bên trái.</p>
+        </div>
+      </div>
+
+      <h3 class="subsection-title" style="text-align: center; margin-top: 4.5rem;">Quy&nbsp;trình triển khai</h3>
+      <div class="split-media" data-hl-root data-hl-delay="2800">
+        <ol class="step-list">
+          <li class="step-item" data-hl-point="s1"><span class="step-num">1</span><div><h4>Khảo sát nhu cầu</h4><p>Tìm hiểu quy&nbsp;trình, cơ cấu tổ&nbsp;chức và mục tiêu hiện tại của doanh&nbsp;nghiệp.</p></div></li>
+          <li class="step-item" data-hl-point="s2"><span class="step-num">2</span><div><h4>Thiết kế giải&nbsp;pháp</h4><p>Đề&nbsp;xuất module, workflow và mô hình phân quyền phù&nbsp;hợp với khảo sát.</p></div></li>
+          <li class="step-item" data-hl-point="s3"><span class="step-num">3</span><div><h4>Cấu hình và tích hợp</h4><p>Thiết lập hệ thống và kết&nbsp;nối với các công&nbsp;cụ doanh&nbsp;nghiệp đang dùng.</p></div></li>
+          <li class="step-item" data-hl-point="s4"><span class="step-num">4</span><div><h4>Đào&nbsp;tạo và tối&nbsp;ưu</h4><p>Hướng dẫn đội&nbsp;ngũ sử dụng, theo dõi thực&nbsp;tế và điều chỉnh sau triển khai.</p></div></li>
+        </ol>
+        <div class="iso-stage" style="--n:4" aria-hidden="true">
+  <div class="iso-plate" style="--i:0" data-hl-target="s1"><b>01</b></div>
+  <div class="iso-plate" style="--i:1" data-hl-target="s2"><b>02</b></div>
+  <div class="iso-plate" style="--i:2" data-hl-target="s3"><b>03</b></div>
+  <div class="iso-plate" style="--i:3" data-hl-target="s4"><b>04</b></div>
+  <div class="iso-label" style="--i:0" data-hl-target="s1">Khảo sát nhu cầu</div>
+  <div class="iso-label" style="--i:1" data-hl-target="s2">Thiết kế giải&nbsp;pháp</div>
+  <div class="iso-label" style="--i:2" data-hl-target="s3">Cấu hình và tích hợp</div>
+  <div class="iso-label" style="--i:3" data-hl-target="s4">Đào&nbsp;tạo và tối&nbsp;ưu</div>
+</div>
+<p class="iso-cap">Mỗi bước là một lớp đặt lên lớp trước, hệ thống hoàn thiện dần theo thực&nbsp;tế.</p>
       </div>
     </div>
   </section>
@@ -766,10 +773,15 @@
 
   <section class="section cta-final">
     <div class="container">
-      <h2>Xem CRM chạy trên dữ&nbsp;liệu thật của doanh&nbsp;nghiệp bạn</h2>
-      <div class="hero-cta-center">
-        <a href="/dang-ky" class="btn btn-primary btn-lg">Dùng&nbsp;thử miễn phí</a>
-        <a href="/lien-he" class="btn btn-ghost btn-lg">Đặt lịch demo</a>
+      <div class="cta-panel">
+        <div class="cta-copy">
+          <h2>Xem CRM chạy trên dữ&nbsp;liệu thật của doanh&nbsp;nghiệp bạn</h2>
+          <p class="cta-lead">Đội&nbsp;ngũ triển khai dựng bản dùng&nbsp;thử trên chính dữ&nbsp;liệu và quy&nbsp;trình bạn đang có.</p>
+        </div>
+        <div class="cta-actions">
+          <a href="/dang-ky" class="btn btn-primary btn-lg">Dùng&nbsp;thử miễn phí</a>
+          <a href="/lien-he" class="btn btn-ghost btn-lg">Đặt lịch demo</a>
+        </div>
       </div>
 
       <div class="proof-strip">
@@ -830,5 +842,6 @@
 
 <script src="/js/config.js?v=3"></script>
 <script src="/js/main.js?v=7"></script>
+<script src="/js/showcase.js?v=1"></script>
 </body>
 </html>

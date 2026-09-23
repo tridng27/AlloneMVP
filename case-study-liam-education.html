@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/css/styles.css?v=17">
+<link rel="stylesheet" href="/css/styles.css?v=18">
 </head>
 <body>
 
@@ -214,7 +214,8 @@
 
   <section class="section" style="padding-top: 2rem;">
     <div class="container">
-      <div class="cs-steps">
+      <div class="cs-steps is-split">
+        <div class="cs-col">
         <div class="cs-step">
           <div class="cs-num" aria-hidden="true">01</div>
           <div class="cs-step-body">
@@ -234,6 +235,8 @@
             <p>Cùng lúc, đội&nbsp;ngũ chính thức vừa tư&nbsp;vấn, vừa đứng lớp, vừa xử lý hành chính. Khối lượng việc lặp lại đó khiến tỷ&nbsp;lệ nghỉ việc ở mức cao, và mỗi lần một người rời đi, lịch&nbsp;sử chăm&nbsp;sóc học viên trong file cá nhân và trí nhớ của họ cũng đi theo.</p>
           </div>
         </div>
+        </div>
+        <div class="cs-col" data-hl-root data-hl-delay="3000">
         <div class="cs-step is-solution">
           <div class="cs-num" aria-hidden="true">03</div>
           <div class="cs-step-body">
@@ -241,21 +244,36 @@
             <h3>CRM cho hành trình học viên, LMS cho lớp học</h3>
             <p>Trung&nbsp;tâm triển khai hai sản&nbsp;phẩm cùng lúc, chia rõ phạm vi để không chồng lấn. CRM quản lý mọi thứ trước khi học viên vào lớp, LMS quản lý mọi thứ sau đó.</p>
             <div class="cs-scope">
-              <div class="cs-scope-card">
+              <div class="cs-scope-card" tabindex="0" data-hl-point="j1">
                 <span class="cs-scope-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m16.24 7.76-2.12 6.36-6.36 2.12 2.12-6.36 6.36-2.12Z"/></svg></span>
                 <span class="cs-scope-tag">CRM</span>
                 <h4>Trước khi vào lớp</h4>
                 <p>Theo dõi học viên từ lúc là Lead đăng ký tư&nbsp;vấn tới khi ghi danh, bao gồm cả kênh khách&nbsp;hàng doanh&nbsp;nghiệp cử nhân&nbsp;viên đi học theo đợt.</p>
               </div>
-              <div class="cs-scope-card">
+              <div class="cs-scope-card" tabindex="0" data-hl-point="j2">
                 <span class="cs-scope-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4.5A2.5 2.5 0 0 1 4.5 2H12v18H4.5A2.5 2.5 0 0 0 2 22.5v-18Z"/><path d="M22 4.5A2.5 2.5 0 0 0 19.5 2H12v18h7.5a2.5 2.5 0 0 1 2.5 2.5v-18Z"/></svg></span>
                 <span class="cs-scope-tag">LMS</span>
                 <h4>Sau khi vào lớp</h4>
                 <p>Xếp lớp theo cấp độ giao tiếp công sở, ghi điểm danh từng buổi, giao và chấm bài tập, theo dõi tiến độ của từng học viên.</p>
               </div>
             </div>
+            <figure class="journey">
+              <div class="journey-track">
+                <div class="journey-half" data-hl-target="j1">
+                  <div class="journey-head"><b>Trước khi vào lớp</b><span class="cs-scope-tag">CRM</span></div>
+                  <ol class="journey-steps"><li>Lead đăng ký tư&nbsp;vấn</li><li>Tư&nbsp;vấn, kể cả hợp&nbsp;đồng doanh&nbsp;nghiệp</li><li>Ghi danh</li></ol>
+                </div>
+                <div class="journey-half is-lms" data-hl-target="j2">
+                  <div class="journey-head"><b>Sau khi vào lớp</b><span class="cs-scope-tag">LMS</span></div>
+                  <ol class="journey-steps"><li>Xếp lớp theo cấp độ</li><li>Điểm danh từng buổi</li><li>Bài tập và tiến độ</li></ol>
+                </div>
+              </div>
+              <p class="journey-profile">Một hồ&nbsp;sơ học viên dùng chung cho cả hai giai&nbsp;đoạn</p>
+              <figcaption class="journey-cap">Minh hoạ phạm vi: CRM lo mọi việc trước khi học viên vào lớp, LMS lo mọi việc sau đó.</figcaption>
+            </figure>
             <div class="cs-scope-note"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.07 0l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.07 0l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><p><strong>Một hồ&nbsp;sơ dùng chung</strong> để tư&nbsp;vấn viên và giảng viên nhìn thấy cùng một dữ&nbsp;liệu, thay vì mỗi bên giữ một phiên bản riêng.</p></div>
           </div>
+        </div>
         </div>
       </div>
     </div>
@@ -336,11 +354,15 @@
   </section>
 
   <section class="section section-cta-banner">
-    <div class="container cta-banner-inner">
-      <h2>Doanh&nbsp;nghiệp bạn cũng đang trả lương cho việc đối chiếu?</h2>
-      <div class="hero-cta">
-        <a href="/lien-he" class="btn btn-primary btn-lg">Đặt lịch demo</a>
-        <a href="/crm" class="btn btn-ghost btn-lg">Xem CRM</a>
+    <div class="container">
+      <div class="cta-panel is-brand">
+        <div class="cta-copy">
+          <h2>Doanh&nbsp;nghiệp bạn cũng đang trả lương cho việc đối chiếu?</h2>
+        </div>
+        <div class="cta-actions">
+          <a href="/lien-he" class="btn btn-primary btn-lg">Đặt lịch demo</a>
+          <a href="/crm" class="btn btn-ghost btn-lg">Xem CRM</a>
+        </div>
       </div>
     </div>
   </section>
@@ -389,5 +411,6 @@
 </footer>
 
 <script src="/js/main.js?v=7"></script>
+<script src="/js/showcase.js?v=1"></script>
 </body>
 </html>

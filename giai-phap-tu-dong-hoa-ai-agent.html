@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/css/home.css?v=2">
+<link rel="stylesheet" href="/css/home.css?v=3">
 </head>
 <body>
 <a class="skip-link" href="#main">Bỏ qua điều hướng</a>
@@ -218,18 +218,21 @@
       </div>
       <div class="prob-grid">
         <article class="prob-card reveal">
+          <div class="pv" aria-hidden="true"><div class="pv-row"><span class="pv-chip is-warm"><i></i>Buổi demo AI</span><span class="pv-go" aria-hidden="true">→</span><span class="pv-chip">Tuần sau</span><span class="pv-go" aria-hidden="true">→</span><span class="pv-chip pv-bad"><i></i>Bảng&nbsp;tính cũ</span></div><p class="pv-note">Không quy&nbsp;trình nào đổi sau buổi trình diễn</p></div>
           <p class="pc-num">01</p>
-          <h3>Demo AI xong rồi thôi</h3>
+          <h3>Khó đưa vào thực&nbsp;tế</h3>
           <p>Một buổi trình diễn không thay&nbsp;đổi cách một phòng&nbsp;ban làm&nbsp;việc mỗi&nbsp;ngày. Tuần sau đội&nbsp;ngũ vẫn quay về bảng&nbsp;tính cũ.</p>
         </article>
         <article class="prob-card reveal">
+          <div class="pv" aria-hidden="true"><div class="pv-row"><span class="pv-chip is-warm"><i></i>AI vừa gửi một phản&nbsp;hồi</span></div><div class="pv-row"><span class="pv-chip pv-bad"><i></i>Dựa trên dữ&nbsp;liệu nào?</span><span class="pv-chip pv-bad"><i></i>Dừng ở đâu?</span></div></div>
           <p class="pc-num">02</p>
-          <h3>Không ai dám giao việc thật cho AI</h3>
-          <p>Vì không biết AI đã làm gì, dựa trên dữ&nbsp;liệu nào, và làm sao dừng lại khi nó sai.</p>
+          <h3>Thiếu cơ chế kiểm&nbsp;soát</h3>
+          <p>Không ai biết AI đã làm gì, dựa trên dữ&nbsp;liệu nào, và làm sao dừng lại khi nó sai.</p>
         </article>
         <article class="prob-card reveal">
+          <div class="pv" aria-hidden="true"><div class="pv-row"><span class="pv-chip">Nhập liệu</span><span class="pv-bar is-bad"><b style="--v:46%"></b></span></div><div class="pv-row"><span class="pv-chip">Tóm tắt cuộc gọi</span><span class="pv-bar is-bad"><b style="--v:28%"></b></span></div><div class="pv-row"><span class="pv-chip">Chuyên môn</span><span class="pv-bar"><b style="--v:26%"></b></span></div><p class="pv-note">Phần lớn thời gian đi vào việc lặp lại</p></div>
           <p class="pc-num">03</p>
-          <h3>Việc lặp lại vẫn làm tay</h3>
+          <h3>Lãng phí nhân&nbsp;sự chuyên&nbsp;môn</h3>
           <p>Nhập liệu, tóm tắt cuộc gọi, soạn phản hồi mẫu vẫn chiếm phần lớn thời gian của nhân&nbsp;sự chuyên môn.</p>
         </article>
       </div>
@@ -296,9 +299,10 @@
         <p class="lead">Quy tắc và ngưỡng ở từng bước được cấu hình theo từng doanh&nbsp;nghiệp, đây là luồng mặc định.</p>
       </div>
 
-      <div class="pipeline-card reveal" style="margin-top:3.4rem">
+      <div class="split-media flow-split" data-hl-root data-hl-delay="2800">
+        <div class="pipeline-card reveal">
         <ol class="pl-steps is-4">
-          <li class="pl-step is-ai">
+          <li class="pl-step is-ai" data-hl-point="s1" tabindex="0">
             <div class="pl-marker" aria-hidden="true">
               <span class="pl-dot">1</span>
               <span class="pl-rail"></span>
@@ -312,7 +316,7 @@
               <p>Xử lý dữ&nbsp;liệu trong phạm vi được cấp và đưa ra đề&nbsp;xuất.</p>
             </div>
           </li>
-          <li class="pl-step">
+          <li class="pl-step" data-hl-point="s2" tabindex="0">
             <div class="pl-marker" aria-hidden="true">
               <span class="pl-dot">2</span>
               <span class="pl-rail"></span>
@@ -326,7 +330,7 @@
               <p>Đối chiếu quyền, hạn mức và kịch bản trước khi cho chạy.</p>
             </div>
           </li>
-          <li class="pl-step is-human">
+          <li class="pl-step is-human" data-hl-point="s3" tabindex="0">
             <div class="pl-marker" aria-hidden="true">
               <span class="pl-dot">3</span>
               <span class="pl-rail"></span>
@@ -340,7 +344,7 @@
               <p>Bước có hệ quả thật dừng lại chờ người phụ trách xác nhận.</p>
             </div>
           </li>
-          <li class="pl-step">
+          <li class="pl-step" data-hl-point="s4" tabindex="0">
             <div class="pl-marker" aria-hidden="true">
               <span class="pl-dot">4</span>
               <span class="pl-rail"></span>
@@ -356,6 +360,20 @@
           </li>
         </ol>
         <p class="pl-note">Sơ đồ minh hoạ luồng xử lý mặc định. Quy tắc phân&nbsp;phối và kịch bản được cấu hình theo từng doanh&nbsp;nghiệp.</p>
+      </div>
+        <div>
+          <div class="iso-stage" style="--n:4" aria-hidden="true">
+  <div class="iso-plate is-warm" style="--i:0" data-hl-target="s1"><b>01</b></div>
+  <div class="iso-plate" style="--i:1" data-hl-target="s2"><b>02</b></div>
+  <div class="iso-plate" style="--i:2" data-hl-target="s3"><b>03</b></div>
+  <div class="iso-plate" style="--i:3" data-hl-target="s4"><b>04</b></div>
+  <div class="iso-label is-warm" style="--i:0" data-hl-target="s1">AI đọc và đề&nbsp;xuất <small>AI</small></div>
+  <div class="iso-label" style="--i:1" data-hl-target="s2">Hàng rào kiểm tra <small>Hệ thống</small></div>
+  <div class="iso-label" style="--i:2" data-hl-target="s3">Con người duyệt <small>Con người</small></div>
+  <div class="iso-label" style="--i:3" data-hl-target="s4">Ghi nhận <small>Hệ thống</small></div>
+</div>
+<p class="iso-cap">Mỗi bước là một lớp, lớp sau dựng trên kết quả của lớp trước.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -405,16 +423,17 @@
 
   <!-- CTA -->
   <section class="section cta-banner">
-    <div class="container cta-inner">
-      <h2>Tự&nbsp;động hoá quy&nbsp;trình và AI&nbsp;Agent: trao đổi bài&nbsp;toán của bạn</h2>
-      <ul class="benefit-list">
-        <li>Khảo sát cách đội&nbsp;ngũ bạn đang làm&nbsp;việc hôm nay, trước khi bàn tới phần&nbsp;mềm.</li>
-        <li>Demo trên đúng nghiệp&nbsp;vụ của bạn, không phải dữ&nbsp;liệu mẫu chung chung.</li>
-        <li>Lộ trình theo từng giai&nbsp;đoạn, để chi&nbsp;phí đi cùng nhịp triển khai.</li>
-      </ul>
-      <div class="hero-cta">
-        <a href="/lien-he" class="btn btn-primary btn-lg">Đặt lịch tư&nbsp;vấn</a>
-        <a href="/dang-ky" class="btn btn-ghost btn-lg">Bắt đầu dùng&nbsp;thử</a>
+    <div class="container">
+      <div class="cta-panel is-brand">
+        <div class="cta-copy">
+          <h2>Tự&nbsp;động hoá quy&nbsp;trình và AI&nbsp;Agent: trao đổi bài&nbsp;toán của bạn</h2>
+          <p class="cta-lead">Khảo&nbsp;sát thực&nbsp;tế, demo trên đúng nghiệp&nbsp;vụ của bạn và triển&nbsp;khai linh&nbsp;hoạt theo từng giai&nbsp;đoạn.</p>
+          <ul class="cta-tags"><li>Khảo sát quy&nbsp;trình</li><li>Dữ&nbsp;liệu thực&nbsp;tế</li><li>Tối&nbsp;ưu chi&nbsp;phí</li></ul>
+        </div>
+        <div class="cta-actions">
+          <a href="/lien-he" class="btn btn-primary btn-lg">Đặt lịch tư&nbsp;vấn</a>
+          <a href="/dang-ky" class="btn btn-ghost btn-lg">Bắt đầu dùng&nbsp;thử</a>
+        </div>
       </div>
     </div>
   </section>
@@ -469,5 +488,6 @@
   </div>
 </footer>
 <script src="/js/home.js?v=7"></script>
+<script src="/js/showcase.js?v=1"></script>
 </body>
 </html>

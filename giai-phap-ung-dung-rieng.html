@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/css/home.css?v=2">
+<link rel="stylesheet" href="/css/home.css?v=3">
 </head>
 <body>
 <a class="skip-link" href="#main">Bỏ qua điều hướng</a>
@@ -218,19 +218,22 @@
       </div>
       <div class="prob-grid">
         <article class="prob-card reveal">
+          <div class="pv" aria-hidden="true"><div class="pv-row"><span class="pv-chip">Phần&nbsp;mềm đóng gói</span><span class="pv-chip pv-bad"><i></i>+ bảng&nbsp;tính bên cạnh</span></div><p class="pv-note">Phần hệ thống không chứa được, ghi tay ở nơi khác</p></div>
           <p class="pc-num">01</p>
-          <h3>Quy&nbsp;trình đặc&nbsp;thù không nằm vừa phần&nbsp;mềm đóng gói</h3>
-          <p>Cuối cùng đội&nbsp;ngũ vẫn mở thêm một bảng&nbsp;tính bên cạnh để ghi phần hệ thống không chứa được.</p>
+          <h3>Không bám sát nhu&nbsp;cầu riêng</h3>
+          <p>Thiếu tính linh&nbsp;hoạt khiến nhân&nbsp;sự vẫn phải duy trì các phương&nbsp;thức thủ&nbsp;công để bù đắp cho phần&nbsp;mềm.</p>
         </article>
         <article class="prob-card reveal">
+          <div class="pv" aria-hidden="true"><div class="pv-row"><span class="pv-chip">Thêm 1 trường thông&nbsp;tin</span><span class="pv-go" aria-hidden="true">→</span><span class="pv-chip pv-bad"><i></i>Chờ nhà cung&nbsp;cấp</span></div><p class="pv-note is-bad">Mỗi thay&nbsp;đổi nhỏ thành một yêu&nbsp;cầu phát triển</p></div>
           <p class="pc-num">02</p>
-          <h3>Mỗi thay&nbsp;đổi nhỏ phải chờ nhà cung cấp</h3>
+          <h3>Phụ thuộc vào nhà cung&nbsp;cấp</h3>
           <p>Thêm một trường thông&nbsp;tin cũng thành một yêu&nbsp;cầu phát triển, chờ vài tuần.</p>
         </article>
         <article class="prob-card reveal">
+          <div class="pv" aria-hidden="true"><div class="pv-row"><span class="pv-chip">Hệ thống cũ</span><span class="pv-go" aria-hidden="true">→</span><span class="pv-chip pv-bad"><i></i>Xuất, nhập tay</span><span class="pv-go" aria-hidden="true">→</span><span class="pv-chip">Hệ thống mới</span></div><p class="pv-note">Con người đứng giữa làm cầu nối dữ&nbsp;liệu</p></div>
           <p class="pc-num">03</p>
-          <h3>Hệ thống cũ không nói chuyện với hệ thống mới</h3>
-          <p>Dữ&nbsp;liệu vẫn phải xuất ra rồi nhập vào bằng tay giữa hai phần&nbsp;mềm.</p>
+          <h3>Không thể đồng&nbsp;bộ hệ&nbsp;thống</h3>
+          <p>Không thể kết&nbsp;nối trực&nbsp;tiếp, đội&nbsp;ngũ vẫn phải làm cầu nối thủ&nbsp;công để chuyển dữ&nbsp;liệu giữa các phần&nbsp;mềm.</p>
         </article>
       </div>
     </div>
@@ -296,9 +299,10 @@
         <p class="lead">Quy tắc và ngưỡng ở từng bước được cấu hình theo từng doanh&nbsp;nghiệp, đây là luồng mặc định.</p>
       </div>
 
-      <div class="pipeline-card reveal" style="margin-top:3.4rem">
+      <div class="split-media flow-split" data-hl-root data-hl-delay="2800">
+        <div class="pipeline-card reveal">
         <ol class="pl-steps is-4">
-          <li class="pl-step is-human">
+          <li class="pl-step is-human" data-hl-point="s1" tabindex="0">
             <div class="pl-marker" aria-hidden="true">
               <span class="pl-dot">1</span>
               <span class="pl-rail"></span>
@@ -312,7 +316,7 @@
               <p>Ghi lại cách đội&nbsp;ngũ đang làm&nbsp;việc và những chỗ đang vướng.</p>
             </div>
           </li>
-          <li class="pl-step">
+          <li class="pl-step" data-hl-point="s2" tabindex="0">
             <div class="pl-marker" aria-hidden="true">
               <span class="pl-dot">2</span>
               <span class="pl-rail"></span>
@@ -326,7 +330,7 @@
               <p>Cấu hình dữ&nbsp;liệu, trạng thái và phê duyệt theo đúng nghiệp&nbsp;vụ.</p>
             </div>
           </li>
-          <li class="pl-step">
+          <li class="pl-step" data-hl-point="s3" tabindex="0">
             <div class="pl-marker" aria-hidden="true">
               <span class="pl-dot">3</span>
               <span class="pl-rail"></span>
@@ -340,7 +344,7 @@
               <p>Nối API với những phần&nbsp;mềm doanh&nbsp;nghiệp vẫn muốn giữ.</p>
             </div>
           </li>
-          <li class="pl-step is-human">
+          <li class="pl-step is-human" data-hl-point="s4" tabindex="0">
             <div class="pl-marker" aria-hidden="true">
               <span class="pl-dot">4</span>
               <span class="pl-rail"></span>
@@ -356,6 +360,20 @@
           </li>
         </ol>
         <p class="pl-note">Sơ đồ minh hoạ luồng xử lý mặc định. Quy tắc phân&nbsp;phối và kịch bản được cấu hình theo từng doanh&nbsp;nghiệp.</p>
+      </div>
+        <div>
+          <div class="iso-stage" style="--n:4" aria-hidden="true">
+  <div class="iso-plate" style="--i:0" data-hl-target="s1"><b>01</b></div>
+  <div class="iso-plate" style="--i:1" data-hl-target="s2"><b>02</b></div>
+  <div class="iso-plate" style="--i:2" data-hl-target="s3"><b>03</b></div>
+  <div class="iso-plate" style="--i:3" data-hl-target="s4"><b>04</b></div>
+  <div class="iso-label" style="--i:0" data-hl-target="s1">Khảo sát nghiệp&nbsp;vụ <small>Con người</small></div>
+  <div class="iso-label" style="--i:1" data-hl-target="s2">Dựng đối tượng và luồng <small>Hệ thống</small></div>
+  <div class="iso-label" style="--i:2" data-hl-target="s3">Kết&nbsp;nối hệ thống cũ <small>Hệ thống</small></div>
+  <div class="iso-label" style="--i:3" data-hl-target="s4">Bàn&nbsp;giao và đào&nbsp;tạo <small>Con người</small></div>
+</div>
+<p class="iso-cap">Mỗi bước là một lớp, lớp sau dựng trên kết quả của lớp trước.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -405,16 +423,17 @@
 
   <!-- CTA -->
   <section class="section cta-banner">
-    <div class="container cta-inner">
-      <h2>Ứng&nbsp;dụng nghiệp&nbsp;vụ riêng theo yêu&nbsp;cầu: trao đổi bài&nbsp;toán của bạn</h2>
-      <ul class="benefit-list">
-        <li>Khảo sát cách đội&nbsp;ngũ bạn đang làm&nbsp;việc hôm nay, trước khi bàn tới phần&nbsp;mềm.</li>
-        <li>Demo trên đúng nghiệp&nbsp;vụ của bạn, không phải dữ&nbsp;liệu mẫu chung chung.</li>
-        <li>Lộ trình theo từng giai&nbsp;đoạn, để chi&nbsp;phí đi cùng nhịp triển khai.</li>
-      </ul>
-      <div class="hero-cta">
-        <a href="/lien-he" class="btn btn-primary btn-lg">Đặt lịch tư&nbsp;vấn</a>
-        <a href="/dang-ky" class="btn btn-ghost btn-lg">Bắt đầu dùng&nbsp;thử</a>
+    <div class="container">
+      <div class="cta-panel is-brand">
+        <div class="cta-copy">
+          <h2>Ứng&nbsp;dụng nghiệp&nbsp;vụ riêng theo yêu&nbsp;cầu: trao đổi bài&nbsp;toán của bạn</h2>
+          <p class="cta-lead">Khảo&nbsp;sát thực&nbsp;tế, demo trên đúng nghiệp&nbsp;vụ của bạn và triển&nbsp;khai linh&nbsp;hoạt theo từng giai&nbsp;đoạn.</p>
+          <ul class="cta-tags"><li>Khảo sát quy&nbsp;trình</li><li>Dữ&nbsp;liệu thực&nbsp;tế</li><li>Tối&nbsp;ưu chi&nbsp;phí</li></ul>
+        </div>
+        <div class="cta-actions">
+          <a href="/lien-he" class="btn btn-primary btn-lg">Đặt lịch tư&nbsp;vấn</a>
+          <a href="/dang-ky" class="btn btn-ghost btn-lg">Bắt đầu dùng&nbsp;thử</a>
+        </div>
       </div>
     </div>
   </section>
@@ -469,5 +488,6 @@
   </div>
 </footer>
 <script src="/js/home.js?v=7"></script>
+<script src="/js/showcase.js?v=1"></script>
 </body>
 </html>

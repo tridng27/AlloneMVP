@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/css/home.css?v=2">
+<link rel="stylesheet" href="/css/home.css?v=3">
 </head>
 <body>
 <a class="skip-link" href="#main">Bỏ qua điều hướng</a>
@@ -297,9 +297,10 @@
         <p class="lead">Quy tắc và ngưỡng ở từng bước được cấu hình theo từng doanh&nbsp;nghiệp, đây là luồng mặc định.</p>
       </div>
 
-      <div class="pipeline-card reveal" style="margin-top:3.4rem">
+      <div class="split-media flow-split" data-hl-root data-hl-delay="2800">
+        <div class="pipeline-card reveal">
         <ol class="pl-steps is-4">
-          <li class="pl-step is-human">
+          <li class="pl-step is-human" data-hl-point="s1" tabindex="0">
             <div class="pl-marker" aria-hidden="true">
               <span class="pl-dot">1</span>
               <span class="pl-rail"></span>
@@ -313,7 +314,7 @@
               <p>Rà soát dữ&nbsp;liệu và quy&nbsp;trình đang chạy thật ở từng bộ phận.</p>
             </div>
           </li>
-          <li class="pl-step">
+          <li class="pl-step" data-hl-point="s2" tabindex="0">
             <div class="pl-marker" aria-hidden="true">
               <span class="pl-dot">2</span>
               <span class="pl-rail"></span>
@@ -327,7 +328,7 @@
               <p>Gom các bảng rời về một cấu trúc dùng chung và khử trùng lặp.</p>
             </div>
           </li>
-          <li class="pl-step">
+          <li class="pl-step" data-hl-point="s3" tabindex="0">
             <div class="pl-marker" aria-hidden="true">
               <span class="pl-dot">3</span>
               <span class="pl-rail"></span>
@@ -341,7 +342,7 @@
               <p>Dựng luồng phê duyệt và bàn&nbsp;giao giữa các bộ phận.</p>
             </div>
           </li>
-          <li class="pl-step is-human">
+          <li class="pl-step is-human" data-hl-point="s4" tabindex="0">
             <div class="pl-marker" aria-hidden="true">
               <span class="pl-dot">4</span>
               <span class="pl-rail"></span>
@@ -358,12 +359,26 @@
         </ol>
         <p class="pl-note">Sơ đồ minh hoạ luồng xử lý mặc định. Quy tắc phân&nbsp;phối và kịch bản được cấu hình theo từng doanh&nbsp;nghiệp.</p>
       </div>
+        <div>
+          <div class="iso-stage" style="--n:4" aria-hidden="true">
+  <div class="iso-plate" style="--i:0" data-hl-target="s1"><b>01</b></div>
+  <div class="iso-plate" style="--i:1" data-hl-target="s2"><b>02</b></div>
+  <div class="iso-plate" style="--i:2" data-hl-target="s3"><b>03</b></div>
+  <div class="iso-plate" style="--i:3" data-hl-target="s4"><b>04</b></div>
+  <div class="iso-label" style="--i:0" data-hl-target="s1">Khảo sát <small>Con người</small></div>
+  <div class="iso-label" style="--i:1" data-hl-target="s2">Hợp&nbsp;nhất dữ&nbsp;liệu <small>Hệ thống</small></div>
+  <div class="iso-label" style="--i:2" data-hl-target="s3">Nối quy&nbsp;trình <small>Hệ thống</small></div>
+  <div class="iso-label" style="--i:3" data-hl-target="s4">Bàn&nbsp;giao <small>Con người</small></div>
+</div>
+<p class="iso-cap">Mỗi bước là một lớp, lớp sau dựng trên kết quả của lớp trước.</p>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- REAL CASE STUDIES -->
   <section class="section is-ai-tint">
-    <div class="container">
+    <div class="container rel-split">
       <div class="section-head reveal">
         <p class="eyebrow">Khách&nbsp;hàng</p>
         <h2>Doanh&nbsp;nghiệp đã triển khai</h2>
@@ -431,16 +446,17 @@
 
   <!-- CTA -->
   <section class="section cta-banner">
-    <div class="container cta-inner">
-      <h2>Quản&nbsp;trị doanh&nbsp;nghiệp hợp&nbsp;nhất: trao đổi bài&nbsp;toán của bạn</h2>
-      <ul class="benefit-list">
-        <li>Khảo sát cách đội&nbsp;ngũ bạn đang làm&nbsp;việc hôm nay, trước khi bàn tới phần&nbsp;mềm.</li>
-        <li>Demo trên đúng nghiệp&nbsp;vụ của bạn, không phải dữ&nbsp;liệu mẫu chung chung.</li>
-        <li>Lộ trình theo từng giai&nbsp;đoạn, để chi&nbsp;phí đi cùng nhịp triển khai.</li>
-      </ul>
-      <div class="hero-cta">
-        <a href="/lien-he" class="btn btn-primary btn-lg">Đặt lịch tư&nbsp;vấn</a>
-        <a href="/dang-ky" class="btn btn-ghost btn-lg">Bắt đầu dùng&nbsp;thử</a>
+    <div class="container">
+      <div class="cta-panel is-brand">
+        <div class="cta-copy">
+          <h2>Quản&nbsp;trị doanh&nbsp;nghiệp hợp&nbsp;nhất: trao đổi bài&nbsp;toán của bạn</h2>
+          <p class="cta-lead">Khảo&nbsp;sát thực&nbsp;tế, demo trên đúng nghiệp&nbsp;vụ của bạn và triển&nbsp;khai linh&nbsp;hoạt theo từng giai&nbsp;đoạn.</p>
+          <ul class="cta-tags"><li>Khảo sát quy&nbsp;trình</li><li>Dữ&nbsp;liệu thực&nbsp;tế</li><li>Tối&nbsp;ưu chi&nbsp;phí</li></ul>
+        </div>
+        <div class="cta-actions">
+          <a href="/lien-he" class="btn btn-primary btn-lg">Đặt lịch tư&nbsp;vấn</a>
+          <a href="/dang-ky" class="btn btn-ghost btn-lg">Bắt đầu dùng&nbsp;thử</a>
+        </div>
       </div>
     </div>
   </section>
@@ -495,5 +511,6 @@
   </div>
 </footer>
 <script src="/js/home.js?v=7"></script>
+<script src="/js/showcase.js?v=1"></script>
 </body>
 </html>
