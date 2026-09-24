@@ -87,7 +87,7 @@
 
     var scene = new THREE.Scene();
     var camera = new THREE.PerspectiveCamera(34, 1, 0.1, 100);
-    camera.position.set(0, 0, 23.5);
+    camera.position.set(0, 0, 20.5);
     camera.lookAt(0, 0, 0);
 
     var renderer;
@@ -184,6 +184,7 @@
     var hub = new THREE.Sprite(new THREE.SpriteMaterial({ transparent: true, depthTest: false }));
     hub.scale.set(2.75, 2.75, 1);
     hub.renderOrder = 5;
+    hub.visible = false;   // an unmapped sprite draws as a white square, so wait for the mark
     scene.add(hub);
 
     var logoSrc = stage.getAttribute("data-logo");
@@ -191,6 +192,7 @@
       new THREE.TextureLoader().load(logoSrc, function (tex) {
         hub.material.map = tex;
         hub.material.needsUpdate = true;
+        hub.visible = true;
         render();
       });
     }

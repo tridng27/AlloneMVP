@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/css/styles.css?v=18">
+<link rel="stylesheet" href="/css/styles.css?v=20">
 </head>
 <body>
 
@@ -26,7 +26,11 @@
 
 <header class="site-header" id="site-header">
   <div class="container header-inner">
-    <a href="/" class="logo"><img src="/img/logo-icon.png" width="28" height="28" alt="" class="logo-mark"><span class="wordmark">Allone</span></a>
+    <a href="/" class="logo" aria-label="AllOne CRM trang chủ">
+      <img class="logo-mark" src="/img/logo-mark.png" width="38" height="38" alt="">
+      <img class="logo-type for-dark" src="/img/logo-wordmark-dark.png" width="667" height="214" alt="AllOne All in one platform">
+      <img class="logo-type for-light" src="/img/logo-wordmark.png" width="667" height="214" alt="AllOne All in one platform">
+    </a>
     <nav class="main-nav" aria-label="Điều hướng chính">
       <div class="nav-item has-dropdown">
         <a href="/crm" data-nav="crm" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
@@ -185,8 +189,7 @@
       <div class="case-hero-grid">
         <div>
           <nav class="breadcrumb" aria-label="Đường dẫn"><a href="/">Trang chủ</a><span>/</span><a href="/tai-nguyen">Tài nguyên</a><span>/</span>Case study</nav>
-          <p class="eyebrow">Case study</p>
-          <h1>Liam Education <span class="text-highlight">loại bỏ công&nbsp;việc đối chiếu bảng&nbsp;tính</span> như thế nào</h1>
+          <h1>Liam Education <span class="text-highlight">loại&nbsp;bỏ công&nbsp;việc đối&nbsp;chiếu bảng&nbsp;tính</span> như thế nào</h1>
           <p>Trung&nbsp;tâm Anh ngữ giao tiếp công sở chuyển hồ&nbsp;sơ học viên, lớp học và học phí từ nhiều Google Sheet sang CRM và LMS dùng chung một hồ&nbsp;sơ.</p>
         </div>
         <div class="cs-factcard">
@@ -219,7 +222,6 @@
         <div class="cs-step">
           <div class="cs-num" aria-hidden="true">01</div>
           <div class="cs-step-body">
-            <p class="eyebrow">Bối cảnh</p>
             <h3>Một trung&nbsp;tâm dạy đúng một thứ, cho đúng một nhóm người</h3>
             <p>Liam Education dạy tiếng Anh giao tiếp trong môi trường công sở. Học viên là người đã đi làm, đăng ký để nói được trong họp hành, email và trao đổi với đối tác, nên trung&nbsp;tâm không chạy theo mô hình luyện thi cho học sinh sinh viên như phần lớn thị trường.</p>
             <p>Nhóm học viên này kéo theo một đặc&nbsp;thù vận&nbsp;hành: nhiều người tới từ hợp&nbsp;đồng doanh&nbsp;nghiệp, khi công ty cử nhân&nbsp;viên đi học theo đợt. Một hồ&nbsp;sơ tư&nbsp;vấn có thể dẫn tới nhiều học viên, và lịch học phải xếp quanh giờ làm của họ.</p>
@@ -228,7 +230,6 @@
         <div class="cs-step">
           <div class="cs-num" aria-hidden="true">02</div>
           <div class="cs-step-body">
-            <p class="eyebrow">Thách thức</p>
             <h3>Khi đối chiếu dữ&nbsp;liệu trở thành một vị trí riêng</h3>
             <p>Hồ&nbsp;sơ học viên, lịch tư&nbsp;vấn, tiến độ lớp học và chứng từ học phí nằm rải rác trên nhiều Google Spreadsheet, mỗi bộ phận giữ một bản. Không bản nào sai, nhưng cũng không bản nào khớp hoàn&nbsp;toàn với bản còn lại.</p>
             <p>Để trả lời những câu hỏi cơ bản như học viên nào đã đóng học phí, lớp nào đã điểm danh, hay hợp&nbsp;đồng doanh&nbsp;nghiệp nào còn chờ xác nhận, trung&nbsp;tâm phải thuê thêm nhân&nbsp;sự part-time và outsource chỉ để so khớp các bảng với nhau. Đó là chi&nbsp;phí lương trả cho việc mà lẽ ra không cần ai làm.</p>
@@ -240,7 +241,6 @@
         <div class="cs-step is-solution">
           <div class="cs-num" aria-hidden="true">03</div>
           <div class="cs-step-body">
-            <p class="eyebrow eyebrow-ai">Giải&nbsp;pháp triển khai</p>
             <h3>CRM cho hành trình học viên, LMS cho lớp học</h3>
             <p>Trung&nbsp;tâm triển khai hai sản&nbsp;phẩm cùng lúc, chia rõ phạm vi để không chồng lấn. CRM quản lý mọi thứ trước khi học viên vào lớp, LMS quản lý mọi thứ sau đó.</p>
             <div class="cs-scope">
@@ -282,7 +282,6 @@
   <section class="section section-alt">
     <div class="container">
       <div class="section-head">
-        <p class="eyebrow">Vận&nbsp;hành sau triển khai</p>
         <h2>Một ngày làm&nbsp;việc bình thường, trước và sau</h2>
         <p class="section-lead">Thay&nbsp;đổi lớn nhất không phải là có thêm phần&nbsp;mềm, mà là những bước công&nbsp;việc trước đây phải làm thủ công thì nay không còn tồn tại.</p>
       </div>
@@ -312,7 +311,6 @@
   <section class="section">
     <div class="container">
       <div class="section-head">
-        <p class="eyebrow">Kết quả</p>
         <h2>Ba thay&nbsp;đổi trung&nbsp;tâm ghi nhận được</h2>
       </div>
 
@@ -327,7 +325,6 @@
   <section class="section section-alt">
     <div class="container">
       <div class="section-head">
-        <p class="eyebrow">Áp dụng chung</p>
         <h2>Vì sao chuỗi vấn đề này lặp lại ở nhiều doanh&nbsp;nghiệp</h2>
         <p class="section-lead">Liam Education không phải trường hợp cá biệt. Bất kỳ doanh&nbsp;nghiệp nào để dữ&nbsp;liệu phân tán theo bộ phận cũng đi qua cùng một chuỗi, chỉ khác tên gọi của các file.</p>
       </div>

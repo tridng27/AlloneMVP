@@ -2803,3 +2803,133 @@ section[id] { scroll-margin-top: 88px; }
 
 /* ready for recorded footage (see MEDIA-VIDEOS.md) */
 .hl-frame > video, .sh-frame > video { display: block; width: 100%; height: auto; }
+
+/* ============================================================
+   ALIGNMENT PASS 24/09
+   1. every section title / subtitle is centred
+   2. two parallel blocks in one section end on the same line
+   ============================================================ */
+
+/* 1. titles + subtitles centred */
+.section-head { margin-inline: auto; text-align: center; }
+.section-head .lead, .section-head .section-lead { margin-inline: auto; }
+.section-cta, .section-cta-row { justify-content: center; }
+.section-cta { text-align: center; }
+
+/* split heroes: the copy column centres on itself */
+.hero-copy,
+.sol-hero-inner > div:first-child,
+.hero-centered.is-split .hero-split-grid > div:first-child,
+.case-hero-grid > div:first-child,
+.contact-copy { text-align: center; }
+.hero-copy { margin-inline: auto; }
+.hero-copy .hero-sub, .sol-hero .hero-sub,
+.hero-centered.is-split h1, .hero-centered.is-split .hero-lede,
+.case-hero-grid h1, .case-hero-grid > div > p,
+.contact-copy .section-lead { margin-inline: auto; }
+.hero-copy .hero-cta, .sol-hero .hero-cta,
+.hero-centered.is-split .hero-cta-center,
+.case-hero-grid .breadcrumb { justify-content: center; }
+.hero-copy .hero-cta { margin-inline: auto; }
+.contact-copy .check-list { text-align: left; }
+
+/* closing CTA panels: one centred column instead of copy | buttons */
+.cta-panel { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+.cta-panel h2, .cta-final .cta-panel h2, .section-cta-banner .cta-panel h2 { text-align: center; margin-inline: auto; }
+.cta-lead { margin-inline: auto; }
+.cta-tags { justify-content: center; }
+.cta-panel .benefit-list { text-align: left; }
+.cta-panel > .cta-actions { flex-direction: row; flex-wrap: wrap; justify-content: center; min-width: 0; }
+.cta-panel > .cta-actions .btn { width: auto; min-width: 210px; }
+
+/* 2. paired columns end together (desktop only, they stack below) */
+@media (min-width: 1041px) {
+  /* copy column beside a visual: pin its first line to the top edge and
+     its last line to the bottom edge of the neighbour */
+  .sol-hero-inner { align-items: stretch; }
+  .sol-hero-inner > div:first-child {
+    display: grid; align-content: space-between; justify-items: center;
+  }
+}
+/* case-study links: centred title on top, cards side by side, same height */
+.rel-split { grid-template-columns: 1fr; gap: 2.4rem; }
+.rel-split .rel-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 34rem)); justify-content: center; }
+@media (min-width: 1025px) {
+  .hero-split-grid, .case-hero-grid, .contact-grid { align-items: stretch; }
+  .hero-centered.is-split .hero-split-grid > div:first-child,
+  .case-hero-grid > div:first-child,
+  .contact-copy {
+    display: grid; align-content: space-between; justify-items: center;
+  }
+  .contact-copy .microcopy { margin-top: 1rem; }
+
+  /* case-study timeline: steps share the column height, rail follows */
+  .cs-steps.is-split { align-items: stretch; }
+  .cs-steps.is-split .cs-col > .cs-step:not(:last-child) { flex: 1 0 auto; }
+}
+@media (min-width: 769px) {
+  /* before / after: item N on the left sits level with item N on the right */
+  .cs-ba { grid-template-rows: repeat(4, auto); align-items: stretch; }
+  .cs-ba-col { display: grid; grid-template-rows: subgrid; row-gap: 1rem; }
+  .cs-ba-list { display: contents; }
+  .cs-ba-head { margin-bottom: 0.25rem; }
+  .cs-ba-col, .cs-ba-arrow { grid-row: 1 / span 4; }
+  .cs-ba-col.is-before { grid-column: 1; }
+  .cs-ba-arrow { grid-column: 2; align-self: center; }
+  .cs-ba-col.is-after { grid-column: 3; }
+
+  .ea-foot { align-items: stretch; }
+  .ea-foot .cta-actions { justify-content: space-between; }
+}
+@media (min-width: 961px) {
+  .split-media { align-items: stretch; }
+  .split-media > .soon-box { display: flex; flex-direction: column; }
+  .soon-box .hl-points { flex: 1; align-content: space-between; }
+}
+@media (min-width: 1041px) {
+  .split-media, .problem-split, .tab-panel.active.role-split, .platform-grid { align-items: stretch; }
+
+  /* list side: rows spread so the last one lands on the bottom edge */
+  .split-media > .hl-points, .split-media > .step-list, .lms-problems { align-content: space-between; }
+  .platform-list, .problem-split > div:first-child, .role-split > div:first-child,
+  .pipeline-card { display: flex; flex-direction: column; justify-content: space-between; }
+  .role-split > div:first-child > .hl-points, .pipeline-card > .pl-steps { flex: 1; align-content: space-between; }
+
+  /* picture side: the picture centres, its caption sits on the bottom edge */
+  .hub-figure, .frag-figure, .platform-media, .hl-media, .signup-media,
+  .flow-split > div:last-child { display: flex; flex-direction: column; }
+  .hub-stage, .frag-stage, .pm-stage, .hl-frame, .iso-stage { margin-block: auto; }
+  .role-split > .mock-frame { display: flex; flex-direction: column; }
+  .role-split > .mock-frame > .rm { flex: 1; align-content: space-between; }
+}
+
+/* hero 3D cluster: larger stage, bleeds a little past its column */
+@media (min-width: 1041px) { .flow-stage { width: min(640px, 116%); } }
+
+/* no eyebrows: headings now open their block, so drop the gap that sat above them */
+.section-head h2, .section-head h1, .hero-copy h1, .sol-hero h1 { margin-top: 0; }
+
+/* header logo: same mark + wordmark as the landing page */
+.logo .logo-mark { height: 38px; width: 38px; }
+.logo .logo-type { height: 27px; width: auto; }
+.logo .logo-type.for-light { display: none; }
+:root[data-theme="light"] .logo .logo-type.for-light { display: block; }
+:root[data-theme="light"] .logo .logo-type.for-dark { display: none; }
+
+/* ============================================================
+   SPLIT HEROES 24/09: the copy fills its column by itself, so the
+   "end together" spread only has a few pixels left to share
+   ============================================================ */
+@media (min-width: 1025px) {
+  .hero-centered.is-split h1 { font-size: clamp(2.5rem, 3.9vw, 3.3rem); max-width: 15ch; line-height: 1.12; }
+  .hero-centered.is-split .hero-lede { font-size: 1.12rem; max-width: 38ch; }
+  /* per-headline length: long wraps wider, short wraps narrower */
+  .hero-centered.is-split.is-long-title h1 { max-width: 17ch; }
+  .hero-centered.is-split.is-short-title h1 { max-width: 11ch; }
+  .case-hero-grid h1 { font-size: clamp(2.2rem, 3.4vw, 2.9rem); max-width: 19ch; margin-inline: auto; }
+  .case-hero-grid > div > p { font-size: 1.12rem; max-width: 40ch; }
+}
+@media (min-width: 1041px) {
+  .sol-hero h1 { font-size: clamp(2.2rem, 3.3vw, 2.9rem); max-width: 18ch; margin-inline: auto; }
+  .sol-hero .hero-sub { font-size: 1.1rem; max-width: 38ch; }
+}

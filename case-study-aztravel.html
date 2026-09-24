@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/css/styles.css?v=18">
+<link rel="stylesheet" href="/css/styles.css?v=20">
 </head>
 <body>
 
@@ -26,7 +26,11 @@
 
 <header class="site-header" id="site-header">
   <div class="container header-inner">
-    <a href="/" class="logo"><img src="/img/logo-icon.png" width="28" height="28" alt="" class="logo-mark"><span class="wordmark">Allone</span></a>
+    <a href="/" class="logo" aria-label="AllOne CRM trang chủ">
+      <img class="logo-mark" src="/img/logo-mark.png" width="38" height="38" alt="">
+      <img class="logo-type for-dark" src="/img/logo-wordmark-dark.png" width="667" height="214" alt="AllOne All in one platform">
+      <img class="logo-type for-light" src="/img/logo-wordmark.png" width="667" height="214" alt="AllOne All in one platform">
+    </a>
     <nav class="main-nav" aria-label="Điều hướng chính">
       <div class="nav-item has-dropdown">
         <a href="/crm" data-nav="crm" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
@@ -185,7 +189,6 @@
       <div class="case-hero-grid">
         <div>
           <nav class="breadcrumb" aria-label="Đường dẫn"><a href="/">Trang chủ</a><span>/</span><a href="/tai-nguyen">Tài nguyên</a><span>/</span>Case study</nav>
-          <p class="eyebrow">Case study</p>
           <h1>Cách AZTravel giúp hai chi nhánh <span class="text-highlight">làm&nbsp;việc trên cùng một nguồn booking</span></h1>
           <p>Công ty du lịch tại Đà Nẵng và Hà Nội chuyển booking tour, hồ&nbsp;sơ khách&nbsp;hàng và công nợ đối tác khách sạn từ nhiều Google Sheet sang một hệ thống CRM.</p>
         </div>
@@ -219,7 +222,6 @@
         <div class="cs-step">
           <div class="cs-num" aria-hidden="true">01</div>
           <div class="cs-step-body">
-            <p class="eyebrow">Bối cảnh</p>
             <h3>Hai địa bàn, hai nhịp mùa vụ, một thương hiệu</h3>
             <p>AZTravel bán tour giá rẻ và dịch vụ khách sạn tại hai địa bàn du lịch lớn nhất miền Trung và miền Bắc. Cạnh tranh ở phân khúc này nằm ở giá và tốc&nbsp;độ phản hồi, nên đội sale phải chốt nhanh và giữ chi&nbsp;phí vận&nbsp;hành thấp.</p>
             <p>Hai chi nhánh chạy song song với tệp khách và lịch khởi hành riêng, nhưng bán chung một thương hiệu và làm&nbsp;việc với nhiều đối tác khách sạn trùng nhau. Điều đó biến việc giữ cho số liệu hai bên khớp nhau thành một phần công&nbsp;việc thường xuyên.</p>
@@ -228,7 +230,6 @@
         <div class="cs-step">
           <div class="cs-num" aria-hidden="true">02</div>
           <div class="cs-step-body">
-            <p class="eyebrow">Thách thức</p>
             <h3>Mùa cao điểm là mùa dễ trùng lịch và sai công nợ nhất</h3>
             <p>Thông&nbsp;tin booking, khách&nbsp;hàng, đối tác khách sạn và công nợ được quản lý bằng nhiều Google Spreadsheet chia theo nhóm tour và theo địa bàn. Khi lượng khách thấp, cách làm này vẫn trôi.</p>
             <p>Vào cao điểm thì không. Đội sale phải tự đối chiếu chéo giữa các bảng để tránh nhận trùng chỗ trên cùng một lịch khởi hành, hoặc ghi sai công nợ với đối tác khách sạn. Công ty phải thuê thêm nhân&nbsp;sự part-time và outsource chỉ để làm công&nbsp;việc đối chiếu này trong mùa bận.</p>
@@ -240,7 +241,6 @@
         <div class="cs-step is-solution">
           <div class="cs-num" aria-hidden="true">03</div>
           <div class="cs-step-body">
-            <p class="eyebrow eyebrow-ai">Giải&nbsp;pháp triển khai</p>
             <h3>Một CRM cho khách&nbsp;hàng, booking và đối tác</h3>
             <p>AZTravel triển khai riêng CRM, không mở thêm sản&nbsp;phẩm nào khác. Mục tiêu đặt ra rất hẹp: đưa mọi thứ liên quan tới một booking về cùng một chỗ để không còn gì phải đối chiếu.</p>
             <div class="cs-scope is-3">
@@ -290,7 +290,6 @@
   <section class="section section-alt">
     <div class="container">
       <div class="section-head">
-        <p class="eyebrow">Vận&nbsp;hành sau triển khai</p>
         <h2>Một ngày cao điểm, trước và sau</h2>
         <p class="section-lead">Cao điểm vẫn là cao điểm. Khác biệt nằm ở chỗ đội sale không còn phải dừng lại để kiểm tra xem bảng của chi nhánh kia đã cập&nbsp;nhật chưa.</p>
       </div>
@@ -320,7 +319,6 @@
   <section class="section">
     <div class="container">
       <div class="section-head">
-        <p class="eyebrow">Kết quả</p>
         <h2>Ba thay&nbsp;đổi công ty ghi nhận được</h2>
       </div>
 
@@ -335,7 +333,6 @@
   <section class="section section-alt">
     <div class="container">
       <div class="section-head">
-        <p class="eyebrow">Áp dụng chung</p>
         <h2>Vì sao chuỗi vấn đề này lặp lại ở nhiều doanh&nbsp;nghiệp</h2>
         <p class="section-lead">AZTravel bán tour, Liam Education dạy tiếng Anh, nhưng cả hai cùng gặp một chuỗi vấn đề. Điểm khác nhau chỉ là tên các file trong Google Drive.</p>
       </div>
