@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/css/styles.css?v=21">
+<link rel="stylesheet" href="/css/styles.css?v=22">
 </head>
 <body>
 
@@ -203,15 +203,54 @@
 
 <main id="main">
 
-  <section class="hero-centered">
+  <section class="hero-centered is-split">
     <span class="hero-glow hero-glow-a" aria-hidden="true"></span>
     <span class="hero-glow hero-glow-b" aria-hidden="true"></span>
-    <div class="container">
+    <div class="container hero-split-grid">
+      <div>
       <h1>Báo giá theo <span class="text-gradient is-long">đúng nhu cầu sử dụng</span> của doanh&nbsp;nghiệp</h1>
       <p class="hero-lede">Chi&nbsp;phí AllOne được tính theo phân&nbsp;hệ, số người&nbsp;dùng hoặc học viên và phạm vi triển khai. Các nhu cầu tích hợp, phát triển và tùy chỉnh riêng được báo giá theo dự án.</p>
       <div class="hero-cta-center">
         <a href="/lien-he" class="btn btn-primary btn-lg">Nhận báo giá cho đội&nbsp;ngũ của bạn</a>
         <a href="/dang-ky" class="btn btn-ghost btn-lg">Dùng&nbsp;thử trước khi quyết&nbsp;định</a>
+      </div>
+      </div>
+      <div class="cost-visual" aria-hidden="true">
+        <svg class="cost-coins" viewBox="0 0 120 120" fill="none">
+          <ellipse cx="60" cy="96" rx="40" ry="11" class="coin-edge"/>
+          <rect x="20" y="78" width="80" height="18" class="coin-edge"/>
+          <ellipse cx="60" cy="78" rx="40" ry="11" class="coin-face"/>
+          <ellipse cx="60" cy="68" rx="40" ry="11" class="coin-edge"/>
+          <rect x="20" y="50" width="80" height="18" class="coin-edge"/>
+          <ellipse cx="60" cy="50" rx="40" ry="11" class="coin-face"/>
+          <ellipse cx="60" cy="40" rx="40" ry="11" class="coin-edge"/>
+          <rect x="20" y="24" width="80" height="16" class="coin-edge"/>
+          <ellipse cx="60" cy="24" rx="40" ry="11" class="coin-face"/>
+          <text x="60" y="29" text-anchor="middle" class="coin-mark">₫</text>
+        </svg>
+        <div class="mock-frame cost-card">
+          <div class="mock-bar">
+            <span class="mock-dots"><span></span><span></span><span></span><span class="mock-title">Ước tính chi phí hằng tháng</span></span>
+            <span class="status-pill is-active">Theo năm</span>
+          </div>
+          <div class="mock-inner">
+            <div class="cost-total">
+              <p class="mock-sub">Tổng chi phí thuê bao</p>
+              <p class="cost-total-num">6.350.000<span>đ / tháng</span></p>
+            </div>
+            <div class="cost-bar">
+              <span class="is-crm" style="width: 70%"></span>
+              <span class="is-lms" style="width: 23.6%"></span>
+              <span class="is-call" style="width: 6.4%"></span>
+            </div>
+            <ul class="cost-lines">
+              <li><i class="is-crm"></i><span>CRM · 50 người&nbsp;dùng × 89.000đ</span><b>4.450.000đ</b></li>
+              <li><i class="is-lms"></i><span>LMS · 300 học viên × 5.000đ</span><b>1.500.000đ</b></li>
+              <li><i class="is-call"></i><span>Tổng đài · 2 tài khoản × 200.000đ</span><b>400.000đ</b></li>
+            </ul>
+          </div>
+          <div class="mock-caption">Ví dụ minh họa · không phí ẩn</div>
+        </div>
       </div>
     </div>
   </section>
@@ -254,7 +293,7 @@
             <li>Dùng chung cho CRM, HRM, ERP và SAP</li>
             <li>Tính theo số người&nbsp;dùng thực&nbsp;tế phát sinh trong kỳ</li>
             <li>Mở thêm phân&nbsp;hệ theo từng giai&nbsp;đoạn</li>
-            <li>Phân&nbsp;hệ LMS tính riêng theo số học viên</li>
+            <li>Phân&nbsp;hệ LMS tính riêng theo số học viên, <a href="#bang-gia-lms">xem bảng&nbsp;giá LMS</a></li>
           </ul>
           <a href="/lien-he" class="btn btn-primary btn-block">Nhận báo giá Tiêu chuẩn</a>
         </div>
@@ -277,49 +316,74 @@
     </div>
   </section>
 
-  <section class="section">
+  <section class="section" id="bang-gia-lms">
     <div class="container">
       <div class="section-head" style="margin-inline: auto; text-align: center;">
-        <h2>LMS và dịch vụ tổng đài</h2>
-        <p class="section-lead">Phân&nbsp;hệ đào&nbsp;tạo tính theo số học viên thay vì số người&nbsp;dùng. Tổng đài là phụ phí cộng thêm cho mỗi tài khoản sử dụng tính năng gọi điện.</p>
+        <h2>Bảng&nbsp;giá LMS theo số học viên</h2>
+        <p class="section-lead">Phân&nbsp;hệ đào&nbsp;tạo tính theo số học viên đang hoạt&nbsp;động trong kỳ thay vì số người&nbsp;dùng, phù&nbsp;hợp trung&nbsp;tâm đào&nbsp;tạo và phòng đào&nbsp;tạo nội bộ.</p>
       </div>
 
-      <h3 class="price-label">Gói LMS · tính theo số học viên</h3>
-      <div class="table-wrap">
-        <table class="example-table">
-          <thead>
-            <tr>
-              <th scope="col">Gói dịch vụ</th>
-              <th scope="col">Thanh&nbsp;toán theo năm</th>
-              <th scope="col">Thanh&nbsp;toán theo tháng</th>
-              <th scope="col">Phạm vi áp dụng</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Miễn phí</td>
-              <td class="cell-num">0đ</td>
-              <td class="cell-num">0đ</td>
-              <td class="cell-muted">Dùng&nbsp;thử và vận&nbsp;hành quy&nbsp;mô nhỏ, giới hạn số học viên hoạt&nbsp;động.</td>
-            </tr>
-            <tr>
-              <td>Tiêu chuẩn</td>
-              <td class="cell-num">5.000đ</td>
-              <td class="cell-num">6.000đ</td>
-              <td class="cell-muted">Trung&nbsp;tâm đang vận&nbsp;hành thường xuyên; tính trên số học viên đang hoạt&nbsp;động trong kỳ.</td>
-            </tr>
-            <tr>
-              <td>Nâng cao</td>
-              <td class="cell-num">8.000đ</td>
-              <td class="cell-num">9.600đ</td>
-              <td class="cell-muted">Trung&nbsp;tâm nhiều chi nhánh, sử dụng đầy đủ khóa học trực tuyến và báo cáo nâng cao.</td>
-            </tr>
-          </tbody>
-        </table>
+      <div style="display: flex; justify-content: center;">
+        <div class="billing-switch" role="group" aria-label="Chu kỳ thanh toán LMS">
+          <button class="billing-btn is-active" type="button" data-cycle="annual" aria-pressed="true">Theo năm <span class="billing-save">Tiết kiệm 20%</span></button>
+          <button class="billing-btn" type="button" data-cycle="monthly" aria-pressed="false">Theo tháng</button>
+        </div>
       </div>
-      <p class="table-note">Đơn giá tính trên mỗi học viên mỗi tháng.</p>
 
-      <h3 class="price-label is-spaced">Phụ phí tổng đài</h3>
+      <div class="pricing-grid">
+        <div class="price-card">
+          <h3>Miễn phí</h3>
+          <p class="price-tagline">Dùng&nbsp;thử trước khi triển khai</p>
+          <p class="price-desc">Dùng&nbsp;thử và vận&nbsp;hành quy&nbsp;mô nhỏ, giới hạn số học viên hoạt&nbsp;động.</p>
+          <p class="price-value"><span class="price-num">0</span><span class="price-unit">đ / học viên / tháng</span></p>
+          <ul class="check-list">
+            <li>Giới hạn số học viên hoạt&nbsp;động</li>
+            <li>Khóa học, thời&nbsp;khóa&nbsp;biểu và điểm danh</li>
+            <li>Không yêu&nbsp;cầu thông&nbsp;tin thanh&nbsp;toán</li>
+          </ul>
+          <a href="/dang-ky" class="btn btn-secondary btn-block">Bắt đầu miễn phí</a>
+        </div>
+
+        <div class="price-card price-card-featured">
+          <span class="price-badge">Phổ biến</span>
+          <h3>Tiêu chuẩn</h3>
+          <p class="price-tagline">Cho trung&nbsp;tâm đang vận&nbsp;hành</p>
+          <p class="price-desc">Trung&nbsp;tâm vận&nbsp;hành thường xuyên; tính trên số học viên đang hoạt&nbsp;động trong kỳ.</p>
+          <p class="price-value"><span class="price-num" data-annual="5.000" data-monthly="6.000">5.000</span><span class="price-unit">đ / học viên / tháng</span></p>
+          <ul class="check-list">
+            <li>Tính theo số học viên thực&nbsp;tế trong kỳ</li>
+            <li>Khóa học, thời&nbsp;khóa&nbsp;biểu, điểm danh và bài tập</li>
+            <li>Dùng chung hồ&nbsp;sơ học viên với CRM</li>
+          </ul>
+          <a href="/lien-he" class="btn btn-primary btn-block">Nhận báo giá LMS</a>
+        </div>
+
+        <div class="price-card">
+          <h3>Nâng cao</h3>
+          <p class="price-tagline">Cho hệ thống nhiều chi&nbsp;nhánh</p>
+          <p class="price-desc">Trung&nbsp;tâm nhiều chi&nbsp;nhánh, sử dụng đầy đủ khóa học trực tuyến và báo cáo nâng cao.</p>
+          <p class="price-value"><span class="price-num" data-annual="8.000" data-monthly="9.600">8.000</span><span class="price-unit">đ / học viên / tháng</span></p>
+          <ul class="check-list">
+            <li>Mọi tính năng của gói Tiêu chuẩn</li>
+            <li>Đầy đủ khóa học và lớp học trực tuyến</li>
+            <li>Báo cáo nâng cao theo chi&nbsp;nhánh</li>
+          </ul>
+          <a href="/lien-he" class="btn btn-secondary btn-block">Trao đổi với đội tư&nbsp;vấn</a>
+        </div>
+      </div>
+
+      <p class="pricing-note">Đơn giá tính trên mỗi học viên mỗi tháng. Thanh&nbsp;toán theo tháng cộng thêm 20%.</p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head" style="margin-inline: auto; text-align: center;">
+        <h2>Phụ phí tổng đài</h2>
+        <p class="section-lead">Tổng đài là phụ phí cộng thêm cho mỗi tài khoản sử dụng tính năng gọi điện, áp dụng cho cả gói người&nbsp;dùng lẫn gói LMS.</p>
+      </div>
+
+      <h3 class="price-label">Phụ phí tổng đài</h3>
       <div class="table-wrap">
         <table class="example-table">
           <thead>
@@ -350,7 +414,7 @@
     </div>
   </section>
 
-  <section class="section section-alt">
+  <section class="section">
     <div class="container">
       <div class="section-head" style="margin-inline: auto; text-align: center;">
         <h2>Chi&nbsp;phí triển khai, đào&nbsp;tạo và cố vấn</h2>
@@ -400,7 +464,7 @@
     </div>
   </section>
 
-  <section class="section">
+  <section class="section section-alt">
     <div class="container">
       <div class="section-head" style="margin-inline: auto; text-align: center;">
         <h2>Bốn yếu tố quyết&nbsp;định con số cuối cùng</h2>
@@ -597,7 +661,7 @@
     </div>
   </div>
   <div class="container footer-bottom">
-    <p>© <span id="currentYear"></span> AllOne CRM. Bảo lưu mọi quyền.</p>
+    <p>© <span id="currentYear"></span> AllOne. Bảo lưu mọi quyền.</p>
   </div>
 </footer>
 

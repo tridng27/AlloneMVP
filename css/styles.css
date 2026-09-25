@@ -3028,3 +3028,50 @@ h1, h2 { text-transform: capitalize; text-wrap: balance; }
 .cs-card-fact span:last-child { overflow-wrap: anywhere; }
 .cs-card-link { margin-top: 1rem; }
 .cs-card-link .cs-card-cta { display: inline-flex; align-items: center; gap: 0.35rem; margin: 0; padding: 0.5rem 1rem; border-radius: var(--radius-pill); background: var(--accent); color: #fff; }
+
+/* 25/09: case-study heroes, one phrase per line */
+.h1-lines > span { display: block; }
+
+/* 25/09: bảng giá hero, cost breakdown card with a coin stack */
+.cost-visual { position: relative; padding: 2.2rem 0 0 2.2rem; }
+.cost-coins {
+  position: absolute; top: 0; left: 0; z-index: 2;
+  width: 104px; height: 104px;
+  filter: drop-shadow(0 12px 22px rgba(0, 0, 0, 0.35));
+}
+.cost-coins .coin-edge { fill: color-mix(in srgb, var(--accent-ai) 70%, #000); }
+.cost-coins .coin-face { fill: var(--accent-ai); stroke: color-mix(in srgb, var(--accent-ai) 60%, #fff); stroke-width: 1.5; }
+.cost-coins .coin-mark { font: 700 15px var(--font-sans); fill: color-mix(in srgb, var(--accent-ai) 35%, #000); }
+.cost-card { position: relative; z-index: 1; box-shadow: var(--shadow-lg); }
+.hero-centered.is-split .cost-card { text-align: left; }
+.cost-total { padding-left: 4.2rem; }
+.cost-total .mock-sub { margin: 0 0 0.2rem; }
+.cost-total-num {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  line-height: 1.1;
+}
+.cost-total-num span { margin-left: 0.4rem; font-size: 0.9rem; font-weight: 500; color: var(--text-faint); letter-spacing: 0; }
+.cost-bar { display: flex; gap: 3px; height: 12px; border-radius: var(--radius-pill); overflow: hidden; }
+.cost-bar span, .cost-lines i { background: var(--accent); }
+.cost-bar .is-lms, .cost-lines .is-lms { background: var(--ok); }
+.cost-bar .is-call, .cost-lines .is-call { background: var(--accent-ai); }
+.cost-lines { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.cost-lines li {
+  display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 0.7rem;
+  padding: 0.7rem 0; border-top: 1px solid var(--border);
+  font-size: 0.86rem; color: var(--text-secondary);
+}
+.cost-lines li:first-child { border-top: 0; padding-top: 0.2rem; }
+.cost-lines i { width: 10px; height: 10px; border-radius: 3px; }
+.cost-lines b { color: var(--text); font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
+@media (max-width: 560px) {
+  .cost-visual { padding: 1.6rem 0 0 1.2rem; }
+  .cost-coins { width: 78px; height: 78px; }
+  .cost-total { padding-left: 3rem; }
+  .cost-lines li { font-size: 0.8rem; gap: 0.5rem; }
+}
