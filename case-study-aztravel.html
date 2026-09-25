@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/css/styles.css?v=20">
+<link rel="stylesheet" href="/css/styles.css?v=21">
 </head>
 <body>
 
@@ -57,6 +57,20 @@
             <span>
               <span class="nav-dropdown-title">LMS Đào&nbsp;tạo &amp; Học&nbsp;tập</span>
               <span class="nav-dropdown-desc">Khoá học, lớp học và đào&nbsp;tạo nội bộ</span>
+            </span>
+          </a>
+          <a href="/hrm" class="nav-dropdown-item">
+            <span class="nav-dropdown-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="11" r="2.5"/><path d="M5.5 17a3.5 3.5 0 0 1 7 0M15 9h3M15 13h3"/></svg></span>
+            <span>
+              <span class="nav-dropdown-title">HRM Nhân&nbsp;sự &amp; OKR</span>
+              <span class="nav-dropdown-desc">OKR, giao việc, AI đánh&nbsp;giá hiệu&nbsp;quả, đơn từ và lương</span>
+            </span>
+          </a>
+          <a href="/ai" class="nav-dropdown-item">
+            <span class="nav-dropdown-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 4 2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/><path d="M19 15v4M17 17h4"/></svg></span>
+            <span>
+              <span class="nav-dropdown-title">AllOne AI Trợ&nbsp;lý thông&nbsp;minh</span>
+              <span class="nav-dropdown-desc">AI làm&nbsp;việc trên dữ&nbsp;liệu của chính doanh&nbsp;nghiệp</span>
             </span>
           </a>
         </div>
@@ -149,6 +163,7 @@
           </a>
         </div>
       </div>
+      <a href="/ve-chung-toi" data-nav="ve-chung-toi">Về Chúng&nbsp;Tôi</a>
       <a href="/lien-he" data-nav="lien-he">Liên Hệ</a>
     </nav>
     <div class="header-actions">
@@ -165,6 +180,8 @@
     <a href="/crm" class="mobile-nav-sub">CRM Quản lý khách&nbsp;hàng</a>
     <a href="/omni" class="mobile-nav-sub">Omni Nhắn tin đa&nbsp;kênh</a>
     <a href="/lms" class="mobile-nav-sub">LMS Đào&nbsp;tạo &amp; Học&nbsp;tập</a>
+    <a href="/hrm" class="mobile-nav-sub">HRM Nhân&nbsp;sự &amp; OKR</a>
+    <a href="/ai" class="mobile-nav-sub">AllOne AI Trợ&nbsp;lý thông&nbsp;minh</a>
     <a href="/giai-phap">Giải&nbsp;Pháp</a>
     <a href="/giai-phap-quan-tri-hop-nhat" class="mobile-nav-sub">Quản&nbsp;trị doanh&nbsp;nghiệp hợp&nbsp;nhất</a>
     <a href="/giai-phap-ban-hang-khach-hang" class="mobile-nav-sub">Quản lý bán&nbsp;hàng và khách&nbsp;hàng</a>
@@ -178,6 +195,7 @@
     <a href="/case-study-liam-education" class="mobile-nav-sub">Case study: Liam Education</a>
     <a href="/case-study-aztravel" class="mobile-nav-sub">Case study: AZTravel</a>
     <a href="/tai-nguyen" class="mobile-nav-sub">Thư viện tài liệu</a>
+    <a href="/ve-chung-toi">Về Chúng&nbsp;Tôi</a>
     <a href="/lien-he">Liên Hệ</a>
     <a href="/dang-ky" class="btn btn-primary">Đăng Ký</a>
   </div>
@@ -189,7 +207,7 @@
       <div class="case-hero-grid">
         <div>
           <nav class="breadcrumb" aria-label="Đường dẫn"><a href="/">Trang chủ</a><span>/</span><a href="/tai-nguyen">Tài nguyên</a><span>/</span>Case study</nav>
-          <h1>Cách AZTravel giúp hai chi nhánh <span class="text-highlight">làm&nbsp;việc trên cùng một nguồn booking</span></h1>
+          <h1>Cách AZTravel giúp hai chi nhánh <span class="text-highlight is-long">làm&nbsp;việc trên cùng một nguồn booking</span></h1>
           <p>Công ty du lịch tại Đà Nẵng và Hà Nội chuyển booking tour, hồ&nbsp;sơ khách&nbsp;hàng và công nợ đối tác khách sạn từ nhiều Google Sheet sang một hệ thống CRM.</p>
         </div>
         <div class="cs-factcard">
@@ -205,12 +223,11 @@
     </div>
   </section>
 
-  <section class="section section-tight">
+  <section class="section section-tight cs-intro">
     <div class="container">
-      <div class="cs-summary">
-        <div class="cs-sum is-problem"><h3>Vấn đề</h3><p>Booking, khách&nbsp;hàng, đối tác khách sạn và công nợ chia theo nhóm tour và theo địa bàn trên nhiều Google Sheet.</p></div>
-        <div class="cs-sum is-approach"><h3>Cách làm</h3><p>Một CRM duy&nbsp;nhất giữ khách&nbsp;hàng, booking và đối tác, cập&nbsp;nhật theo thời&nbsp;gian&nbsp;thực.</p></div>
-        <div class="cs-sum is-result"><h3>Kết quả</h3><p>Hai chi nhánh làm&nbsp;việc trên cùng một tập booking, không còn thuê người đối chiếu theo mùa vụ.</p></div>
+      <div class="section-head">
+        <h2>AZTravel hợp nhất dữ&nbsp;liệu booking giữa hai chi&nbsp;nhánh</h2>
+        <p class="section-lead">Khách&nbsp;hàng, booking và đối&nbsp;tác được cập&nbsp;nhật trên một CRM, giúp hai chi&nbsp;nhánh cùng làm việc trên một nguồn dữ&nbsp;liệu.</p>
       </div>
     </div>
   </section>
@@ -394,6 +411,8 @@
       <a href="/crm">CRM</a>
       <a href="/omni">Omni</a>
       <a href="/lms">LMS</a>
+      <a href="/hrm">HRM</a>
+      <a href="/ai">AllOne AI</a>
       <a href="/bang-gia">Bảng&nbsp;giá</a>
     </div>
     <div class="footer-col">
@@ -404,7 +423,7 @@
     </div>
     <div class="footer-col">
       <h4>Công ty</h4>
-      <a href="/">Về chúng tôi</a>
+      <a href="/ve-chung-toi">Về chúng tôi</a>
       <a href="/lien-he">Liên hệ</a>
       <a href="/dang-ky">Đăng ký dùng&nbsp;thử</a>
       <a href="/lien-he">Đặt lịch demo</a>

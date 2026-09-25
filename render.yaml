@@ -88,6 +88,18 @@ services:
         source: /giai-phap.html
         destination: /giai-phap
         status: 301
+      - type: redirect
+        source: /ve-chung-toi.html
+        destination: /ve-chung-toi
+        status: 301
+      - type: redirect
+        source: /hrm.html
+        destination: /hrm
+        status: 301
+      - type: redirect
+        source: /ai.html
+        destination: /ai
+        status: 301
 
       # --- Serve the clean path from its backing .html file ---
       - type: rewrite
@@ -141,6 +153,15 @@ services:
       - type: rewrite
         source: /giai-phap
         destination: /giai-phap.html
+      - type: rewrite
+        source: /ve-chung-toi
+        destination: /ve-chung-toi.html
+      - type: rewrite
+        source: /hrm
+        destination: /hrm.html
+      - type: rewrite
+        source: /ai
+        destination: /ai.html
 
     headers:
       # --- Security headers, applied to every response ---
