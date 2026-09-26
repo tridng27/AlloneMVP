@@ -1,0 +1,88 @@
+/* Support chat bubble (26/09) — used by js/support-chat.js on every page.
+   Loaded next to either home.css or styles.css, so each token falls back from one sheet's name to the other's. */
+.sc-root {
+  --sc-brand: var(--brand, var(--accent, #3fa0e6));
+  --sc-brand-strong: var(--brand-strong, var(--accent-hover, #63b3ec));
+  --sc-surface: var(--surface, var(--bg-elev, #111b26));
+  --sc-ink: var(--ink, var(--text, #eef4fa));
+  --sc-soft: var(--ink-soft, var(--text-secondary, #9fb2c4));
+  --sc-line: var(--line, var(--border, #213141));
+  position: fixed;
+  right: max(16px, env(safe-area-inset-right, 0px));
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  z-index: 190; /* under the open mobile nav (200+) */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.75rem;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+.sc-root[hidden] { display: none; }
+
+.sc-bubble {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  height: 56px;
+  padding: 0 1.25rem 0 0.95rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--sc-brand);
+  color: #fff;
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 10px 28px -8px rgba(8, 40, 80, 0.55), 0 2px 6px rgba(0, 0, 0, 0.18);
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+.sc-bubble:hover { background: var(--sc-brand-strong); transform: translateY(-2px); }
+.sc-bubble:focus-visible { outline: 3px solid var(--sc-ink); outline-offset: 3px; }
+.sc-icon { display: inline-flex; }
+.sc-bubble.is-open { padding: 0; width: 56px; justify-content: center; }
+.sc-bubble.is-open .sc-label { display: none; }
+
+.sc-bubble.is-loading { cursor: progress; }
+.sc-bubble.is-loading .sc-icon { animation: sc-pulse 0.9s ease-in-out infinite; }
+@keyframes sc-pulse { 50% { opacity: 0.35; } }
+
+.sc-panel {
+  width: min(320px, calc(100vw - 32px));
+  display: grid;
+  gap: 0.6rem;
+  padding: 1.15rem 1.15rem 1.2rem;
+  background: var(--sc-surface);
+  color: var(--sc-ink);
+  border: 1px solid var(--sc-line);
+  border-radius: 16px;
+  box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.55);
+}
+.sc-panel[hidden] { display: none; }
+.sc-title { margin: 0; font-size: 1rem; font-weight: 700; }
+.sc-text { margin: 0 0 0.25rem; font-size: 0.88rem; line-height: 1.55; color: var(--sc-soft); }
+.sc-action {
+  display: block;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--sc-line);
+  border-radius: 10px;
+  color: var(--sc-ink);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+.sc-action:hover, .sc-action:focus-visible { border-color: var(--sc-brand); color: var(--sc-brand); }
+.sc-action.is-primary { background: var(--sc-brand); border-color: var(--sc-brand); color: #fff; }
+.sc-action.is-primary:hover, .sc-action.is-primary:focus-visible { background: var(--sc-brand-strong); color: #fff; }
+
+/* Phones: icon-only bubble so it covers less of the page. */
+@media (max-width: 640px) {
+  .sc-bubble { width: 56px; padding: 0; justify-content: center; }
+  .sc-label { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sc-bubble, .sc-action { transition: none; }
+  .sc-bubble:hover { transform: none; }
+  .sc-bubble.is-loading .sc-icon { animation: none; }
+}

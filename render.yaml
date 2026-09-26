@@ -184,7 +184,7 @@ services:
       # If that's ever swapped for a different endpoint, update this to match.
       - path: /*
         name: Content-Security-Policy
-        value: "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://api.web3forms.com; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
+        value: "default-src 'self'; script-src 'self' https://sp.zalo.me; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://*.zalo.me https://*.zdn.vn; connect-src 'self' https://api.web3forms.com https://sp.zalo.me; frame-src https://page.widget.zalo.me; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
 
       # --- HTML documents: revalidate on every request so content edits go live immediately ---
       - path: /*

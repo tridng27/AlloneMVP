@@ -972,6 +972,13 @@ section[id] { scroll-margin-top: 88px; }
 .footer-col a:hover { color: var(--accent); }
 .footer-bottom { padding: 1.5rem 0; font-size: 0.82rem; }
 
+/* ===================== Footer legal line (DKKD 26/09) ===================== */
+.footer-legal { display: grid; gap: 0.3rem; margin: 0 0 0.9rem; max-width: 78ch; line-height: 1.55; }
+.footer-legal .fl-name { font-weight: 600; color: var(--text); }
+.footer-social { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.1rem 0 0; padding: 0; list-style: none; }
+.footer-social a { display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.4rem 0.8rem; border: 1px solid var(--border); border-radius: 999px; font-size: 0.85rem; font-weight: 500; color: var(--text); transition: color 0.15s ease, border-color 0.15s ease; }
+.footer-social a:hover, .footer-social a:focus-visible { color: var(--accent); border-color: var(--accent); }
+
 /* ===================== Reveal animation ===================== */
 .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .reveal.in-view { opacity: 1; transform: translateY(0); }
