@@ -95,8 +95,8 @@
     widget.setAttribute('data-oaid', OA_ID);
     widget.setAttribute('data-welcome-message', WELCOME);
     widget.setAttribute('data-autopopup', '1');
-    widget.setAttribute('data-width', '');
-    widget.setAttribute('data-height', '');
+    widget.setAttribute('data-width', '350'); // SDK default is 440 x 813; 350 is Zalo's minimum width
+    widget.setAttribute('data-height', '500');
     document.body.appendChild(widget);
 
     var done = false;
