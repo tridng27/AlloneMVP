@@ -13,7 +13,12 @@
     var track = document.getElementById("flowTrack");
     if (!stage || !label || !track) return;
 
-    var STEPS = [
+    var EN = document.documentElement.lang === "en";
+    var STEPS = EN ? [
+      { name: "Data-driven management", ai: false },
+      { name: "AI-assisted decisions", ai: true },
+      { name: "Tailored to how you operate", ai: false }
+    ] : [
       { name: "Quản trị dựa trên dữ liệu", ai: false },
       { name: "AI đồng hành ra quyết định", ai: true },
       { name: "Tối ưu theo đặc thù vận hành", ai: false }

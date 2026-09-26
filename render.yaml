@@ -101,6 +101,96 @@ services:
         destination: /ai
         status: 301
 
+      # --- English site (/en/): same canonicalization ---
+      - type: redirect
+        source: /en/index.html
+        destination: /en/
+        status: 301
+      - type: redirect
+        source: /en
+        destination: /en/
+        status: 301
+      - type: redirect
+        source: /en/crm.html
+        destination: /en/crm
+        status: 301
+      - type: redirect
+        source: /en/omni.html
+        destination: /en/omni
+        status: 301
+      - type: redirect
+        source: /en/lms.html
+        destination: /en/lms
+        status: 301
+      - type: redirect
+        source: /en/hrm.html
+        destination: /en/hrm
+        status: 301
+      - type: redirect
+        source: /en/ai.html
+        destination: /en/ai
+        status: 301
+      - type: redirect
+        source: /en/solutions.html
+        destination: /en/solutions
+        status: 301
+      - type: redirect
+        source: /en/unified-management.html
+        destination: /en/unified-management
+        status: 301
+      - type: redirect
+        source: /en/sales-customer-management.html
+        destination: /en/sales-customer-management
+        status: 301
+      - type: redirect
+        source: /en/inventory-supply-chain.html
+        destination: /en/inventory-supply-chain
+        status: 301
+      - type: redirect
+        source: /en/training-learning.html
+        destination: /en/training-learning
+        status: 301
+      - type: redirect
+        source: /en/automation-ai-agents.html
+        destination: /en/automation-ai-agents
+        status: 301
+      - type: redirect
+        source: /en/omnichannel-customer-care.html
+        destination: /en/omnichannel-customer-care
+        status: 301
+      - type: redirect
+        source: /en/custom-applications.html
+        destination: /en/custom-applications
+        status: 301
+      - type: redirect
+        source: /en/pricing.html
+        destination: /en/pricing
+        status: 301
+      - type: redirect
+        source: /en/case-study-liam-education.html
+        destination: /en/case-study-liam-education
+        status: 301
+      - type: redirect
+        source: /en/case-study-aztravel.html
+        destination: /en/case-study-aztravel
+        status: 301
+      - type: redirect
+        source: /en/resources.html
+        destination: /en/resources
+        status: 301
+      - type: redirect
+        source: /en/about.html
+        destination: /en/about
+        status: 301
+      - type: redirect
+        source: /en/contact.html
+        destination: /en/contact
+        status: 301
+      - type: redirect
+        source: /en/sign-up.html
+        destination: /en/sign-up
+        status: 301
+
       # --- Serve the clean path from its backing .html file ---
       - type: rewrite
         source: /crm
@@ -162,6 +252,69 @@ services:
       - type: rewrite
         source: /ai
         destination: /ai.html
+      - type: rewrite
+        source: /en/
+        destination: /en/index.html
+      - type: rewrite
+        source: /en/crm
+        destination: /en/crm.html
+      - type: rewrite
+        source: /en/omni
+        destination: /en/omni.html
+      - type: rewrite
+        source: /en/lms
+        destination: /en/lms.html
+      - type: rewrite
+        source: /en/hrm
+        destination: /en/hrm.html
+      - type: rewrite
+        source: /en/ai
+        destination: /en/ai.html
+      - type: rewrite
+        source: /en/solutions
+        destination: /en/solutions.html
+      - type: rewrite
+        source: /en/unified-management
+        destination: /en/unified-management.html
+      - type: rewrite
+        source: /en/sales-customer-management
+        destination: /en/sales-customer-management.html
+      - type: rewrite
+        source: /en/inventory-supply-chain
+        destination: /en/inventory-supply-chain.html
+      - type: rewrite
+        source: /en/training-learning
+        destination: /en/training-learning.html
+      - type: rewrite
+        source: /en/automation-ai-agents
+        destination: /en/automation-ai-agents.html
+      - type: rewrite
+        source: /en/omnichannel-customer-care
+        destination: /en/omnichannel-customer-care.html
+      - type: rewrite
+        source: /en/custom-applications
+        destination: /en/custom-applications.html
+      - type: rewrite
+        source: /en/pricing
+        destination: /en/pricing.html
+      - type: rewrite
+        source: /en/case-study-liam-education
+        destination: /en/case-study-liam-education.html
+      - type: rewrite
+        source: /en/case-study-aztravel
+        destination: /en/case-study-aztravel.html
+      - type: rewrite
+        source: /en/resources
+        destination: /en/resources.html
+      - type: rewrite
+        source: /en/about
+        destination: /en/about.html
+      - type: rewrite
+        source: /en/contact
+        destination: /en/contact.html
+      - type: rewrite
+        source: /en/sign-up
+        destination: /en/sign-up.html
 
     headers:
       # --- Security headers, applied to every response ---

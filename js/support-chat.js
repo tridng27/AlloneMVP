@@ -10,7 +10,33 @@
   var OA_URL = 'https://zalo.me/' + OA_ID;
   var SDK_URL = 'https://sp.zalo.me/plugins/sdk.js';
   var PHONE = '0396 748 693';
-  var WELCOME = 'Xin chào! AllOne có thể hỗ trợ gì cho bạn?';
+  var EN = document.documentElement.lang === 'en';
+  var T = EN ? {
+    welcome: 'Hello! How can AllOne help you?',
+    title: 'Customer support',
+    text: 'The chat window could not open on this page. You can still reach AllOne via:',
+    zalo: 'Message us on Zalo OA',
+    call: 'Call ',
+    form: 'Send an inquiry',
+    formHref: '/en/contact',
+    label: 'Support via Zalo',
+    open: 'Open Zalo support chat',
+    close: 'Close support',
+    reopen: 'Open customer support'
+  } : {
+    welcome: 'Xin chào! AllOne có thể hỗ trợ gì cho bạn?',
+    title: 'Hỗ trợ khách hàng',
+    text: 'Không mở được khung chat ngay trên trang. Bạn vẫn có thể liên hệ AllOne qua:',
+    zalo: 'Nhắn tin Zalo OA',
+    call: 'Gọi ',
+    form: 'Gửi yêu cầu tư vấn',
+    formHref: '/lien-he',
+    label: 'Hỗ trợ qua Zalo',
+    open: 'Mở khung chat hỗ trợ qua Zalo',
+    close: 'Đóng hỗ trợ',
+    reopen: 'Mở hỗ trợ khách hàng'
+  };
+  var WELCOME = T.welcome;
   var LOAD_TIMEOUT = 8000;
 
   var ICON_CHAT = '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8.5 8.5 0 0 1-12.4 7.6L3 21l1.4-5.1A8.5 8.5 0 1 1 21 12Z"/><path d="M8.5 10.5h7M8.5 14h4.5"/></svg>';
@@ -23,20 +49,20 @@
     root.className = 'sc-root';
     root.innerHTML =
       '<div class="sc-panel" id="scPanel" role="dialog" aria-labelledby="scTitle" hidden>' +
-        '<p class="sc-title" id="scTitle">Hỗ trợ khách hàng</p>' +
-        '<p class="sc-text">Không mở được khung chat ngay trên trang. Bạn vẫn có thể liên hệ AllOne qua:</p>' +
-        '<a class="sc-action is-primary" href="' + OA_URL + '" target="_blank" rel="noopener">Nhắn tin Zalo OA</a>' +
-        '<a class="sc-action" href="tel:' + PHONE.replace(/\s/g, '') + '">Gọi ' + PHONE + '</a>' +
-        '<a class="sc-action" href="/lien-he">Gửi yêu cầu tư vấn</a>' +
+        '<p class="sc-title" id="scTitle">' + T.title + '</p>' +
+        '<p class="sc-text">' + T.text + '</p>' +
+        '<a class="sc-action is-primary" href="' + OA_URL + '" target="_blank" rel="noopener">' + T.zalo + '</a>' +
+        '<a class="sc-action" href="tel:' + PHONE.replace(/\s/g, '') + '">' + T.call + PHONE + '</a>' +
+        '<a class="sc-action" href="' + T.formHref + '">' + T.form + '</a>' +
       '</div>' +
       '<button type="button" class="sc-bubble" aria-controls="scPanel" aria-expanded="false">' +
         '<span class="sc-icon">' + ICON_CHAT + '</span>' +
-        '<span class="sc-label">Hỗ trợ qua Zalo</span>' +
+        '<span class="sc-label">' + T.label + '</span>' +
       '</button>';
     document.body.appendChild(root);
     btn = root.querySelector('.sc-bubble');
     panel = root.querySelector('.sc-panel');
-    btn.setAttribute('aria-label', 'Mở khung chat hỗ trợ qua Zalo');
+    btn.setAttribute('aria-label', T.open);
     btn.addEventListener('click', onClick);
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && !panel.hidden) togglePanel(false);
@@ -54,7 +80,7 @@
     btn.setAttribute('aria-expanded', String(open));
     btn.classList.toggle('is-open', open);
     btn.querySelector('.sc-icon').innerHTML = open ? ICON_CLOSE : ICON_CHAT;
-    btn.setAttribute('aria-label', open ? 'Đóng hỗ trợ' : 'Mở hỗ trợ khách hàng');
+    btn.setAttribute('aria-label', open ? T.close : T.reopen);
     if (open) { var first = panel.querySelector('a'); if (first) first.focus(); }
   }
 

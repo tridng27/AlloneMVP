@@ -2898,3 +2898,28 @@
     .about-hero h1 { font-size: clamp(1.95rem, 2.5vw, 2.35rem); max-width: 24ch; }
     .about-hero .hero-sub { font-size: 0.98rem; max-width: 54ch; }
   }
+
+  /* ---------- language switch (VI | EN) 26/09 ---------- */
+  .lang-switch {
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0 0.7rem;
+    border-radius: var(--radius-s);
+    border: 1px solid var(--line-strong);
+    background: var(--surface);
+    color: var(--ink-soft);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  .lang-switch:hover { color: var(--brand); border-color: var(--brand); }
+  .lang-switch svg { flex-shrink: 0; }
+  /* 1041-1099px: the full nav is at its limit, so the switch drops the globe and the nav tightens */
+  @media (min-width: 1041px) and (max-width: 1099px) {
+    .lang-switch { width: 40px; padding: 0; justify-content: center; }
+    .lang-switch svg { display: none; }
+    .main-nav > a, .nav-trigger { padding-left: 0.6rem; padding-right: 0.6rem; }
+  }
