@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/css/home.css?v=8">
+<link rel="stylesheet" href="/css/home.css?v=9">
 <link rel="stylesheet" href="/css/support-chat.css?v=1">
 </head>
 <body>
@@ -98,7 +98,6 @@
           </p>
         </div>
       </div>
-      <a href="/en/pricing">Pricing</a>
       <div class="nav-item">
         <button class="nav-trigger" aria-haspopup="true" aria-expanded="false">Case Study <svg class="nav-caret" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <div class="nav-menu" role="menu">
@@ -149,7 +148,6 @@
     <a href="/en/automation-ai-agents" class="sub">Workflow automation &amp; AI Agents</a>
     <a href="/en/omnichannel-customer-care" class="sub">Omnichannel customer care</a>
     <a href="/en/custom-applications" class="sub">Custom business applications</a>
-    <a href="/en/pricing">Pricing</a>
     <a href="/en/case-study-liam-education">Case Study</a>
     <a href="/en/case-study-liam-education" class="sub">Case study: Liam Education</a>
     <a href="/en/case-study-aztravel" class="sub">Case study: AZTravel</a>
@@ -518,8 +516,86 @@
     </div>
   </section>
 
+  <!-- PRICING -->
+  <section class="section is-ai-tint" id="bang-gia">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2>AllOne HRM pricing</h2>
+        <p class="lead">Billed on the actual number of users in each period. HRM shares one rate with CRM and ERP, so adding a module never means switching plans.</p>
+      </div>
+
+      <div class="price-switch reveal">
+        <div class="billing-switch" role="group" aria-label="Billing cycle">
+          <button class="billing-btn is-active" type="button" data-cycle="annual" aria-pressed="true">Yearly <span class="billing-save">Save 20%</span></button>
+          <button class="billing-btn" type="button" data-cycle="monthly" aria-pressed="false">Monthly</button>
+        </div>
+      </div>
+
+      <div class="pricing">
+        <div class="price-card reveal">
+          <h3>Free</h3>
+          <p class="price-tag">Try it before you roll out</p>
+          <p class="price-desc">Trial with limited users and storage.</p>
+          <ul class="price-feats">
+            <li>Limited users and storage</li>
+            <li>Run a small team on the full platform</li>
+            <li>No payment details required</li>
+          </ul>
+          <p class="price-value"><span class="price-num">0</span><span class="price-unit">VND / user / month</span></p>
+          <a href="/en/sign-up" class="btn btn-ghost btn-block">Start for free</a>
+        </div>
+        <div class="price-card featured reveal">
+          <span class="price-badge">Popular</span>
+          <h3>Standard</h3>
+          <p class="price-tag">For businesses already in operation</p>
+          <p class="price-desc">Applies to the CRM, HRM, ERP and SAP modules.</p>
+          <ul class="price-feats">
+            <li>Billed on the actual number of users in each period</li>
+            <li>One rate across CRM, HRM, ERP and SAP</li>
+            <li>Add modules in phases</li>
+          </ul>
+          <p class="price-value"><span class="price-num" data-annual="89,000" data-monthly="106,800">89,000</span><span class="price-unit">VND / user / month</span></p>
+          <a href="/en/contact" class="btn btn-primary btn-block">Get a Standard quote</a>
+        </div>
+        <div class="price-card reveal">
+          <h3>Custom</h3>
+          <p class="price-tag">For organizations that need customization</p>
+          <p class="price-desc">Large businesses or those needing customization for their operations; quoted individually.</p>
+          <ul class="price-feats">
+            <li>Customized to your specific operations</li>
+            <li>Integration with your existing internal systems</li>
+            <li>Development and integration costs quoted per project</li>
+          </ul>
+          <p class="price-value"><span class="price-num">Let's talk</span></p>
+          <a href="/en/contact" class="btn btn-ghost btn-block">Talk to our consultants</a>
+        </div>
+      </div>
+      <div class="fee-block">
+        <div class="fee-head">
+          <h3>One-time rollout costs</h3>
+          <p>Unaffected by the billing cycle, listed as separate lines in your quote.</p>
+        </div>
+        <ul class="fee-list">
+          <li><span class="fee-name">System rollout</span><b class="fee-price">10,000,000 VND</b><span class="fee-desc">On your own domain, installed on a private server or in the cloud.</span></li>
+          <li><span class="fee-name">Training and technical support</span><b class="fee-price">10,000,000 VND</b><span class="fee-desc">Over 3 months, including up to 3 days on site.</span></li>
+          <li><span class="fee-name">Digital transformation consulting</span><b class="fee-price">5,000,000 VND</b><span class="fee-desc">Data migration, technology advice and data standardization methods.</span></li>
+          <li><span class="fee-name">Extra support sessions</span><b class="fee-price">600,000 VND <small>/ on-site session</small></b><span class="fee-desc">300,000 VND / online session, beyond the included scope.</span></li>
+        </ul>
+        <ul class="fee-terms" aria-label="Terms">
+          <li>Yearly billing saves 20%</li>
+          <li>Billed on actual users each period</li>
+          <li>Handover within 1 month of signing</li>
+          <li>Software is VAT-exempt in Vietnam</li>
+          <li>Formal quotes are valid for 10 days</li>
+          <li>Custom work and integrations quoted per project</li>
+        </ul>
+        <p class="fee-foot">For on-site sessions, your business covers travel and accommodation for AllOne staff and provides a workspace.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- OTHER PRODUCTS -->
-  <section class="section is-snug is-ai-tint">
+  <section class="section is-snug">
     <div class="container">
       <div class="section-head reveal">
         <h2>Other modules on the same platform</h2>
@@ -551,9 +627,9 @@
           <span class="oc-name">Unified business management</span>
           <svg class="oc-go" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
-        <a class="other-card" href="/en/pricing">
-          <span class="oc-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8Z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></span>
-          <span class="oc-name">Pricing</span>
+        <a class="other-card" href="/en/solutions">
+          <span class="oc-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span>
+          <span class="oc-name">All solutions</span>
           <svg class="oc-go" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
       </div>
@@ -609,7 +685,6 @@
         <a href="/en/lms">LMS</a>
         <a href="/en/hrm">HRM</a>
         <a href="/en/ai">AllOne AI</a>
-        <a href="/en/pricing">Pricing</a>
       </div>
       <div class="footer-col">
         <h4>Case study</h4>

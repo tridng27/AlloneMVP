@@ -35,7 +35,7 @@ Adding a new top-level page means adding entries in **both** places (the redirec
 `index.html` (the homepage) was redesigned separately from the rest of the site and does **not** share the older pages' script:
 
 - **`index.html`** loads `js/home.js` + `js/vendor/three.min.js` + `js/klein-bottle.js` (a parametric 3D Klein-bottle hero animation built on Three.js). It has its own light/dark theme toggle via `[data-theme]` on `<html>` (dark is the default with no attribute; the toggle persists to `localStorage` under key `allone-theme`) and its own nav markup/classes (`#siteHeader`, `.is-open`, `.nav-trigger`).
-- **Every other page** (`san-pham`, `giai-phap`, `bang-gia`, `tai-nguyen`, `lien-he`, `free-trial`, `dang-ky`, `lms`, `omni`, `404`) loads `js/main.js` (+ `js/config.js` on pages with a lead form). These use different nav markup/classes (`#site-header`, `.nav-open`, `.nav-dropdown-toggle`) and have no theme toggle — they're single-theme.
+- **Every other page** (`san-pham`, `giai-phap`, `tai-nguyen`, `lien-he`, `free-trial`, `dang-ky`, `lms`, `omni`, `404`) loads `js/main.js` (+ `js/config.js` on pages with a lead form). These use different nav markup/classes (`#site-header`, `.nav-open`, `.nav-dropdown-toggle`) and have no theme toggle — they're single-theme.
 
 Don't assume a fix in one JS file applies to both — nav/dropdown/reveal-on-scroll logic is duplicated with different selectors, not shared. If a nav or reveal-animation change should apply site-wide, it needs to be made in both `home.js` and `main.js`.
 

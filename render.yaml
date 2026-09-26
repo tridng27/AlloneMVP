@@ -26,7 +26,7 @@ services:
         status: 301
       - type: redirect
         source: /bang-gia.html
-        destination: /bang-gia
+        destination: /crm#bang-gia
         status: 301
       - type: redirect
         source: /tai-nguyen.html
@@ -164,7 +164,7 @@ services:
         status: 301
       - type: redirect
         source: /en/pricing.html
-        destination: /en/pricing
+        destination: /en/crm#bang-gia
         status: 301
       - type: redirect
         source: /en/case-study-liam-education.html
@@ -201,9 +201,10 @@ services:
       - type: rewrite
         source: /case-study-aztravel
         destination: /case-study-aztravel.html
-      - type: rewrite
+      - type: redirect
         source: /bang-gia
-        destination: /bang-gia.html
+        destination: /crm#bang-gia
+        status: 301
       - type: rewrite
         source: /tai-nguyen
         destination: /tai-nguyen.html
@@ -294,9 +295,10 @@ services:
       - type: rewrite
         source: /en/custom-applications
         destination: /en/custom-applications.html
-      - type: rewrite
+      - type: redirect
         source: /en/pricing
-        destination: /en/pricing.html
+        destination: /en/crm#bang-gia
+        status: 301
       - type: rewrite
         source: /en/case-study-liam-education
         destination: /en/case-study-liam-education.html
