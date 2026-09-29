@@ -318,8 +318,8 @@ section[id] { scroll-margin-top: 88px; }
   margin-bottom: 0.9rem;
 }
 .eyebrow-ai { color: var(--accent-ai); }
-.text-highlight { color: var(--accent); animation: hl-glow 2.4s ease-in-out infinite; }
-.text-highlight-ai { color: var(--accent-ai); animation: hl-glow-ai 2.4s ease-in-out infinite; }
+.text-highlight { color: var(--accent); }
+.text-highlight-ai { color: var(--accent-ai); }
 /* blue (software) -> orange (AI) blend, for phrases that cover both: same as .cds-glow in home.css */
 .cds-glow {
   background: linear-gradient(90deg, var(--accent), var(--accent-ai), var(--accent-hover), var(--accent-ai));
@@ -328,23 +328,11 @@ section[id] { scroll-margin-top: 88px; }
   background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
-  animation: cds-shift 5s ease-in-out infinite, cds-glow-pulse 2.6s ease-in-out infinite;
+  animation: cds-shift 5s ease-in-out infinite;
 }
 @keyframes cds-shift {
   0%, 100% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
-}
-@keyframes cds-glow-pulse {
-  0%, 100% { filter: drop-shadow(0 0 3px color-mix(in srgb, var(--accent) 50%, var(--accent-ai))); }
-  50% { filter: drop-shadow(0 0 9px color-mix(in srgb, var(--accent) 50%, var(--accent-ai))); }
-}
-@keyframes hl-glow {
-  0%, 100% { text-shadow: 0 0 4px color-mix(in srgb, var(--accent) 55%, transparent); }
-  50% { text-shadow: 0 0 15px color-mix(in srgb, var(--accent) 80%, transparent); }
-}
-@keyframes hl-glow-ai {
-  0%, 100% { text-shadow: 0 0 4px color-mix(in srgb, var(--accent-ai) 55%, transparent); }
-  50% { text-shadow: 0 0 15px color-mix(in srgb, var(--accent-ai) 80%, transparent); }
 }
 .hero h1 {
   font-size: clamp(2.2rem, 4vw, 3.2rem);
@@ -3244,3 +3232,63 @@ h1, h2 { text-transform: capitalize; text-wrap: balance; }
 
 /* button labels in Title Case: every word starts with a capital (Khám Phá Giải Pháp) */
 .btn, .billing-btn, .ops-tab, .tab-btn, .klein-hint { text-transform: capitalize; }
+
+/* CTA panels: one look on every page and theme (white to light blue). Inside the panel the
+   light-theme colours always apply, so text, blue/orange highlights and buttons stay readable. */
+.cta-panel, .cta-panel.is-brand {
+  --bg: #f5f8fb; --bg-elev: #ffffff; --bg-subtle: #eaf0f6;
+  --text: #0c1a2b; --text-secondary: #52647b; --text-faint: #8697a9;
+  --border: #e0e7ef; --border-strong: #ccd8e3;
+  --accent: #0f6fc4; --accent-hover: #0a57a3; --accent-soft: #e7f1fa;
+  --accent-ai: #b96a26; --accent-ai-soft: #f6ece0;
+  --c-surface: var(--bg-elev); --c-surface2: var(--bg-subtle); --c-line: var(--border); --c-line2: var(--border-strong);
+  --c-ink: var(--text); --c-soft: var(--text-secondary); --c-faint: var(--text-faint);
+  --c-brand: var(--accent); --c-brand-tint: var(--accent-soft); --c-warm: var(--accent-ai);
+  color: var(--c-ink);
+  border: 1px solid #cfe2f4;
+  background:
+    radial-gradient(90% 140% at 0% 0%, rgba(255, 255, 255, 0.9), transparent 60%),
+    linear-gradient(135deg, #ffffff 0%, #eef6fd 45%, #d4e8fa 100%);
+}
+/* dark mode: a light-blue panel (not navy), so the blue highlight keeps its contrast */
+:root:not([data-theme="light"]) .cta-panel {
+  border-color: transparent;
+  background:
+    radial-gradient(90% 140% at 0% 0%, rgba(255, 255, 255, 0.55), transparent 60%),
+    linear-gradient(135deg, #e6f2fc 0%, #cde5f8 100%);
+}
+.cta-panel.is-brand h2 { color: var(--c-ink); }
+.cta-panel.is-brand .cta-lead { color: var(--c-soft); }
+.cta-panel.is-brand .cta-tags li { background: var(--c-surface2); border-color: var(--c-line2); color: var(--c-ink); }
+.cta-banner .cta-panel .btn-primary, .section-cta-banner .cta-panel .btn-primary { background: var(--c-brand); color: #fff; }
+.cta-banner .cta-panel .btn-primary:hover, .section-cta-banner .cta-panel .btn-primary:hover { background: #0a57a3; }
+.cta-banner .cta-panel .btn-ghost, .section-cta-banner .cta-panel .btn-ghost { background: transparent; color: var(--c-ink); border-color: var(--c-line2); }
+.cta-banner .cta-panel .btn-ghost:hover, .section-cta-banner .cta-panel .btn-ghost:hover { background: transparent; color: var(--c-brand); border-color: var(--c-brand); }
+
+/* joined feature card (Omni inbox, LMS solutions): one panel split horizontally, the lead
+   feature on a light-blue band on top, the rest in divided columns below */
+.bento-grid.is-joined {
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.bento-grid.is-joined > .bento-card { grid-column: auto; border: 0; border-radius: 0; padding: 1.75rem; }
+.bento-grid.is-joined > .bento-card:hover { transform: none; }
+.bento-grid.is-joined > .bento-card:first-child {
+  --bg: #f5f8fb; --bg-elev: #ffffff; --bg-subtle: #eaf0f6;
+  --text: #0c1a2b; --text-secondary: #52647b; --text-faint: #8697a9;
+  --border: #d3e4f3; --border-strong: #c2d6ea;
+  --accent: #0f6fc4; --accent-hover: #0a57a3; --accent-soft: #e7f1fa;
+  --accent-ai: #b96a26; --success: #0a8a5c;
+  grid-column: 1 / -1;
+  padding: 2rem 2.25rem;
+  color: var(--text);
+  background: linear-gradient(135deg, #e8f4fe 0%, #d2e9fb 100%);
+}
+.bento-grid.is-joined > .bento-card:first-child h3 { font-size: 1.25rem; }
+.bento-grid.is-joined > .bento-card.is-wide-row:last-child { grid-column: span 2; }
+@media (max-width: 768px) {
+  .bento-grid.is-joined > .bento-card.is-wide-row:last-child { grid-column: auto; }
+}
