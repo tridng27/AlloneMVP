@@ -148,7 +148,9 @@
   .btn-ghost:hover { border-color: var(--brand); color: var(--brand); }
   .btn-lg { padding: 0.92rem 1.6rem; font-size: 1rem; }
   .btn-sm { padding: 0.5rem 1rem; font-size: 0.84rem; }
-  .btn-xl { padding: 1.15rem 2.4rem; font-size: 1.15rem; }
+  .btn-xl { padding: 1.4rem 2.4rem; font-size: 1.3rem; }
+  /* the consultation button spans the transform cards above it */
+  .transform-grid + .section-cta .btn-xl { width: 100%; }
   .btn-block { width: 100%; }
 
   /* ---------- header ---------- */
@@ -346,8 +348,8 @@
   .site-header.is-open .mobile-nav { display: flex; }
 
   /* ---------- section rhythm ---------- */
-  .section { padding: 136px 0; }
-  .partners + .section { padding-top: 108px; }
+  .section { padding: 91px 0; }
+  .partners + .section { padding-top: 72px; }
   .section-head { max-width: 46rem; }
   .section-head h2 {
     font-size: clamp(1.8rem, 3.4vw, 2.6rem);
@@ -382,7 +384,7 @@
   .weave svg { color: var(--brand); opacity: 0.9; }
 
   /* ---------- hero (split: copy left, the module hub on the right) ---------- */
-  .hero { padding: 92px 0 96px; overflow: hidden; }
+  .hero { padding: 61px 0 64px; overflow: hidden; }
   .hero-inner {
     display: grid;
     grid-template-columns: 1.04fr 0.96fr;
@@ -481,7 +483,7 @@
   }
   .fr-label.is-ai { color: var(--warm); }
   /* the three operating principles moved out of the hero into their own band */
-  .value-band { padding: 104px 0 24px; }
+  .value-band { padding: 69px 0 16px; }
   .hero-values {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -631,7 +633,7 @@
   .module-pill b { color: var(--ink); font-weight: 600; }
 
   /* ---------- partner marquee (full-bleed boxed band) ---------- */
-  .partners { padding: 56px 0 64px; }
+  .partners { padding: 37px 0 43px; }
   .partners-label {
     text-align: center;
     font-size: 0.78rem;
@@ -739,6 +741,10 @@
   }
   .sc-link:hover { gap: 0.55rem; }
   .app-card.is-ai .sc-link { color: var(--warm); }
+  /* the whole card is clickable: its "Tìm hiểu" link is stretched over the card */
+  .app-card { position: relative; }
+  .app-card:has(.sc-link) { cursor: pointer; }
+  .app-card .sc-link::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
 
   /* ---------- solutions by business problem: a numbered directory ----------
      deliberately NOT another card grid the app-grid above already owns that
@@ -1293,10 +1299,10 @@
   @media (max-width: 720px) {
     .main-nav, .header-actions .btn { display: none; }
     .nav-toggle { display: grid; place-items: center; }
-    .section { padding: 84px 0; }
-    .partners + .section { padding-top: 68px; }
-    .value-band { padding: 68px 0 16px; }
-    .hero { padding: 44px 0 56px; }
+    .section { padding: 56px 0; }
+    .partners + .section { padding-top: 45px; }
+    .value-band { padding: 45px 0 11px; }
+    .hero { padding: 29px 0 37px; }
     .app-grid { grid-template-columns: 1fr; gap: 1.1rem; }
     .app-card { padding: 1.5rem 1.5rem 1.6rem; }
     .app-card:hover { transform: none; box-shadow: none; border-color: var(--line); }
@@ -1316,7 +1322,7 @@
     .sl-go { display: none; }
     .flow-stage { width: min(320px, 80%); }
     .fr-label { font-size: 0.88rem; }
-    .partners { padding: 44px 0 52px; }
+    .partners { padding: 29px 0 35px; }
     .wide-only { display: none; }
     .hero-badge { font-size: 0.64rem; letter-spacing: 0.09em; margin-bottom: 1.1rem; padding: 0.36rem 0.8rem; }
     .hero h1 { font-size: clamp(1.6rem, 6vw, 2rem); line-height: 1.18; margin-bottom: 0.85rem; }
@@ -1373,7 +1379,7 @@
   .crumbs .is-here { color: var(--brand); font-weight: 600; }
 
   /* ---------- solution hero ---------- */
-  .sol-hero { padding: 48px 0 84px; }
+  .sol-hero { padding: 32px 0 56px; }
   .sol-hero-inner {
     display: grid;
     grid-template-columns: 1.02fr 0.98fr;
@@ -1650,14 +1656,14 @@
 
   /* ---------- solution page responsive ---------- */
   @media (max-width: 1040px) {
-    .sol-hero { padding: 36px 0 64px; }
+    .sol-hero { padding: 24px 0 43px; }
     .sol-hero-inner { grid-template-columns: 1fr; gap: 2.6rem; }
     .sol-hero .hero-sub { max-width: none; }
     .prob-grid, .cap-grid, .other-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .pl-steps.is-4 { grid-template-columns: 1fr; }
   }
   @media (max-width: 720px) {
-    .sol-hero { padding: 26px 0 52px; }
+    .sol-hero { padding: 17px 0 35px; }
     .crumbs { font-size: 0.76rem; }
     .sol-hero h1 { font-size: clamp(1.6rem, 6.2vw, 2rem); line-height: 1.18; }
     .sol-hero .hero-cta { width: 100%; }
@@ -1718,10 +1724,10 @@
 
   /* three content sections in a row share one background, so their
      paddings stacked into a 270px gap; this halves it */
-  .section.is-snug { padding-block: 80px; }
+  .section.is-snug { padding-block: 53px; }
 
   /* ---------- platform band: principles list + one-data-source diagram ---------- */
-  .platform-band { padding: 104px 0 40px; }
+  .platform-band { padding: 69px 0 27px; }
   .platform-grid {
     display: grid;
     grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
@@ -1847,7 +1853,6 @@
     line-height: 1.12;
     margin: 1.1rem 0 1rem;
   }
-  .op-dim { color: var(--ink-faint); }
   .op-desc { font-size: 1rem; color: var(--ink-soft); margin-bottom: 1.5rem; }
   .op-checks { display: grid; gap: 0.75rem; }
   .op-checks li { display: flex; align-items: flex-start; gap: 0.7rem; font-size: 0.97rem; color: var(--ink); }
@@ -1908,8 +1913,8 @@
     .op-foot { margin-top: 1.4rem; }
   }
   @media (max-width: 720px) {
-    .section.is-snug { padding-block: 56px; }
-    .platform-band { padding: 68px 0 24px; }
+    .section.is-snug { padding-block: 37px; }
+    .platform-band { padding: 45px 0 16px; }
     .platform-grid { margin-top: 2.2rem; }
     .pf-item { grid-template-columns: 40px 1fr; gap: 0.9rem; padding: 1.15rem 0.1rem; }
     .pf-icon { width: 40px; height: 40px; }
@@ -1989,12 +1994,12 @@
   .mr-sub { display: block; }
 
   /* closing CTA: the band keeps its colour but becomes a panel */
-  .cta-banner { background: transparent; color: var(--ink); padding-block: 72px 96px; }
+  .cta-banner { background: transparent; color: var(--ink); padding-block: 48px 64px; }
   .cta-banner .cta-panel .btn-primary { background: #fff; color: #0f5fa8; }
   .cta-banner .cta-panel .btn-primary:hover { background: #eef4fb; }
   .cta-banner .cta-panel .btn-ghost { border-color: rgba(255, 255, 255, 0.55); color: #fff; background: transparent; }
   .cta-banner .cta-panel .btn-ghost:hover { border-color: #fff; background: rgba(255, 255, 255, 0.08); }
-  @media (max-width: 720px) { .cta-banner { padding-block: 48px 64px; } }
+  @media (max-width: 480px) { .cta-banner { padding-block: 32px 43px; } }
 
   /* solution pages: problem cards carry a small scene of the pain */
   .prob-card { display: flex; flex-direction: column; }
@@ -2705,7 +2710,7 @@
     border: 1px solid var(--line);
     border-radius: var(--radius-l);
   }
-  .co-block h2 { font-size: clamp(1.45rem, 2.3vw, 1.9rem); margin-bottom: 1rem; text-align: center; }
+  .co-block h3 { font-size: clamp(1.45rem, 2.3vw, 1.9rem); margin-bottom: 1rem; text-align: center; }
   .co-block > p { font-size: 0.98rem; line-height: 1.7; color: var(--ink-soft); text-align: center; }
   .co-name { font-weight: 600; color: var(--ink); }
   .co-list { display: grid; margin: 1.3rem 0 0; }
@@ -3122,3 +3127,9 @@
     .iso-stage.is-big { transform: scale(0.72); margin-bottom: calc(((var(--n) - 1) * 108px + 250px) * -0.28); }
     .iso-stage.is-big .iso-plate { left: 50%; }
   }
+
+/* headers are broken into phrases with <br>; let the column, not a character cap, set their width */
+:is(h1, h2):has(br) { max-width: none !important; }
+
+/* button labels in Title Case: every word starts with a capital (Khám Phá Giải Pháp) */
+.btn, .billing-btn, .ops-tab, .tab-btn, .klein-hint { text-transform: capitalize; }
