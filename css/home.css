@@ -1353,7 +1353,7 @@
   .crumbs .is-here { color: var(--brand); font-weight: 600; }
 
   /* ---------- solution hero ---------- */
-  .sol-hero { padding: 32px 0 56px; }
+  .sol-hero { padding: 32px 0 56px; background: var(--surface-2); border-bottom: 1px solid var(--line); }
   .sol-hero-inner {
     display: grid;
     grid-template-columns: 1.02fr 0.98fr;
