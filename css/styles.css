@@ -3279,13 +3279,13 @@ h1, h2 { text-transform: capitalize; text-wrap: balance; }
 .bento-grid.is-joined > .bento-card:first-child {
   --bg: #f5f8fb; --bg-elev: #ffffff; --bg-subtle: #eaf0f6;
   --text: #0c1a2b; --text-secondary: #52647b; --text-faint: #8697a9;
-  --border: #d3e4f3; --border-strong: #c2d6ea;
-  --accent: #0f6fc4; --accent-hover: #0a57a3; --accent-soft: #e7f1fa;
+  --border: #f0ddc4; --border-strong: #e8cda8;
+  --accent: #b96a26; --accent-hover: #9c5a1f; --accent-soft: #f6ece0;
   --accent-ai: #b96a26; --success: #0a8a5c;
   grid-column: 1 / -1;
   padding: 2rem 2.25rem;
   color: var(--text);
-  background: linear-gradient(135deg, #e8f4fe 0%, #d2e9fb 100%);
+  background: linear-gradient(135deg, #fdf1e2 0%, #f8ddbe 100%);
 }
 .bento-grid.is-joined > .bento-card:first-child h3 { font-size: 1.25rem; }
 .bento-grid.is-joined > .bento-card.is-wide-row:last-child { grid-column: span 2; }
