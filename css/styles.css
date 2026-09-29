@@ -2919,7 +2919,7 @@ h1, h2 { text-transform: capitalize; text-wrap: balance; }
 
 /* a highlighted phrase in a headline never splits across two lines; only a
    phrase measured too wide for a phone or small tablet (.is-long) may wrap there */
-:is(h1, h2) :is(.hl, .hl-ai, .cds-glow, .text-highlight, .text-gradient, .text-gradient-ai) { white-space: nowrap; }
+:is(h1, h2) :is(.hl, .hl-ai, .cds-glow, .text-highlight, .text-highlight-ai, .text-gradient, .text-gradient-ai) { white-space: nowrap; }
 @media (max-width: 720px) {
   :is(h1, h2) .is-long { white-space: normal; }
 }
