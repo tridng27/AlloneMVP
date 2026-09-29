@@ -3255,24 +3255,17 @@ h1, h2 { text-transform: capitalize; text-wrap: balance; }
   --c-brand: var(--accent); --c-brand-tint: var(--accent-soft); --c-warm: var(--accent-ai);
   color: var(--c-ink);
   border: 1px solid #cfe2f4;
-  background:
-    radial-gradient(90% 140% at 0% 0%, rgba(255, 255, 255, 0.9), transparent 60%),
-    linear-gradient(135deg, #ffffff 0%, #eef6fd 45%, #d4e8fa 100%);
-}
-/* dark mode: a light-blue panel (not navy), so the blue highlight keeps its contrast */
-:root:not([data-theme="light"]) .cta-panel {
-  border-color: transparent;
-  background:
-    radial-gradient(90% 140% at 0% 0%, rgba(255, 255, 255, 0.55), transparent 60%),
-    linear-gradient(135deg, #e6f2fc 0%, #cde5f8 100%);
+  background: var(--accent-soft);
 }
 .cta-panel.is-brand h2 { color: var(--c-ink); }
 .cta-panel.is-brand .cta-lead { color: var(--c-soft); }
 .cta-panel.is-brand .cta-tags li { background: var(--c-surface2); border-color: var(--c-line2); color: var(--c-ink); }
 .cta-banner .cta-panel .btn-primary, .section-cta-banner .cta-panel .btn-primary { background: var(--c-brand); color: #fff; }
 .cta-banner .cta-panel .btn-primary:hover, .section-cta-banner .cta-panel .btn-primary:hover { background: #0a57a3; }
-.cta-banner .cta-panel .btn-ghost, .section-cta-banner .cta-panel .btn-ghost { background: transparent; color: var(--c-ink); border-color: var(--c-line2); }
-.cta-banner .cta-panel .btn-ghost:hover, .section-cta-banner .cta-panel .btn-ghost:hover { background: transparent; color: var(--c-brand); border-color: var(--c-brand); }
+.cta-panel .btn-ghost,
+.cta-banner .cta-panel .btn-ghost, .section-cta-banner .cta-panel .btn-ghost { background: #fff; color: #000; border-color: #000; }
+.cta-panel .btn-ghost:hover,
+.cta-banner .cta-panel .btn-ghost:hover, .section-cta-banner .cta-panel .btn-ghost:hover { background: #f2f2f2; color: #000; border-color: #000; }
 
 /* joined feature card (Omni inbox, LMS solutions): one panel split horizontally, the lead
    feature on a light-blue band on top, the rest in divided columns below */
