@@ -3212,3 +3212,13 @@ h1, h2 { text-transform: capitalize; text-wrap: balance; }
   .fee-list, .quote-factors { grid-template-columns: 1fr; }
   .quote-actions .btn { flex: 1 1 100%; }
 }
+
+/* ---------- CRM page: tighter vertical rhythm between sections (2/3 of the default) ---------- */
+.page-crm .section { padding: 64px 0; }
+.page-crm .hero-centered { padding: 48px 0 53px; }
+.page-crm .cta-final { padding: 48px 0 64px; }
+@media (max-width: 768px) {
+  .page-crm .section { padding: 43px 0; }
+  .page-crm .hero-centered { padding: 32px 0 37px; }
+  .page-crm .cta-final { padding: 32px 0 43px; }
+}
