@@ -4,7 +4,7 @@
   --font-display: 'Inter', var(--font-sans);
   --font-wordmark: 'Nunito', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
-  /* dark is the default (matches index.html) — light is an explicit opt-in via [data-theme="light"] below */
+  /* dark values are the fallback; every page ships <html data-theme="light"> so light is the default, and the toggle switches to dark */
   --bg: #0a1017;
   --bg-elev: #111b26;
   --bg-subtle: #17242f;
@@ -3222,3 +3222,8 @@ h1, h2 { text-transform: capitalize; text-wrap: balance; }
   .page-crm .hero-centered { padding: 32px 0 37px; }
   .page-crm .cta-final { padding: 32px 0 43px; }
 }
+
+/* CRM page headers break by phrase with <br>; give lines room so a phrase never wraps mid-way on desktop */
+.page-crm .section-head { max-width: 880px; }
+.page-crm .section-head .section-lead { max-width: 720px; margin-inline: auto; }
+.page-crm .cta-final .cta-panel h2 { max-width: none; }
