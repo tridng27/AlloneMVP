@@ -2323,6 +2323,8 @@ section[id] { scroll-margin-top: 88px; }
 .ea-foot .callout-feature { max-width: none; margin: 0; }
 .ea-foot .callout-feature.is-ai { background: transparent; border: none; padding: 0; }
 .ea-foot .cta-actions { min-width: 230px; }
+.ea-foot .btn-ghost { background: #fff; color: var(--accent-ai); border-color: color-mix(in srgb, var(--accent-ai) 45%, var(--border-strong)); }
+.ea-foot .btn-ghost:hover { background: #fff; border-color: var(--accent-ai); }
 @media (max-width: 768px) { .ea-foot { grid-template-columns: 1fr; } .ea-foot .cta-actions { min-width: 0; } }
 
 /* ---------- LMS: scattered data, drawn as floating iso tiles ---------- */
